@@ -1,0 +1,13 @@
+.DS_Store
+
+input
+input/
+# output/data
+# output/data/
+output/logs
+output/logs/
+tmp
+tmp/
+
+.ipynb_checkpoints
+env
