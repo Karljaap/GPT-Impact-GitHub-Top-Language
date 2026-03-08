@@ -7,4 +7,5 @@ altair
 matplotlib
 seaborn
 statsmodels
+geopandas
 ipykernel
