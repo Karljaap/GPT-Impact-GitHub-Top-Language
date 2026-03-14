@@ -5,15 +5,14 @@
 //
 //----------------------------------------------------------------------------//
 
-cd "`c(pwd)'"
-global path "`c(pwd)'"
+global path "F:/Programas/GitHub Desktop/GPT-Impact-GitHub-Top-Language"
 
 * Crear carpetas si no existen
-cap mkdir "$path\output"
-cap mkdir "$path\output\figures"
-cap mkdir "$path\output\tables"
+cap mkdir "$path/output"
+cap mkdir "$path/output/figures"
+cap mkdir "$path/output/tables"
 
-import delimited "F:/Programas/GitHub Desktop/GPT-Impact-GitHub-Top-Language/output/data/data_langs_balanced.csv", clear
+import delimited "$path/output/data/data_langs_balanced.csv", clear
 
 sort unique_id year quarter
 drop if iso2_code == "HK"
@@ -49,13 +48,13 @@ foreach lang of local DataScience {
                         13 "2023-T1" 14 "2023-T2" 15 "2023-T3" 16 "2023-T4", ///
                         labsize(small) angle(45)) ///
                         legend(order(1 "Control" 2 "Tratado") pos(12) col(2)) ///
-                ) graph_export("$path\output\figures\\`lang'did", .png)
+                ) graph_export("$path/output/figures/`lang'did", .png)
 
         * Traducir eje Y derecho: Lambda weight -> Peso lambda
-        cap graph use "$path\output\figures\\`lang'did_trends12.gph"
+        cap graph use "$path/output/figures/`lang'did_trends12.gph"
         cap gr_edit .yaxis2.title.text = {}
         cap gr_edit .yaxis2.title.text.Arrpush "Peso lambda"
-        cap graph export "$path\output\figures\\`lang'did_trends12.png", replace
+        cap graph export "$path/output/figures/`lang'did_trends12.png", replace
 
         sum num_pushers_pc if gpt_available_post1==0 & quarter<12 & language == "`lang'"
         estadd scalar control_mean `r(mean)'
@@ -74,13 +73,13 @@ foreach lang of local DataScience {
                         13 "2023-T1" 14 "2023-T2" 15 "2023-T3" 16 "2023-T4", ///
                         labsize(small) angle(45)) ///
                         legend(order(1 "Control" 2 "Tratado") pos(12) col(2)) ///
-                ) graph_export("$path\output\figures\\`lang'sc", .png)
+                ) graph_export("$path/output/figures/`lang'sc", .png)
 
         * Traducir eje Y derecho: Lambda weight -> Peso lambda
-        cap graph use "$path\output\figures\\`lang'sc_trends12.gph"
+        cap graph use "$path/output/figures/`lang'sc_trends12.gph"
         cap gr_edit .yaxis2.title.text = {}
         cap gr_edit .yaxis2.title.text.Arrpush "Peso lambda"
-        cap graph export "$path\output\figures\\`lang'sc_trends12.png", replace
+        cap graph export "$path/output/figures/`lang'sc_trends12.png", replace
 
         sum num_pushers_pc if gpt_available_post1==0 & quarter<12 & language == "`lang'"
         estadd scalar control_mean `r(mean)'
@@ -99,13 +98,13 @@ foreach lang of local DataScience {
                         13 "2023-T1" 14 "2023-T2" 15 "2023-T3" 16 "2023-T4", ///
                         labsize(small) angle(45)) ///
                         legend(order(1 "Control" 2 "Tratado") pos(12) col(2)) ///
-                ) graph_export("$path\output\figures\\`lang'sdid", .png)
+                ) graph_export("$path/output/figures/`lang'sdid", .png)
 
         * Traducir eje Y derecho: Lambda weight -> Peso lambda
-        cap graph use "$path\output\figures\\`lang'sdid_trends12.gph"
+        cap graph use "$path/output/figures/`lang'sdid_trends12.gph"
         cap gr_edit .yaxis2.title.text = {}
         cap gr_edit .yaxis2.title.text.Arrpush "Peso lambda"
-        cap graph export "$path\output\figures\\`lang'sdid_trends12.png", replace
+        cap graph export "$path/output/figures/`lang'sdid_trends12.png", replace
 
         sum num_pushers_pc if gpt_available_post1==0 & quarter<12 & language == "`lang'"
         estadd scalar control_mean `r(mean)'
@@ -114,7 +113,7 @@ foreach lang of local DataScience {
 ** Tabla con tres paneles 
 
 esttab C_did C_sc C_sdid ///
-                using "$path\output\tables\gpt_impact_github_DataScience.tex", ///
+                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
                 replace label booktabs                                                                   ///
                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
                 starlevels(* 0.10 * 0.05 ** 0.01) ///         
@@ -135,7 +134,7 @@ esttab C_did C_sc C_sdid ///
                         prefoot("") posthead(\hline) postfoot("")  nonumbers
 
 esttab C_hashtag_did C_hashtag_sc C_hashtag_sdid ///
-                using "$path\output\tables\gpt_impact_github_DataScience.tex", ///
+                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
                 append label booktabs mlabel(,none) ///
                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
                 starlevels(* 0.10 * 0.05 ** 0.01) /// 
@@ -146,7 +145,7 @@ esttab C_hashtag_did C_hashtag_sc C_hashtag_sdid ///
                 prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
 
 esttab C_plus_did C_plus_sc C_plus_sdid ///
-                using "$path\output\tables\gpt_impact_github_DataScience.tex", ///
+                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
                 append label booktabs mlabel(,none) ///
                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
                 starlevels(* 0.10 * 0.05 ** 0.01) /// 
@@ -157,7 +156,7 @@ esttab C_plus_did C_plus_sc C_plus_sdid ///
                 prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
 
 esttab Go_did Go_sc Go_sdid ///
-                using "$path\output\tables\gpt_impact_github_DataScience.tex", ///
+                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
                 append label booktabs mlabel(,none) ///
                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
                 starlevels(* 0.10 * 0.05 ** 0.01) /// 
@@ -168,7 +167,7 @@ esttab Go_did Go_sc Go_sdid ///
                 prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
 
 esttab Java_did Java_sc Java_sdid ///
-                using "$path\output\tables\gpt_impact_github_DataScience.tex", ///
+                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
                 append label booktabs mlabel(,none) ///
                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
                 starlevels(* 0.10 * 0.05 ** 0.01) /// 
@@ -179,7 +178,7 @@ esttab Java_did Java_sc Java_sdid ///
                 prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
 
 esttab JavaScript_did JavaScript_sc JavaScript_sdid ///
-                using "$path\output\tables\gpt_impact_github_DataScience.tex", ///
+                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
                 append label booktabs mlabel(,none) ///
                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
                 starlevels(* 0.10 * 0.05 ** 0.01) /// 
@@ -190,7 +189,7 @@ esttab JavaScript_did JavaScript_sc JavaScript_sdid ///
                 prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
 
 esttab PHP_did PHP_sc PHP_sdid ///
-                using "$path\output\tables\gpt_impact_github_DataScience.tex", ///
+                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
                 append label booktabs mlabel(,none) ///
                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
                 starlevels(* 0.10 * 0.05 ** 0.01) /// 
@@ -201,7 +200,7 @@ esttab PHP_did PHP_sc PHP_sdid ///
                 prehead("") prefoot("") posthead("\hline") delim("&") collabels(none) nonumbers nogaps nonote
 
 esttab Python_did Python_sc Python_sdid ///
-                using "$path\output\tables\gpt_impact_github_DataScience.tex", ///
+                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
                 append label booktabs mlabel(,none) ///
                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
                 starlevels(* 0.10 * 0.05 ** 0.01) /// 
@@ -212,7 +211,7 @@ esttab Python_did Python_sc Python_sdid ///
                 prehead("") prefoot("") posthead("\hline") delim("&") collabels(none) nonumbers nogaps nonote
 
 esttab Ruby_did Ruby_sc Ruby_sdid ///
-                using "$path\output\tables\gpt_impact_github_DataScience.tex", ///
+                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
                 append label booktabs mlabel(,none) ///
                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
                 starlevels(* 0.10 * 0.05 ** 0.01) /// 
@@ -223,7 +222,7 @@ esttab Ruby_did Ruby_sc Ruby_sdid ///
                 prehead("") prefoot("") posthead("\hline") delim("&") collabels(none) nonumbers nogaps nonote
 
 esttab TypeScript_did TypeScript_sc TypeScript_sdid ///
-                using "$path\output\tables\gpt_impact_github_DataScience.tex", ///
+                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
                 append label booktabs mlabel(,none) ///
                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
                 starlevels(* 0.10 * 0.05 ** 0.01) /// 
