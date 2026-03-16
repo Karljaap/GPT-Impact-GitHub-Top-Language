@@ -14,7 +14,9 @@
       "Bash(\"/c/Users/ronco/AppData/Local/anaconda3/envs/mt5python/python.exe\" -c \"import docx; print\\(''ok''\\)\")",
       "Bash(\"/c/Users/ronco/AppData/Local/anaconda3/envs/mt5python/python.exe\" -m pip install python-docx -q)",
       "Bash(\"/c/Users/ronco/AppData/Local/Programs/Python/Python313/python.exe\" -m pip install python-docx -q)",
-      "Bash(\"/c/Users/ronco/AppData/Local/Programs/Python/Python313/python.exe\" \"c:\\\\Users\\\\ronco\\\\Desktop\\\\GPT-Impact-GitHub-Top-Language\\\\code\\\\insert_table_docx.py\")"
+      "Bash(\"/c/Users/ronco/AppData/Local/Programs/Python/Python313/python.exe\" \"c:\\\\Users\\\\ronco\\\\Desktop\\\\GPT-Impact-GitHub-Top-Language\\\\code\\\\insert_table_docx.py\")",
+      "Bash(\"/c/Users/ronco/AppData/Local/Programs/Python/Python313/python.exe\" -:*)",
+      "Bash(\"/c/Users/ronco/AppData/Local/Programs/Python/Python313/python.exe\" \"c:\\\\Users\\\\ronco\\\\Desktop\\\\GPT-Impact-GitHub-Top-Language\\\\code\\\\docx_to_tex.py\")"
     ]
   }
 }
