@@ -21,7 +21,7 @@ Notes:
       3. More than 2 billion observations are allowed; see help obs_advice.
       4. Maximum number of variables is set to 5,000; see help set_maxvar.
 
-. do c:\Users\ronco\Desktop\GPT-Impact-GitHub-Top-Language\output\analysis_per_
+. do C:\Users\ronco\Desktop\GPT-Impact-GitHub-Top-Language\output\analysis_per_
 > lang.do 
 
 . 
@@ -34,7 +34,7 @@ Notes:
 . //---------------------------------------------------------------------------
 > -//
 . 
-. global path "c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language"
+. global path "C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language"
 
 . 
 . * Crear carpetas si no existen
@@ -104,17 +104,21 @@ Notes:
 >  ///
 >                 ) graph_export("$path/output/figures/`lang'did", .png)
   4. 
+.         scalar b_`lang'_did  = _b[gpt_available_post1]
+  5.         scalar se_`lang'_did = _se[gpt_available_post1]
+  6.         scalar nobs_`lang'   = e(N)
+  7. 
 .         * Traducir eje Y derecho: Lambda weight -> Peso lambda
 .         cap graph use "$path/output/figures/`lang'did_trends12.gph"
-  5.         cap gr_edit .yaxis2.title.text = {}
-  6.         cap gr_edit .yaxis2.title.text.Arrpush "Peso lambda"
-  7.         cap graph export "$path/output/figures/`lang'did_trends12.png", re
+  8.         cap gr_edit .yaxis2.title.text = {}
+  9.         cap gr_edit .yaxis2.title.text.Arrpush "Peso lambda"
+ 10.         cap graph export "$path/output/figures/`lang'did_trends12.png", re
 > place
-  8. 
+ 11. 
 .         sum num_pushers_pc if gpt_available_post1==0 & quarter<12 & language 
 > == "`lang'"
-  9.         estadd scalar control_mean `r(mean)'
- 10. 
+ 12.         estadd scalar control_mean `r(mean)'
+ 13. 
 .         *-----------------------------------------------------
 .         * SC
 .         *-----------------------------------------------------
@@ -136,18 +140,21 @@ Notes:
 >                         legend(order(1 "Control" 2 "Tratado") pos(12) col(2))
 >  ///
 >                 ) graph_export("$path/output/figures/`lang'sc", .png)
- 11. 
+ 14. 
+.         scalar b_`lang'_sc  = _b[gpt_available_post1]
+ 15.         scalar se_`lang'_sc = _se[gpt_available_post1]
+ 16. 
 .         * Traducir eje Y derecho: Lambda weight -> Peso lambda
 .         cap graph use "$path/output/figures/`lang'sc_trends12.gph"
- 12.         cap gr_edit .yaxis2.title.text = {}
- 13.         cap gr_edit .yaxis2.title.text.Arrpush "Peso lambda"
- 14.         cap graph export "$path/output/figures/`lang'sc_trends12.png", rep
+ 17.         cap gr_edit .yaxis2.title.text = {}
+ 18.         cap gr_edit .yaxis2.title.text.Arrpush "Peso lambda"
+ 19.         cap graph export "$path/output/figures/`lang'sc_trends12.png", rep
 > lace
- 15. 
+ 20. 
 .         sum num_pushers_pc if gpt_available_post1==0 & quarter<12 & language 
 > == "`lang'"
- 16.         estadd scalar control_mean `r(mean)'
- 17. 
+ 21.         estadd scalar control_mean `r(mean)'
+ 22. 
 .         *-----------------------------------------------------
 .         * SDID
 .         *-----------------------------------------------------
@@ -170,18 +177,22 @@ Notes:
 >                         legend(order(1 "Control" 2 "Tratado") pos(12) col(2))
 >  ///
 >                 ) graph_export("$path/output/figures/`lang'sdid", .png)
- 18. 
+ 23. 
+.         scalar b_`lang'_sdid  = _b[gpt_available_post1]
+ 24.         scalar se_`lang'_sdid = _se[gpt_available_post1]
+ 25. 
 .         * Traducir eje Y derecho: Lambda weight -> Peso lambda
 .         cap graph use "$path/output/figures/`lang'sdid_trends12.gph"
- 19.         cap gr_edit .yaxis2.title.text = {}
- 20.         cap gr_edit .yaxis2.title.text.Arrpush "Peso lambda"
- 21.         cap graph export "$path/output/figures/`lang'sdid_trends12.png", r
+ 26.         cap gr_edit .yaxis2.title.text = {}
+ 27.         cap gr_edit .yaxis2.title.text.Arrpush "Peso lambda"
+ 28.         cap graph export "$path/output/figures/`lang'sdid_trends12.png", r
 > eplace
- 22. 
+ 29. 
 .         sum num_pushers_pc if gpt_available_post1==0 & quarter<12 & language 
 > == "`lang'"
- 23.         estadd scalar control_mean `r(mean)'
- 24. }
+ 30.         scalar cmean_`lang' = r(mean)
+ 31.         estadd scalar control_mean `r(mean)'
+ 32. }
 Bootstrap replications (100). This may take some time.
 ----+--- 1 ---+--- 2 ---+--- 3 ---+--- 4 ---+--- 5
 ..................................................     50
@@ -198,10 +209,10 @@ gpt_availa~1 |   2.74304    0.56701     4.84    0.000     1.63171     3.85437
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Cdid
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Cdid
     > weights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Cdid
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Cdid
     > trends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -226,10 +237,10 @@ gpt_availa~1 |   1.36912    1.08772     1.26    0.208    -0.76278     3.50102
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Cscw
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Cscw
     > eights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Csct
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Csct
     > rends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -254,10 +265,10 @@ gpt_availa~1 |   1.20138    0.39874     3.01    0.003     0.41987     1.98289
 95% CIs and p-values are based on Large-Sample approximations.
 Refer to Arkhangelsky et al., (2020) for theoretical derivations.
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Csdi
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Csdi
     > dweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Csdi
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Csdi
     > dtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -282,10 +293,10 @@ gpt_availa~1 |   1.55050    0.34874     4.45    0.000     0.86698     2.23402
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_ha
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_ha
     > shtagdidweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_ha
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_ha
     > shtagdidtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -310,10 +321,10 @@ gpt_availa~1 |   0.97261    0.93963     1.04    0.301    -0.86904     2.81425
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_ha
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_ha
     > shtagscweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_ha
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_ha
     > shtagsctrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -338,10 +349,10 @@ gpt_availa~1 |   0.45494    0.31624     1.44    0.150    -0.16488     1.07476
 95% CIs and p-values are based on Large-Sample approximations.
 Refer to Arkhangelsky et al., (2020) for theoretical derivations.
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_ha
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_ha
     > shtagsdidweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_ha
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_ha
     > shtagsdidtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -366,10 +377,10 @@ gpt_availa~1 |   2.24932    0.48112     4.68    0.000     1.30635     3.19228
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_pl
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_pl
     > usdidweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_pl
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_pl
     > usdidtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -394,10 +405,10 @@ gpt_availa~1 |   1.14850    0.79348     1.45    0.148    -0.40669     2.70369
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_pl
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_pl
     > usscweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_pl
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_pl
     > ussctrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -422,10 +433,10 @@ gpt_availa~1 |   1.11853    0.40828     2.74    0.006     0.31833     1.91874
 95% CIs and p-values are based on Large-Sample approximations.
 Refer to Arkhangelsky et al., (2020) for theoretical derivations.
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_pl
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_pl
     > ussdidweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_pl
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/C_pl
     > ussdidtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -450,10 +461,10 @@ gpt_availa~1 |   1.37366    0.34128     4.03    0.000     0.70476     2.04255
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Godi
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Godi
     > dweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Godi
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Godi
     > dtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -478,10 +489,10 @@ gpt_availa~1 |   0.65508    0.47121     1.39    0.164    -0.26848     1.57865
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Gosc
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Gosc
     > weights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Gosc
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Gosc
     > trends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -506,10 +517,10 @@ gpt_availa~1 |   0.68870    0.22375     3.08    0.002     0.25016     1.12724
 95% CIs and p-values are based on Large-Sample approximations.
 Refer to Arkhangelsky et al., (2020) for theoretical derivations.
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Gosd
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Gosd
     > idweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Gosd
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Gosd
     > idtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -534,10 +545,10 @@ gpt_availa~1 |   2.77298    0.68865     4.03    0.000     1.42325     4.12271
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
     > didweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
     > didtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -562,10 +573,10 @@ gpt_availa~1 |   2.12109    1.36860     1.55    0.121    -0.56132     4.80350
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
     > scweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
     > sctrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -590,10 +601,10 @@ gpt_availa~1 |   1.65257    0.84002     1.97    0.049     0.00616     3.29898
 95% CIs and p-values are based on Large-Sample approximations.
 Refer to Arkhangelsky et al., (2020) for theoretical derivations.
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
     > sdidweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
     > sdidtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -618,10 +629,10 @@ gpt_availa~1 |  13.77002    2.22078     6.20    0.000     9.41738    18.12266
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
     > Scriptdidweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
     > Scriptdidtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -646,10 +657,10 @@ gpt_availa~1 |   8.91322    4.96214     1.80    0.072    -0.81239    18.63883
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
     > Scriptscweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
     > Scriptsctrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -674,10 +685,10 @@ gpt_availa~1 |   7.95707    2.72766     2.92    0.004     2.61096    13.30319
 95% CIs and p-values are based on Large-Sample approximations.
 Refer to Arkhangelsky et al., (2020) for theoretical derivations.
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
     > Scriptsdidweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Java
     > Scriptsdidtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -702,10 +713,10 @@ gpt_availa~1 |   0.89333    0.34366     2.60    0.009     0.21976     1.56690
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/PHPd
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/PHPd
     > idweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/PHPd
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/PHPd
     > idtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -730,10 +741,10 @@ gpt_availa~1 |   0.96266    0.83602     1.15    0.250    -0.67592     2.60124
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/PHPs
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/PHPs
     > cweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/PHPs
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/PHPs
     > ctrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -758,10 +769,10 @@ gpt_availa~1 |   0.92307    0.36856     2.50    0.012     0.20070     1.64545
 95% CIs and p-values are based on Large-Sample approximations.
 Refer to Arkhangelsky et al., (2020) for theoretical derivations.
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/PHPs
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/PHPs
     > didweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/PHPs
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/PHPs
     > didtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -786,10 +797,10 @@ gpt_availa~1 |   7.84569    1.59065     4.93    0.000     4.72807    10.96331
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Pyth
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Pyth
     > ondidweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Pyth
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Pyth
     > ondidtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -814,10 +825,10 @@ gpt_availa~1 |   1.60793    3.38189     0.48    0.634    -5.02045     8.23632
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Pyth
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Pyth
     > onscweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Pyth
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Pyth
     > onsctrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -842,10 +853,10 @@ gpt_availa~1 |   4.35721    1.14813     3.80    0.000     2.10693     6.60750
 95% CIs and p-values are based on Large-Sample approximations.
 Refer to Arkhangelsky et al., (2020) for theoretical derivations.
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Pyth
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Pyth
     > onsdidweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Pyth
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Pyth
     > onsdidtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -870,10 +881,10 @@ gpt_availa~1 |   0.20228    0.28201     0.72    0.473    -0.35045     0.75502
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Ruby
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Ruby
     > didweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Ruby
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Ruby
     > didtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -898,10 +909,10 @@ gpt_availa~1 |   1.45981    0.97268     1.50    0.133    -0.44661     3.36623
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Ruby
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Ruby
     > scweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Ruby
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Ruby
     > sctrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -926,10 +937,10 @@ gpt_availa~1 |   0.78652    0.26356     2.98    0.003     0.26995     1.30309
 95% CIs and p-values are based on Large-Sample approximations.
 Refer to Arkhangelsky et al., (2020) for theoretical derivations.
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Ruby
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Ruby
     > sdidweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Ruby
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Ruby
     > sdidtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -954,10 +965,10 @@ gpt_availa~1 |   7.19028    1.15869     6.21    0.000     4.91929     9.46126
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Type
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Type
     > Scriptdidweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Type
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Type
     > Scriptdidtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -982,10 +993,10 @@ gpt_availa~1 |   3.15563    2.17690     1.45    0.147    -1.11101     7.42226
 95% CIs and p-values are based on Large-Sample approximations.
 
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Type
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Type
     > Scriptscweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Type
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Type
     > Scriptsctrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -1010,10 +1021,10 @@ gpt_availa~1 |   2.92520    0.87862     3.33    0.001     1.20314     4.64726
 95% CIs and p-values are based on Large-Sample approximations.
 Refer to Arkhangelsky et al., (2020) for theoretical derivations.
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Type
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Type
     > Scriptsdidweights12.png saved as PNG format
 file
-    c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Type
+    C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output/figures/Type
     > Scriptsdidtrends12.png saved as PNG format
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -1024,192 +1035,100 @@ added scalar:
        e(control_mean) =  8.0168405
 
 . 
-. ** Tabla con tres paneles
+. ** ── Construir tabla LaTeX ─────────────────────────────────────────────────
+> ───
 . 
-. esttab C_did C_sc C_sdid ///
->                 using "$path/output/tables/gpt_impact_github_DataScience.tex"
-> , ///
->                 replace label booktabs                                       
->                             ///
->                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
->                 starlevels(* 0.10 * 0.05 ** 0.01) ///
->                 delim("&")  ///
->                 nomtitle ///
->                 collabels(none) ///
->                 keep(gpt_available_post1) ///
->                 order(gpt_available_post1) ///
->                 mgroups("\shortstack{DID}" ///
->                                         "\shortstack{SC}" ///
->                                         "\shortstack{SDID}",  ///
->                                         pattern(1 1 1)                       
->     ///
->                                         prefix(\multicolumn{@span}{c}{) suffi
-> x(}) span                       ///
->                                         erepeat(\cmidrule(lr){@span})) ///
->                                 nomtitles                       ///
->                 scalars("control_mean Media de referencia") ///
->                         refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \u
-> nderline{Panel A. \textbf{ \textit{C} } } }" , nolabel) ///
->                         prefoot("") posthead(\hline) postfoot("")  nonumbers
-(output written to c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output
-> /tables/gpt_impact_github_DataScience.tex)
+. file open fh using "$path/output/tables/gpt_impact_github_DataScience.tex", w
+> rite replace
 
 . 
-. esttab C_hashtag_did C_hashtag_sc C_hashtag_sdid ///
->                 using "$path/output/tables/gpt_impact_github_DataScience.tex"
-> , ///
->                 append label booktabs mlabel(,none) ///
->                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
->                 starlevels(* 0.10 * 0.05 ** 0.01) ///
->                 keep(gpt_available_post1) ///
->                 order(gpt_available_post1) ///
->                 scalars("control_mean Media de referencia") ///
->                 refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline
-> {Panel B. \textbf{ \textit{C\#} } } }" , nolabel) ///
->                 prehead("") prefoot("") posthead("\hline") postfoot("") delim
-> ("&") collabels(none) nonumbers nogaps nonote
-(output written to c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output
-> /tables/gpt_impact_github_DataScience.tex)
+. file write fh "\begin{table}[htbp]\centering" _n
+
+. file write fh "\caption{Impacto de ChatGPT en el n\'{u}mero de programadores}
+> " _n
+
+. file write fh "{\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}" _n
+
+. file write fh "\begin{tabular}{lccccc}" _n
+
+. file write fh "\toprule" _n
+
+. file write fh "Lenguaje & DID & SC & SDID & Obs. & \shortstack{Baseline \\\\ 
+> Mean} \\\\" _n
+
+. file write fh "\midrule" _n
 
 . 
-. esttab C_plus_did C_plus_sc C_plus_sdid ///
->                 using "$path/output/tables/gpt_impact_github_DataScience.tex"
-> , ///
->                 append label booktabs mlabel(,none) ///
->                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
->                 starlevels(* 0.10 * 0.05 ** 0.01) ///
->                 keep(gpt_available_post1) ///
->                 order(gpt_available_post1) ///
->                 scalars("control_mean Media de referencia") ///
->                 refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline
-> {Panel C. \textbf{ \textit{C++} } } }" , nolabel) ///
->                 prehead("") prefoot("") posthead("\hline") postfoot("") delim
-> ("&") collabels(none) nonumbers nogaps nonote
-(output written to c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output
-> /tables/gpt_impact_github_DataScience.tex)
+. foreach lang of local DataScience {
+  2.     if "`lang'" == "C"          local label "C"
+  3.     if "`lang'" == "C_hashtag"  local label "C\#"
+  4.     if "`lang'" == "C_plus"     local label "C++"
+  5.     if "`lang'" == "Go"         local label "Go"
+  6.     if "`lang'" == "Java"       local label "Java"
+  7.     if "`lang'" == "JavaScript" local label "JavaScript"
+  8.     if "`lang'" == "PHP"        local label "PHP"
+  9.     if "`lang'" == "Python"     local label "Python"
+ 10.     if "`lang'" == "Ruby"       local label "Ruby"
+ 11.     if "`lang'" == "TypeScript" local label "TypeScript"
+ 12. 
+.     local t1 = scalar(b_`lang'_did)  / scalar(se_`lang'_did)
+ 13.     local t2 = scalar(b_`lang'_sc)   / scalar(se_`lang'_sc)
+ 14.     local t3 = scalar(b_`lang'_sdid) / scalar(se_`lang'_sdid)
+ 15. 
+.     local p1 = 2*(1-normal(abs(`t1')))
+ 16.     local p2 = 2*(1-normal(abs(`t2')))
+ 17.     local p3 = 2*(1-normal(abs(`t3')))
+ 18. 
+.     if `p1' < 0.01      local s1 "***"
+ 19.     else if `p1' < 0.05 local s1 "**"
+ 20.     else if `p1' < 0.10 local s1 "*"
+ 21.     else                local s1 ""
+ 22. 
+.     if `p2' < 0.01      local s2 "***"
+ 23.     else if `p2' < 0.05 local s2 "**"
+ 24.     else if `p2' < 0.10 local s2 "*"
+ 25.     else                local s2 ""
+ 26. 
+.     if `p3' < 0.01      local s3 "***"
+ 27.     else if `p3' < 0.05 local s3 "**"
+ 28.     else if `p3' < 0.10 local s3 "*"
+ 29.     else                local s3 ""
+ 30. 
+.     local B1 = string(scalar(b_`lang'_did),   "%9.3f")
+ 31.     local B2 = string(scalar(b_`lang'_sc),    "%9.3f")
+ 32.     local B3 = string(scalar(b_`lang'_sdid),  "%9.3f")
+ 33.     local E1 = string(scalar(se_`lang'_did),  "%9.3f")
+ 34.     local E2 = string(scalar(se_`lang'_sc),   "%9.3f")
+ 35.     local E3 = string(scalar(se_`lang'_sdid), "%9.3f")
+ 36.     local N  = string(scalar(nobs_`lang'),     "%9.0f")
+ 37.     local CM = string(scalar(cmean_`lang'),    "%9.3f")
+ 38. 
+.     file write fh "`label' & `B1'`s1' & `B2'`s2' & `B3'`s3' & `N' & `CM' \\" 
+> _n
+ 39.     file write fh "              & (`E1') & (`E2') & (`E3') & & \\" _n
+ 40.     file write fh "\addlinespace" _n
+ 41. }
 
 . 
-. esttab Go_did Go_sc Go_sdid ///
->                 using "$path/output/tables/gpt_impact_github_DataScience.tex"
-> , ///
->                 append label booktabs mlabel(,none) ///
->                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
->                 starlevels(* 0.10 * 0.05 ** 0.01) ///
->                 keep(gpt_available_post1) ///
->                 order(gpt_available_post1) ///
->                 scalars("control_mean Media de referencia") ///
->                 refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline
-> {Panel D. \textbf{ \textit{Go} } } }" , nolabel) ///
->                 prehead("") prefoot("") posthead("\hline") postfoot("") delim
-> ("&") collabels(none) nonumbers nogaps nonote
-(output written to c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output
-> /tables/gpt_impact_github_DataScience.tex)
+. file write fh "\bottomrule" _n
+
+. file write fh "\end{tabular}}" _n
+
+. file write fh "\begin{minipage}{\linewidth}" _n
+
+. file write fh "\footnotesize \textit{Nota.} Errores est\'{a}ndar entre par\'{
+> e}ntesis. * p<0.10, ** p<0.05, *** p<0.01" _n
+
+. file write fh "\end{minipage}" _n
+
+. file write fh "\end{table}" _n
 
 . 
-. esttab Java_did Java_sc Java_sdid ///
->                 using "$path/output/tables/gpt_impact_github_DataScience.tex"
-> , ///
->                 append label booktabs mlabel(,none) ///
->                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
->                 starlevels(* 0.10 * 0.05 ** 0.01) ///
->                 keep(gpt_available_post1) ///
->                 order(gpt_available_post1) ///
->                 scalars("control_mean Media de referencia") ///
->                 refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline
-> {Panel E. \textbf{ \textit{Java} } } }" , nolabel) ///
->                 prehead("") prefoot("") posthead("\hline") postfoot("") delim
-> ("&") collabels(none) nonumbers nogaps nonote
-(output written to c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output
-> /tables/gpt_impact_github_DataScience.tex)
-
-. 
-. esttab JavaScript_did JavaScript_sc JavaScript_sdid ///
->                 using "$path/output/tables/gpt_impact_github_DataScience.tex"
-> , ///
->                 append label booktabs mlabel(,none) ///
->                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
->                 starlevels(* 0.10 * 0.05 ** 0.01) ///
->                 keep(gpt_available_post1) ///
->                 order(gpt_available_post1) ///
->                 scalars("control_mean Media de referencia") ///
->                 refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline
-> {Panel F. \textbf{ \textit{JavaScript} } } }" , nolabel) ///
->                 prehead("") prefoot("") posthead("\hline") postfoot("") delim
-> ("&") collabels(none) nonumbers nogaps nonote
-(output written to c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output
-> /tables/gpt_impact_github_DataScience.tex)
-
-. 
-. esttab PHP_did PHP_sc PHP_sdid ///
->                 using "$path/output/tables/gpt_impact_github_DataScience.tex"
-> , ///
->                 append label booktabs mlabel(,none) ///
->                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
->                 starlevels(* 0.10 * 0.05 ** 0.01) ///
->                 keep(gpt_available_post1) ///
->                 order(gpt_available_post1) ///
->                 scalars("control_mean Media de referencia") ///
->                 refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline
-> {Panel G. \textbf{ \textit{PHP} } } }" , nolabel) ///
->                 prehead("") prefoot("") posthead("\hline") delim("&") collabe
-> ls(none) nonumbers nogaps nonote
-(output written to c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output
-> /tables/gpt_impact_github_DataScience.tex)
-
-. 
-. esttab Python_did Python_sc Python_sdid ///
->                 using "$path/output/tables/gpt_impact_github_DataScience.tex"
-> , ///
->                 append label booktabs mlabel(,none) ///
->                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
->                 starlevels(* 0.10 * 0.05 ** 0.01) ///
->                 keep(gpt_available_post1) ///
->                 order(gpt_available_post1) ///
->                 scalars("control_mean Media de referencia") ///
->                 refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline
-> {Panel H. \textbf{ \textit{Python} } } }" , nolabel) ///
->                 prehead("") prefoot("") posthead("\hline") delim("&") collabe
-> ls(none) nonumbers nogaps nonote
-(output written to c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output
-> /tables/gpt_impact_github_DataScience.tex)
-
-. 
-. esttab Ruby_did Ruby_sc Ruby_sdid ///
->                 using "$path/output/tables/gpt_impact_github_DataScience.tex"
-> , ///
->                 append label booktabs mlabel(,none) ///
->                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
->                 starlevels(* 0.10 * 0.05 ** 0.01) ///
->                 keep(gpt_available_post1) ///
->                 order(gpt_available_post1) ///
->                 scalars("control_mean Media de referencia") ///
->                 refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline
-> {Panel I. \textbf{ \textit{Ruby} } } }" , nolabel) ///
->                 prehead("") prefoot("") posthead("\hline") delim("&") collabe
-> ls(none) nonumbers nogaps nonote
-(output written to c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output
-> /tables/gpt_impact_github_DataScience.tex)
-
-. 
-. esttab TypeScript_did TypeScript_sc TypeScript_sdid ///
->                 using "$path/output/tables/gpt_impact_github_DataScience.tex"
-> , ///
->                 append label booktabs mlabel(,none) ///
->                 cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
->                 starlevels(* 0.10 * 0.05 ** 0.01) ///
->                 keep(gpt_available_post1) ///
->                 order(gpt_available_post1) ///
->                 scalars("control_mean Media de referencia") ///
->                 refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline
-> {Panel J. \textbf{ \textit{TypeScript} } } }" , nolabel) ///
->                 prehead("") prefoot("") posthead("\hline") delim("&") collabe
-> ls(none) nonumbers nogaps nonote
-(output written to c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/output
-> /tables/gpt_impact_github_DataScience.tex)
+. file close fh
 
 . 
 . cd "$path"
-c:\Users\ronco\Desktop\GPT-Impact-GitHub-Top-Language
+C:\Users\ronco\Desktop\GPT-Impact-GitHub-Top-Language
 
 . 
 end of do-file

@@ -1,13 +1,25 @@
+# OS
 .DS_Store
 
-input
-input/
-# output/data
-# output/data/
-output/logs
-output/logs/
-tmp
-tmp/
-
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
 .ipynb_checkpoints
-env
+env/
+.venv/
+
+# Generated Stata files (re-created by all_code.py at runtime)
+output/analysis_per_lang.do
+output/analysis_per_lang.log
+output/analysis_per_lang_controls.do
+output/analysis_per_lang_controls.log
+
+# Generated data (re-created by all_code.py at runtime)
+output/data/data_langs_balanced.csv
+output/data/merge_controles.csv
+
+# Temporary / non-versioned paths
+input/
+tmp/
+output/logs/

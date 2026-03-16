@@ -1,0 +1,43 @@
+\begin{table}[htbp]\centering
+\caption{Impacto de ChatGPT en el n\'{u}mero de programadores (con controles)}
+{\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{lccccc}
+\toprule
+Lenguaje & DID & SC & SDID & Obs. & \shortstack{Baseline \\ Mean} \\
+\midrule
+C & 2.453** & 1.359 & 1.407** & 2720 & 5.829 \\
+              & (0.505) & (1.281) & (0.397) & & \\
+\addlinespace
+C\# & 1.207** & 0.674 & 0.471 & 2720 & 6.133 \\
+              & (0.341) & (0.716) & (0.316) & & \\
+\addlinespace
+C++ & 2.024** & 0.818 & 1.154** & 2720 & 6.367 \\
+              & (0.457) & (0.809) & (0.411) & & \\
+\addlinespace
+Go & 1.192** & 0.678 & 0.646** & 2720 & 2.086 \\
+              & (0.303) & (0.504) & (0.171) & & \\
+\addlinespace
+Java & 2.422** & 1.914* & 1.690* & 2720 & 10.725 \\
+              & (0.674) & (1.131) & (0.839) & & \\
+\addlinespace
+JavaScript & 11.913** & 9.199* & 8.101** & 2720 & 34.204 \\
+              & (2.115) & (5.154) & (2.505) & & \\
+\addlinespace
+PHP & 0.808* & 0.919 & 0.923* & 2720 & 5.968 \\
+              & (0.336) & (0.768) & (0.368) & & \\
+\addlinespace
+Python & 6.930** & 2.122 & 4.744** & 2720 & 18.708 \\
+              & (1.380) & (3.190) & (1.158) & & \\
+\addlinespace
+Ruby & 0.325 & 1.482* & 0.779** & 2720 & 5.231 \\
+              & (0.259) & (0.854) & (0.265) & & \\
+\addlinespace
+TypeScript & 6.094** & 2.402 & 2.978** & 2720 & 8.017 \\
+              & (1.059) & (2.392) & (0.805) & & \\
+\addlinespace
+\bottomrule
+\end{tabular}}
+\begin{minipage}{\linewidth}
+\footnotesize \textit{Nota.} Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01
+\end{minipage}
+\end{table}

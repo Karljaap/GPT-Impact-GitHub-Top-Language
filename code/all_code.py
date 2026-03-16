@@ -8,9 +8,11 @@ Combined file containing:
   3. programming_language_trends.py
   4. chatgpt_global_availability_map.py
   5. analysis_per_lang_thesis_sub_esp.do  (executed via subprocess)
+  6. merge_variables_control.py           (merge + Stata estimation with controls)
 """
 
 import os
+import sys
 
 # Root of the project (one level above the code/ folder)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -841,6 +843,10 @@ foreach lang of local DataScience {
                         legend(order(1 "Control" 2 "Tratado") pos(12) col(2)) ///
                 ) graph_export("$path/output/figures/`lang'did", .png)
 
+        scalar b_`lang'_did  = _b[gpt_available_post1]
+        scalar se_`lang'_did = _se[gpt_available_post1]
+        scalar nobs_`lang'   = e(N)
+
         * Traducir eje Y derecho: Lambda weight -> Peso lambda
         cap graph use "$path/output/figures/`lang'did_trends12.gph"
         cap gr_edit .yaxis2.title.text = {}
@@ -865,6 +871,9 @@ foreach lang of local DataScience {
                         labsize(small) angle(45)) ///
                         legend(order(1 "Control" 2 "Tratado") pos(12) col(2)) ///
                 ) graph_export("$path/output/figures/`lang'sc", .png)
+
+        scalar b_`lang'_sc  = _b[gpt_available_post1]
+        scalar se_`lang'_sc = _se[gpt_available_post1]
 
         * Traducir eje Y derecho: Lambda weight -> Peso lambda
         cap graph use "$path/output/figures/`lang'sc_trends12.gph"
@@ -891,6 +900,9 @@ foreach lang of local DataScience {
                         legend(order(1 "Control" 2 "Tratado") pos(12) col(2)) ///
                 ) graph_export("$path/output/figures/`lang'sdid", .png)
 
+        scalar b_`lang'_sdid  = _b[gpt_available_post1]
+        scalar se_`lang'_sdid = _se[gpt_available_post1]
+
         * Traducir eje Y derecho: Lambda weight -> Peso lambda
         cap graph use "$path/output/figures/`lang'sdid_trends12.gph"
         cap gr_edit .yaxis2.title.text = {}
@@ -898,130 +910,79 @@ foreach lang of local DataScience {
         cap graph export "$path/output/figures/`lang'sdid_trends12.png", replace
 
         sum num_pushers_pc if gpt_available_post1==0 & quarter<12 & language == "`lang'"
+        scalar cmean_`lang' = r(mean)
         estadd scalar control_mean `r(mean)'
 }
 
-** Tabla con tres paneles
+** ── Construir tabla LaTeX ────────────────────────────────────────────────────
 
-esttab C_did C_sc C_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                replace label booktabs                                                                   ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                delim("&")  ///
-                nomtitle ///
-                collabels(none) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                mgroups("\shortstack{DID}" ///
-                                        "\shortstack{SC}" ///
-                                        "\shortstack{SDID}",  ///
-                                        pattern(1 1 1)                           ///
-                                        prefix(\multicolumn{@span}{c}{) suffix(}) span                       ///
-                                        erepeat(\cmidrule(lr){@span})) ///
-                                nomtitles                       ///
-                scalars("control_mean Media de referencia") ///
-                        refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel A. \textbf{ \textit{C} } } }" , nolabel) ///
-                        prefoot("") posthead(\hline) postfoot("")  nonumbers
+file open fh using "$path/output/tables/gpt_impact_github_DataScience.tex", write replace
 
-esttab C_hashtag_did C_hashtag_sc C_hashtag_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel B. \textbf{ \textit{C\#} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
+file write fh "\begin{table}[htbp]\centering" _n
+file write fh "\caption{Impacto de ChatGPT en el n\'{u}mero de programadores}" _n
+file write fh "{\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}" _n
+file write fh "\begin{tabular}{lccccc}" _n
+file write fh "\toprule" _n
+file write fh "Lenguaje & DID & SC & SDID & Obs. & \shortstack{Baseline \\\\ Mean} \\\\" _n
+file write fh "\midrule" _n
 
-esttab C_plus_did C_plus_sc C_plus_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel C. \textbf{ \textit{C++} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
+foreach lang of local DataScience {
+    if "`lang'" == "C"          local label "C"
+    if "`lang'" == "C_hashtag"  local label "C\#"
+    if "`lang'" == "C_plus"     local label "C++"
+    if "`lang'" == "Go"         local label "Go"
+    if "`lang'" == "Java"       local label "Java"
+    if "`lang'" == "JavaScript" local label "JavaScript"
+    if "`lang'" == "PHP"        local label "PHP"
+    if "`lang'" == "Python"     local label "Python"
+    if "`lang'" == "Ruby"       local label "Ruby"
+    if "`lang'" == "TypeScript" local label "TypeScript"
 
-esttab Go_did Go_sc Go_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel D. \textbf{ \textit{Go} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
+    local t1 = scalar(b_`lang'_did)  / scalar(se_`lang'_did)
+    local t2 = scalar(b_`lang'_sc)   / scalar(se_`lang'_sc)
+    local t3 = scalar(b_`lang'_sdid) / scalar(se_`lang'_sdid)
 
-esttab Java_did Java_sc Java_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel E. \textbf{ \textit{Java} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
+    local p1 = 2*(1-normal(abs(`t1')))
+    local p2 = 2*(1-normal(abs(`t2')))
+    local p3 = 2*(1-normal(abs(`t3')))
 
-esttab JavaScript_did JavaScript_sc JavaScript_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel F. \textbf{ \textit{JavaScript} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
+    if `p1' < 0.01      local s1 "***"
+    else if `p1' < 0.05 local s1 "**"
+    else if `p1' < 0.10 local s1 "*"
+    else                local s1 ""
 
-esttab PHP_did PHP_sc PHP_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel G. \textbf{ \textit{PHP} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") delim("&") collabels(none) nonumbers nogaps nonote
+    if `p2' < 0.01      local s2 "***"
+    else if `p2' < 0.05 local s2 "**"
+    else if `p2' < 0.10 local s2 "*"
+    else                local s2 ""
 
-esttab Python_did Python_sc Python_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel H. \textbf{ \textit{Python} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") delim("&") collabels(none) nonumbers nogaps nonote
+    if `p3' < 0.01      local s3 "***"
+    else if `p3' < 0.05 local s3 "**"
+    else if `p3' < 0.10 local s3 "*"
+    else                local s3 ""
 
-esttab Ruby_did Ruby_sc Ruby_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel I. \textbf{ \textit{Ruby} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") delim("&") collabels(none) nonumbers nogaps nonote
+    local B1 = string(scalar(b_`lang'_did),   "%9.3f")
+    local B2 = string(scalar(b_`lang'_sc),    "%9.3f")
+    local B3 = string(scalar(b_`lang'_sdid),  "%9.3f")
+    local E1 = string(scalar(se_`lang'_did),  "%9.3f")
+    local E2 = string(scalar(se_`lang'_sc),   "%9.3f")
+    local E3 = string(scalar(se_`lang'_sdid), "%9.3f")
+    local N  = string(scalar(nobs_`lang'),     "%9.0f")
+    local CM = string(scalar(cmean_`lang'),    "%9.3f")
 
-esttab TypeScript_did TypeScript_sc TypeScript_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel J. \textbf{ \textit{TypeScript} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") delim("&") collabels(none) nonumbers nogaps nonote
+    file write fh "`label' & `B1'`s1' & `B2'`s2' & `B3'`s3' & `N' & `CM' \\" _n
+    file write fh "              & (`E1') & (`E2') & (`E3') & & \\" _n
+    file write fh "\addlinespace" _n
+}
+
+file write fh "\bottomrule" _n
+file write fh "\end{tabular}}" _n
+file write fh "\begin{minipage}{\linewidth}" _n
+file write fh "\footnotesize \textit{Nota.} Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01" _n
+file write fh "\end{minipage}" _n
+file write fh "\end{table}" _n
+
+file close fh
 
 cd "$path"
 """.replace("__PROJECT_PATH__", BASE_DIR.replace(os.sep, "/"))
@@ -1046,14 +1007,283 @@ try:
     print("Stata finished successfully.")
     if os.path.exists(log_path):
         with open(log_path, encoding="latin-1") as lf:
-            print(lf.read().encode("utf-8", errors="replace").decode("utf-8"))
+            sys.stdout.buffer.write(lf.read().encode("utf-8", errors="replace"))
+            sys.stdout.buffer.write(b"\n")
 except subprocess.CalledProcessError as e:
     print(f"Stata exited with error code {e.returncode}.")
     if os.path.exists(log_path):
         with open(log_path, encoding="latin-1") as lf:
-            print(lf.read().encode("utf-8", errors="replace").decode("utf-8"))
+            sys.stdout.buffer.write(lf.read().encode("utf-8", errors="replace"))
+            sys.stdout.buffer.write(b"\n")
 except FileNotFoundError:
     print(
         f"Stata executable '{STATA_EXE}' not found. "
         "Update STATA_EXE with the correct name or full path."
+    )
+
+
+# ============================================================================
+# SECTION 6: merge_variables_control.py
+# Merge control variables (computer use, internet use) with the main dataset,
+# expand from annual to quarterly frequency, fill missing values with 0,
+# and run Stata SDID/SC/DID estimation with covariates.
+# ============================================================================
+
+import io as _io
+
+def iso3_to_iso2(code3):
+    """Convierte código ISO3 a ISO2. Retorna None si no encuentra."""
+    try:
+        return pycountry.countries.get(alpha_3=code3).alpha_2
+    except AttributeError:
+        return None
+
+
+def expand_to_quarterly(df, country_col, year_col, value_col, new_col_name):
+    """
+    Expande un DataFrame anual a trimestral repitiendo el valor
+    en los 4 trimestres de cada año.
+    """
+    rows = []
+    for _, row in df.iterrows():
+        for q in [1, 2, 3, 4]:
+            rows.append({
+                "iso2_code":   row[country_col],
+                "year":        int(row[year_col]),
+                "quarter":     q,
+                new_col_name:  row[value_col],
+            })
+    return pd.DataFrame(rows)
+
+
+# ── 6.1 Cargar base principal ─────────────────────────────────────────────────
+
+df_main = pd.read_csv(p("output", "data", "data_langs_balanced.csv"))
+print(f"Base principal cargada: {df_main.shape}")
+
+# ── 6.2 Uso de computadoras ───────────────────────────────────────────────────
+
+df_comp = pd.read_csv(p("output", "data", "Data_uso_computadoras.csv"))
+df_comp["iso2_code"] = df_comp["REF_AREA"].apply(iso3_to_iso2)
+df_comp = df_comp.dropna(subset=["iso2_code"])
+years_needed = df_main["year"].unique()
+df_comp = df_comp[df_comp["TIME_PERIOD"].isin(years_needed)][
+    ["iso2_code", "TIME_PERIOD", "OBS_VALUE"]
+].drop_duplicates()
+df_comp_q = expand_to_quarterly(df_comp, "iso2_code", "TIME_PERIOD", "OBS_VALUE", "uso_computadoras")
+print(f"Computadoras (trimestral): {df_comp_q.shape}")
+
+# ── 6.3 Uso de internet ───────────────────────────────────────────────────────
+
+with open(p("output", "data", "Data_uso_internet.csv"), encoding="utf-8-sig") as _f:
+    _lines = _f.readlines()
+_cleaned = []
+for _line in _lines:
+    _line = _line.strip()
+    if _line.startswith('"') and _line.endswith('"'):
+        _line = _line[1:-1]
+    _line = _line.replace('""', '"')
+    _cleaned.append(_line)
+df_inet_wide = pd.read_csv(_io.StringIO("\n".join(_cleaned)), on_bad_lines="skip")
+_year_cols = [str(y) for y in years_needed if str(y) in df_inet_wide.columns]
+df_inet_long = df_inet_wide[["Country Code"] + _year_cols].copy()
+df_inet_long = df_inet_long.melt(id_vars="Country Code", var_name="year", value_name="uso_internet")
+df_inet_long["year"] = df_inet_long["year"].astype(int)
+df_inet_long["iso2_code"] = df_inet_long["Country Code"].apply(iso3_to_iso2)
+df_inet_long = df_inet_long.dropna(subset=["iso2_code", "uso_internet"])
+df_inet_long = df_inet_long[["iso2_code", "year", "uso_internet"]].drop_duplicates()
+df_inet_q = expand_to_quarterly(df_inet_long, "iso2_code", "year", "uso_internet", "uso_internet")
+print(f"Internet (trimestral): {df_inet_q.shape}")
+
+# ── 6.4 Merge ─────────────────────────────────────────────────────────────────
+
+df_merged = df_main.merge(df_comp_q, on=["iso2_code", "year", "quarter"], how="left")
+df_merged = df_merged.merge(df_inet_q, on=["iso2_code", "year", "quarter"], how="left")
+print(f"Base final: {df_merged.shape}")
+
+for _col in ["uso_computadoras", "uso_internet"]:
+    _n = df_merged[_col].isna().sum()
+    df_merged[_col] = df_merged[_col].fillna(0)
+    print(f"  - {_col}: {_n} valores faltantes reemplazados por 0")
+
+df_merged.to_csv(p("output", "data", "merge_controles.csv"), index=False)
+print(f"\nArchivo guardado: {p('output', 'data', 'merge_controles.csv')}")
+
+# ── 6.5 Estimación Stata con variables de control ─────────────────────────────
+
+STATA_DO_CONTROLS = r"""
+//----------------------------------------------------------------------------//
+//
+// Proyecto: Tesis
+// Impacto de ChatGPT en el número de programadores en GitHub
+// Estimación con variables de control: uso_computadoras, uso_internet
+//
+//----------------------------------------------------------------------------//
+
+global path "__PROJECT_PATH__"
+
+cap mkdir "$path/output"
+cap mkdir "$path/output/tables"
+
+import delimited "$path/output/data/merge_controles.csv", clear
+
+sort unique_id year quarter
+drop if iso2_code == "HK"
+label var num_pushers_pc "Número de pushers por 100k habitantes"
+label var gpt_available_post1 "ChatGPT Disponible"
+label var uso_computadoras "Uso de computadoras (%)"
+label var uso_internet "Uso de internet (% pob.)"
+
+replace language = "C_hashtag" if language == "C#"
+replace language = "C_plus"    if language == "C++"
+
+local DataScience "C C_hashtag C_plus Go Java JavaScript PHP Python Ruby TypeScript"
+
+foreach lang of local DataScience {
+
+        *-----------------------------------------------------
+        * DID
+        *-----------------------------------------------------
+        eststo `lang'_did: sdid num_pushers_pc iso2_code quarter gpt_available_post1 if language == "`lang'", ///
+                vce(bootstrap) reps(100) seed(1234) method(did) ///
+                covariates(uso_computadoras uso_internet)
+
+        scalar b_`lang'_did  = _b[gpt_available_post1]
+        scalar se_`lang'_did = _se[gpt_available_post1]
+        scalar nobs_`lang'   = e(N)
+
+        sum num_pushers_pc if gpt_available_post1==0 & quarter<12 & language == "`lang'"
+        estadd scalar control_mean `r(mean)'
+
+        *-----------------------------------------------------
+        * SC
+        *-----------------------------------------------------
+        eststo `lang'_sc: sdid num_pushers_pc iso2_code quarter gpt_available_post1 if language == "`lang'", ///
+                vce(bootstrap) reps(100) seed(1234) method(sc) ///
+                covariates(uso_computadoras uso_internet)
+
+        scalar b_`lang'_sc  = _b[gpt_available_post1]
+        scalar se_`lang'_sc = _se[gpt_available_post1]
+
+        sum num_pushers_pc if gpt_available_post1==0 & quarter<12 & language == "`lang'"
+        estadd scalar control_mean `r(mean)'
+
+        *-----------------------------------------------------
+        * SDID
+        *-----------------------------------------------------
+        eststo `lang'_sdid: sdid num_pushers_pc iso2_code quarter gpt_available_post1 if language == "`lang'", ///
+                vce(bootstrap) reps(100) seed(1234) method(sdid) ///
+                covariates(uso_computadoras uso_internet)
+
+        scalar b_`lang'_sdid  = _b[gpt_available_post1]
+        scalar se_`lang'_sdid = _se[gpt_available_post1]
+
+        sum num_pushers_pc if gpt_available_post1==0 & quarter<12 & language == "`lang'"
+        scalar cmean_`lang' = r(mean)
+        estadd scalar control_mean `r(mean)'
+}
+
+** ── Construir tabla LaTeX (con controles) ───────────────────────────────────
+
+file open fh using "$path/output/tables/gpt_impact_github_DataScience_controls.tex", write replace
+
+file write fh "\begin{table}[htbp]\centering" _n
+file write fh "\caption{Estimaci\'{o}n de impacto con controles}" _n
+file write fh "{\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}" _n
+file write fh "\begin{tabular}{lccccc}" _n
+file write fh "\toprule" _n
+file write fh "Lenguaje & DID & SC & SDID & Obs. & \shortstack{Baseline \\\\ Mean} \\\\" _n
+file write fh "\midrule" _n
+
+foreach lang of local DataScience {
+    if "`lang'" == "C"          local label "C"
+    if "`lang'" == "C_hashtag"  local label "C\#"
+    if "`lang'" == "C_plus"     local label "C++"
+    if "`lang'" == "Go"         local label "Go"
+    if "`lang'" == "Java"       local label "Java"
+    if "`lang'" == "JavaScript" local label "JavaScript"
+    if "`lang'" == "PHP"        local label "PHP"
+    if "`lang'" == "Python"     local label "Python"
+    if "`lang'" == "Ruby"       local label "Ruby"
+    if "`lang'" == "TypeScript" local label "TypeScript"
+
+    local t1 = scalar(b_`lang'_did)  / scalar(se_`lang'_did)
+    local t2 = scalar(b_`lang'_sc)   / scalar(se_`lang'_sc)
+    local t3 = scalar(b_`lang'_sdid) / scalar(se_`lang'_sdid)
+
+    local p1 = 2*(1-normal(abs(`t1')))
+    local p2 = 2*(1-normal(abs(`t2')))
+    local p3 = 2*(1-normal(abs(`t3')))
+
+    if `p1' < 0.01      local s1 "***"
+    else if `p1' < 0.05 local s1 "**"
+    else if `p1' < 0.10 local s1 "*"
+    else                local s1 ""
+
+    if `p2' < 0.01      local s2 "***"
+    else if `p2' < 0.05 local s2 "**"
+    else if `p2' < 0.10 local s2 "*"
+    else                local s2 ""
+
+    if `p3' < 0.01      local s3 "***"
+    else if `p3' < 0.05 local s3 "**"
+    else if `p3' < 0.10 local s3 "*"
+    else                local s3 ""
+
+    local B1 = string(scalar(b_`lang'_did),   "%9.3f")
+    local B2 = string(scalar(b_`lang'_sc),    "%9.3f")
+    local B3 = string(scalar(b_`lang'_sdid),  "%9.3f")
+    local E1 = string(scalar(se_`lang'_did),  "%9.3f")
+    local E2 = string(scalar(se_`lang'_sc),   "%9.3f")
+    local E3 = string(scalar(se_`lang'_sdid), "%9.3f")
+    local N  = string(scalar(nobs_`lang'),     "%9.0f")
+    local CM = string(scalar(cmean_`lang'),    "%9.3f")
+
+    file write fh "`label' & `B1'`s1' & `B2'`s2' & `B3'`s3' & `N' & `CM' \\" _n
+    file write fh "              & (`E1') & (`E2') & (`E3') & & \\" _n
+    file write fh "\addlinespace" _n
+}
+
+file write fh "\bottomrule" _n
+file write fh "\end{tabular}}" _n
+file write fh "\begin{minipage}{\linewidth}" _n
+file write fh "\footnotesize \textit{Nota.} Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01" _n
+file write fh "\end{minipage}" _n
+file write fh "\end{table}" _n
+
+file close fh
+
+cd "$path"
+""".replace("__PROJECT_PATH__", BASE_DIR.replace(os.sep, "/"))
+
+_do_ctrl  = p("output", "analysis_per_lang_controls.do")
+_log_ctrl = p("output", "analysis_per_lang_controls.log")
+
+with open(_do_ctrl, "w", encoding="utf-8") as _f:
+    _f.write(STATA_DO_CONTROLS)
+
+try:
+    print(f"\nEjecutando Stata (con controles): {_do_ctrl}")
+    subprocess.run(
+        [STATA_EXE, "/e", "do", _do_ctrl],
+        check=True,
+        capture_output=True,
+        text=True,
+        cwd=p("output"),
+    )
+    print("Stata (controles) finalizado correctamente.")
+    if os.path.exists(_log_ctrl):
+        with open(_log_ctrl, encoding="latin-1") as _lf:
+            sys.stdout.buffer.write(_lf.read().encode("utf-8", errors="replace"))
+            sys.stdout.buffer.write(b"\n")
+except subprocess.CalledProcessError as _e:
+    print(f"Stata (controles) salió con error (código {_e.returncode}).")
+    if os.path.exists(_log_ctrl):
+        with open(_log_ctrl, encoding="latin-1") as _lf:
+            sys.stdout.buffer.write(_lf.read().encode("utf-8", errors="replace"))
+            sys.stdout.buffer.write(b"\n")
+except FileNotFoundError:
+    print(
+        f"Ejecutable de Stata '{STATA_EXE}' no encontrado. "
+        "Actualiza STATA_EXE con la ruta correcta."
     )

@@ -1,102 +1,43 @@
-{
-\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{3}{c}}
+\begin{table}[htbp]\centering
+\caption{Impacto de ChatGPT en el n\'{u}mero de programadores}
+{\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{lccccc}
 \toprule
-                    &\multicolumn{1}{c}{\shortstack{DID}}&\multicolumn{1}{c}{\shortstack{SC}}&\multicolumn{1}{c}{\shortstack{SDID}}\\\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}
-\hline
-\Gape[0.25cm][0.25cm]{ \underline{Panel A. \textbf{ \textit{C} } } }&              &              &              \\
-ChatGPT Disponible  &       2.743**&       1.369  &       1.201**\\
-                    &     (0.567)  &     (1.088)  &     (0.399)  \\
-
-Observations        &        2720  &        2720  &        2720  \\
-Media de referencia &       5.829  &       5.829  &       5.829  \\
-
-
-\hline
-\Gape[0.25cm][0.25cm]{ \underline{Panel B. \textbf{ \textit{C\#} } } }&              &              &              \\
-ChatGPT Disponible  &       1.550**&       0.973  &       0.455  \\
-                    &     (0.349)  &     (0.940)  &     (0.316)  \\
-
-Observations        &        2720  &        2720  &        2720  \\
-Media de referencia &       6.133  &       6.133  &       6.133  \\
-
-
-\hline
-\Gape[0.25cm][0.25cm]{ \underline{Panel C. \textbf{ \textit{C++} } } }&              &              &              \\
-ChatGPT Disponible  &       2.249**&       1.148  &       1.119**\\
-                    &     (0.481)  &     (0.793)  &     (0.408)  \\
-
-Observations        &        2720  &        2720  &        2720  \\
-Media de referencia &       6.367  &       6.367  &       6.367  \\
-
-
-\hline
-\Gape[0.25cm][0.25cm]{ \underline{Panel D. \textbf{ \textit{Go} } } }&              &              &              \\
-ChatGPT Disponible  &       1.374**&       0.655  &       0.689**\\
-                    &     (0.341)  &     (0.471)  &     (0.224)  \\
-
-Observations        &        2720  &        2720  &        2720  \\
-Media de referencia &       2.086  &       2.086  &       2.086  \\
-
-
-\hline
-\Gape[0.25cm][0.25cm]{ \underline{Panel E. \textbf{ \textit{Java} } } }&              &              &              \\
-ChatGPT Disponible  &       2.773**&       2.121  &       1.653* \\
-                    &     (0.689)  &     (1.369)  &     (0.840)  \\
-
-Observations        &        2720  &        2720  &        2720  \\
-Media de referencia &       10.72  &       10.72  &       10.72  \\
-
-
-\hline
-\Gape[0.25cm][0.25cm]{ \underline{Panel F. \textbf{ \textit{JavaScript} } } }&              &              &              \\
-ChatGPT Disponible  &      13.770**&       8.913* &       7.957**\\
-                    &     (2.221)  &     (4.962)  &     (2.728)  \\
-
-Observations        &        2720  &        2720  &        2720  \\
-Media de referencia &       34.20  &       34.20  &       34.20  \\
-
-
-\hline
-\Gape[0.25cm][0.25cm]{ \underline{Panel G. \textbf{ \textit{PHP} } } }&              &              &              \\
-ChatGPT Disponible  &       0.893**&       0.963  &       0.923* \\
-                    &     (0.344)  &     (0.836)  &     (0.369)  \\
-
-Observations        &        2720  &        2720  &        2720  \\
-Media de referencia &       5.968  &       5.968  &       5.968  \\
+Lenguaje & DID & SC & SDID & Obs. & \shortstack{Baseline \\\\ Mean} \\\\
+\midrule
+C & 2.743*** & 1.369 & 1.201*** & 2720 & 5.829 \\
+              & (0.567) & (1.088) & (0.399) & & \\
+\addlinespace
+C\# & 1.550*** & 0.973 & 0.455 & 2720 & 6.133 \\
+              & (0.349) & (0.940) & (0.316) & & \\
+\addlinespace
+C++ & 2.249*** & 1.148 & 1.119*** & 2720 & 6.367 \\
+              & (0.481) & (0.793) & (0.408) & & \\
+\addlinespace
+Go & 1.374*** & 0.655 & 0.689*** & 2720 & 2.086 \\
+              & (0.341) & (0.471) & (0.224) & & \\
+\addlinespace
+Java & 2.773*** & 2.121 & 1.653** & 2720 & 10.725 \\
+              & (0.689) & (1.369) & (0.840) & & \\
+\addlinespace
+JavaScript & 13.770*** & 8.913* & 7.957*** & 2720 & 34.204 \\
+              & (2.221) & (4.962) & (2.728) & & \\
+\addlinespace
+PHP & 0.893*** & 0.963 & 0.923** & 2720 & 5.968 \\
+              & (0.344) & (0.836) & (0.369) & & \\
+\addlinespace
+Python & 7.846*** & 1.608 & 4.357*** & 2720 & 18.708 \\
+              & (1.591) & (3.382) & (1.148) & & \\
+\addlinespace
+Ruby & 0.202 & 1.460 & 0.787*** & 2720 & 5.231 \\
+              & (0.282) & (0.973) & (0.264) & & \\
+\addlinespace
+TypeScript & 7.190*** & 3.156 & 2.925*** & 2720 & 8.017 \\
+              & (1.159) & (2.177) & (0.879) & & \\
+\addlinespace
 \bottomrule
-\end{tabular}
-}
-
-\hline
-\Gape[0.25cm][0.25cm]{ \underline{Panel H. \textbf{ \textit{Python} } } }&              &              &              \\
-ChatGPT Disponible  &       7.846**&       1.608  &       4.357**\\
-                    &     (1.591)  &     (3.382)  &     (1.148)  \\
-
-Observations        &        2720  &        2720  &        2720  \\
-Media de referencia &       18.71  &       18.71  &       18.71  \\
-\bottomrule
-\end{tabular}
-}
-
-\hline
-\Gape[0.25cm][0.25cm]{ \underline{Panel I. \textbf{ \textit{Ruby} } } }&              &              &              \\
-ChatGPT Disponible  &       0.202  &       1.460  &       0.787**\\
-                    &     (0.282)  &     (0.973)  &     (0.264)  \\
-
-Observations        &        2720  &        2720  &        2720  \\
-Media de referencia &       5.231  &       5.231  &       5.231  \\
-\bottomrule
-\end{tabular}
-}
-
-\hline
-\Gape[0.25cm][0.25cm]{ \underline{Panel J. \textbf{ \textit{TypeScript} } } }&              &              &              \\
-ChatGPT Disponible  &       7.190**&       3.156  &       2.925**\\
-                    &     (1.159)  &     (2.177)  &     (0.879)  \\
-
-Observations        &        2720  &        2720  &        2720  \\
-Media de referencia &       8.017  &       8.017  &       8.017  \\
-\bottomrule
-\end{tabular}
-}
+\end{tabular}}
+\begin{minipage}{\linewidth}
+\footnotesize \textit{Nota.} Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01
+\end{minipage}
+\end{table}

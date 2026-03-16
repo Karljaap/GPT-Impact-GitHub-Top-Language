@@ -1,42 +1,31 @@
+"""
+run_paper.py
+------------
+Entry point to reproduce all results.
+Runs code/all_code.py, which executes all sections sequentially:
+  1. Data cleaning & panel construction
+  2. Language distribution charts
+  3. Programming language trend charts
+  4. ChatGPT global availability map
+  5. Stata DID / SC / SDID estimations (base model)
+  6. Merge control variables + Stata estimations with controls
 
-from subprocess import call
-import platform
+Requirements:
+  pip install -r requirements.txt
+  Stata 15+ installed and accessible from the system path
+  (or set STATA_EXE inside code/all_code.py)
+"""
 
-system = platform.system()
+import subprocess
+import sys
+import os
 
-person = ''     # use the person variable to keep paths in order with multiple machines being used
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+script   = os.path.join(BASE_DIR, "code", "all_code.py")
 
-if person == '':
-	path = '/path/to/main_paper'
+print("=" * 60)
+print("Running full replication pipeline: code/all_code.py")
+print("=" * 60)
 
-if system == 'Windows':
-	pass
-
-else:
-    print "Cleans Output and Temporary"
-    for folder in ['/output', '/tmp']:
-        shutil.rmtree(path+folder)
-        os.mkdir(path+folder)
-        
-    print "//-- Gets Input --//"
-    call(['python', path+'/code/get_input.py'])
-
-    print "//-- Runs Build --//"
-    call(['stata', '-b', 'do' + '\"' + path+'/code/build.do'+'\" &'])
-    for file in glob.glob(path+'/*.log'):
-        os.remove(file)
-    
-    print "//-- Runs Analysis --//"
-    call(['stata', '-b', 'do' + '\"' + path+'/code/analysis.do'+'\" &'])
-    for file in glob.glob(path+'/*.log'):
-        os.remove(file)
-    
-	print "//-- Compiles TeX --//"
-	call(['latexmk', path+'/products/paper/main_article.tex')
-
-	print "Congratulations, you have a shiny new paper!"
-
-
-
-
-
+result = subprocess.run([sys.executable, script], cwd=BASE_DIR)
+sys.exit(result.returncode)

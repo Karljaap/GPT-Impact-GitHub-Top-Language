@@ -6,7 +6,7 @@
 //
 //----------------------------------------------------------------------------//
 
-global path "c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language"
+global path "C:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language"
 
 * Crear carpetas si no existen
 cap mkdir "$path/output"
@@ -51,6 +51,10 @@ foreach lang of local DataScience {
                         legend(order(1 "Control" 2 "Tratado") pos(12) col(2)) ///
                 ) graph_export("$path/output/figures/`lang'did", .png)
 
+        scalar b_`lang'_did  = _b[gpt_available_post1]
+        scalar se_`lang'_did = _se[gpt_available_post1]
+        scalar nobs_`lang'   = e(N)
+
         * Traducir eje Y derecho: Lambda weight -> Peso lambda
         cap graph use "$path/output/figures/`lang'did_trends12.gph"
         cap gr_edit .yaxis2.title.text = {}
@@ -75,6 +79,9 @@ foreach lang of local DataScience {
                         labsize(small) angle(45)) ///
                         legend(order(1 "Control" 2 "Tratado") pos(12) col(2)) ///
                 ) graph_export("$path/output/figures/`lang'sc", .png)
+
+        scalar b_`lang'_sc  = _b[gpt_available_post1]
+        scalar se_`lang'_sc = _se[gpt_available_post1]
 
         * Traducir eje Y derecho: Lambda weight -> Peso lambda
         cap graph use "$path/output/figures/`lang'sc_trends12.gph"
@@ -101,6 +108,9 @@ foreach lang of local DataScience {
                         legend(order(1 "Control" 2 "Tratado") pos(12) col(2)) ///
                 ) graph_export("$path/output/figures/`lang'sdid", .png)
 
+        scalar b_`lang'_sdid  = _b[gpt_available_post1]
+        scalar se_`lang'_sdid = _se[gpt_available_post1]
+
         * Traducir eje Y derecho: Lambda weight -> Peso lambda
         cap graph use "$path/output/figures/`lang'sdid_trends12.gph"
         cap gr_edit .yaxis2.title.text = {}
@@ -108,129 +118,78 @@ foreach lang of local DataScience {
         cap graph export "$path/output/figures/`lang'sdid_trends12.png", replace
 
         sum num_pushers_pc if gpt_available_post1==0 & quarter<12 & language == "`lang'"
+        scalar cmean_`lang' = r(mean)
         estadd scalar control_mean `r(mean)'
 }
 
-** Tabla con tres paneles
+** ── Construir tabla LaTeX ────────────────────────────────────────────────────
 
-esttab C_did C_sc C_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                replace label booktabs                                                                   ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                delim("&")  ///
-                nomtitle ///
-                collabels(none) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                mgroups("\shortstack{DID}" ///
-                                        "\shortstack{SC}" ///
-                                        "\shortstack{SDID}",  ///
-                                        pattern(1 1 1)                           ///
-                                        prefix(\multicolumn{@span}{c}{) suffix(}) span                       ///
-                                        erepeat(\cmidrule(lr){@span})) ///
-                                nomtitles                       ///
-                scalars("control_mean Media de referencia") ///
-                        refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel A. \textbf{ \textit{C} } } }" , nolabel) ///
-                        prefoot("") posthead(\hline) postfoot("")  nonumbers
+file open fh using "$path/output/tables/gpt_impact_github_DataScience.tex", write replace
 
-esttab C_hashtag_did C_hashtag_sc C_hashtag_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel B. \textbf{ \textit{C\#} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
+file write fh "\begin{table}[htbp]\centering" _n
+file write fh "\caption{Impacto de ChatGPT en el n\'{u}mero de programadores}" _n
+file write fh "{\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}" _n
+file write fh "\begin{tabular}{lccccc}" _n
+file write fh "\toprule" _n
+file write fh "Lenguaje & DID & SC & SDID & Obs. & \shortstack{Baseline \\\\ Mean} \\\\" _n
+file write fh "\midrule" _n
 
-esttab C_plus_did C_plus_sc C_plus_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel C. \textbf{ \textit{C++} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
+foreach lang of local DataScience {
+    if "`lang'" == "C"          local label "C"
+    if "`lang'" == "C_hashtag"  local label "C\#"
+    if "`lang'" == "C_plus"     local label "C++"
+    if "`lang'" == "Go"         local label "Go"
+    if "`lang'" == "Java"       local label "Java"
+    if "`lang'" == "JavaScript" local label "JavaScript"
+    if "`lang'" == "PHP"        local label "PHP"
+    if "`lang'" == "Python"     local label "Python"
+    if "`lang'" == "Ruby"       local label "Ruby"
+    if "`lang'" == "TypeScript" local label "TypeScript"
 
-esttab Go_did Go_sc Go_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel D. \textbf{ \textit{Go} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
+    local t1 = scalar(b_`lang'_did)  / scalar(se_`lang'_did)
+    local t2 = scalar(b_`lang'_sc)   / scalar(se_`lang'_sc)
+    local t3 = scalar(b_`lang'_sdid) / scalar(se_`lang'_sdid)
 
-esttab Java_did Java_sc Java_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel E. \textbf{ \textit{Java} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
+    local p1 = 2*(1-normal(abs(`t1')))
+    local p2 = 2*(1-normal(abs(`t2')))
+    local p3 = 2*(1-normal(abs(`t3')))
 
-esttab JavaScript_did JavaScript_sc JavaScript_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel F. \textbf{ \textit{JavaScript} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") postfoot("") delim("&") collabels(none) nonumbers nogaps nonote
+    if `p1' < 0.01      local s1 "***"
+    else if `p1' < 0.05 local s1 "**"
+    else if `p1' < 0.10 local s1 "*"
+    else                local s1 ""
 
-esttab PHP_did PHP_sc PHP_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel G. \textbf{ \textit{PHP} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") delim("&") collabels(none) nonumbers nogaps nonote
+    if `p2' < 0.01      local s2 "***"
+    else if `p2' < 0.05 local s2 "**"
+    else if `p2' < 0.10 local s2 "*"
+    else                local s2 ""
 
-esttab Python_did Python_sc Python_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel H. \textbf{ \textit{Python} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") delim("&") collabels(none) nonumbers nogaps nonote
+    if `p3' < 0.01      local s3 "***"
+    else if `p3' < 0.05 local s3 "**"
+    else if `p3' < 0.10 local s3 "*"
+    else                local s3 ""
 
-esttab Ruby_did Ruby_sc Ruby_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel I. \textbf{ \textit{Ruby} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") delim("&") collabels(none) nonumbers nogaps nonote
+    local B1 = string(scalar(b_`lang'_did),   "%9.3f")
+    local B2 = string(scalar(b_`lang'_sc),    "%9.3f")
+    local B3 = string(scalar(b_`lang'_sdid),  "%9.3f")
+    local E1 = string(scalar(se_`lang'_did),  "%9.3f")
+    local E2 = string(scalar(se_`lang'_sc),   "%9.3f")
+    local E3 = string(scalar(se_`lang'_sdid), "%9.3f")
+    local N  = string(scalar(nobs_`lang'),     "%9.0f")
+    local CM = string(scalar(cmean_`lang'),    "%9.3f")
 
-esttab TypeScript_did TypeScript_sc TypeScript_sdid ///
-                using "$path/output/tables/gpt_impact_github_DataScience.tex", ///
-                append label booktabs mlabel(,none) ///
-                cells(b(star fmt(%9.3f)) se(par fmt(%9.3f)))             ///
-                starlevels(* 0.10 * 0.05 ** 0.01) ///
-                keep(gpt_available_post1) ///
-                order(gpt_available_post1) ///
-                scalars("control_mean Media de referencia") ///
-                refcat(gpt_available_post1 "\Gape[0.25cm][0.25cm]{ \underline{Panel J. \textbf{ \textit{TypeScript} } } }" , nolabel) ///
-                prehead("") prefoot("") posthead("\hline") delim("&") collabels(none) nonumbers nogaps nonote
+    file write fh "`label' & `B1'`s1' & `B2'`s2' & `B3'`s3' & `N' & `CM' \\" _n
+    file write fh "              & (`E1') & (`E2') & (`E3') & & \\" _n
+    file write fh "\addlinespace" _n
+}
+
+file write fh "\bottomrule" _n
+file write fh "\end{tabular}}" _n
+file write fh "\begin{minipage}{\linewidth}" _n
+file write fh "\footnotesize \textit{Nota.} Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01" _n
+file write fh "\end{minipage}" _n
+file write fh "\end{table}" _n
+
+file close fh
 
 cd "$path"

@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \":*)",
+      "Bash(python code/merge_variables_control.py)",
+      "Bash(python code/all_code.py)",
+      "Bash(\"C:/Program Files/Stata17/StataMP-64.exe\" /e do analysis_per_lang_controls.do)",
+      "Bash(dir \"c:\\\\Users\\\\ronco\\\\Desktop\\\\GPT-Impact-GitHub-Top-Language\")",
+      "Bash(where pdflatex:*)",
+      "Read(//c/Program Files/**)",
+      "Read(//c//**)",
+      "Bash(ls \"c:\\\\Users\\\\ronco\\\\Desktop\\\\GPT-Impact-GitHub-Top-Language/\"*.docx)",
+      "Bash(conda run:*)",
+      "Bash(\"/c/Users/ronco/AppData/Local/anaconda3/envs/mt5python/python.exe\" -c \"import docx; print\\(''ok''\\)\")",
+      "Bash(\"/c/Users/ronco/AppData/Local/anaconda3/envs/mt5python/python.exe\" -m pip install python-docx -q)",
+      "Bash(\"/c/Users/ronco/AppData/Local/Programs/Python/Python313/python.exe\" -m pip install python-docx -q)",
+      "Bash(\"/c/Users/ronco/AppData/Local/Programs/Python/Python313/python.exe\" \"c:\\\\Users\\\\ronco\\\\Desktop\\\\GPT-Impact-GitHub-Top-Language\\\\code\\\\insert_table_docx.py\")"
+    ]
+  }
+}
