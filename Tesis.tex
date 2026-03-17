@@ -27,6 +27,7 @@
 \usepackage{makecell}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{threeparttable}
 
 % ── figures ──────────────────────────────────────────────────────────────────
 \usepackage{graphicx}
@@ -460,10 +461,10 @@ TypeScript & 3.46  & 0.00 & 224.19 & 17.55 & 11.79 & 0.00 & 275.74 & 45.14  \\
 \bottomrule
 \end{tabular}%
 }
+\begin{minipage}{\linewidth}
+\smallskip\small\textit{Nota.} Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de control incluye los 32 países sin acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboración propia.
+\end{minipage}
 \end{table}
-
-\smallskip\noindent\small\textit{Nota.} \small Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de control incluye los 32 países sin acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboración propia.\normalsize
-
 
 \begin{table}[H]
 \centering
@@ -489,12 +490,12 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 \bottomrule
 \end{tabular}%
 }
+\begin{minipage}{\linewidth}
+\smallskip\small\textit{Nota.} Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de tratamiento incluye los 133 países con acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboración propia.
+\end{minipage}
 \end{table}
 
-\smallskip\noindent\small\textit{Nota.} \small Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de tratamiento incluye los 133 países con acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboración propia.\normalsize
-
-
-% Tabla 3 — generada por Stata (Section 5 de all_code.py)
+% Tabla 3 — generada por all_code_python.py (Section 5)
 \input{output/tables/gpt_impact_github_DataScience.tex}
 
 
@@ -507,32 +508,40 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 \includegraphics[width=\textwidth]{language_distribution_gpt_available_2020_2023.png}
 \caption{Distribución de lenguajes de programación más populares en países con ChatGPT disponible (2020-2023)}
 \label{fig:figura1}
+\begin{minipage}{\linewidth}
+\smallskip\small\textit{Nota.} La figura presenta una distribución porcentual de la participación de los lenguajes más usados en ciencia de datos en los países cuyo acceso a ChatGPT está vigente. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 21280 observaciones. Por otra parte, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de años incluidos es 4. Respecto a la figura, se puede identificar un aumento constante de los lenguajes JavaScript, Python y TypeScript entre 2020 y 2023, siendo los más usados por los desarrolladores en esos períodos de tiempo, mientras que C\#, Ruby y Go resaltan por ser los menos utilizados en el mismo segmento temporal. Elaboración propia con datos de GitHub (2020--2023).
+\end{minipage}
 \end{figure}
-\smallskip\noindent\small\textit{Nota. La figura presenta una distribución porcentual de la participación de los lenguajes más usados en ciencia de datos en los países cuyo acceso a ChatGPT está vigente. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 21280 observaciones. Por otra parte, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de años incluidos es 4. Respecto a la figura, se puede identificar un aumento constante de los lenguajes JavaScript, Python y TypeScript entre 2020 y 2023, siendo los más usados por los desarrolladores en esos períodos de tiempo, mientras que C\#, Ruby y Go resaltan por ser los menos utilizados en el mismo segmento temporal. Elaboración propia con datos de GitHub (2020--2023).}\normalsize
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{language_distribution_no_gpt_2020_2023.png}
 \caption{Distribución de lenguajes de programación más populares en países sin ChatGPT disponible (2020-2023)}
 \label{fig:figura2}
+\begin{minipage}{\linewidth}
+\smallskip\small\textit{Nota.} La figura presenta una distribución porcentual de la participación de los lenguajes más usados en ciencia de datos en los países cuyo acceso a ChatGPT está restringido. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 5120 observaciones. Asimismo, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de años incluidos es 4. Respecto a la figura, se puede identificar un aumento casi constante de los lenguajes JavaScript y Python entre 2020 y 2023, siendo los más usados por los desarrolladores en esos períodos de tiempo, mientras que PHP, Go y Ruby destacan por ser los menos utilizados en el mismo segmento temporal. Elaboración propia con datos de GitHub (2020--2023).
+\end{minipage}
 \end{figure}
-\smallskip\noindent\small\textit{Nota. La figura presenta una distribución porcentual de la participación de los lenguajes más usados en ciencia de datos en los países cuyo acceso a ChatGPT está restringido. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 5120 observaciones. Asimismo, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de años incluidos es 4. Respecto a la figura, se puede identificar un aumento casi constante de los lenguajes JavaScript y Python entre 2020 y 2023, siendo los más usados por los desarrolladores en esos períodos de tiempo, mientras que PHP, Go y Ruby destacan por ser los menos utilizados en el mismo segmento temporal. Elaboración propia con datos de GitHub (2020--2023).}\normalsize
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{language_trend_gpt_countries_2020_2023.png}
 \caption{Distribución de \textit{unique pushers} según lenguaje en países con ChatGPT (2020–2023)}
 \label{fig:figura3}
+\begin{minipage}{\linewidth}
+\smallskip\small\textit{Nota.} La figura muestra una serie temporal sobre la dinámica de los \textit{unique pushers} de cada lenguaje de programación en países cuyo acceso a ChatGPT está disponible. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 160 observaciones. Además, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de trimestres analizados es 16. Sobre la figura, se puede observar un aumento alto y progresivo del número de desarrolladores que al menos han hecho un push en GitHub por cada 100 mil personas para los lenguajes de JavaScript, Python y Java, siendo los dos primeros con mayor representación. Los lenguajes restantes obtuvieron crecimientos muy ligeros o se mantuvieron constantes a lo largo del período en cuestión. Elaboración propia con datos de GitHub (2020--2023).
+\end{minipage}
 \end{figure}
-\smallskip\noindent\small\textit{Nota. La figura muestra una serie temporal sobre la dinámica de los \textit{unique pushers} de cada lenguaje de programación en países cuyo acceso a ChatGPT está disponible. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 160 observaciones. Además, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de trimestres analizados es 16. Sobre la figura, se puede observar un aumento alto y progresivo del número de desarrolladores que al menos han hecho un push en GitHub por cada 100 mil personas para los lenguajes de JavaScript, Python y Java, siendo los dos primeros con mayor representación. Los lenguajes restantes obtuvieron crecimientos muy ligeros o se mantuvieron constantes a lo largo del período en cuestión. Elaboración propia con datos de GitHub (2020--2023).}\normalsize
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{language_trend_no_gpt_countries_2020_2023.png}
 \caption{Distribución de \textit{unique pushers} según lenguaje en países sin ChatGPT (2020–2023)}
 \label{fig:figura4}
+\begin{minipage}{\linewidth}
+\smallskip\small\textit{Nota.} La figura muestra una serie temporal sobre la dinámica de los \textit{unique pushers} de cada lenguaje de programación en países cuyo acceso a ChatGPT está restringido. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 160 observaciones. Además, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de trimestres analizados es 16. Sobre la figura, se puede observar un aumento mediano y progresivo del número de desarrolladores que al menos han hecho un push en GitHub por cada 100 mil personas para los lenguajes de JavaScript, Python y TypeScript, siendo los dos primeros con mayor representación. Los lenguajes restantes obtuvieron crecimientos muy ligeros, se mantuvieron constantes o cayeron a lo largo del período en cuestión. Elaboración propia con datos de GitHub (2020--2023).
+\end{minipage}
 \end{figure}
-\smallskip\noindent\small\textit{Nota. La figura muestra una serie temporal sobre la dinámica de los \textit{unique pushers} de cada lenguaje de programación en países cuyo acceso a ChatGPT está restringido. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 160 observaciones. Además, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de trimestres analizados es 16. Sobre la figura, se puede observar un aumento mediano y progresivo del número de desarrolladores que al menos han hecho un push en GitHub por cada 100 mil personas para los lenguajes de JavaScript, Python y TypeScript, siendo los dos primeros con mayor representación. Los lenguajes restantes obtuvieron crecimientos muy ligeros, se mantuvieron constantes o cayeron a lo largo del período en cuestión. Elaboración propia con datos de GitHub (2020--2023).}\normalsize
 
 % ── Figuras 5–14: tendencias y ponderaciones (DID, SC, SDiD) ─────────────────
 \begin{singlespacing}
@@ -1111,7 +1120,7 @@ YE & 0 & 30 \\
 \end{table}
 
 
-% Tabla controles — generada por Stata (Section 6 de all_code.py)
+% Tabla controles — generada por all_code_python.py (Section 6)
 \input{output/tables/gpt_impact_github_DataScience_controls.tex}
 
 \clearpage

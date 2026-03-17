@@ -1,6 +1,7 @@
 \begin{table}[htbp]\centering
 \caption{Impacto de ChatGPT en el n\'{u}mero de programadores (con controles)}
 \label{tab:tabla5}
+\begin{threeparttable}
 {\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
 \begin{tabular}{lccccc}
 \toprule
@@ -38,7 +39,9 @@ TypeScript & 6.094** & 2.402 & 2.978** & 2720 & 8.017 \\
 \addlinespace
 \bottomrule
 \end{tabular}}
-\begin{minipage}{\linewidth}
-\footnotesize \textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes, obtenidas mediante Diferencias en Diferencias (DID), Control Sint\'{e}tico (SC) y Diferencias en Diferencias Sint\'{e}tica (SDID), implementadas en Stata. Se incluyen como variables de control el porcentaje de individuos que usan computadora y el porcentaje de individuos que usan internet, ambas extraídas del Banco Mundial. Los errores est\'{a}ndar del DID corresponden a errores robustos agrupados por pa\'{i}s; los de SC y SDID se obtienen mediante \textit{bootstrap} (Clarke et al., 2023). El periodo de tratamiento inicia en Q4-2022. Fuentes: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}); Banco Mundial, Indicadores de Desarrollo Mundial. Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01
-\end{minipage}
+\begin{tablenotes}
+\footnotesize
+\item \textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes, obtenidas mediante Diferencias en Diferencias (DID), Control Sint\'{e}tico (SC) y Diferencias en Diferencias Sint\'{e}tica (SDID), implementadas en Stata. Se incluyen como variables de control el porcentaje de individuos que usan computadora y el porcentaje de individuos que usan internet, ambas extraídas del Banco Mundial. Los errores est\'{a}ndar del DID corresponden a errores robustos agrupados por pa\'{i}s; los de SC y SDID se obtienen mediante \textit{bootstrap} (Clarke et al., 2023). El periodo de tratamiento inicia en Q4-2022. Fuentes: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}); Banco Mundial, Indicadores de Desarrollo Mundial. Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

@@ -6,15 +6,16 @@ Entry point to reproduce all results end-to-end:
   2. Language distribution charts
   3. Programming language trend charts
   4. ChatGPT global availability map
-  5. Stata DID / SC / SDID estimations (base model)
-  6. Merge control variables + Stata estimations with controls
-  7. Patch \\label{} into generated Stata table files
+  5. Python DID / SC / SDID estimations (base model)
+  6. Merge control variables + Python estimations with controls
+  7. Patch \\label{} into generated table files (if needed)
   8. Compile Tesis.tex → Tesis.pdf (two pdflatex passes)
+
+Usage:
+  python run_paper.py
 
 Requirements:
   pip install -r requirements.txt
-  Stata 15+ installed and accessible from the system path
-  (or set STATA_EXE inside code/all_code.py)
   pdflatex installed (MiKTeX or TeX Live)
 """
 
@@ -22,19 +23,22 @@ import subprocess
 import sys
 import os
 import re
+import shutil
 from collections import deque
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+PIPELINE_SCRIPT = os.path.join(BASE_DIR, "code", "all_code_python.py")
 
 
 # ── Step 1-6: run the full analysis pipeline ──────────────────────────────────
 
 print("=" * 60)
-print("STEP 1-6  Running full replication pipeline: code/all_code.py")
+print("STEP 1-6  Running full replication pipeline: code/all_code_python.py")
 print("=" * 60)
 
 result = subprocess.run(
-    [sys.executable, os.path.join(BASE_DIR, "code", "all_code.py")],
+    [sys.executable, PIPELINE_SCRIPT],
     cwd=BASE_DIR,
 )
 
@@ -43,11 +47,12 @@ if result.returncode != 0:
     sys.exit(result.returncode)
 
 
-# ── Step 7: patch \\label{} into Stata-generated table files ─────────────────
-# all_code.py overwrites these files each run, so we re-inject the labels here.
+# ── Step 7: patch \\label{} into table files ──────────────────────────────────
+# all_code_python.py already embeds \label{}, so this step is skipped
+# automatically when labels are present (check below).
 
 print("\n" + "=" * 60)
-print("STEP 7    Patching \\label{} into Stata table files")
+print("STEP 7    Patching \\label{} into table files (if needed)")
 print("=" * 60)
 
 TABLE_LABELS = {
