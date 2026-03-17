@@ -66,7 +66,10 @@ data_filter['year_quarter'] = (data_filter['year'].astype(str)
 data_filter = data_filter.reset_index(drop=True)
 data_filter['unique_id'] = data_filter['iso2_code'] + '-' + data_filter['language']
 
-iso2_code  = pd.DataFrame({'iso2_code':  data_filter['iso2_code'].unique()})
+# Restrict to countries that actually appear in 2020-2023 data (quarters 1-16)
+# Prevents countries that only appear in 2024+ from entering the balanced panel as all-zeros
+data_filter_1_16 = data_filter[(data_filter['year'] >= 2020) & (data_filter['year'] <= 2023)]
+iso2_code  = pd.DataFrame({'iso2_code':  data_filter_1_16['iso2_code'].unique()})
 language   = pd.DataFrame({'language':   data_filter['language'].unique()})
 year_quarter = pd.DataFrame({'year_quarter': data_filter['year_quarter'].unique()})
 
@@ -367,11 +370,11 @@ print(f"Map saved to: {output_png}")
 # (Replaces Stata section 5 of all_code.py)
 # ============================================================================
 
-from scipy.optimize import minimize
 from scipy.stats import norm as _norm
+from synthdid.synthdid import Synthdid
 
 print("\n" + "=" * 60)
-print("SECTION 5  Python DID / SC / SDID (no controls)")
+print("SECTION 5  DID / SC / SDID (no controls)")
 print("=" * 60)
 
 # ── constants ─────────────────────────────────────────────────────────────────
@@ -421,152 +424,45 @@ df_panel = df_panel[df_panel['iso2_code'] != 'HK'].copy()   # drop HK as in Stat
 
 # ── core algorithms ───────────────────────────────────────────────────────────
 
-def _sigma_hat(Y_co_pre):
-    """Std of first differences of control pre-treatment outcomes (for SDID ζ)."""
-    fd = np.diff(Y_co_pre, axis=1)
-    return float(np.std(fd, ddof=1)) if fd.size > 1 else 1.0
-
-
-def _estimate_inner(Y_co_pre, Y_co_post, Y_tr_pre, Y_tr_post, method):
+def _estimate_synthdid(df_lang, method, outcome_col='num_pushers_pc'):
     """
-    Estimate ATT, unit weights (omega), and time weights (lam).
-
-    Y_co_pre  : (N_co, T_pre)
-    Y_co_post : (N_co, T_post)
-    Y_tr_pre  : (N_tr, T_pre)
-    Y_tr_post : (N_tr, T_post)
-    method    : 'did' | 'sc' | 'sdid'
+    DID, SC or SDID estimate via synthdid (d2cml-ai).
+    method: 'did' | 'sc' | 'sdid'
+    Returns (att, se, omega, lam, co_units_ordered)
     """
-    N_co, T_pre  = Y_co_pre.shape
-    N_tr, T_post = Y_tr_post.shape
-
-    y_tr_pre_bar  = Y_tr_pre.mean(axis=0)   # (T_pre,) : treated mean per pre-period
-    y_co_post_bar = Y_co_post.mean(axis=1)  # (N_co,)  : control mean over post-periods
-
-    # ── unit weights omega ────────────────────────────────────────────────────
-    if method == 'did':
-        omega = np.ones(N_co) / N_co
-
-    elif method == 'sc':
-        # minimize ||Y_co_pre.T @ omega - y_tr_pre_bar||^2
-        # s.t. sum(omega) = 1, omega >= 0
-        def obj_sc(w):
-            r = Y_co_pre.T @ w - y_tr_pre_bar
-            return float(r @ r)
-
-        def jac_sc(w):
-            return 2.0 * Y_co_pre @ (Y_co_pre.T @ w - y_tr_pre_bar)
-
-        res = minimize(
-            obj_sc, np.ones(N_co) / N_co, jac=jac_sc, method='SLSQP',
-            bounds=[(0, None)] * N_co,
-            constraints={'type': 'eq', 'fun': lambda w: w.sum() - 1},
-            options={'ftol': 1e-10, 'maxiter': 2000}
-        )
-        omega = np.clip(res.x, 0, None)
-        omega /= omega.sum()
-
-    else:  # sdid: with intercept c
-        # minimize ||Y_co_pre.T @ omega - c - y_tr_pre_bar||^2
-        # s.t. sum(omega) = 1, omega >= 0, c free
-        def obj_sdid(x):
-            w, c = x[:N_co], x[N_co]
-            r = Y_co_pre.T @ w - c - y_tr_pre_bar
-            return float(r @ r)
-
-        def jac_sdid(x):
-            w, c = x[:N_co], x[N_co]
-            r = Y_co_pre.T @ w - c - y_tr_pre_bar
-            return np.append(2.0 * (Y_co_pre @ r), -2.0 * r.sum())
-
-        x0 = np.append(np.ones(N_co) / N_co, 0.0)
-        res = minimize(
-            obj_sdid, x0, jac=jac_sdid, method='SLSQP',
-            bounds=[(0, None)] * N_co + [(None, None)],
-            constraints={'type': 'eq', 'fun': lambda x: x[:N_co].sum() - 1},
-            options={'ftol': 1e-10, 'maxiter': 2000}
-        )
-        omega = np.clip(res.x[:N_co], 0, None)
-        if omega.sum() > 0:
-            omega /= omega.sum()
-
-    # ── time weights lam ─────────────────────────────────────────────────────
-    if method in ('did', 'sc'):
-        lam = np.ones(T_pre) / T_pre
-
-    else:  # sdid: regularized time weights (Arkhangelsky et al. 2021)
-        sig  = _sigma_hat(Y_co_pre)
-        zeta = float((N_tr * T_post) ** 0.25 * sig)
-
-        def obj_lam(l):
-            r = Y_co_pre @ l - y_co_post_bar
-            return float(r @ r) + zeta ** 2 * T_pre * float(l @ l)
-
-        def jac_lam(l):
-            r = Y_co_pre @ l - y_co_post_bar
-            return 2.0 * (Y_co_pre.T @ r) + 2.0 * zeta ** 2 * T_pre * l
-
-        res_l = minimize(
-            obj_lam, np.ones(T_pre) / T_pre, jac=jac_lam, method='SLSQP',
-            bounds=[(0, None)] * T_pre,
-            constraints={'type': 'eq', 'fun': lambda l: l.sum() - 1},
-            options={'ftol': 1e-10, 'maxiter': 2000}
-        )
-        lam = np.clip(res_l.x, 0, None)
-        if lam.sum() > 0:
-            lam /= lam.sum()
-
-    # ── ATT (unified formula for all three methods) ───────────────────────────
-    # tau = (Ytr_post_mean - omega @ Yco_post_mean)
-    #       - lam @ (Ytr_pre_bar - omega @ Yco_pre)
-    att = float(
-        (Y_tr_post.mean() - (omega @ Y_co_post).mean())
-        - lam @ (Y_tr_pre.mean(axis=0) - omega @ Y_co_pre)
+    df_s = df_lang[['iso2_code', 'quarter', outcome_col, 'gpt_available']].copy()
+    df_s['treat'] = (
+        (df_s['gpt_available'] == 1) & (df_s['quarter'] >= TREAT_START)
+    ).astype(int)
+    if method == 'sc':
+        fit_kwargs = {'synth': True}
+    elif method == 'did':
+        fit_kwargs = {'did': True}
+    else:
+        fit_kwargs = {}
+    r = (
+        Synthdid(df_s, 'iso2_code', 'quarter', 'treat', outcome_col)
+        .fit(**fit_kwargs)
+        .vcov(method='bootstrap', n_reps=N_BOOT)
+        .summary()
     )
-    return att, omega, lam
+    att   = float(r.att)
+    se    = float(r.se)
+    omega = np.array(r.weights['omega'][0])
+    lam   = np.array(r.weights['lambda'][0])
+    all_units = list(r.Y_units[0])
+    co_units_ordered = all_units[:len(omega)]
+    return att, se, omega, lam, co_units_ordered
 
 
-def _bootstrap_se(Y_co_pre, Y_co_post, Y_tr_pre, Y_tr_post, method, reps=N_BOOT):
-    """Bootstrap SE by resampling units with replacement."""
-    rng  = np.random.default_rng(1234)
-    N_co = Y_co_pre.shape[0]
-    N_tr = Y_tr_pre.shape[0]
-    atts = []
-    for _ in range(reps):
-        idx_co = rng.integers(0, N_co, N_co)
-        idx_tr = rng.integers(0, N_tr, N_tr)
-        try:
-            att_b, _, _ = _estimate_inner(
-                Y_co_pre[idx_co], Y_co_post[idx_co],
-                Y_tr_pre[idx_tr], Y_tr_post[idx_tr],
-                method
-            )
-            atts.append(att_b)
-        except Exception:
-            pass
-    return float(np.std(atts, ddof=1)) if len(atts) > 1 else float('nan')
-
-
-def _build_matrices(df_lang, outcome_col='num_pushers_pc'):
-    """Build Y matrices and index arrays for one language slice."""
-    all_q  = sorted(df_lang['quarter'].unique())
-    pre_q  = [q for q in all_q if q < TREAT_START]
-    post_q = [q for q in all_q if q >= TREAT_START]
-    co     = sorted(df_lang[df_lang['gpt_available'] == 0]['iso2_code'].unique())
-    tr     = sorted(df_lang[df_lang['gpt_available'] == 1]['iso2_code'].unique())
-
-    def piv(units, periods):
-        return (
-            df_lang[df_lang['iso2_code'].isin(units) & df_lang['quarter'].isin(periods)]
-            .pivot(index='iso2_code', columns='quarter', values=outcome_col)
-            .reindex(index=units, columns=periods)
-            .fillna(0)
-            .values
-        )
-
-    return (piv(co, pre_q), piv(co, post_q),
-            piv(tr, pre_q), piv(tr, post_q),
-            all_q, pre_q, post_q, co, tr)
+def _quarter_structure(df_lang):
+    """Return all_q, pre_q, post_q, co_units, tr_units for plot functions."""
+    all_q    = sorted(df_lang['quarter'].unique())
+    pre_q    = [q for q in all_q if q < TREAT_START]
+    post_q   = [q for q in all_q if q >= TREAT_START]
+    co_units = sorted(df_lang[df_lang['gpt_available'] == 0]['iso2_code'].unique())
+    tr_units = sorted(df_lang[df_lang['gpt_available'] == 1]['iso2_code'].unique())
+    return all_q, pre_q, post_q, co_units, tr_units
 
 
 def _stars(att, se):
@@ -711,31 +607,26 @@ for lang in LANGUAGES_5:
     print(f"\n  [{lang}]")
     df_l = df_panel[df_panel['language'] == lang].copy()
     n_obs = len(df_l)
-
-    (Y_co_pre, Y_co_post, Y_tr_pre, Y_tr_post,
-     all_q, pre_q, post_q, co_units, tr_units) = _build_matrices(df_l)
-
-    # baseline mean: all countries, pre-treatment (matches Stata's cmean)
     cmean = float(df_l.loc[df_l['quarter'] < TREAT_START, 'num_pushers_pc'].mean())
+    all_q, pre_q, post_q, co_units, tr_units = _quarter_structure(df_l)
 
     row: dict = {'nobs': n_obs, 'cmean': cmean}
 
+    # ── DID / SC / SDID: synthdid (d2cml-ai) ─────────────────────────────
     for method in ('did', 'sc', 'sdid'):
         try:
-            att, omega, lam = _estimate_inner(
-                Y_co_pre, Y_co_post, Y_tr_pre, Y_tr_post, method
-            )
+            att, se, omega, lam, co_sd = _estimate_synthdid(df_l, method)
         except Exception as exc:
             print(f"    {method.upper()}: estimation failed ({exc})")
-            att, omega, lam = 0.0, np.ones(len(co_units)) / len(co_units), np.ones(len(pre_q)) / len(pre_q)
-
-        se = _bootstrap_se(Y_co_pre, Y_co_post, Y_tr_pre, Y_tr_post, method)
+            att, se = 0.0, float('nan')
+            omega, lam, co_sd = (np.ones(len(co_units)) / len(co_units),
+                                 np.ones(len(pre_q)) / len(pre_q),
+                                 list(co_units))
         row[method] = (att, se)
         print(f"    {method.upper()}: ATT = {att:.3f}  SE = {se:.3f}  {_stars(att, se)}")
-
         _plot_trends(df_l, omega, lam, att, se, method, lang,
-                     all_q, pre_q, post_q, co_units, tr_units)
-        _plot_weights(omega, list(co_units), method, lang)
+                     all_q, pre_q, post_q, co_sd, tr_units)
+        _plot_weights(omega, co_sd, method, lang)
 
     results_5[lang] = row
 
@@ -743,13 +634,13 @@ for lang in LANGUAGES_5:
 
 NOTE_5 = (
     r"Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT "
-    r"sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes, "
-    r"obtenidas mediante Diferencias en Diferencias (DID), Control Sint\'{e}tico (SC) "
-    r"y Diferencias en Diferencias Sint\'{e}tica (SDID), implementadas en Python "
-    r"(scipy.optimize). Los errores est\'{a}ndar del DID corresponden a errores "
-    r"robustos agrupados por pa\'{i}s; los de SC y SDID se obtienen mediante "
-    r"\textit{bootstrap} (Clarke et al., 2023). El periodo de tratamiento inicia en "
-    r"Q4-2022, coincidiendo con el lanzamiento de ChatGPT. "
+    r"sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes. "
+    r"Las columnas DID, SC y SDID corresponden a Diferencias en Diferencias, "
+    r"Control Sint\'{e}tico (Abadie et al., 2010) y Diferencias en Diferencias "
+    r"Sint\'{e}tica (Arkhangelsky et al., 2021), respectivamente, todos estimados "
+    r"mediante la librer\'{i}a \texttt{synthdid} (Clarke et al., 2023). "
+    r"Los errores est\'{a}ndar se obtienen por \textit{bootstrap}. "
+    r"El periodo de tratamiento inicia en Q4-2022, coincidiendo con el lanzamiento de ChatGPT. "
     r"Fuente: GitHub Innovation Graph, tabla \textit{languages} "
     r"(\url{https://github.com/github/innovationgraph}). "
     r"Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. "
@@ -850,7 +741,7 @@ print(f"Base final: {df_merged.shape}")
 for _col in ["uso_computadoras", "uso_internet"]:
     _n = df_merged[_col].isna().sum()
     df_merged[_col] = df_merged[_col].fillna(0)
-    print(f"  {_col}: {_n} valores faltantes → 0")
+    print(f"  {_col}: {_n} valores faltantes -> 0")
 
 df_merged.to_csv(p("output", "data", "merge_controles.csv"), index=False)
 print(f"Saved: {p('output', 'data', 'merge_controles.csv')}")
@@ -904,27 +795,27 @@ for lang in LANGUAGES_5:
     df_l_adj = _partial_out_covariates(df_l)
     n_obs    = len(df_l)
 
-    (Y_co_pre, Y_co_post, Y_tr_pre, Y_tr_post,
-     all_q, pre_q, post_q, co_units, tr_units) = _build_matrices(df_l_adj)
+    all_q, pre_q, post_q, co_units, tr_units = _quarter_structure(df_l_adj)
 
     cmean = float(df_l.loc[df_l['quarter'] < TREAT_START, 'num_pushers_pc'].mean())
 
     row: dict = {'nobs': n_obs, 'cmean': cmean}
 
+    # ── DID / SC / SDID: synthdid (d2cml-ai) ─────────────────────────────
     for method in ('did', 'sc', 'sdid'):
         try:
-            att, omega, lam = _estimate_inner(
-                Y_co_pre, Y_co_post, Y_tr_pre, Y_tr_post, method
-            )
+            att, se, omega, lam, co_sd = _estimate_synthdid(df_l_adj, method)
         except Exception as exc:
             print(f"    {method.upper()}: estimation failed ({exc})")
-            att, omega, lam = (0.0,
-                               np.ones(len(co_units)) / len(co_units),
-                               np.ones(len(pre_q)) / len(pre_q))
-
-        se = _bootstrap_se(Y_co_pre, Y_co_post, Y_tr_pre, Y_tr_post, method)
+            att, se = 0.0, float('nan')
+            omega = np.ones(len(co_units)) / len(co_units)
+            lam   = np.ones(len(pre_q)) / len(pre_q)
+            co_sd = list(co_units)
         row[method] = (att, se)
         print(f"    {method.upper()}: ATT = {att:.3f}  SE = {se:.3f}  {_stars(att, se)}")
+        _plot_trends(df_l_adj, omega, lam, att, se, method, lang,
+                     all_q, pre_q, post_q, co_sd, tr_units)
+        _plot_weights(omega, co_sd, method, lang)
 
     results_6[lang] = row
 
@@ -932,15 +823,17 @@ for lang in LANGUAGES_5:
 
 NOTE_6 = (
     r"Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT "
-    r"sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes, "
-    r"obtenidas mediante Diferencias en Diferencias (DID), Control Sint\'{e}tico (SC) "
-    r"y Diferencias en Diferencias Sint\'{e}tica (SDID), implementadas en Python "
-    r"(scipy.optimize). Se incluyen como variables de control el porcentaje de "
-    r"individuos que usan computadora y el porcentaje de individuos que usan internet, "
-    r"ambas extra\'{i}das del Banco Mundial. Los errores est\'{a}ndar del DID "
-    r"corresponden a errores robustos agrupados por pa\'{i}s; los de SC y SDID se "
-    r"obtienen mediante \textit{bootstrap} (Clarke et al., 2023). El periodo de "
-    r"tratamiento inicia en Q4-2022. Fuentes: GitHub Innovation Graph "
+    r"sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes. "
+    r"Las columnas DID, SC y SDID corresponden a Diferencias en Diferencias, "
+    r"Control Sint\'{e}tico (Abadie et al., 2010) y Diferencias en Diferencias "
+    r"Sint\'{e}tica (Arkhangelsky et al., 2021), respectivamente, todos estimados "
+    r"mediante la librer\'{i}a \texttt{synthdid} (Clarke et al., 2023). "
+    r"Se incluyen como variables de control el porcentaje de individuos que usan "
+    r"computadora y el porcentaje que usa internet, extra\'{i}das del Banco Mundial, "
+    r"incorporadas mediante un \textit{partial-out} de efectos fijos de unidad y "
+    r"tiempo. Los errores est\'{a}ndar se obtienen por \textit{bootstrap}. "
+    r"El periodo de tratamiento inicia en Q4-2022. "
+    r"Fuentes: GitHub Innovation Graph "
     r"(\url{https://github.com/github/innovationgraph}); Banco Mundial, Indicadores "
     r"de Desarrollo Mundial. Elaboraci\'{o}n propia. Errores est\'{a}ndar entre "
     r"par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01"

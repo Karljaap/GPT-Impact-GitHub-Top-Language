@@ -9,3 +9,4 @@ seaborn
 statsmodels
 geopandas
 ipykernel
+scipy

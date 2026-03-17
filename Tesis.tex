@@ -257,7 +257,7 @@ En vista de la gran cantidad de lenguajes de programación recurridos en la cien
 
 Además, el filtrado realizado al conjunto de datos inició con la exclusión de las observaciones relacionadas con la Unión Europea, debido a que no es un país sino un conjunto, lo que ocasiona problema de doble conteo. Asimismo, Kosovo se eliminó por la falta de información disponible en la librería \textit{pycountry}. También se suprimió a Hong Kong del análisis, ya que mostraba un nivel atípicamente alto de \textit{unique pushers} en comparación con otros países. El período de tratamiento comenzó en el cuarto trimestre de 2022, alineándose con el lanzamiento de ChatGPT, ocurrido el 30 de noviembre de ese mismo año.
 
-Las unidades tratadas, en el presente trabajo, corresponden a los países que originalmente comunicaron que tendrían acceso a la aplicación ChatGTP. Por tanto, durante el período de tiempo indicado, no se añadieron nuevos países al grupo de tratamiento. Esto constituye un diseño de bloques, como se describe en Arkhangelsky et al. (2021), lo cual facilita el cálculo de los estimadores. El diseño del trabajo incluye 133 unidades de tratamiento y 32 unidades de control; 12 períodos de pretratamiento, 4 períodos de tratamiento y un total de 26400 observaciones.
+Las unidades tratadas, en el presente trabajo, corresponden a los países que originalmente comunicaron que tendrían acceso a la aplicación ChatGTP. Por tanto, durante el período de tiempo indicado, no se añadieron nuevos países al grupo de tratamiento. Esto constituye un diseño de bloques, como se describe en Arkhangelsky et al. (2021), lo cual facilita el cálculo de los estimadores. El diseño del trabajo incluye 130 unidades de tratamiento y 29 unidades de control; 12 períodos de pretratamiento, 4 períodos de tratamiento y un total de 25.440 observaciones.
 
 \clearpage
 \section{Estadísticos descriptivos}
@@ -395,7 +395,7 @@ Los datos empleados en este estudio son exclusivos, puesto que permiten incluir 
 
 En esta sección se presentan los resultados del análisis estadístico sobre el impacto de la disponibilidad de ChatGPT en la actividad de desarrollo de software, enfocándonos en los diez lenguajes de programación más utilizados. Para este análisis, hemos empleado tres enfoques metodológicos robustos: Diferencia en Diferencias, Control Sintético y Diferencia en Diferencias Sintéticas. El objetivo es medir el número de \textit{unique pushers} por cada 100 mil habitantes y evaluar las diferencias entre los países con acceso a ChatGPT y aquellos sin acceso. Los resultados, desglosados por lenguaje de programación y país, proporcionan una perspectiva detallada de cómo ChatGPT ha influido en la productividad de los desarrolladores a lo largo del tiempo. A continuación, se presentan las conclusiones clave, ilustradas mediante figuras comparativas y tablas de estadísticas descriptivas.
 
-La \hyperref[tab:tabla3]{Tabla 3} presenta el impacto de la disponibilidad de ChatGPT en el desarrollo de software respecto a cada lenguaje de programación. Para el lenguaje C, la disponibilidad de ChatGPT produjo un incremento significativo de 2,680 \textit{unique pushers} (error estándar de 0,539) según la estimación DiD, con aumentos adicionales observados en CS y SDiD (1,478 y 1,241\textit{unique pushers}, respectivamente). En C\#, aunque la estimación DiD muestra un incremento de 1,503 \textit{unique pushers}(error estándar de 0.382), los métodos CS y SDiD no presentan significancia estadística en sus coeficientes (0,992 y 0,446). Para C++, se reporta un aumento de 2,202 \textit{unique pushers} según la estimación DiD (error estándar de 0,460), con incrementos también presentes en CS y SDiD (1,173 y 1,118 \textit{unique pushers}, respectivamente). En Go, la disponibilidad de ChatGPT resultó en un aumento de 1,383 \textit{unique pushers} (error estándar de 0,347) según la estimación DiD, con incrementos también observados en CS y SDiD (0,668 y 0,702 \textit{unique pushers}), considerando que la estimación de CS no fue significativa. En Java, se registra un incremento de 2,774 \textit{unique pushers} (error estándar de 0.670) según DiD, con aumentos en CS y SDiD (2,159 y 1,687, aunque el estimador de CS no es significativo). Para JavaScript, se evidencia un aumento de 13,557 \textit{unique pushers} (error estándar de 1,973) según DiD, con incrementos en CS y SDiD (9,198 y 8,116 \textit{unique pushers}). En PHP, se observa un aumento de 0,895 \textit{unique pushers} (error estándar de 0,358) según DiD, con incrementos en CS y SDiD (0,990 y 0,914, aunque el estimador de CS no es significativo). Python muestra un incremento de 7,664 \textit{unique pushers} (error estándar de 1,460) según DiD, con aumentos en CS y SDiD (1,619 y 4,431, aunque en el estimador de CS no es significativo). En Ruby, aunque las estimaciones DiD y CS no son significativas (0.243 y 1.488 \textit{unique pushers}, errores estándar de 0.372 y 0,976), el método y SDiD muestra un incremento significativo (0,795 \textit{unique pushers}). Finalmente, en TypeScript, se registra un incremento significativo de 7,115 \textit{unique pushers} (error estándar de 1,192) según DiD, con aumentos en CS y SDiD (3,205 y 2,994 \textit{unique pushers}, aunque el estimador de CS no es significativo).
+La \hyperref[tab:tabla3]{Tabla 3} presenta el impacto de la disponibilidad de ChatGPT en el desarrollo de software respecto a cada lenguaje de programación. Para el lenguaje C, la disponibilidad de ChatGPT produjo un incremento significativo de 2,689 \textit{unique pushers} (error estándar de 0,439) según la estimación DiD, con aumentos adicionales observados en CS y SDiD (2,005 y 1,276 \textit{unique pushers}, respectivamente), ambos estadísticamente significativos. En C\#, la estimación DiD muestra un incremento significativo de 1,499 \textit{unique pushers} (error estándar de 0,456), con un efecto también significativo en CS (1,255); sin embargo, el estimador SDiD no alcanza significancia estadística (0,443). Para C++, se reporta un aumento de 2,210 \textit{unique pushers} según la estimación DiD (error estándar de 0,409), con incrementos significativos también en CS y SDiD (2,002 y 1,131 \textit{unique pushers}, respectivamente). En Go, la disponibilidad de ChatGPT resultó en un aumento de 1,411 \textit{unique pushers} (error estándar de 0,253) según DiD, con incrementos significativos en CS y SDiD (1,081 y 0,720 \textit{unique pushers}). En Java, se registra un incremento de 2,810 \textit{unique pushers} (error estándar de 0,886) según DiD, con aumentos en CS y SDiD (2,597 y 1,725 \textit{unique pushers}), siendo los tres estimadores estadísticamente significativos. Para JavaScript, se evidencia el mayor impacto con un aumento de 13,635 \textit{unique pushers} (error estándar de 2,989) según DiD, con incrementos en CS y SDiD (10,737 y 8,303 \textit{unique pushers}), todos significativos. En PHP, se observa un aumento de 0,904 \textit{unique pushers} (error estándar de 0,390) según DiD, con incrementos en CS y SDiD (0,907 y 0,916 \textit{unique pushers}), todos con significancia estadística al 5\%. Python muestra el segundo mayor impacto con un incremento de 7,688 \textit{unique pushers} (error estándar de 1,130) según DiD, con aumentos en CS y SDiD (6,156 y 4,525 \textit{unique pushers}), todos significativos al 1\%. En Ruby, la estimación DiD no alcanza significancia estadística (0,262; error estándar de 0,243), mientras que CS y SDiD muestran incrementos significativos de 0,662 y 0,808 \textit{unique pushers}, respectivamente. Finalmente, en TypeScript, se registra un incremento significativo de 7,181 \textit{unique pushers} (error estándar de 0,750) según DiD, con aumentos en CS y SDiD (3,673 y 3,078 \textit{unique pushers}), ambos estadísticamente significativos.
 
 Por otra parte, de la \hyperref[fig:figura5]{Figura 5} -- \hyperref[fig:figura14]{Figura 14}, se muestran las tendencias y ponderaciones estimadas de \textit{unique pushers} por cada 100 mil personas para diferentes lenguajes de programación, utilizando los métodos Diferencia en Diferencias (DiD), Control Sintético (CS) y Diferencia en Diferencias Sintética (SDiD). Cada figura se divide en seis paneles: los paneles (a) y (b) presentan los resultados del método DiD, los paneles (c) y (d) muestran los resultados del método CS, y los paneles (e) y (f) ilustran los resultados del método SDiD.
 
@@ -427,7 +427,7 @@ En segundo lugar, existe un problema de interferencia en el tratamiento derivado
 
 En tercer lugar, la ventana postratamiento es corta: solo cuatro períodos (Q4-2022 a Q4-2023). Este horizonte dificulta separar el efecto causal de ChatGPT de una tendencia general de expansión del ecosistema de software que ya venía observándose, y que se vio reforzada en 2023 por la proliferación simultánea de otras herramientas de IA (GitHub Copilot, Bard, entre otras). Un seguimiento más prolongado permitiría identificar con mayor precisión efectos de largo plazo.
 
-En cuarto lugar, la divergencia entre métodos observada para algunos lenguajes —especialmente Python, donde el DiD arroja 7.66 y el CS 1.62 (no significativo)— puede indicar que el contrafactual sintético no encontró unidades de control adecuadas para ese lenguaje, en lugar de reflejar simplemente la robustez del resultado. Esta heterogeneidad entre estimadores merece análisis adicional.
+En cuarto lugar, la divergencia entre métodos observada para algunos lenguajes merece atención. En Ruby, el DiD no resulta significativo (0,262) mientras que el CS y el SDiD sí lo son (0,662 y 0,808, respectivamente), lo que sugiere que el control sintético construye un mejor contrafactual para ese lenguaje. En C\#, ocurre el patrón inverso: el DiD y el CS son significativos (1,499 y 1,255), pero el SDiD no alcanza significancia (0,443). Esta heterogeneidad entre estimadores puede indicar sensibilidad en la construcción del contrafactual o variabilidad en la asignación de pesos, y merece análisis adicional.
 
 Finalmente, la variable dependiente (\textit{unique pushers} en GitHub) mide cantidad de desarrolladores activos, pero no captura la intensidad del trabajo, la calidad del código ni el tipo de contribuciones realizadas. Además, los países del grupo de control con plataformas de control de versiones alternativas (como Gitee en China) podrían mostrar menor actividad en GitHub independientemente de ChatGPT, lo que introduciría un sesgo adicional en la comparación.
 
@@ -462,7 +462,7 @@ TypeScript & 3.46  & 0.00 & 224.19 & 17.55 & 11.79 & 0.00 & 275.74 & 45.14  \\
 \end{tabular}%
 }
 \begin{minipage}{\linewidth}
-\smallskip\small\textit{Nota.} Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de control incluye los 32 países sin acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboración propia.
+\smallskip\small\textit{Nota.} Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de control incluye los 29 países sin acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboración propia.
 \end{minipage}
 \end{table}
 
@@ -491,7 +491,7 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 \end{tabular}%
 }
 \begin{minipage}{\linewidth}
-\smallskip\small\textit{Nota.} Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de tratamiento incluye los 133 países con acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboración propia.
+\smallskip\small\textit{Nota.} Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de tratamiento incluye los 130 países con acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboración propia.
 \end{minipage}
 \end{table}
 
@@ -505,9 +505,9 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{language_distribution_gpt_available_2020_2023.png}
 \caption{Distribución de lenguajes de programación más populares en países con ChatGPT disponible (2020-2023)}
 \label{fig:figura1}
+\includegraphics[width=\textwidth]{language_distribution_gpt_available_2020_2023.png}
 \begin{minipage}{\linewidth}
 \smallskip\small\textit{Nota.} La figura presenta una distribución porcentual de la participación de los lenguajes más usados en ciencia de datos en los países cuyo acceso a ChatGPT está vigente. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 21280 observaciones. Por otra parte, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de años incluidos es 4. Respecto a la figura, se puede identificar un aumento constante de los lenguajes JavaScript, Python y TypeScript entre 2020 y 2023, siendo los más usados por los desarrolladores en esos períodos de tiempo, mientras que C\#, Ruby y Go resaltan por ser los menos utilizados en el mismo segmento temporal. Elaboración propia con datos de GitHub (2020--2023).
 \end{minipage}
@@ -515,9 +515,9 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{language_distribution_no_gpt_2020_2023.png}
 \caption{Distribución de lenguajes de programación más populares en países sin ChatGPT disponible (2020-2023)}
 \label{fig:figura2}
+\includegraphics[width=\textwidth]{language_distribution_no_gpt_2020_2023.png}
 \begin{minipage}{\linewidth}
 \smallskip\small\textit{Nota.} La figura presenta una distribución porcentual de la participación de los lenguajes más usados en ciencia de datos en los países cuyo acceso a ChatGPT está restringido. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 5120 observaciones. Asimismo, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de años incluidos es 4. Respecto a la figura, se puede identificar un aumento casi constante de los lenguajes JavaScript y Python entre 2020 y 2023, siendo los más usados por los desarrolladores en esos períodos de tiempo, mientras que PHP, Go y Ruby destacan por ser los menos utilizados en el mismo segmento temporal. Elaboración propia con datos de GitHub (2020--2023).
 \end{minipage}
@@ -525,9 +525,9 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{language_trend_gpt_countries_2020_2023.png}
 \caption{Distribución de \textit{unique pushers} según lenguaje en países con ChatGPT (2020–2023)}
 \label{fig:figura3}
+\includegraphics[width=\textwidth]{language_trend_gpt_countries_2020_2023.png}
 \begin{minipage}{\linewidth}
 \smallskip\small\textit{Nota.} La figura muestra una serie temporal sobre la dinámica de los \textit{unique pushers} de cada lenguaje de programación en países cuyo acceso a ChatGPT está disponible. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 160 observaciones. Además, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de trimestres analizados es 16. Sobre la figura, se puede observar un aumento alto y progresivo del número de desarrolladores que al menos han hecho un push en GitHub por cada 100 mil personas para los lenguajes de JavaScript, Python y Java, siendo los dos primeros con mayor representación. Los lenguajes restantes obtuvieron crecimientos muy ligeros o se mantuvieron constantes a lo largo del período en cuestión. Elaboración propia con datos de GitHub (2020--2023).
 \end{minipage}
@@ -535,9 +535,9 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{language_trend_no_gpt_countries_2020_2023.png}
 \caption{Distribución de \textit{unique pushers} según lenguaje en países sin ChatGPT (2020–2023)}
 \label{fig:figura4}
+\includegraphics[width=\textwidth]{language_trend_no_gpt_countries_2020_2023.png}
 \begin{minipage}{\linewidth}
 \smallskip\small\textit{Nota.} La figura muestra una serie temporal sobre la dinámica de los \textit{unique pushers} de cada lenguaje de programación en países cuyo acceso a ChatGPT está restringido. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 160 observaciones. Además, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de trimestres analizados es 16. Sobre la figura, se puede observar un aumento mediano y progresivo del número de desarrolladores que al menos han hecho un push en GitHub por cada 100 mil personas para los lenguajes de JavaScript, Python y TypeScript, siendo los dos primeros con mayor representación. Los lenguajes restantes obtuvieron crecimientos muy ligeros, se mantuvieron constantes o cayeron a lo largo del período en cuestión. Elaboración propia con datos de GitHub (2020--2023).
 \end{minipage}
@@ -1024,7 +1024,7 @@ ZM & Zambia &  &  \\
 
 \noindent\textbf{Variables de control utilizadas}
 
-Las variables de control empleadas en la estimación con controles (Cuadro 5) fueron extraídas del \textbf{Banco Mundial} y corresponden a dos indicadores de infraestructura digital:
+Las variables de control empleadas en la estimación con controles (Cuadro 4) fueron extraídas del \textbf{Banco Mundial} y corresponden a dos indicadores de infraestructura digital:
 
 \begin{itemize}
   \item \textbf{Porcentaje de individuos que usan computadora}: obtenido del indicador \textit{Percentage of individuals using a computer} (ITU DataHub, vía World Bank Data360, código \texttt{ITU\_DH\_INV\_COMP}). Mide la proporción de la población que utiliza una computadora, capturando el nivel de adopción tecnológica en el hogar y la capacidad técnica promedio del país.
@@ -1036,7 +1036,11 @@ Estas variables fueron consideradas como controles porque capturan diferencias e
 \bigskip
 \noindent\textbf{Justificación de la no inclusión en el modelo base}
 
-En el presente estudio, no se incorporaron variables de control adicionales en las estimaciones del modelo base realizadas mediante los métodos Difference-in-Differences (DID), Synthetic Control (SC) y Synthetic Difference-in-Differences (SDID). Esta decisión se fundamenta principalmente en la limitada disponibilidad de variables comparables para todos los países incluidos en el análisis. Si bien existen diversas bases de datos internacionales con información potencialmente relevante, como las del Banco Mundial, muchas de ellas no ofrecen una cobertura completa o no son compatibles con la estructura de panel utilizada en esta investigación. La base de datos empleada se encuentra organizada en forma de un panel consistente para un conjunto específico de países y periodos, y al realizar el proceso de imputación para pasar de datos trimestrales a datos anuales, el número de observaciones se redujo de 26 400 a 6 600. Adicionalmente, la incorporación de variables provenientes de fuentes externas implicó nuevas pérdidas de muestras debido a valores faltantes, lo que redujo aún más la muestra disponible. Como se muestra en las dos primeras tablas, inicialmente se produjo la eliminación de tres países (dos pertenecientes al grupo de control y uno al grupo tratado), y posteriormente la presencia de valores vacíos en las variables adicionales generó una reducción aproximada de 340 observaciones adicionales, provocando además un desbalance entre los grupos de tratamiento y control. Esta reducción en el número de unidades disponibles compromete la estabilidad y validez de las estimaciones, especialmente en los métodos SC y SDID, los cuales requieren un conjunto amplio y depurado de países comparables para construir un contrafactual válido.
+En el presente estudio, no se incorporaron variables de control adicionales en las estimaciones del modelo base realizadas mediante los métodos Difference-in-Differences (DID), Synthetic Control (SC) y Synthetic Difference-in-Differences (SDID). Esta decisión se fundamenta principalmente en la limitada disponibilidad de variables comparables para todos los países incluidos en el análisis. Si bien existen diversas bases de datos internacionales con información potencialmente relevante, como las del Banco Mundial, muchas de ellas no ofrecen una cobertura completa o no son compatibles con la estructura de panel utilizada en esta investigación.
+
+El panel base empleado en el modelo sin controles comprende 159 países, 16 períodos trimestrales y 10 lenguajes de programación, lo que resulta en un total de 25.440 observaciones trimestrales, equivalentes a 6.360 en términos anuales. De estos, 130 países pertenecen al grupo de tratamiento (con acceso a ChatGPT) y 29 al grupo de control. Como se muestra en la primera tabla, tres entidades fueron excluidas del análisis: la Unión Europea (EU), que no constituye una unidad nacional independiente; Kosovo (XK), cuyo código no puede ser procesado por las librerías estándar de georeferenciación; y Hong Kong (HK), cuya actividad de desarrollo en GitHub resultó atípicamente elevada en comparación con el resto de los países del panel, lo que podría distorsionar las estimaciones.
+
+Adicionalmente, la incorporación de las variables de control del Banco Mundial reveló una cobertura incompleta para 19 países, que carecen de datos disponibles para el indicador de uso de internet (\texttt{IT.NET.USER.ZS}), tal como se detalla en la segunda tabla. Estas 2.640 observaciones (10,4\% del panel) fueron imputadas como cero para permitir la estimación con controles, si bien esta imputación puede afectar la precisión de los coeficientes en el modelo de la Sección 6. En conjunto, estos factores —la necesidad de imputar valores faltantes en las variables de control y el potencial desequilibrio que ello introduce entre grupos— justifican la presentación del modelo sin controles como especificación base, siendo la estimación con controles interpretada como análisis de robustez.
 
 
 
@@ -1050,9 +1054,9 @@ En el presente estudio, no se incorporaron variables de control adicionales en l
 \toprule
 Tipo & Cantidad \\
 \midrule
-Quarter & 26400 \\
-Year & 6600 \\
-Final & 6480 \\
+Quarter & 25440 \\
+Year & 6360 \\
+Final & 6360 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1068,8 +1072,8 @@ Final & 6480 \\
 \toprule
 group & quarter\_samples & year\_samples & final\_samples & lost\_q\_to\_y \\
 \midrule
-0 & 5120 & 1280 & 1200 & 3840 \\
-1 & 21280 & 5320 & 5280 & 15960 \\
+0 & 4640 & 1160 & 1160 & 3480 \\
+1 & 20800 & 5200 & 5200 & 15600 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1085,9 +1089,9 @@ group & quarter\_samples & year\_samples & final\_samples & lost\_q\_to\_y \\
 \toprule
 iso2\_code & gpt\_available \\
 \midrule
-GF & 0 \\
-RE & 0 \\
-TW & 1 \\
+EU & -- \\
+XK & 0 \\
+HK & 1 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1103,24 +1107,32 @@ TW & 1 \\
 \toprule
 iso2\_code & gpt\_available\_country & n\_rows\_missing \\
 \midrule
-ET & 0 & 20 \\
-HT & 1 & 40 \\
-IN & 1 & 20 \\
-KE & 1 & 30 \\
-PG & 1 & 10 \\
-PR & 0 & 20 \\
-SD & 0 & 30 \\
-SO & 0 & 20 \\
-SY & 0 & 40 \\
-TM & 0 & 40 \\
-VE & 0 & 40 \\
-YE & 0 & 30 \\
+CD & 0 & 160 \\
+CG & 1 & 160 \\
+EG & 0 & 160 \\
+ET & 0 & 80 \\
+HT & 1 & 160 \\
+IN & 1 & 80 \\
+IR & 0 & 160 \\
+KE & 1 & 120 \\
+KR & 1 & 160 \\
+MO & 0 & 160 \\
+PR & 0 & 80 \\
+RE & 0 & 160 \\
+SD & 0 & 120 \\
+SO & 0 & 80 \\
+SY & 0 & 160 \\
+TM & 0 & 160 \\
+TW & 1 & 160 \\
+VE & 0 & 160 \\
+YE & 0 & 160 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 
 % Tabla controles — generada por all_code_python.py (Section 6)
+\setcounter{table}{3}
 \input{output/tables/gpt_impact_github_DataScience_controls.tex}
 
 \clearpage

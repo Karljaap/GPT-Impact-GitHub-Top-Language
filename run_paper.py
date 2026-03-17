@@ -59,7 +59,7 @@ TABLE_LABELS = {
     os.path.join(BASE_DIR, "output", "tables", "gpt_impact_github_DataScience.tex"):
         "tab:tabla3",
     os.path.join(BASE_DIR, "output", "tables", "gpt_impact_github_DataScience_controls.tex"):
-        "tab:tabla5",
+        "tab:tabla4",
 }
 
 for fpath, label in TABLE_LABELS.items():
