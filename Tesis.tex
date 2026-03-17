@@ -36,6 +36,7 @@
 
 % ── misc ─────────────────────────────────────────────────────────────────────
 \usepackage{parskip}
+\usepackage{float}       % [H] placement for figures
 
 % ── índices: nombres en español ──────────────────────────────────────────────
 \addto\captionsspanish{%
@@ -48,29 +49,33 @@
 \begin{document}
 
 % ── portada ──────────────────────────────────────────────────────────────────
+\newgeometry{top=4cm,bottom=2.5cm,left=3.5cm,right=2.5cm}
 \begin{titlepage}
-\centering
-\vspace*{1.2cm}
-{\Large \textbf{PONTIFICIA UNIVERSIDAD CATÓLICA DEL PERÚ}}\par
-\vspace{0.4cm}
-{\large \textbf{FACULTAD DE CIENCIAS SOCIALES}}\par
-\vspace{0.8cm}
-\includegraphics[width=6cm]{pucp_logo.jpg}\par
-\vspace{0.8cm}
-{\LARGE \textbf{Impacto de la disponibilidad de ChatGPT en el desarrollo\\[0.3em]
-de software orientado a Ciencia de Datos entre 2020 y 2023}}\par
-\vspace{2.5cm}
-{\large Tesis para obtener el título profesional de\\
-Licenciado en Economía presentado por:}\par
-\vspace{0.8cm}
-{\large Nicho Rosado, Jesus Alberto\\
+\setlength{\parskip}{0pt}
+\begin{singlespacing}
+\begin{center}
+\vspace*{3\baselineskip}
+{\normalsize\bfseries PONTIFICIA UNIVERSIDAD CATÓLICA DEL PERÚ}\par
+\vspace{\baselineskip}
+{\normalsize\bfseries FACULTAD DE CIENCIAS SOCIALES}\par
+\vspace{2\baselineskip}
+\includegraphics[width=4.5cm]{pucp_logo.jpg}\par
+\vspace{\baselineskip}
+{\normalsize Impacto de la disponibilidad de ChatGPT en el desarrollo de software orientado a Ciencia de Datos entre 2020 y 2023}\par
+\vspace{\baselineskip}
+{\normalsize Tesis para obtener el título profesional de Licenciado en Economía presentado por:}\par
+\vspace{\baselineskip}
+{\normalsize Nicho Rosado, Jesus Alberto\\
 Janampa Aparicio, Karl Willem}\par
-\vspace{1.5cm}
-{\large Asesor(es):}\par
-{\large Quispe Rojas, Alexander Wilder}\par
-\vfill
-{\large Lima, 2026}
+\vspace{\baselineskip}
+{\normalsize Asesor(es):}\par
+{\normalsize Quispe Rojas, Alexander Wilder}\par
+\vspace{\baselineskip}
+{\normalsize Lima, 2026}\par
+\end{center}
+\end{singlespacing}
 \end{titlepage}
+\restoregeometry
 
 
 \section{Agradecimientos}
@@ -86,8 +91,7 @@ Agradezco a todas las personas que hicieron posible la culminación de esta tesi
 
 \textit{Karl Janampa}
 
-
-
+\clearpage
 
 \section{Resumen}
 
@@ -96,7 +100,7 @@ En los últimos años, la Inteligencia Artificial ha comenzado a transformar de 
 
 \textbf{Palabras clave:} chatgpt, LLM, diferencia en diferencias sintética
 
-
+\clearpage
 
 \phantomsection
 \addcontentsline{toc}{section}{Abstract}
@@ -233,17 +237,15 @@ Las unidades tratadas, en el presente trabajo, corresponden a los países que or
 
 En esta sección se presentan los estadísticos descriptivos fundamentales que caracterizan los datos utilizados en el estudio. Dichos datos, obtenidos del Innovation Graph de GitHub, incluyen información detallada sobre los \textit{unique pushers} a nivel de lenguaje de programación y trimestre. El análisis de las principales tendencias y patrones observados en los datos proporciona un contexto claro y comprensivo para la interpretación de los resultados subsecuentes.
 
-En la Figura 1, se muestra la distribución porcentual de los lenguajes de programación más usados en ciencia de datos en países con disponibilidad de ChatGPT durante el periodo 2020–2023. En este grupo, JavaScript incrementa su participación de 30.9\% en 2020 a 33.1\% en 2023, consolidando su liderazgo. Python pasa de 18.4\% a 19.4\% en el mismo periodo, evidenciando un crecimiento moderado, mientras que TypeScript registra la expansión relativa más notable, al aumentar de 6.1\% a 9.7\%. En contraste, Java disminuye de 11.5\% a 9.7\%, y Ruby presenta una caída más pronunciada, de 7.1\% a 3.7\%. En contraste, en la Figura 2, correspondiente a países sin disponibilidad de ChatGPT, si bien la estructura general es similar, se observan algunas diferencias cuantitativas relevantes. JavaScript se mantiene prácticamente estable, pasando de 30.5\% en 2020 a 30.0\% en 2023. Python experimenta un crecimiento más intenso que en el grupo tratado, aumentando de 15.7\% a 18.4\%. TypeScript también crece de forma marcada, de 4.5\% a 9.6\%, replicando una tendencia similar a la observada en la Figura 1. Por su parte, Java presenta una reducción más acentuada, de 16.3\% a 10.9\%, y Ruby desciende de 6.0\% a 2.9\%. 
+En la \hyperref[fig:figura1]{Figura 1}, se muestra la distribución porcentual de los lenguajes de programación más usados en ciencia de datos en países con disponibilidad de ChatGPT durante el periodo 2020–2023. En este grupo, JavaScript incrementa su participación de 30.9\% en 2020 a 33.1\% en 2023, consolidando su liderazgo. Python pasa de 18.4\% a 19.4\% en el mismo periodo, evidenciando un crecimiento moderado, mientras que TypeScript registra la expansión relativa más notable, al aumentar de 6.1\% a 9.7\%. En contraste, Java disminuye de 11.5\% a 9.7\%, y Ruby presenta una caída más pronunciada, de 7.1\% a 3.7\%. En contraste, en la \hyperref[fig:figura2]{Figura 2}, correspondiente a países sin disponibilidad de ChatGPT, si bien la estructura general es similar, se observan algunas diferencias cuantitativas relevantes. JavaScript se mantiene prácticamente estable, pasando de 30.5\% en 2020 a 30.0\% en 2023. Python experimenta un crecimiento más intenso que en el grupo tratado, aumentando de 15.7\% a 18.4\%. TypeScript también crece de forma marcada, de 4.5\% a 9.6\%, replicando una tendencia similar a la observada en la \hyperref[fig:figura1]{Figura 1}. Por su parte, Java presenta una reducción más acentuada, de 16.3\% a 10.9\%, y Ruby desciende de 6.0\% a 2.9\%.
 
-La comparación entre la Tabla 1 y Tabla 2 evidencia diferencias relevantes entre el grupo de control y el grupo de tratamiento en términos de actividad de desarrollo medida por el número de \textit{unique pushers}. En el periodo pretratamiento, el grupo tratado presenta medias superiores en la mayoría de los lenguajes, por ejemplo, JavaScript (51.00 frente a 18.84) y Python (22.71 frente a 13.30), diferencia que se mantiene en el periodo postratamiento (58.98 vs. 34.29 y 33.46 vs. 22.21, respectivamente). En ambos grupos los valores mínimos permanecen en 0.00, lo que evidencia heterogeneidad en la participación entre países, mientras que los valores máximos y las desviaciones estándar aumentan tras el periodo de análisis, especialmente en lenguajes con mayor dinamismo, indicando una expansión general pero desigual de la actividad en GitHub. Estos patrones sugieren la presencia de tendencias temporales comunes junto con diferencias estructurales entre grupos, lo que respalda la aplicación de una metodología de diferencias en diferencias para estimar el efecto del acceso a ChatGPT sobre la actividad de desarrollo en GitHub.
+La comparación entre la \hyperref[tab:tabla1]{Tabla 1} y \hyperref[tab:tabla2]{Tabla 2} evidencia diferencias relevantes entre el grupo de control y el grupo de tratamiento en términos de actividad de desarrollo medida por el número de \textit{unique pushers}. En el periodo pretratamiento, el grupo tratado presenta medias superiores en la mayoría de los lenguajes, por ejemplo, JavaScript (51.00 frente a 18.84) y Python (22.71 frente a 13.30), diferencia que se mantiene en el periodo postratamiento (58.98 vs. 34.29 y 33.46 vs. 22.21, respectivamente). En ambos grupos los valores mínimos permanecen en 0.00, lo que evidencia heterogeneidad en la participación entre países, mientras que los valores máximos y las desviaciones estándar aumentan tras el periodo de análisis, especialmente en lenguajes con mayor dinamismo, indicando una expansión general pero desigual de la actividad en GitHub. Estos patrones sugieren la presencia de tendencias temporales comunes junto con diferencias estructurales entre grupos, lo que respalda la aplicación de una metodología de diferencias en diferencias para estimar el efecto del acceso a ChatGPT sobre la actividad de desarrollo en GitHub.
 
-La Figura 3 presenta la tendencia global de \textit{unique pushers} por cada 100 mil habitantes para los diez lenguajes de programación analizados, considerando todos los países de la muestra en conjunto. Se observa que JavaScript lidera de forma consistente durante todo el periodo, seguido de Python, con una aceleración generalizada a partir de 2022-Q4, coincidiendo con el lanzamiento de ChatGPT.
+En la \hyperref[fig:figura3]{Figura 3}, correspondiente a países con disponibilidad de ChatGPT, se observa un crecimiento sostenido en el número de unique pushers entre 2020 y 2023, con una aceleración más evidente a partir de 2022. JavaScript concentra los niveles más altos de actividad durante todo el periodo, incrementándose desde aproximadamente 3,200 desarrolladores en 2020-Q1 hasta cerca de 6,100 en 2023-Q4. Por su parte, Python también muestra un crecimiento considerable, pasando de alrededor de 1,800 a aproximadamente 3,600 desarrolladores en el mismo intervalo. Asimismo, TypeScript presenta una expansión notable, aumentando desde aproximadamente 600 desarrolladores al inicio del periodo hasta cerca de 2,100 en 2023-Q4, lo que evidencia una rápida adopción en los últimos años. En contraste, lenguajes como Java muestran incrementos más moderados, creciendo aproximadamente de 1,200 a cerca de 1,700 desarrolladores.
 
-En la Figura 4, correspondiente a países con disponibilidad de ChatGPT, se observa un crecimiento sostenido en el número de unique pushers entre 2020 y 2023, con una aceleración más evidente a partir de 2022. JavaScript concentra los niveles más altos de actividad durante todo el periodo, incrementándose desde aproximadamente 3,200 desarrolladores en 2020-Q1 hasta cerca de 6,100 en 2023-Q4. Por su parte, Python también muestra un crecimiento considerable, pasando de alrededor de 1,800 a aproximadamente 3,600 desarrolladores en el mismo intervalo. Asimismo, TypeScript presenta una expansión notable, aumentando desde aproximadamente 600 desarrolladores al inicio del periodo hasta cerca de 2,100 en 2023-Q4, lo que evidencia una rápida adopción en los últimos años. En contraste, lenguajes como Java muestran incrementos más moderados, creciendo aproximadamente de 1,200 a cerca de 1,700 desarrolladores.
+En la \hyperref[fig:figura4]{Figura 4} correspondiente a países sin disponibilidad de ChatGPT, también se identifica una tendencia creciente, aunque con valores absolutos menores y una evolución más gradual. En este caso, JavaScript aumenta desde aproximadamente 1,400 desarrolladores en 2020-Q1 hasta cerca de 3,500 en 2023-Q4. Python, por su parte, pasa de alrededor de 800 a aproximadamente 2,350 desarrolladores durante el mismo periodo. De manera similar, TypeScript crece progresivamente desde cerca de 250 desarrolladores hasta aproximadamente 1,250 hacia el final del periodo analizado. En el caso de Java, el incremento resulta más moderado, evolucionando desde aproximadamente 600 hasta cerca de 950–1,000 desarrolladores.
 
-En la Figura 5 correspondiente a países sin disponibilidad de ChatGPT, también se identifica una tendencia creciente, aunque con valores absolutos menores y una evolución más gradual. En este caso, JavaScript aumenta desde aproximadamente 1,400 desarrolladores en 2020-Q1 hasta cerca de 3,500 en 2023-Q4. Python, por su parte, pasa de alrededor de 800 a aproximadamente 2,350 desarrolladores durante el mismo periodo. De manera similar, TypeScript crece progresivamente desde cerca de 250 desarrolladores hasta aproximadamente 1,250 hacia el final del periodo analizado. En el caso de Java, el incremento resulta más moderado, evolucionando desde aproximadamente 600 hasta cerca de 950–1,000 desarrolladores.
-
-En conjunto, las cuatro figuras evidencian patrones similares en la evolución del ecosistema de desarrollo entre países con y sin disponibilidad de ChatGPT, aunque con diferencias en la magnitud del crecimiento observado. La Figura 1 y Figura 2 muestran que la popularidad de los principales lenguajes utilizados en ciencia de datos se mantiene dominada por JavaScript y Python en ambos grupos, mientras que TypeScript presenta el mayor incremento relativo durante el periodo analizado. Sin embargo, al considerar los valores absolutos presentados en las Figura 4 y Figura 5, se observa que el aumento en el número de unique pushers es más pronunciado en los países con disponibilidad de ChatGPT, especialmente a partir del cuarto trimestre de 2022, coincidiendo con el lanzamiento público de la herramienta. En contraste, lenguajes más tradicionales como Java y Ruby muestran una pérdida relativa de participación o un crecimiento más moderado en ambos contextos.
+En conjunto, las cuatro figuras evidencian patrones similares en la evolución del ecosistema de desarrollo entre países con y sin disponibilidad de ChatGPT, aunque con diferencias en la magnitud del crecimiento observado. La \hyperref[fig:figura1]{Figura 1} y \hyperref[fig:figura2]{Figura 2} muestran que la popularidad de los principales lenguajes utilizados en ciencia de datos se mantiene dominada por JavaScript y Python en ambos grupos, mientras que TypeScript presenta el mayor incremento relativo durante el periodo analizado. Sin embargo, al considerar los valores absolutos presentados en las \hyperref[fig:figura3]{Figura 3} y \hyperref[fig:figura4]{Figura 4}, se observa que el aumento en el número de unique pushers es más pronunciado en los países con disponibilidad de ChatGPT, especialmente a partir del cuarto trimestre de 2022, coincidiendo con el lanzamiento público de la herramienta. En contraste, lenguajes más tradicionales como Java y Ruby muestran una pérdida relativa de participación o un crecimiento más moderado en ambos contextos.
 
 
 \section{Metodología}
@@ -366,15 +368,15 @@ Los datos empleados en este estudio son exclusivos, puesto que permiten incluir 
 
 En esta sección se presentan los resultados del análisis estadístico sobre el impacto de la disponibilidad de ChatGPT en la actividad de desarrollo de software, enfocándonos en los diez lenguajes de programación más utilizados. Para este análisis, hemos empleado tres enfoques metodológicos robustos: Diferencia en Diferencias, Control Sintético y Diferencia en Diferencias Sintéticas. El objetivo es medir el número de \textit{unique pushers} por cada 100 mil habitantes y evaluar las diferencias entre los países con acceso a ChatGPT y aquellos sin acceso. Los resultados, desglosados por lenguaje de programación y país, proporcionan una perspectiva detallada de cómo ChatGPT ha influido en la productividad de los desarrolladores a lo largo del tiempo. A continuación, se presentan las conclusiones clave, ilustradas mediante figuras comparativas y tablas de estadísticas descriptivas.
 
-La Tabla 3 presenta el impacto de la disponibilidad de ChatGPT en el desarrollo de software respecto a cada lenguaje de programación. Para el lenguaje C, la disponibilidad de ChatGPT produjo un incremento significativo de 2,680 \textit{unique pushers} (error estándar de 0,539) según la estimación DiD, con aumentos adicionales observados en CS y SDiD (1,478 y 1,241\textit{unique pushers}, respectivamente). En C\#, aunque la estimación DiD muestra un incremento de 1,503 \textit{unique pushers}(error estándar de 0.382), los métodos CS y SDiD no presentan significancia estadística en sus coeficientes (0,992 y 0,446). Para C++, se reporta un aumento de 2,202 \textit{unique pushers} según la estimación DiD (error estándar de 0,460), con incrementos también presentes en CS y SDiD (1,173 y 1,118 \textit{unique pushers}, respectivamente). En Go, la disponibilidad de ChatGPT resultó en un aumento de 1,383 \textit{unique pushers} (error estándar de 0,347) según la estimación DiD, con incrementos también observados en CS y SDiD (0,668 y 0,702 \textit{unique pushers}), considerando que la estimación de CS no fue significativa. En Java, se registra un incremento de 2,774 \textit{unique pushers} (error estándar de 0.670) según DiD, con aumentos en CS y SDiD (2,159 y 1,687, aunque el estimador de CS no es significativo). Para JavaScript, se evidencia un aumento de 13,557 \textit{unique pushers} (error estándar de 1,973) según DiD, con incrementos en CS y SDiD (9,198 y 8,116 \textit{unique pushers}). En PHP, se observa un aumento de 0,895 \textit{unique pushers} (error estándar de 0,358) según DiD, con incrementos en CS y SDiD (0,990 y 0,914, aunque el estimador de CS no es significativo). Python muestra un incremento de 7,664 \textit{unique pushers} (error estándar de 1,460) según DiD, con aumentos en CS y SDiD (1,619 y 4,431, aunque en el estimador de CS no es significativo). En Ruby, aunque las estimaciones DiD y CS no son significativas (0.243 y 1.488 \textit{unique pushers}, errores estándar de 0.372 y 0,976), el método y SDiD muestra un incremento significativo (0,795 \textit{unique pushers}). Finalmente, en TypeScript, se registra un incremento significativo de 7,115 \textit{unique pushers} (error estándar de 1,192) según DiD, con aumentos en CS y SDiD (3,205 y 2,994 \textit{unique pushers}, aunque el estimador de CS no es significativo).
+La \hyperref[tab:tabla3]{Tabla 3} presenta el impacto de la disponibilidad de ChatGPT en el desarrollo de software respecto a cada lenguaje de programación. Para el lenguaje C, la disponibilidad de ChatGPT produjo un incremento significativo de 2,680 \textit{unique pushers} (error estándar de 0,539) según la estimación DiD, con aumentos adicionales observados en CS y SDiD (1,478 y 1,241\textit{unique pushers}, respectivamente). En C\#, aunque la estimación DiD muestra un incremento de 1,503 \textit{unique pushers}(error estándar de 0.382), los métodos CS y SDiD no presentan significancia estadística en sus coeficientes (0,992 y 0,446). Para C++, se reporta un aumento de 2,202 \textit{unique pushers} según la estimación DiD (error estándar de 0,460), con incrementos también presentes en CS y SDiD (1,173 y 1,118 \textit{unique pushers}, respectivamente). En Go, la disponibilidad de ChatGPT resultó en un aumento de 1,383 \textit{unique pushers} (error estándar de 0,347) según la estimación DiD, con incrementos también observados en CS y SDiD (0,668 y 0,702 \textit{unique pushers}), considerando que la estimación de CS no fue significativa. En Java, se registra un incremento de 2,774 \textit{unique pushers} (error estándar de 0.670) según DiD, con aumentos en CS y SDiD (2,159 y 1,687, aunque el estimador de CS no es significativo). Para JavaScript, se evidencia un aumento de 13,557 \textit{unique pushers} (error estándar de 1,973) según DiD, con incrementos en CS y SDiD (9,198 y 8,116 \textit{unique pushers}). En PHP, se observa un aumento de 0,895 \textit{unique pushers} (error estándar de 0,358) según DiD, con incrementos en CS y SDiD (0,990 y 0,914, aunque el estimador de CS no es significativo). Python muestra un incremento de 7,664 \textit{unique pushers} (error estándar de 1,460) según DiD, con aumentos en CS y SDiD (1,619 y 4,431, aunque en el estimador de CS no es significativo). En Ruby, aunque las estimaciones DiD y CS no son significativas (0.243 y 1.488 \textit{unique pushers}, errores estándar de 0.372 y 0,976), el método y SDiD muestra un incremento significativo (0,795 \textit{unique pushers}). Finalmente, en TypeScript, se registra un incremento significativo de 7,115 \textit{unique pushers} (error estándar de 1,192) según DiD, con aumentos en CS y SDiD (3,205 y 2,994 \textit{unique pushers}, aunque el estimador de CS no es significativo).
 
-Por otra parte, de la Figura 6 - Figura 15, se muestran las tendencias y ponderaciones estimadas de \textit{unique pushers} por cada 100 mil personas para diferentes lenguajes de programación, utilizando los métodos Diferencia en Diferencias (DiD), Control Sintético (CS) y Diferencia en Diferencias Sintética (SDiD). Cada figura se divide en seis paneles: los paneles (a) y (b) presentan los resultados del método DiD, los paneles (c) y (d) muestran los resultados del método CS, y los paneles (e) y (f) ilustran los resultados del método SDiD.
+Por otra parte, de la \hyperref[fig:figura5]{Figura 5} -- \hyperref[fig:figura14]{Figura 14}, se muestran las tendencias y ponderaciones estimadas de \textit{unique pushers} por cada 100 mil personas para diferentes lenguajes de programación, utilizando los métodos Diferencia en Diferencias (DiD), Control Sintético (CS) y Diferencia en Diferencias Sintética (SDiD). Cada figura se divide en seis paneles: los paneles (a) y (b) presentan los resultados del método DiD, los paneles (c) y (d) muestran los resultados del método CS, y los paneles (e) y (f) ilustran los resultados del método SDiD.
 
 En cuanto al ajuste y validación del contrafactual, el método DiD, como se observa en los paneles (a), muestra divergencia en las tendencias para el grupo tratado y el grupo de control antes del tratamiento, indicando que la suposición de tendencias paralelas no se cumple, llevando a estimaciones sesgadas del impacto del tratamiento. Por otro lado, el método CS, ilustrado en los paneles (c), muestra tendencias más similares antes del tratamiento, sugiriendo un mejor ajuste del contrafactual. Sin embargo, la falta de ponderación temporal puede afectar la precisión post-tratamiento. El método SDiD, representado en los paneles (e), muestra tendencias muy similares antes del tratamiento, validando así la construcción del contrafactual. El área sombreada en estos paneles indica la ponderación temporal, destacando la importancia relativa de cada periodo pre-tratamiento y mejorando la precisión del ajuste. La divergencia clara entre las líneas después del tratamiento sugiere un impacto significativo del tratamiento, indicando que SDiD ha proporcionado un ajuste preciso y confiable.
 
 En el método DiD, representado en los paneles (b), todos los estados de control reciben el mismo peso, lo cual es indicado por la línea roja horizontal constante. Este método no considera la heterogeneidad entre las unidades de control, lo que puede ser una limitación significativa si las tendencias previas al tratamiento no son paralelas. Por otro lado, el método CS, ilustrado en los paneles (d), asigna pesos específicos a las unidades de control, permitiendo una mayor flexibilidad y una mejor adaptación a las características específicas de las unidades de control. La línea roja horizontal en estos paneles refleja la media ponderada de los pesos asignados, que puede cambiar dependiendo de la distribución de los pesos. En CS, las cruces representan los pesos igual a 0 y los puntos representan pesos mayores a cero, con el tamaño de los puntos indicando la magnitud del peso. El método SDiD, mostrado en los paneles (f), asigna pesos variables tanto a las unidades de control como a los periodos de tiempo, proporcionando una asignación de pesos más robusta y flexible. La línea roja horizontal en estos paneles también refleja la media ponderada de los pesos, cambiando significativamente debido a la ponderación adicional por el tiempo. En SDiD, las cruces representan los pesos igual a 0 y los puntos representan pesos mayores a cero, con el tamaño de los puntos indicando la magnitud del peso.
 
-Al comparar la Figura 15 (C) y la Figura 11 (Ruby), se observa que Ruby muestra una mayor dispersión y variabilidad en la asignación de pesos en comparación con C, y las tendencias pre-tratamiento no cumplen con la suposición de paralelismo tan bien como en C. En Ruby, las cruces que indican pesos igual a 0 son más frecuentes, sugiriendo que varias unidades de control no contribuyen al contrafactual. Una mayor variabilidad de pesos implica que algunas unidades de control tienen una influencia mucho mayor en la construcción del contrafactual, lo cual puede reflejar una mayor heterogeneidad en las características del grupo de control. Al comparar la Figura 9 (Java) y la Figura 8 (Python), se nota que Python presenta una mayor variabilidad en la asignación de pesos y una divergencia post-tratamiento más marcada. Los puntos en Python indican una mayor heterogeneidad en las unidades de control en comparación con Java. Una menor variabilidad de pesos, como se observa en Java, sugiere que las unidades de control son más homogéneas y que cada una contribuye de manera más equitativa a la construcción del contrafactual. Asimismo, la Figura 13 (C\#), Figura 14 (C++), Figura 10 (Go), Figura 7 (JavaScript), Figura 12 (PHP) y Figura 6 (TypeScript) muestran tendencias pre y post-tratamiento relativamente paralelas y homogéneas. Las asignaciones de pesos en CS y SDiD son bastante similares, con poca variabilidad y pocas cruces representando pesos igual a 0. Esto sugiere que, para estos lenguajes, las unidades de control son bastante homogéneas y la ponderación temporal no muestra grandes variaciones.
+Al comparar la \hyperref[fig:figura14]{Figura 14} (C) y la \hyperref[fig:figura10]{Figura 10} (Ruby), se observa que Ruby muestra una mayor dispersión y variabilidad en la asignación de pesos en comparación con C, y las tendencias pre-tratamiento no cumplen con la suposición de paralelismo tan bien como en C. En Ruby, las cruces que indican pesos igual a 0 son más frecuentes, sugiriendo que varias unidades de control no contribuyen al contrafactual. Una mayor variabilidad de pesos implica que algunas unidades de control tienen una influencia mucho mayor en la construcción del contrafactual, lo cual puede reflejar una mayor heterogeneidad en las características del grupo de control. Al comparar la \hyperref[fig:figura8]{Figura 8} (Java) y la \hyperref[fig:figura7]{Figura 7} (Python), se nota que Python presenta una mayor variabilidad en la asignación de pesos y una divergencia post-tratamiento más marcada. Los puntos en Python indican una mayor heterogeneidad en las unidades de control en comparación con Java. Una menor variabilidad de pesos, como se observa en Java, sugiere que las unidades de control son más homogéneas y que cada una contribuye de manera más equitativa a la construcción del contrafactual. Asimismo, la \hyperref[fig:figura12]{Figura 12} (C\#), \hyperref[fig:figura13]{Figura 13} (C++), \hyperref[fig:figura9]{Figura 9} (Go), \hyperref[fig:figura6]{Figura 6} (JavaScript), \hyperref[fig:figura11]{Figura 11} (PHP) y \hyperref[fig:figura5]{Figura 5} (TypeScript) muestran tendencias pre y post-tratamiento relativamente paralelas y homogéneas. Las asignaciones de pesos en CS y SDiD son bastante similares, con poca variabilidad y pocas cruces representando pesos igual a 0. Esto sugiere que, para estos lenguajes, las unidades de control son bastante homogéneas y la ponderación temporal no muestra grandes variaciones.
 
 
 \section{Conclusiones y recomendaciones de política}
@@ -410,51 +412,59 @@ Finalmente, la variable dependiente (\textit{unique pushers} en GitHub) mide can
 % Nota: en una versión final, las tablas y figuras deben aparecer
 % cerca del texto donde se las referencia, no en secciones separadas.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Estadísticos descriptivos del número de \textit{unique pushers} por lenguaje de programación en países del grupo de control (periodos pre y postratamiento)}
+\label{tab:tabla1}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lcccccccc}
 \toprule
-Lenguaje & Pretratamiento & Pretratamiento & Pretratamiento & Pretratamiento & Postratamiento & Postratamiento & Postratamiento & Postratamiento \\
+ & \multicolumn{4}{c}{Pretratamiento} & \multicolumn{4}{c}{Postratamiento} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+Lenguaje & Media & Mínimo & Máximo & Desv. Est. & Media & Mínimo & Máximo & Desv. Est. \\
 \midrule
- & Media & Mínimo & Máximo & Desv. Est. & Media & Mínimo & Máximo & Desv. Est. \\
-C & 4.88 & 0.00 & 210.10 & 22.41 & 8.73 & 0.00 & 215.00 & 36.00 \\
-C\# & 3.01 & 0.00 & 61.62 & 8.33 & 4.41 & 0.00 & 60.82 & 11.48 \\
-C++ & 5.28 & 0.00 & 211.28 & 22.82 & 8.84 & 0.00 & 216.88 & 36.25 \\
-Go & 1.74 & 0.00 & 149.67 & 12.29 & 4.85 & 0.00 & 142.99 & 24.10 \\
-Java & 6.59 & 0.00 & 271.23 & 25.82 & 10.81 & 0.00 & 233.03 & 39.55 \\
+C          & 4.88  & 0.00 & 210.10 & 22.41 & 8.73  & 0.00 & 215.00 & 36.00  \\
+C\#        & 3.01  & 0.00 &  61.62 &  8.33 & 4.41  & 0.00 &  60.82 & 11.48  \\
+C++        & 5.28  & 0.00 & 211.28 & 22.82 & 8.84  & 0.00 & 216.88 & 36.25  \\
+Go         & 1.74  & 0.00 & 149.67 & 12.29 & 4.85  & 0.00 & 142.99 & 24.10  \\
+Java       & 6.59  & 0.00 & 271.23 & 25.82 & 10.81 & 0.00 & 233.03 & 39.55  \\
 JavaScript & 18.84 & 0.00 & 640.90 & 63.46 & 34.29 & 0.00 & 605.37 & 102.79 \\
-PHP & 2.27 & 0.00 & 63.75 & 7.88 & 3.46 & 0.00 & 48.18 & 8.36 \\
-Python & 13.30 & 0.00 & 454.19 & 49.96 & 22.21 & 0.00 & 482.93 & 79.05 \\
-Ruby & 3.13 & 0.00 & 108.09 & 12.00 & 4.00 & 0.00 & 102.32 & 17.21 \\
-TypeScript & 3.46 & 0.00 & 224.19 & 17.55 & 11.79 & 0.00 & 275.74 & 45.14 \\
+PHP        & 2.27  & 0.00 &  63.75 &  7.88 & 3.46  & 0.00 &  48.18 &  8.36  \\
+Python     & 13.30 & 0.00 & 454.19 & 49.96 & 22.21 & 0.00 & 482.93 & 79.05  \\
+Ruby       & 3.13  & 0.00 & 108.09 & 12.00 & 4.00  & 0.00 & 102.32 & 17.21  \\
+TypeScript & 3.46  & 0.00 & 224.19 & 17.55 & 11.79 & 0.00 & 275.74 & 45.14  \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \smallskip\noindent\small\textit{\textit{Nota.} Estadísticos descriptivos (media, mínimo, máximo y desviación estándar) para países del grupo control en periodos pre y post tratamiento. Elaboración propia con datos de GitHub (2020–2023).      }\normalsize
 
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Estadísticos descriptivos del número de \textit{unique pushers} por lenguaje de programación en países del grupo de tratamiento (periodos pre y postratamiento)}
+\label{tab:tabla2}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lcccccccc}
 \toprule
-Lenguaje & Pretratamiento & Pretratamiento & Pretratamiento & Pretratamiento & Postratamiento & Postratamiento & Postratamiento & Postratamiento \\
+ & \multicolumn{4}{c}{Pretratamiento} & \multicolumn{4}{c}{Postratamiento} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+Lenguaje & Media & Mínimo & Máximo & Desv. Est. & Media & Mínimo & Máximo & Desv. Est. \\
 \midrule
- & Media & Mínimo & Máximo & Desv. Est. & Media & Mínimo & Máximo & Desv. Est. \\
-C & 7.16 & 0.00 & 82.05 & 10.91 & 10.91 & 0.00 & 117.10 & 14.88 \\
-C\# & 7.39 & 0.00 & 62.97 & 10.45 & 9.64 & 0.00 & 65.53 & 12.53 \\
-C++ & 7.77 & 0.00 & 85.60 & 11.64 & 10.82 & 0.00 & 115.69 & 15.10 \\
-Go & 3.63 & 0.00 & 47.68 & 6.83 & 4.05 & 0.00 & 76.18 & 7.91 \\
-Java & 13.58 & 0.00 & 118.42 & 16.28 & 16.14 & 0.00 & 156.79 & 20.07 \\
+C          &  7.16 & 0.00 &  82.05 & 10.91 & 10.91 & 0.00 & 117.10 & 14.88 \\
+C\#        &  7.39 & 0.00 &  62.97 & 10.45 &  9.64 & 0.00 &  65.53 & 12.53 \\
+C++        &  7.77 & 0.00 &  85.60 & 11.64 & 10.82 & 0.00 & 115.69 & 15.10 \\
+Go         &  3.63 & 0.00 &  47.68 &  6.83 &  4.05 & 0.00 &  76.18 &  7.91 \\
+Java       & 13.58 & 0.00 & 118.42 & 16.28 & 16.14 & 0.00 & 156.79 & 20.07 \\
 JavaScript & 51.00 & 0.00 & 348.52 & 56.30 & 58.98 & 0.00 & 455.33 & 62.87 \\
-PHP & 7.54 & 0.00 & 39.27 & 8.29 & 8.24 & 0.00 & 39.27 & 8.42 \\
-Python & 22.71 & 0.00 & 270.36 & 33.47 & 33.46 & 0.00 & 365.32 & 46.23 \\
-Ruby & 6.07 & 0.00 & 84.47 & 10.00 & 6.28 & 0.00 & 84.47 & 10.01 \\
+PHP        &  7.54 & 0.00 &  39.27 &  8.29 &  8.24 & 0.00 &  39.27 &  8.42 \\
+Python     & 22.71 & 0.00 & 270.36 & 33.47 & 33.46 & 0.00 & 365.32 & 46.23 \\
+Ruby       &  6.07 & 0.00 &  84.47 & 10.00 &  6.28 & 0.00 &  84.47 & 10.01 \\
 TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \smallskip\noindent\small\textit{\textit{Nota.} Estadísticos descriptivos (media, mínimo, máximo y desviación estándar) para países del grupo tratado en periodos pre y post tratamiento. Elaboración propia con datos de GitHub (2020–2023).      }\normalsize
@@ -465,233 +475,352 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 
 
 
+\clearpage
 \section{Figuras}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{language_distribution_gpt_available_2020_2023.png}
 \caption{Distribución de lenguajes de programación más populares en países con ChatGPT disponible (2020-2023)}
 \label{fig:figura1}
 \end{figure}
+\smallskip\noindent\small\textit{Nota. La figura presenta una distribución porcentual de la participación de los lenguajes más usados en ciencia de datos en los países cuyo acceso a ChatGPT está vigente. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 21280 observaciones. Por otra parte, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de años incluidos es 4. Respecto a la figura, se puede identificar un aumento constante de los lenguajes JavaScript, Python y TypeScript entre 2020 y 2023, siendo los más usados por los desarrolladores en esos períodos de tiempo, mientras que C\#, Ruby y Go resaltan por ser los menos utilizados en el mismo segmento temporal. Elaboración propia con datos de GitHub (2020--2023).}\normalsize
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{language_distribution_no_gpt_2020_2023.png}
 \caption{Distribución de lenguajes de programación más populares en países sin ChatGPT disponible (2020-2023)}
 \label{fig:figura2}
 \end{figure}
+\smallskip\noindent\small\textit{Nota. La figura presenta una distribución porcentual de la participación de los lenguajes más usados en ciencia de datos en los países cuyo acceso a ChatGPT está restringido. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 5120 observaciones. Asimismo, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de años incluidos es 4. Respecto a la figura, se puede identificar un aumento casi constante de los lenguajes JavaScript y Python entre 2020 y 2023, siendo los más usados por los desarrolladores en esos períodos de tiempo, mientras que PHP, Go y Ruby destacan por ser los menos utilizados en el mismo segmento temporal. Elaboración propia con datos de GitHub (2020--2023).}\normalsize
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{language_trend_2020_2023.png}
-\caption{Tendencia global de \textit{unique pushers} por lenguaje de programación (2020–2023)}
-\label{fig:figura3}
-\end{figure}
-
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{language_trend_gpt_countries_2020_2023.png}
 \caption{Distribución de \textit{unique pushers} según lenguaje en países con ChatGPT (2020–2023)}
-\label{fig:figura4}
+\label{fig:figura3}
 \end{figure}
+\smallskip\noindent\small\textit{Nota. La figura muestra una serie temporal sobre la dinámica de los \textit{unique pushers} de cada lenguaje de programación en países cuyo acceso a ChatGPT está disponible. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 160 observaciones. Además, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de trimestres analizados es 16. Sobre la figura, se puede observar un aumento alto y progresivo del número de desarrolladores que al menos han hecho un push en GitHub por cada 100 mil personas para los lenguajes de JavaScript, Python y Java, siendo los dos primeros con mayor representación. Los lenguajes restantes obtuvieron crecimientos muy ligeros o se mantuvieron constantes a lo largo del período en cuestión. Elaboración propia con datos de GitHub (2020--2023).}\normalsize
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{language_trend_no_gpt_countries_2020_2023.png}
 \caption{Distribución de \textit{unique pushers} según lenguaje en países sin ChatGPT (2020–2023)}
-\label{fig:figura5}
+\label{fig:figura4}
 \end{figure}
+\smallskip\noindent\small\textit{Nota. La figura muestra una serie temporal sobre la dinámica de los \textit{unique pushers} de cada lenguaje de programación en países cuyo acceso a ChatGPT está restringido. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 160 observaciones. Además, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de trimestres analizados es 16. Sobre la figura, se puede observar un aumento mediano y progresivo del número de desarrolladores que al menos han hecho un push en GitHub por cada 100 mil personas para los lenguajes de JavaScript, Python y TypeScript, siendo los dos primeros con mayor representación. Los lenguajes restantes obtuvieron crecimientos muy ligeros, se mantuvieron constantes o cayeron a lo largo del período en cuestión. Elaboración propia con datos de GitHub (2020--2023).}\normalsize
 
+% ── Figuras 5–14: tendencias y ponderaciones (DID, SC, SDiD) ─────────────────
+\begin{singlespacing}
+\setlength{\parskip}{0pt}
 
-% ── Figuras 6–15: tendencias y ponderaciones (DID, SC, SDiD) ─────────────────
-
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{TypeScriptdid_trends12.png}
-  \caption*{(a)–(b) DiD}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{TypeScriptsc_trends12.png}
-  \caption*{(c)–(d) SC}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{TypeScriptsdid_trends12.png}
-  \caption*{(e)–(f) SDiD}
-\end{subfigure}
+\begin{figure}[H]
 \caption{Tendencias y ponderaciones estimadas de TypeScript \textit{unique pushers} por cada 100 mil personas}
-\label{fig:figura6}
+\label{fig:figura5}
+\vspace{4pt}\centering
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{TypeScriptdidtrends12.png}
+  \caption*{(a) Tendencias estimadas de DiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{TypeScriptdidweights12.png}
+  \caption*{(b) Pesos DiD estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{TypeScriptsctrends12.png}
+  \caption*{(c) Tendencias estimadas de SC}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{TypeScriptscweights12.png}
+  \caption*{(d) Pesos SC estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{TypeScriptsdidtrends12.png}
+  \caption*{(e) Tendencias estimadas de SDiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{TypeScriptsdidweights12.png}
+  \caption*{(f) Pesos SDiD estimados}
+\end{subfigure}
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{JavaScriptdid_trends12.png}
-  \caption*{(a)–(b) DiD}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{JavaScriptsc_trends12.png}
-  \caption*{(c)–(d) SC}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{JavaScriptsdid_trends12.png}
-  \caption*{(e)–(f) SDiD}
-\end{subfigure}
+\begin{figure}[H]
 \caption{Tendencias y ponderaciones estimadas de JavaScript \textit{unique pushers} por cada 100 mil personas}
-\label{fig:figura7}
+\label{fig:figura6}
+\vspace{4pt}\centering
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{JavaScriptdidtrends12.png}
+  \caption*{(a) Tendencias estimadas de DiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{JavaScriptdidweights12.png}
+  \caption*{(b) Pesos DiD estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{JavaScriptsctrends12.png}
+  \caption*{(c) Tendencias estimadas de SC}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{JavaScriptscweights12.png}
+  \caption*{(d) Pesos SC estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{JavaScriptsdidtrends12.png}
+  \caption*{(e) Tendencias estimadas de SDiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{JavaScriptsdidweights12.png}
+  \caption*{(f) Pesos SDiD estimados}
+\end{subfigure}
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Pythondid_trends12.png}
-  \caption*{(a)–(b) DiD}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Pythonsc_trends12.png}
-  \caption*{(c)–(d) SC}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Pythonsdid_trends12.png}
-  \caption*{(e)–(f) SDiD}
-\end{subfigure}
+\begin{figure}[H]
 \caption{Tendencias y ponderaciones estimadas de Python \textit{unique pushers} por cada 100 mil personas}
-\label{fig:figura8}
+\label{fig:figura7}
+\vspace{4pt}\centering
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Pythondidtrends12.png}
+  \caption*{(a) Tendencias estimadas de DiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Pythondidweights12.png}
+  \caption*{(b) Pesos DiD estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Pythonsctrends12.png}
+  \caption*{(c) Tendencias estimadas de SC}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Pythonscweights12.png}
+  \caption*{(d) Pesos SC estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Pythonsdidtrends12.png}
+  \caption*{(e) Tendencias estimadas de SDiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Pythonsdidweights12.png}
+  \caption*{(f) Pesos SDiD estimados}
+\end{subfigure}
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Javadid_trends12.png}
-  \caption*{(a)–(b) DiD}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Javasc_trends12.png}
-  \caption*{(c)–(d) SC}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Javasdid_trends12.png}
-  \caption*{(e)–(f) SDiD}
-\end{subfigure}
+\begin{figure}[H]
 \caption{Tendencias y ponderaciones estimadas de Java \textit{unique pushers} por cada 100 mil personas}
-\label{fig:figura9}
+\label{fig:figura8}
+\vspace{4pt}\centering
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Javadidtrends12.png}
+  \caption*{(a) Tendencias estimadas de DiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Javadidweights12.png}
+  \caption*{(b) Pesos DiD estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Javasctrends12.png}
+  \caption*{(c) Tendencias estimadas de SC}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Javascweights12.png}
+  \caption*{(d) Pesos SC estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Javasdidtrends12.png}
+  \caption*{(e) Tendencias estimadas de SDiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Javasdidweights12.png}
+  \caption*{(f) Pesos SDiD estimados}
+\end{subfigure}
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Godid_trends12.png}
-  \caption*{(a)–(b) DiD}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Gosc_trends12.png}
-  \caption*{(c)–(d) SC}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Gosdid_trends12.png}
-  \caption*{(e)–(f) SDiD}
-\end{subfigure}
+\begin{figure}[H]
 \caption{Tendencias y ponderaciones estimadas de Go \textit{unique pushers} por cada 100 mil personas}
-\label{fig:figura10}
+\label{fig:figura9}
+\vspace{4pt}\centering
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Godidtrends12.png}
+  \caption*{(a) Tendencias estimadas de DiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Godidweights12.png}
+  \caption*{(b) Pesos DiD estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Gosctrends12.png}
+  \caption*{(c) Tendencias estimadas de SC}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Goscweights12.png}
+  \caption*{(d) Pesos SC estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Gosdidtrends12.png}
+  \caption*{(e) Tendencias estimadas de SDiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Gosdidweights12.png}
+  \caption*{(f) Pesos SDiD estimados}
+\end{subfigure}
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Rubydid_trends12.png}
-  \caption*{(a)–(b) DiD}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Rubysc_trends12.png}
-  \caption*{(c)–(d) SC}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Rubysdid_trends12.png}
-  \caption*{(e)–(f) SDiD}
-\end{subfigure}
+\begin{figure}[H]
 \caption{Tendencias y ponderaciones estimadas de Ruby \textit{unique pushers} por cada 100 mil personas}
-\label{fig:figura11}
+\label{fig:figura10}
+\vspace{4pt}\centering
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Rubydidtrends12.png}
+  \caption*{(a) Tendencias estimadas de DiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Rubydidweights12.png}
+  \caption*{(b) Pesos DiD estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Rubysctrends12.png}
+  \caption*{(c) Tendencias estimadas de SC}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Rubyscweights12.png}
+  \caption*{(d) Pesos SC estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Rubysdidtrends12.png}
+  \caption*{(e) Tendencias estimadas de SDiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Rubysdidweights12.png}
+  \caption*{(f) Pesos SDiD estimados}
+\end{subfigure}
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{PHPdid_trends12.png}
-  \caption*{(a)–(b) DiD}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{PHPsc_trends12.png}
-  \caption*{(c)–(d) SC}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{PHPsdid_trends12.png}
-  \caption*{(e)–(f) SDiD}
-\end{subfigure}
+\begin{figure}[H]
 \caption{Tendencias y ponderaciones estimadas de PHP \textit{unique pushers} por cada 100 mil personas}
-\label{fig:figura12}
+\label{fig:figura11}
+\vspace{4pt}\centering
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{PHPdidtrends12.png}
+  \caption*{(a) Tendencias estimadas de DiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{PHPdidweights12.png}
+  \caption*{(b) Pesos DiD estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{PHPsctrends12.png}
+  \caption*{(c) Tendencias estimadas de SC}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{PHPscweights12.png}
+  \caption*{(d) Pesos SC estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{PHPsdidtrends12.png}
+  \caption*{(e) Tendencias estimadas de SDiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{PHPsdidweights12.png}
+  \caption*{(f) Pesos SDiD estimados}
+\end{subfigure}
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{C_hashtagdid_trends12.png}
-  \caption*{(a)–(b) DiD}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{C_hashtagsc_trends12.png}
-  \caption*{(c)–(d) SC}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{C_hashtagsdid_trends12.png}
-  \caption*{(e)–(f) SDiD}
-\end{subfigure}
+\begin{figure}[H]
 \caption{Tendencias y ponderaciones estimadas de C\# \textit{unique pushers} por cada 100 mil personas}
-\label{fig:figura13}
+\label{fig:figura12}
+\vspace{4pt}\centering
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{C_hashtagdidtrends12.png}
+  \caption*{(a) Tendencias estimadas de DiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{C_hashtagdidweights12.png}
+  \caption*{(b) Pesos DiD estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{C_hashtagsctrends12.png}
+  \caption*{(c) Tendencias estimadas de SC}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{C_hashtagscweights12.png}
+  \caption*{(d) Pesos SC estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{C_hashtagsdidtrends12.png}
+  \caption*{(e) Tendencias estimadas de SDiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{C_hashtagsdidweights12.png}
+  \caption*{(f) Pesos SDiD estimados}
+\end{subfigure}
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{C_plusdid_trends12.png}
-  \caption*{(a)–(b) DiD}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{C_plussc_trends12.png}
-  \caption*{(c)–(d) SC}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{C_plussdid_trends12.png}
-  \caption*{(e)–(f) SDiD}
-\end{subfigure}
+\begin{figure}[H]
 \caption{Tendencias y ponderaciones estimadas de C++ \textit{unique pushers} por cada 100 mil personas}
-\label{fig:figura14}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Cdid_trends12.png}
-  \caption*{(a)–(b) DiD}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Csc_trends12.png}
-  \caption*{(c)–(d) SC}
-\end{subfigure}\\[6pt]
-\begin{subfigure}{\textwidth}\centering
-  \includegraphics[width=\textwidth]{Csdid_trends12.png}
-  \caption*{(e)–(f) SDiD}
+\label{fig:figura13}
+\vspace{4pt}\centering
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{C_plusdidtrends12.png}
+  \caption*{(a) Tendencias estimadas de DiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{C_plusdidweights12.png}
+  \caption*{(b) Pesos DiD estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{C_plussctrends12.png}
+  \caption*{(c) Tendencias estimadas de SC}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{C_plusscweights12.png}
+  \caption*{(d) Pesos SC estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{C_plussdidtrends12.png}
+  \caption*{(e) Tendencias estimadas de SDiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{C_plussdidweights12.png}
+  \caption*{(f) Pesos SDiD estimados}
 \end{subfigure}
-\caption{Tendencias y ponderaciones estimadas de C \textit{unique pushers} por cada 100 mil personas}
-\label{fig:figura15}
 \end{figure}
 
+\begin{figure}[H]
+\caption{Tendencias y ponderaciones estimadas de C \textit{unique pushers} por cada 100 mil personas}
+\label{fig:figura14}
+\vspace{4pt}\centering
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Cdidtrends12.png}
+  \caption*{(a) Tendencias estimadas de DiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Cdidweights12.png}
+  \caption*{(b) Pesos DiD estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Csctrends12.png}
+  \caption*{(c) Tendencias estimadas de SC}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Cscweights12.png}
+  \caption*{(d) Pesos SC estimados}
+\end{subfigure}\\[4pt]
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Csdidtrends12.png}
+  \caption*{(e) Tendencias estimadas de SDiD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\centering
+  \includegraphics[width=\linewidth]{Csdidweights12.png}
+  \caption*{(f) Pesos SDiD estimados}
+\end{subfigure}
+\end{figure}
+\end{singlespacing}
 
 \section{Anexos}
 
 \subsection*{Anexo 1: Disponibilidad global de ChatGPT}
 \textit{Listado de países según la disponibilidad de acceso al servicio de ChatGPT}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{chatgpt_global_availability_map.png}
 \caption{Mapa de disponibilidad global de ChatGPT}
@@ -700,12 +829,18 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 
 
 
-\begin{table}[htbp]
-\centering
-\begin{tabular}{lccc}
+\begin{longtable}{lccc}
+\caption*{Lista de países según disponibilidad de acceso a ChatGPT} \\
 \toprule
 ISO2 & País con GPT & ISO2 & País sin GPT \\
 \midrule
+\endfirsthead
+\multicolumn{4}{l}{\small\textit{(Continuación)}} \\[2pt]
+\toprule
+ISO2 & País con GPT & ISO2 & País sin GPT \\
+\midrule
+\endhead
+\endfoot
 AL & Albania & AF & Afghanistan \\
 DZ & Algeria & BH & Bahrain \\
 AD & Andorra & BY & Belarus \\
@@ -840,8 +975,7 @@ US & United States &  &  \\
 UY & Uruguay &  &  \\
 ZM & Zambia &  &  \\
 \bottomrule
-\end{tabular}
-\end{table}
+\end{longtable}
 
 
 \textbf{ANEXO 2}\\
@@ -854,7 +988,7 @@ En el presente estudio, no se incorporaron variables de control adicionales en l
 
 
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{lc}
 \toprule
@@ -872,7 +1006,7 @@ Final & 6480 \\
 
 
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{lcccc}
 \toprule
@@ -889,7 +1023,7 @@ group & quarter\_samples & year\_samples & final\_samples & lost\_q\_to\_y \\
 
 
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{lc}
 \toprule
@@ -907,7 +1041,7 @@ TW & 1 \\
 
 
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabular}{lcc}
 \toprule
@@ -933,6 +1067,7 @@ YE & 0 & 30 \\
 % Tabla controles — generada por Stata (Section 6 de all_code.py)
 \input{output/tables/gpt_impact_github_DataScience_controls.tex}
 
+\clearpage
 % ── Referencias bibliográficas ────────────────────────────────────────────────
 
 \phantomsection
