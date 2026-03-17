@@ -1,29 +1,29 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{\numberline {1}Agradecimientos}{1}{section.1}%
-\contentsline {section}{\numberline {2}Resumen}{2}{section.2}%
-\contentsline {section}{Abstract}{3}{section*.1}%
-\contentsline {section}{Índice de Figuras}{6}{section*.4}%
-\contentsline {section}{Índice de Tablas}{7}{section*.6}%
-\contentsline {section}{\numberline {3}Introducción}{8}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Planteamiento del problema}{8}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Motivación/Justificación}{9}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Hipótesis}{10}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Revisión de Literatura}{11}{section.4}%
-\contentsline {subsection}{\numberline {4.1}ChatGPT: Un Modelo de Lenguaje de Gran escala}{11}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Las versiones de ChatGPT}{11}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Capacidades de ChatGPT}{12}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Evidencia empírica}{13}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Datos}{17}{section.5}%
-\contentsline {section}{\numberline {6}Estadísticos descriptivos}{18}{section.6}%
-\contentsline {section}{\numberline {7}Metodología}{20}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Diferencia en Diferencias (DiD)}{20}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Control Sintético (CS)}{21}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Diferencia en Diferencias Sintética (SDiD)}{22}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Inferencia}{23}{subsection.7.4}%
+\contentsline {section}{\numberline {2}Resumen}{1}{section.2}%
+\contentsline {section}{Abstract}{2}{section*.1}%
+\contentsline {section}{Índice de Figuras}{4}{section*.4}%
+\contentsline {section}{Índice de Tablas}{5}{section*.6}%
+\contentsline {section}{\numberline {3}Introducción}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Planteamiento del problema}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Motivación/Justificación}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Hipótesis}{8}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Revisión de Literatura}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}ChatGPT: Un Modelo de Lenguaje de Gran escala}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Las versiones de ChatGPT}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Capacidades de ChatGPT}{10}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Evidencia empírica}{11}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Datos}{15}{section.5}%
+\contentsline {section}{\numberline {6}Estadísticos descriptivos}{17}{section.6}%
+\contentsline {section}{\numberline {7}Metodología}{19}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Diferencia en Diferencias (DiD)}{19}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Control Sintético (CS)}{20}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Diferencia en Diferencias Sintética (SDiD)}{21}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Inferencia}{22}{subsection.7.4}%
 \contentsline {section}{\numberline {8}Resultados}{23}{section.8}%
 \contentsline {section}{\numberline {9}Conclusiones y recomendaciones de política}{26}{section.9}%
 \contentsline {subsection}{\numberline {9.1}Limitaciones del estudio}{27}{subsection.9.1}%
 \contentsline {section}{\numberline {10}Tablas}{29}{section.10}%
 \contentsline {section}{\numberline {11}Figuras}{31}{section.11}%
-\contentsline {section}{\numberline {12}Anexos}{43}{section.12}%
-\contentsline {section}{Referencias bibliográficas}{51}{section*.32}%
+\contentsline {section}{Anexos}{44}{section*.25}%
+\contentsline {section}{Referencias bibliográficas}{52}{section*.32}%

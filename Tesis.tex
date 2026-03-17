@@ -7,12 +7,14 @@
 
 % ── typography ───────────────────────────────────────────────────────────────
 \usepackage{lmodern}
+\usepackage{helvet}                        % Arial-compatible sans-serif
+\renewcommand{\familydefault}{\sfdefault}  % use sans-serif as main font
 \usepackage{microtype}
 \usepackage{setspace}
 \onehalfspacing
 
 % ── page layout ──────────────────────────────────────────────────────────────
-\usepackage[top=2.5cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
 
 % ── math ─────────────────────────────────────────────────────────────────────
 \usepackage{amsmath,amssymb}
@@ -35,8 +37,8 @@
             linktoc=all, pdfstartview=FitH]{hyperref}
 
 % ── misc ─────────────────────────────────────────────────────────────────────
-\usepackage{parskip}
-\usepackage{float}       % [H] placement for figures
+\usepackage{indentfirst}  % indent first paragraph of each section
+\usepackage{float}        % [H] placement for figures
 
 % ── índices: nombres en español ──────────────────────────────────────────────
 \addto\captionsspanish{%
@@ -47,6 +49,10 @@
 
 % ─────────────────────────────────────────────────────────────────────────────
 \begin{document}
+
+% ── párrafos: sangría de 1 TAB, sin espacio entre párrafos ───────────────────
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
 
 % ── portada ──────────────────────────────────────────────────────────────────
 \newgeometry{top=4cm,bottom=2.5cm,left=3.5cm,right=2.5cm}
@@ -77,7 +83,11 @@ Janampa Aparicio, Karl Willem}\par
 \end{titlepage}
 \restoregeometry
 
+% ── paginación ────────────────────────────────────────────────────────────────
+% Carátula y Agradecimientos: sin número de página
+\pagestyle{empty}
 
+\begin{singlespacing}
 \section{Agradecimientos}
 
 La culminación de este trabajo representa para mí un profundo sentimiento de satisfacción y orgullo. Este logro marca un antes y un después en mi trayectoria académica, constituyéndose en un hito que atesoraré siempre. Deseo expresar mi más sincero agradecimiento a mi madre Magali, mi padre Jesús, mi hermano Mathías y mi abuela Luz, cuyo apoyo incondicional, confianza y constante motivación fueron fundamentales para perseverar frente a las adversidades. Asimismo, guardo un especial recuerdo de todas las personas que formaron parte de este camino en la PUCP (profesores, compañeros y personal administrativo), quienes contribuyeron a que esta etapa estuviera llena de aprendizajes, desafíos y valiosas oportunidades. Finalmente, agradezco de manera especial a mi gran amigo Karl y a nuestro asesor, el profesor Alexander Quispe, con quienes conformé un excelente equipo de trabajo para la elaboración de este producto final.
@@ -91,17 +101,25 @@ Agradezco a todas las personas que hicieron posible la culminación de esta tesi
 
 \textit{Karl Janampa}
 
+\end{singlespacing}
 \clearpage
 
+% Desde Resumen en adelante: números arábigos comenzando en 1
+\pagestyle{plain}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\begin{singlespacing}
 \section{Resumen}
 
 En los últimos años, la Inteligencia Artificial ha comenzado a transformar de manera significativa la producción de software y la forma en que los desarrolladores interactúan con herramientas de programación. En particular, la aparición de ChatGPT ha proporcionado a los programadores un nuevo recurso para el análisis, la generación y la depuración de código, así como para la resolución de problemas técnicos y la aceleración de procesos de aprendizaje. Este tipo de herramientas, basadas en modelos de lenguaje de gran escala, permite sugerir fragmentos de código, explicar funciones complejas y asistir en la documentación de proyectos, lo cual puede reducir los tiempos de desarrollo y mejorar la productividad de los equipos de programación. En este contexto, el objetivo del presente estudio es evaluar el impacto de ChatGPT en la producción de software durante el periodo comprendido entre el primer trimestre de 2020 y el cuarto trimestre de 2023. Para ello, se utiliza la base de datos GitHub Innovation Graph, que proporciona información agregada sobre actividad de desarrollo a nivel internacional. La estrategia empírica se basa en la aplicación de los métodos de Diferencias en Diferencias, Control Sintético y Diferencias en Diferencias Sintética con el fin de identificar cambios en la actividad de desarrollo asociados con la disponibilidad del servicio. Los resultados muestran un impacto diferenciado en el número de \textit{unique pushers} por cada 100 mil habitantes en los países con acceso a ChatGPT en comparación con aquellos donde el servicio no está disponible.
 
-
 \textbf{Palabras clave:} chatgpt, LLM, diferencia en diferencias sintética
 
+\end{singlespacing}
 \clearpage
 
+\begin{singlespacing}
 \phantomsection
 \addcontentsline{toc}{section}{Abstract}
 \section*{Abstract}
@@ -110,6 +128,11 @@ In recent years, Artificial Intelligence has begun to significantly transform so
 
 \textbf{Keywords:} chatgpt, LLM, synthetic difference in differences
 
+\end{singlespacing}
+
+% Índices: sin número de página visible (el contador sigue avanzando)
+\pagestyle{empty}
+\begin{singlespacing}
 \newpage
 \tableofcontents
 \newpage
@@ -123,9 +146,12 @@ In recent years, Artificial Intelligence has begun to significantly transform so
 \addcontentsline{toc}{section}{\listtablename}
 \listoftables
 \newpage
+\end{singlespacing}
 
+% Restaurar numeración para el contenido principal
+\pagestyle{plain}
 
-
+\clearpage
 \section{Introducción}
 
 
@@ -161,7 +187,7 @@ La restricción del acceso a tecnologías como ChatGPT en varios países debido 
 
 La disponibilidad de ChatGPT en un país influiría positivamente en el desarrollo de software en los diez lenguajes de programación más utilizados en ciencia de datos. Así, los países con acceso a ChatGPT experimentarían un aumento en el número de \textit{unique pushers} por cada 100 mil habitantes (es decir, desarrolladores que realizaron al menos un aporte de código en GitHub) en comparación con aquellos sin acceso al servicio. Asimismo, este efecto sería más notable en lenguajes como Python y JavaScript, debido a que el modelo ha sido entrenado con una gran cantidad de datos provenientes de estos lenguajes, incluyendo ejemplos de código, documentación técnica y foros especializados. Esta exposición durante el entrenamiento, sumada a su sintaxis accesible y la abundante disponibilidad de recursos, permite que ChatGPT ofrezca respuestas más precisas y útiles sobre la resolución de problemas de codificación en tiempo real.
 
-
+\clearpage
 \section{Revisión de Literatura}
 
 Los Modelos de Lenguaje Grande, cuya sigla en inglés es LLM (Large Language Models), son sistemas basados en la inteligencia artificial, capaces de generar y comprender textos en lenguaje natural o humano con un alto grado de precisión. Estos sistemas son entrenados con masivas cantidades de datos textuales con el propósito de aprender y mejorar patrones en diferentes actividades a un nivel profundo. Los LLM están vinculados con el Machine Learning, debido a que utilizan algoritmos avanzados, especialmente redes neuronales profundas, para el procesamiento y análisis de datos. Estos algoritmos son capaces de aprender y adaptarse, mejorando su rendimiento con cada entrenamiento y tiempo.
@@ -219,10 +245,10 @@ Hui et al. (2023) examinan el impacto de la IA generativa, como ChatGPT, sobre e
 
 La literatura revisada indica que ChatGPT y otros modelos de lenguaje grandes han influido significativamente en diversas áreas, desde la generación de datos públicos hasta la dinámica laboral y la productividad. Los estudios destacan tanto beneficios como desafíos, subrayando la importancia de un análisis equilibrado del impacto neto. Sin embargo, la mayoría de estos estudios no se han centrado específicamente en el impacto de ChatGPT en la productividad del desarrollo de software en diferentes lenguajes de programación. Este estudio se propone llenar ese vacío, proporcionando un análisis empírico confiable que considera los beneficios y desafíos de integrar ChatGPT en los flujos de trabajo de desarrollo de software.
 
-
+\clearpage
 \section{Datos}
 
-ChatGPT fue lanzado en noviembre de 2022 por el \textit{startup} estadounidense OpenAI, cuya sede se encuentra en San Francisco. Desde su lanzamiento, la herramienta ha alcanzado una adopción masiva, siendo utilizada por millones de personas a nivel global (Kreitmeir \& Raschky, 2023). Sin embargo, su disponibilidad no ha sido homogénea entre países, ya que algunos gobiernos han decidido restringir o bloquear su acceso debido a preocupaciones vinculadas a la protección de datos personales, la potencial difusión de desinformación, la ausencia de mecanismos efectivos de regulación de contenidos en línea y conflictos geopolíticos con Estados Unidos (BBC News Mundo, 2023; Ijaz, 2023). En el Anexo 1, se presenta un análisis detallado del estado de accesibilidad de ChatGPT por país.
+ChatGPT fue lanzado en noviembre de 2022 por el \textit{startup} estadounidense OpenAI, cuya sede se encuentra en San Francisco. Desde su lanzamiento, la herramienta ha alcanzado una adopción masiva, siendo utilizada por millones de personas a nivel global (Kreitmeir \& Raschky, 2023). Sin embargo, su disponibilidad no ha sido homogénea entre países, ya que algunos gobiernos han decidido restringir o bloquear su acceso debido a preocupaciones vinculadas a la protección de datos personales, la potencial difusión de desinformación, la ausencia de mecanismos efectivos de regulación de contenidos en línea y conflictos geopolíticos con Estados Unidos (BBC News Mundo, 2023; Ijaz, 2023). En el Anexo A, se presenta un análisis detallado del estado de accesibilidad de ChatGPT por país.
 
 Github es la plataforma de almacenamiento de código más grande en el mundo, utilizada para almacenar y trabajar conjuntamente en proyectos de codificación a través de repositorios. Para este trabajo, la totalidad de los datos mostrados provienen del base de datos Innovation Graph de GitHub, específicamente de la tabla \textit{languages}, la cual contiene a los \textit{unique pushers} a nivel de lenguaje de programación y por trimestre. Esta métrica, denominada \textit{unique pushers}, representa a la cantidad total de desarrolladores únicos que, al menos, realizaron un \textit{git}\textit{push} (subida de código) a un repositorio a GitHub con un lenguaje de programación determinado. Los datos abarcan desde el primer trimestre de 2020 hasta el cuarto trimestre de 2024, pero se tomará solo hasta el año 2023, y están desglosados por lenguaje de programación, incluyendo un total de 50 lenguajes. De estos, se han mantenido los 10 más populares en el campo de la ciencia de datos.
 
@@ -232,7 +258,7 @@ Además, el filtrado realizado al conjunto de datos inició con la exclusión de
 
 Las unidades tratadas, en el presente trabajo, corresponden a los países que originalmente comunicaron que tendrían acceso a la aplicación ChatGTP. Por tanto, durante el período de tiempo indicado, no se añadieron nuevos países al grupo de tratamiento. Esto constituye un diseño de bloques, como se describe en Arkhangelsky et al. (2021), lo cual facilita el cálculo de los estimadores. El diseño del trabajo incluye 133 unidades de tratamiento y 32 unidades de control; 12 períodos de pretratamiento, 4 períodos de tratamiento y un total de 26400 observaciones.
 
-
+\clearpage
 \section{Estadísticos descriptivos}
 
 En esta sección se presentan los estadísticos descriptivos fundamentales que caracterizan los datos utilizados en el estudio. Dichos datos, obtenidos del Innovation Graph de GitHub, incluyen información detallada sobre los \textit{unique pushers} a nivel de lenguaje de programación y trimestre. El análisis de las principales tendencias y patrones observados en los datos proporciona un contexto claro y comprensivo para la interpretación de los resultados subsecuentes.
@@ -247,7 +273,7 @@ En la \hyperref[fig:figura4]{Figura 4} correspondiente a países sin disponibili
 
 En conjunto, las cuatro figuras evidencian patrones similares en la evolución del ecosistema de desarrollo entre países con y sin disponibilidad de ChatGPT, aunque con diferencias en la magnitud del crecimiento observado. La \hyperref[fig:figura1]{Figura 1} y \hyperref[fig:figura2]{Figura 2} muestran que la popularidad de los principales lenguajes utilizados en ciencia de datos se mantiene dominada por JavaScript y Python en ambos grupos, mientras que TypeScript presenta el mayor incremento relativo durante el periodo analizado. Sin embargo, al considerar los valores absolutos presentados en las \hyperref[fig:figura3]{Figura 3} y \hyperref[fig:figura4]{Figura 4}, se observa que el aumento en el número de unique pushers es más pronunciado en los países con disponibilidad de ChatGPT, especialmente a partir del cuarto trimestre de 2022, coincidiendo con el lanzamiento público de la herramienta. En contraste, lenguajes más tradicionales como Java y Ruby muestran una pérdida relativa de participación o un crecimiento más moderado en ambos contextos.
 
-
+\clearpage
 \section{Metodología}
 
 En todos los métodos se asume el modelo de resultados potenciales. Para la unidad $i$ en el período $t$, el resultado observado se descompone como:
@@ -363,7 +389,7 @@ Los pesos temporales $\hat{\boldsymbol{\lambda}}^{sdid}$ se obtienen haciendo qu
 
 Los datos empleados en este estudio son exclusivos, puesto que permiten incluir un gran número de unidades tratadas, todas expuestas de manera simultánea. Esta característica brinda la oportunidad de aplicar el estimador \textit{bootstrap}, que Arkhangelsky et al. (2021) demostraron ser asintóticamente normal cuando se cuenta con un gran número de unidades tratadas. Para el diseño del algoritmo \textit{bootstrap} destinado a estimar el error estándar de los estimadores del ATE, se remite a Clarke et al. (2023).
 
-
+\clearpage
 \section{Resultados}
 
 En esta sección se presentan los resultados del análisis estadístico sobre el impacto de la disponibilidad de ChatGPT en la actividad de desarrollo de software, enfocándonos en los diez lenguajes de programación más utilizados. Para este análisis, hemos empleado tres enfoques metodológicos robustos: Diferencia en Diferencias, Control Sintético y Diferencia en Diferencias Sintéticas. El objetivo es medir el número de \textit{unique pushers} por cada 100 mil habitantes y evaluar las diferencias entre los países con acceso a ChatGPT y aquellos sin acceso. Los resultados, desglosados por lenguaje de programación y país, proporcionan una perspectiva detallada de cómo ChatGPT ha influido en la productividad de los desarrolladores a lo largo del tiempo. A continuación, se presentan las conclusiones clave, ilustradas mediante figuras comparativas y tablas de estadísticas descriptivas.
@@ -378,7 +404,7 @@ En el método DiD, representado en los paneles (b), todos los estados de control
 
 Al comparar la \hyperref[fig:figura14]{Figura 14} (C) y la \hyperref[fig:figura10]{Figura 10} (Ruby), se observa que Ruby muestra una mayor dispersión y variabilidad en la asignación de pesos en comparación con C, y las tendencias pre-tratamiento no cumplen con la suposición de paralelismo tan bien como en C. En Ruby, las cruces que indican pesos igual a 0 son más frecuentes, sugiriendo que varias unidades de control no contribuyen al contrafactual. Una mayor variabilidad de pesos implica que algunas unidades de control tienen una influencia mucho mayor en la construcción del contrafactual, lo cual puede reflejar una mayor heterogeneidad en las características del grupo de control. Al comparar la \hyperref[fig:figura8]{Figura 8} (Java) y la \hyperref[fig:figura7]{Figura 7} (Python), se nota que Python presenta una mayor variabilidad en la asignación de pesos y una divergencia post-tratamiento más marcada. Los puntos en Python indican una mayor heterogeneidad en las unidades de control en comparación con Java. Una menor variabilidad de pesos, como se observa en Java, sugiere que las unidades de control son más homogéneas y que cada una contribuye de manera más equitativa a la construcción del contrafactual. Asimismo, la \hyperref[fig:figura12]{Figura 12} (C\#), \hyperref[fig:figura13]{Figura 13} (C++), \hyperref[fig:figura9]{Figura 9} (Go), \hyperref[fig:figura6]{Figura 6} (JavaScript), \hyperref[fig:figura11]{Figura 11} (PHP) y \hyperref[fig:figura5]{Figura 5} (TypeScript) muestran tendencias pre y post-tratamiento relativamente paralelas y homogéneas. Las asignaciones de pesos en CS y SDiD son bastante similares, con poca variabilidad y pocas cruces representando pesos igual a 0. Esto sugiere que, para estos lenguajes, las unidades de control son bastante homogéneas y la ponderación temporal no muestra grandes variaciones.
 
-
+\clearpage
 \section{Conclusiones y recomendaciones de política}
 
 En conclusión, los resultados obtenidos mediante el modelo SDID indican que la disponibilidad de ChatGPT en la mayoría de los países del mundo ha tenido un impacto positivo y diferenciado en el desarrollo de software en varios lenguajes de programación. Específicamente, se observó un aumento notable en la cantidad de desarrolladores que utilizan lenguajes como JavaScript, Python, Java y TypeScript. Estos hallazgos sugieren que la asistencia proporcionada por ChatGPT motiva el desarrollo de software en estos lenguajes. Por otro lado, lenguajes como C\# no mostraron un impacto significativo, lo que sugiere la necesidad de investigaciones adicionales para entender las razones detrás de esta disparidad. Podría ser que factores específicos del lenguaje o del contexto de uso influyan en la efectividad de ChatGPT. Este impacto sobre el desarrollo de software muestra variaciones significativas entre diferentes contextos nacionales también resalta que el impacto de esta herramienta no es uniforme. Factores como la infraestructura tecnológica, la adopción de tecnologías y las políticas de apoyo al desarrollo de software pueden desempeñar un papel crucial en la determinación de la magnitud del impacto.
@@ -404,9 +430,7 @@ En cuarto lugar, la divergencia entre métodos observada para algunos lenguajes 
 
 Finalmente, la variable dependiente (\textit{unique pushers} en GitHub) mide cantidad de desarrolladores activos, pero no captura la intensidad del trabajo, la calidad del código ni el tipo de contribuciones realizadas. Además, los países del grupo de control con plataformas de control de versiones alternativas (como Gitee en China) podrían mostrar menor actividad en GitHub independientemente de ChatGPT, lo que introduciría un sesgo adicional en la comparación.
 
-
-
-
+\clearpage
 \section{Tablas}
 
 % Nota: en una versión final, las tablas y figuras deben aparecer
@@ -815,16 +839,22 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 \end{figure}
 \end{singlespacing}
 
-\section{Anexos}
+\clearpage
+% ── Anexos ───────────────────────────────────────────────────────────────────
+\phantomsection
+\addcontentsline{toc}{section}{Anexos}
 
-\subsection*{Anexo 1: Disponibilidad global de ChatGPT}
-\textit{Listado de países según la disponibilidad de acceso al servicio de ChatGPT}
+{\noindent\large\bfseries Anexo A}\\[4pt]
+{\noindent\bfseries Disponibilidad global de ChatGPT}\\[2pt]
+\noindent\textit{Listado de países según la disponibilidad de acceso al servicio de ChatGPT}
+
+\begin{flushleft}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{chatgpt_global_availability_map.png}
 \caption{Mapa de disponibilidad global de ChatGPT}
 \label{fig:mapa_gpt}
+\includegraphics[width=\textwidth]{chatgpt_global_availability_map.png}
 \end{figure}
 
 
@@ -977,9 +1007,13 @@ ZM & Zambia &  &  \\
 \bottomrule
 \end{longtable}
 
+\end{flushleft}
 
-\textbf{ANEXO 2}\\
-\textbf{Justificación de la no inclusión de variables de control}\\
+\clearpage
+{\noindent\large\bfseries Anexo B}\\[4pt]
+{\noindent\bfseries Justificación de la no inclusión de variables de control}
+
+\begin{flushleft}
 En el presente estudio, no se incorporaron variables de control adicionales en las estimaciones realizadas mediante los métodos Difference-in-Differences (DID), Synthetic Control (SC) y Synthetic Difference-in-Differences (SDID). Esta decisión se fundamenta principalmente en la limitada disponibilidad de variables comparables para todos los países incluidos en el análisis. Si bien existen diversas bases de datos internacionales con información potencialmente relevante, como las del Banco Mundial, muchas de ellas no ofrecen una cobertura completa o no son compatibles con la estructura de panel utilizada en esta investigación. La base de datos empleada se encuentra organizada en forma de un panel consistente para un conjunto específico de países y periodos, y al realizar el proceso de imputación para pasar de datos trimestrales a datos anuales, el número de observaciones se redujo de 26 400 a 6 600. Adicionalmente, la incorporación de variables provenientes de fuentes externas implicó nuevas pérdidas de muestras debido a valores faltantes, lo que redujo aún más la muestra disponible. Como se muestra en las dos primeras tablas, inicialmente se produjo la eliminación de tres países (dos pertenecientes al grupo de control y uno al grupo tratado), y posteriormente la presencia de valores vacíos en las variables adicionales generó una reducción aproximada de 340 observaciones adicionales, provocando además un desbalance entre los grupos de tratamiento y control. Esta reducción en el número de unidades disponibles compromete la estabilidad y validez de las estimaciones, especialmente en los métodos SC y SDID, los cuales requieren un conjunto amplio y depurado de países comparables para construir un contrafactual válido.
 
 
@@ -1067,12 +1101,16 @@ YE & 0 & 30 \\
 % Tabla controles — generada por Stata (Section 6 de all_code.py)
 \input{output/tables/gpt_impact_github_DataScience_controls.tex}
 
+\end{flushleft}
+
 \clearpage
 % ── Referencias bibliográficas ────────────────────────────────────────────────
 
 \phantomsection
 \addcontentsline{toc}{section}{Referencias bibliográficas}
+\begin{singlespacing}
 \begin{thebibliography}{}
+\setlength{\itemsep}{\baselineskip}  % un ENTER de espacio entre fuentes
 
 \bibitem{abadie2010}
 Abadie, A., Diamond, A., \& Hainmueller, A. J. (2010). Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California's Tobacco Control Program. \textit{Journal of the American Statistical Association, 105}(490), 493–505. \url{https://doi.org/10.1198/JASA.2009.AP08746}
@@ -1180,5 +1218,6 @@ Wu, Q., Zhuang, Q., Liu, Y., \& Han, L. (2024). Technology Shock of ChatGPT, Soc
 Zhang, C., \& Magerko, B. (2025). Generative AI literacy: A comprehensive framework for literacy and responsible use. \textit{arXiv}. \url{https://arxiv.org/abs/2504.19038}
 
 \end{thebibliography}
+\end{singlespacing}
 
 \end{document}
