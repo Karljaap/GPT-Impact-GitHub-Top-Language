@@ -410,6 +410,7 @@ LANG_TEX = {           # LaTeX display name in tables
 
 TREAT_START   = 12     # Q4-2022 = quarter index 12
 N_BOOT        = 100
+N_BOOT_ES     = 200    # bootstrap reps for event-study CIs (matrix ops only)
 QUARTER_LABELS_SP = [
     "2020-T1","2020-T2","2020-T3","2020-T4",
     "2021-T1","2021-T2","2021-T3","2021-T4",
@@ -549,6 +550,75 @@ def _plot_weights(omega, co_units, method, lang):
     return fname
 
 
+def _sdid_event_study(df_lang, omega, co_units, outcome_col='num_pushers_pc'):
+    """
+    Period-by-period gap for SDID event study using fixed omega weights.
+    Bootstraps treated units (no SDID re-fit) for 95% CI bands.
+    Returns: rel_periods, gap_est, lower_ci, upper_ci
+    """
+    all_q, pre_q, _, _, tr_units = _quarter_structure(df_lang)
+    T  = len(all_q)
+    T0 = len(pre_q)
+
+    def _piv(units):
+        return (
+            df_lang[df_lang['iso2_code'].isin(units)]
+            .pivot(index='iso2_code', columns='quarter', values=outcome_col)
+            .reindex(index=list(units), columns=all_q)
+            .fillna(0).values
+        )
+
+    Y_co = _piv(co_units)          # (N_co, T)
+    Y_tr = _piv(tr_units)          # (N_tr, T)
+    synthetic = omega @ Y_co       # (T,)
+
+    def _gap(Y_tr_):
+        g = Y_tr_.mean(axis=0) - synthetic
+        g = g - g[:T0].mean()      # normalise: pre-treatment mean → 0
+        return g
+
+    gap_est = _gap(Y_tr)
+
+    rng      = np.random.default_rng(42)
+    boot_mat = np.zeros((N_BOOT_ES, T))
+    for b in range(N_BOOT_ES):
+        idx = rng.integers(0, len(tr_units), size=len(tr_units))
+        boot_mat[b] = _gap(Y_tr[idx])
+
+    lower = np.percentile(boot_mat, 2.5,  axis=0)
+    upper = np.percentile(boot_mat, 97.5, axis=0)
+    rel   = [q - TREAT_START for q in all_q]
+    return rel, gap_est, lower, upper
+
+
+def _plot_event_study(lang, rel, gap, lower, upper):
+    """
+    Event study plot: SDID gap per period with 95% CI band.
+    Pre-treatment periods hovering near zero validates the SDID counterfactual.
+    """
+    fig, ax = plt.subplots(figsize=(10, 4))
+    x = np.array(rel)
+    ax.fill_between(x, lower, upper, alpha=0.20, color='steelblue', label='IC 95%')
+    ax.plot(x, gap, marker='o', color='steelblue', lw=1.8, ms=5, label='Gap SDID')
+    ax.axhline(0,    color='black', lw=0.8, ls='--', alpha=0.6)
+    ax.axvline(-0.5, color='red',   lw=1.2, ls='--', label='Inicio trat. (Q4-2022)')
+    if any(r < 0 for r in rel):
+        ax.axvspan(min(x) - 0.5, -0.5, alpha=0.06, color='grey')
+    ax.set_xticks(x)
+    xlabels = [str(r) if i % 2 == 0 else '' for i, r in enumerate(rel)]
+    ax.set_xticklabels(xlabels, fontsize=8)
+    ax.set_xlabel('Trimestres relativos al tratamiento (0 = Q4-2022)', fontsize=10)
+    ax.set_ylabel('Gap (Tratado \u2212 Control Sint\u00e9tico)', fontsize=10)
+    ax.set_title(f'{lang} \u2014 An\u00e1lisis de evento SDID (pre-tendencias)', fontsize=11)
+    ax.legend(fontsize=9, loc='upper left')
+    ax.grid(axis='y', ls='--', alpha=0.3)
+    plt.tight_layout()
+    fname = p("output", "figures", f"{LANG_SAFE[lang]}sdid_event_study.png")
+    fig.savefig(fname, dpi=150, bbox_inches='tight')
+    plt.close(fig)
+    return fname
+
+
 def _write_latex_table(results_dict, outpath, caption, label, note_text):
     """Write a threeparttable LaTeX file from results_dict."""
     lines = [
@@ -611,6 +681,7 @@ for lang in LANGUAGES_5:
     all_q, pre_q, post_q, co_units, tr_units = _quarter_structure(df_l)
 
     row: dict = {'nobs': n_obs, 'cmean': cmean}
+    omega_sdid, co_sdid = None, None
 
     # ── DID / SC / SDID: synthdid (d2cml-ai) ─────────────────────────────
     for method in ('did', 'sc', 'sdid'):
@@ -627,6 +698,17 @@ for lang in LANGUAGES_5:
         _plot_trends(df_l, omega, lam, att, se, method, lang,
                      all_q, pre_q, post_q, co_sd, tr_units)
         _plot_weights(omega, co_sd, method, lang)
+        if method == 'sdid':
+            omega_sdid, co_sdid = omega, co_sd
+
+    # ── SDID event study (pre-trend validation) ───────────────────────────
+    if omega_sdid is not None:
+        try:
+            rel, gap, lo, hi = _sdid_event_study(df_l, omega_sdid, co_sdid)
+            _plot_event_study(lang, rel, gap, lo, hi)
+            print(f"    Event study: saved")
+        except Exception as exc:
+            print(f"    Event study: failed ({exc})")
 
     results_5[lang] = row
 

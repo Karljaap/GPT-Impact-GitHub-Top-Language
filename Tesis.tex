@@ -399,7 +399,7 @@ La \hyperref[tab:tabla3]{Tabla 3} presenta el impacto de la disponibilidad de Ch
 
 Por otra parte, de la \hyperref[fig:figura5]{Figura 5} -- \hyperref[fig:figura14]{Figura 14}, se muestran las tendencias y ponderaciones estimadas de \textit{unique pushers} por cada 100 mil personas para diferentes lenguajes de programación, utilizando los métodos Diferencia en Diferencias (DiD), Control Sintético (CS) y Diferencia en Diferencias Sintética (SDiD). Cada figura se divide en seis paneles: los paneles (a) y (b) presentan los resultados del método DiD, los paneles (c) y (d) muestran los resultados del método CS, y los paneles (e) y (f) ilustran los resultados del método SDiD.
 
-En cuanto al ajuste y validación del contrafactual, el método DiD, como se observa en los paneles (a), muestra divergencia en las tendencias para el grupo tratado y el grupo de control antes del tratamiento, indicando que la suposición de tendencias paralelas no se cumple, llevando a estimaciones sesgadas del impacto del tratamiento. Por otro lado, el método CS, ilustrado en los paneles (c), muestra tendencias más similares antes del tratamiento, sugiriendo un mejor ajuste del contrafactual. Sin embargo, la falta de ponderación temporal puede afectar la precisión post-tratamiento. El método SDiD, representado en los paneles (e), muestra tendencias muy similares antes del tratamiento, validando así la construcción del contrafactual. El área sombreada en estos paneles indica la ponderación temporal, destacando la importancia relativa de cada periodo pre-tratamiento y mejorando la precisión del ajuste. La divergencia clara entre las líneas después del tratamiento sugiere un impacto significativo del tratamiento, indicando que SDiD ha proporcionado un ajuste preciso y confiable.
+En cuanto al ajuste y validación del contrafactual, el método DiD, como se observa en los paneles (a), muestra divergencia en las tendencias para el grupo tratado y el grupo de control antes del tratamiento, indicando que la suposición de tendencias paralelas no se cumple, llevando a estimaciones sesgadas del impacto del tratamiento. Por otro lado, el método CS, ilustrado en los paneles (c), muestra tendencias más similares antes del tratamiento, sugiriendo un mejor ajuste del contrafactual. Sin embargo, la falta de ponderación temporal puede afectar la precisión post-tratamiento. El método SDiD, representado en los paneles (e), muestra tendencias muy similares antes del tratamiento, validando así la construcción del contrafactual. El área sombreada en estos paneles indica la ponderación temporal, destacando la importancia relativa de cada periodo pre-tratamiento y mejorando la precisión del ajuste. La divergencia clara entre las líneas después del tratamiento sugiere un impacto significativo del tratamiento, indicando que SDiD ha proporcionado un ajuste preciso y confiable. Como validación adicional, el Anexo C presenta los gráficos de análisis de evento SDID para los diez lenguajes, donde el gap trimestral entre el grupo tratado y su control sintético se normaliza para que el período pre-tratamiento se concentre en torno a cero; la estabilidad de estos gaps pre-tratamiento confirma la adecuación del contrafactual construido.
 
 En el método DiD, representado en los paneles (b), todos los estados de control reciben el mismo peso, lo cual es indicado por la línea roja horizontal constante. Este método no considera la heterogeneidad entre las unidades de control, lo que puede ser una limitación significativa si las tendencias previas al tratamiento no son paralelas. Por otro lado, el método CS, ilustrado en los paneles (d), asigna pesos específicos a las unidades de control, permitiendo una mayor flexibilidad y una mejor adaptación a las características específicas de las unidades de control. La línea roja horizontal en estos paneles refleja la media ponderada de los pesos asignados, que puede cambiar dependiendo de la distribución de los pesos. En CS, las cruces representan los pesos igual a 0 y los puntos representan pesos mayores a cero, con el tamaño de los puntos indicando la magnitud del peso. El método SDiD, mostrado en los paneles (f), asigna pesos variables tanto a las unidades de control como a los periodos de tiempo, proporcionando una asignación de pesos más robusta y flexible. La línea roja horizontal en estos paneles también refleja la media ponderada de los pesos, cambiando significativamente debido a la ponderación adicional por el tiempo. En SDiD, las cruces representan los pesos igual a 0 y los puntos representan pesos mayores a cero, con el tamaño de los puntos indicando la magnitud del peso.
 
@@ -1134,6 +1134,74 @@ YE & 0 & 160 \\
 % Tabla controles — generada por all_code_python.py (Section 6)
 \setcounter{table}{3}
 \input{output/tables/gpt_impact_github_DataScience_controls.tex}
+
+\clearpage
+{\noindent\large\bfseries Anexo C}\\[4pt]
+{\noindent\bfseries Análisis de evento SDID: validación de pre-tendencias}
+
+\noindent Los siguientes gráficos muestran el gap período a período entre el promedio de los países tratados y el control sintético construido por SDID, usando los pesos $\omega$ fijados en la estimación principal. Cada serie es normalizada restando la media pre-tratamiento, de modo que los períodos anteriores a Q4-2022 deben concentrarse en torno a cero si el supuesto de tendencias paralelas se cumple. La banda sombreada corresponde al intervalo de confianza al 95\%, obtenido por \textit{bootstrap} sobre las unidades tratadas (200 replicaciones). La línea vertical roja señala el inicio del tratamiento (Q4-2022, período relativo $-0.5$).
+
+\bigskip
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{output/figures/Csdid_event_study.png}
+\caption{Análisis de evento SDID — C}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{output/figures/C_hashtagsdid_event_study.png}
+\caption{Análisis de evento SDID — C\#}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{output/figures/C_plussdid_event_study.png}
+\caption{Análisis de evento SDID — C++}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{output/figures/Gosdid_event_study.png}
+\caption{Análisis de evento SDID — Go}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{output/figures/Javasdid_event_study.png}
+\caption{Análisis de evento SDID — Java}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{output/figures/JavaScriptsdid_event_study.png}
+\caption{Análisis de evento SDID — JavaScript}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{output/figures/PHPsdid_event_study.png}
+\caption{Análisis de evento SDID — PHP}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{output/figures/Pythonsdid_event_study.png}
+\caption{Análisis de evento SDID — Python}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{output/figures/Rubysdid_event_study.png}
+\caption{Análisis de evento SDID — Ruby}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{output/figures/TypeScriptsdid_event_study.png}
+\caption{Análisis de evento SDID — TypeScript}
+\end{figure}
 
 \clearpage
 % ── Referencias bibliográficas ────────────────────────────────────────────────

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.16)  17 MAR 2026 15:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.16)  17 MAR 2026 16:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1313,72 +1313,146 @@ ignored error: Infinite glue shrinkage found in box being split [49] [50]
 
 ] [52] (output/tables/gpt_impact_github_DataScience_controls.tex) [53]
 [54]
-Underfull \hbox (badness 6001) in paragraph at lines 1151--1152
+<output/figures/Csdid_event_study.png, id=667, 714.9912pt x 282.3348pt>
+File: output/figures/Csdid_event_study.png Graphic file (type png)
+<use output/figures/Csdid_event_study.png>
+Package pdftex.def Info: output/figures/Csdid_event_study.png  used on input li
+ne 1148.
+(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
+<output/figures/C_hashtagsdid_event_study.png, id=668, 714.9912pt x 282.3348pt>
+
+File: output/figures/C_hashtagsdid_event_study.png Graphic file (type png)
+<use output/figures/C_hashtagsdid_event_study.png>
+Package pdftex.def Info: output/figures/C_hashtagsdid_event_study.png  used on 
+input line 1154.
+(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
+<output/figures/C_plussdid_event_study.png, id=669, 714.9912pt x 282.3348pt>
+File: output/figures/C_plussdid_event_study.png Graphic file (type png)
+<use output/figures/C_plussdid_event_study.png>
+Package pdftex.def Info: output/figures/C_plussdid_event_study.png  used on inp
+ut line 1160.
+(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
+ [55
+
+ <./output/figures/Csdid_event_study.png> <./output/figures/C_hashtagsdid_event
+_study.png>]
+<output/figures/Gosdid_event_study.png, id=678, 715.473pt x 282.3348pt>
+File: output/figures/Gosdid_event_study.png Graphic file (type png)
+<use output/figures/Gosdid_event_study.png>
+Package pdftex.def Info: output/figures/Gosdid_event_study.png  used on input l
+ine 1166.
+(pdftex.def)             Requested size: 386.96027pt x 152.69975pt.
+<output/figures/Javasdid_event_study.png, id=679, 714.9912pt x 282.3348pt>
+File: output/figures/Javasdid_event_study.png Graphic file (type png)
+<use output/figures/Javasdid_event_study.png>
+Package pdftex.def Info: output/figures/Javasdid_event_study.png  used on input
+ line 1172.
+(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
+<output/figures/JavaScriptsdid_event_study.png, id=680, 714.9912pt x 282.3348pt
+>
+File: output/figures/JavaScriptsdid_event_study.png Graphic file (type png)
+<use output/figures/JavaScriptsdid_event_study.png>
+Package pdftex.def Info: output/figures/JavaScriptsdid_event_study.png  used on
+ input line 1178.
+(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
+ [56 <./output/figures/C_plussdid_event_study.png> <./output/figures/Gosdid_eve
+nt_study.png> <./output/figures/Javasdid_event_study.png>]
+<output/figures/PHPsdid_event_study.png, id=691, 715.473pt x 282.3348pt>
+File: output/figures/PHPsdid_event_study.png Graphic file (type png)
+<use output/figures/PHPsdid_event_study.png>
+Package pdftex.def Info: output/figures/PHPsdid_event_study.png  used on input 
+line 1184.
+(pdftex.def)             Requested size: 386.96027pt x 152.69975pt.
+<output/figures/Pythonsdid_event_study.png, id=692, 714.9912pt x 282.3348pt>
+File: output/figures/Pythonsdid_event_study.png Graphic file (type png)
+<use output/figures/Pythonsdid_event_study.png>
+Package pdftex.def Info: output/figures/Pythonsdid_event_study.png  used on inp
+ut line 1190.
+(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
+<output/figures/Rubysdid_event_study.png, id=693, 714.9912pt x 282.3348pt>
+File: output/figures/Rubysdid_event_study.png Graphic file (type png)
+<use output/figures/Rubysdid_event_study.png>
+Package pdftex.def Info: output/figures/Rubysdid_event_study.png  used on input
+ line 1196.
+(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
+
+[57 <./output/figures/JavaScriptsdid_event_study.png> <./output/figures/PHPsdid
+_event_study.png> <./output/figures/Pythonsdid_event_study.png>]
+<output/figures/TypeScriptsdid_event_study.png, id=704, 714.9912pt x 282.3348pt
+>
+File: output/figures/TypeScriptsdid_event_study.png Graphic file (type png)
+<use output/figures/TypeScriptsdid_event_study.png>
+Package pdftex.def Info: output/figures/TypeScriptsdid_event_study.png  used on
+ input line 1202.
+(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
+ [58 <./output/figures/Rubysdid_event_study.png> <./output/figures/TypeScriptsd
+id_event_study.png>]
+Underfull \hbox (badness 6001) in paragraph at lines 1219--1220
 []\T1/phv/m/n/12 (+20) Abu Ja-ber, M., Be-ga-no-vic, A., & Abd Al-mis-reb, A. (
 2023). Methods
  []
 
 
-Underfull \hbox (badness 2894) in paragraph at lines 1151--1152
+Underfull \hbox (badness 2894) in paragraph at lines 1219--1220
 \T1/phv/m/n/12 (+20) and Ap-pli-ca-tions of ChatGPT in Soft-wa-re De-ve-lop-men
 t: A Li-te-ra-tu-re Re-
  []
 
 
-Underfull \hbox (badness 2486) in paragraph at lines 1151--1152
+Underfull \hbox (badness 2486) in paragraph at lines 1219--1220
 \T1/phv/m/n/12 (+20) view. \T1/phv/m/sl/12 (+20) Southeast Eu-ro-pe Jour-nal of
  Soft Com-pu-ting, 12\T1/phv/m/n/12 (+20) (1), 08^^U12. [][]$\T1/lmtt/m/n/12 ht
 tps :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1151--1152
+Underfull \hbox (badness 10000) in paragraph at lines 1219--1220
 \T1/lmtt/m/n/12 / / www . researchgate . net / publication / 370872615 _ Method
 s _ and _ Applications _
  []
 
-[55
+[59
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1178--1179
+Underfull \hbox (badness 10000) in paragraph at lines 1246--1247
 []\T1/phv/m/n/12 (+20) Coursera Staff. (2024). Most Po-pu-lar Pro-gram-ming Lan
 -gua-ges
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1178--1179
+Underfull \hbox (badness 10000) in paragraph at lines 1246--1247
 \T1/phv/m/n/12 (+20) in 2024 | Cour-se-ra. \T1/phv/m/sl/12 (+20) Cour-se-ra\T1/
 phv/m/n/12 (+20) . [][]$\T1/lmtt/m/n/12 https : / / www . coursera . org / arti
 cles /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1181--1182
+Underfull \hbox (badness 10000) in paragraph at lines 1249--1250
 []\T1/phv/m/n/12 (+20) Data Camp. (2023). Top pro-gram-ming lan-gua-ges for da-
 ta scien-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1181--1182
+Underfull \hbox (badness 10000) in paragraph at lines 1249--1250
 \T1/phv/m/n/12 (+20) tists in 2023 | Da-ta-Camp. \T1/phv/m/sl/12 (+20) Da-ta-ca
 mp\T1/phv/m/n/12 (+20) . [][]$\T1/lmtt/m/n/12 https : / / www . datacamp . com 
 / blog /
  []
 
-[56]
-Underfull \hbox (badness 6461) in paragraph at lines 1214--1215
+[60]
+Underfull \hbox (badness 6461) in paragraph at lines 1282--1283
 []\T1/phv/m/n/12 (+20) Martinez, J. (2023). Gue-rra abier-ta con-tra ChatGPT: e
 s-tos son los
  []
 
 
-Underfull \hbox (badness 5924) in paragraph at lines 1214--1215
+Underfull \hbox (badness 5924) in paragraph at lines 1282--1283
 \T1/phv/m/n/12 (+20) paí-ses que ya lo han prohi-bi-do. \T1/phv/m/sl/12 (+20) A
 BC\T1/phv/m/n/12 (+20) . [][]$\T1/lmtt/m/n/12 https : / / www . abc . es / tecn
 ologia /
  []
 
-[57] [58] (Tesis.aux
+[61] [62] (Tesis.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -1386,37 +1460,48 @@ LaTeX Info: Redefining \% on input line 11.
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
-Package rerunfilecheck Info: File `Tesis.out' has not changed.
-(rerunfilecheck)             Checksum: 7C866FB610D69A1D452FD14C78579E2F;4234.
+
+
+Package rerunfilecheck Warning: File `Tesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Tesis.out':
+(rerunfilecheck)             Before: 7C866FB610D69A1D452FD14C78579E2F;4234
+(rerunfilecheck)             After:  62719F035D6254BD522FBE6ADFD91C95;4234.
  ) 
 Here is how much of TeX's memory you used:
- 17595 strings out of 467871
- 297502 string characters out of 5418376
+ 17683 strings out of 467871
+ 301062 string characters out of 5418376
  750472 words of memory out of 5000000
- 45602 multiletter control sequences out of 15000+600000
+ 45675 multiletter control sequences out of 15000+600000
  734042 words of font info for 389 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,14n,79p,2586b,701s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
-b><C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pf
-b><C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pf
-b><C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb
-><C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb>
-<C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb
-><C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb>
-<C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C
-:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/
-Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/
-Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/U
-sers/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/U
-sers/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/U
-sers/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C
-:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb
-><C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a
-.pfb>
-Output written on Tesis.pdf (60 pages, 6856149 bytes).
+
+pdfTeX warning (dest): name{section*.34} has been referenced but does not exist
+, replaced by a fixed one
+
+<C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb>
+<C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb>
+<C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb>
+<C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><
+C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C
+:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><
+C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C
+:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/
+Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Us
+ers/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Us
+ers/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Use
+rs/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Use
+rs/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Use
+rs/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/
+Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><
+C:/Users/ronco/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.p
+fb>
+Output written on Tesis.pdf (64 pages, 7606579 bytes).
 PDF statistics:
- 882 PDF objects out of 1000 (max. 8388607)
- 153 named destinations out of 1000 (max. 500000)
- 73771 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 932 PDF objects out of 1000 (max. 8388607)
+ 168 named destinations out of 1000 (max. 500000)
+ 73821 words of extra memory for PDF output out of 74296 (max. 10000000)
 
