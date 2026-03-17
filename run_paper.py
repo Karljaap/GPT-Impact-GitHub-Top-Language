@@ -60,6 +60,8 @@ TABLE_LABELS = {
         "tab:tabla3",
     os.path.join(BASE_DIR, "output", "tables", "gpt_impact_github_DataScience_controls.tex"):
         "tab:tabla4",
+    os.path.join(BASE_DIR, "output", "tables", "placebo_test.tex"):
+        "tab:tabla5",
 }
 
 for fpath, label in TABLE_LABELS.items():

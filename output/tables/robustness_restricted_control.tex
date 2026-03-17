@@ -1,0 +1,47 @@
+\begin{table}[H]\centering
+\caption{Robustez: SDID con grupo de control restringido (excluye censores severos)}
+\label{tab:tabla6}
+\begin{threeparttable}
+{\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{lcccc}
+\toprule
+Lenguaje & \shortstack{ATT Restringido \\ (SE)} & Sig. & \shortstack{ATT Principal \\ (SE)} & \shortstack{Diferencia \\ (\%)} \\
+\midrule
+C & 1.244** & & 1.276*** & -2.5\% \\
+         & (0.590) & & (0.459) & \\
+\addlinespace
+C\# & 0.965** & & 0.443 & +117.9\% \\
+         & (0.475) & & (0.464) & \\
+\addlinespace
+C++ & 1.625*** & & 1.131*** & +43.6\% \\
+         & (0.564) & & (0.293) & \\
+\addlinespace
+Go & 0.608 & & 0.720*** & -15.6\% \\
+         & (nan) & & (0.247) & \\
+\addlinespace
+Java & 2.629*** & & 1.725** & +52.4\% \\
+         & (0.922) & & (0.835) & \\
+\addlinespace
+JavaScript & 4.376*** & & 8.303*** & -47.3\% \\
+         & (1.681) & & (2.974) & \\
+\addlinespace
+PHP & 1.004** & & 0.916** & +9.6\% \\
+         & (0.405) & & (0.422) & \\
+\addlinespace
+Python & 5.446*** & & 4.525*** & +20.4\% \\
+         & (1.373) & & (1.057) & \\
+\addlinespace
+Ruby & 0.569** & & 0.808*** & -29.6\% \\
+         & (0.246) & & (0.282) & \\
+\addlinespace
+TypeScript & 2.887*** & & 3.078*** & -6.2\% \\
+         & (0.712) & & (0.833) & \\
+\addlinespace
+\bottomrule
+\end{tabular}}
+\begin{tablenotes}
+\footnotesize
+\item \textit{Nota.} Estimaciones SDID con grupo de control restringido: se excluyen los 9 países clasificados como \textit{Not Free} con puntaje inferior a 25 en el índice \textit{Freedom on the Net} 2022 (Freedom House): China, Irán, Siria, Bielorrusia, Rusia, Cuba, Tayikistán, Vietnam y Turkmenistán. El grupo de control pasa de 29 a 20 países. Las especificaciones principales corresponden al Cuadro 3. Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). * p$<$0.10, ** p$<$0.05, *** p$<$0.01.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

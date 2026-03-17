@@ -1,0 +1,27 @@
+\begin{table}[H]\centering
+\caption{Pesos $\omega$ SDID para países con restricciones extremas de internet}
+\label{tab:omega_weights}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccccccccr}
+\toprule
+País & C & C\# & C++ & Go & Java & JS & PHP & Py & Ruby & TS & Promedio \\
+\midrule
+Bielorrusia & 0.054 & 0.052 & 0.042 & 0.068 & 0.052 & 0.094 & 0.035 & 0.076 & 0.080 & 0.205 & 0.076 \\
+Rusia & 0.064 & 0.052 & 0.048 & 0.164 & 0.053 & 0.066 & 0.035 & 0.075 & 0.052 & 0.101 & 0.071 \\
+Vietnam & 0.066 & 0.040 & 0.049 & 0.115 & 0.050 & 0.106 & 0.036 & 0.043 & 0.041 & 0.135 & 0.068 \\
+Irán & 0.031 & 0.032 & 0.034 & 0.055 & 0.031 & 0.032 & 0.034 & 0.035 & 0.035 & 0.031 & 0.035 \\
+Cuba & 0.027 & 0.037 & 0.031 & 0.015 & 0.032 & 0.021 & 0.034 & 0.035 & 0.025 & 0.027 & 0.029 \\
+Siria & 0.027 & 0.032 & 0.033 & 0.015 & 0.030 & 0.019 & 0.034 & 0.027 & 0.025 & 0.009 & 0.025 \\
+Turkmenistán & 0.022 & 0.031 & 0.031 & 0.015 & 0.031 & 0.018 & 0.034 & 0.024 & 0.025 & 0.006 & 0.024 \\
+Tayikistán & 0.022 & 0.031 & 0.031 & 0.008 & 0.031 & 0.016 & 0.034 & 0.024 & 0.025 & 0.006 & 0.023 \\
+China & 0.008 & 0.030 & 0.027 & 0.000 & 0.024 & 0.003 & 0.034 & 0.018 & 0.042 & 0.005 & 0.019 \\
+\midrule
+\textit{Resto de controles (N=20)} & 0.034 & 0.033 & 0.034 & 0.027 & 0.033 & 0.031 & 0.034 & 0.032 & 0.032 & 0.024 & 0.032 \\
+\bottomrule
+\end{tabular}%
+}
+\begin{minipage}{\textwidth}
+\smallskip\footnotesize
+\textit{Nota.} Pesos $\omega$ asignados por el estimador SDID a cada país del grupo de control. Los países listados fueron clasificados como \textit{Not Free} con puntaje inferior a 25 en el índice \textit{Freedom on the Net} 2022 (Freedom House). Un peso cercano a cero implica que el país no contribuye a la construcción del contrafactual sintético. JS = JavaScript, Py = Python, TS = TypeScript.
+\end{minipage}
+\end{table}

@@ -1,8 +1,10 @@
-\begin{table}[htbp]\centering
+\begin{table}[H]\centering
 \caption{Impacto de ChatGPT en el n\'{u}mero de programadores (con controles)}
 \label{tab:tabla4}
 \begin{threeparttable}
+\setlength{\TPTminimum}{\linewidth}
 {\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\small
 \begin{tabular}{lccccc}
 \toprule
 Lenguaje & DID & SC & SDID & Obs. & \shortstack{Baseline \\ Mean} \\
@@ -41,7 +43,7 @@ TypeScript & 7.162*** & 3.630*** & 3.038*** & 2544 & 8.571 \\
 \end{tabular}}
 \begin{tablenotes}
 \footnotesize
-\item \textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes. Las columnas DID, SC y SDID corresponden a Diferencias en Diferencias, Control Sint\'{e}tico (Abadie et al., 2010) y Diferencias en Diferencias Sint\'{e}tica (Arkhangelsky et al., 2021), respectivamente, todos estimados mediante la librer\'{i}a \texttt{synthdid} (Clarke et al., 2023). Se incluyen como variables de control el porcentaje de individuos que usan computadora y el porcentaje que usa internet, extra\'{i}das del Banco Mundial, incorporadas mediante un \textit{partial-out} de efectos fijos de unidad y tiempo. Los errores est\'{a}ndar se obtienen por \textit{bootstrap}. El periodo de tratamiento inicia en Q4-2022. Fuentes: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}); Banco Mundial, Indicadores de Desarrollo Mundial. Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01
+\item \textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes. Las columnas DID, SC y SDID corresponden a Diferencias en Diferencias, Control Sint\'{e}tico (Abadie et al., 2010) y Diferencias en Diferencias Sint\'{e}tica (Arkhangelsky et al., 2021), respectivamente, todos estimados mediante la librer\'{i}a \texttt{synthdid} (Clarke et al., 2023). Se incluyen como variables de control el porcentaje de individuos que usan computadora y el porcentaje que usa internet, extra\'{i}das del Banco Mundial, incorporadas mediante un \textit{partial-out} de efectos fijos de unidad y tiempo. Los errores est\'{a}ndar se obtienen por \textit{bootstrap}. El periodo de tratamiento inicia en Q4-2022. Fuentes: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}); Banco Mundial, Indicadores de Desarrollo Mundial. Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. * p$<$0.10, ** p$<$0.05, *** p$<$0.01.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

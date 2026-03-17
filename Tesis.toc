@@ -19,11 +19,13 @@
 \contentsline {subsection}{\numberline {7.1}Diferencia en Diferencias (DiD)}{19}{subsection.7.1}%
 \contentsline {subsection}{\numberline {7.2}Control Sintético (CS)}{20}{subsection.7.2}%
 \contentsline {subsection}{\numberline {7.3}Diferencia en Diferencias Sintética (SDiD)}{21}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Inferencia}{22}{subsection.7.4}%
-\contentsline {section}{\numberline {8}Resultados}{23}{section.8}%
-\contentsline {section}{\numberline {9}Conclusiones y recomendaciones de política}{26}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Limitaciones del estudio}{27}{subsection.9.1}%
-\contentsline {section}{\numberline {10}Tablas}{29}{section.10}%
-\contentsline {section}{\numberline {11}Figuras}{32}{section.11}%
-\contentsline {section}{Anexos}{46}{section*.26}%
-\contentsline {section}{Referencias bibliográficas}{59}{section*.44}%
+\contentsline {subsection}{\numberline {7.4}Estrategia de identificación}{22}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Inferencia}{23}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Resultados}{24}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Análisis de robustez e identificación}{27}{subsection.8.1}%
+\contentsline {section}{\numberline {9}Conclusiones y recomendaciones de política}{29}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Limitaciones del estudio}{30}{subsection.9.1}%
+\contentsline {section}{\numberline {10}Tablas}{32}{section.10}%
+\contentsline {section}{\numberline {11}Figuras}{38}{section.11}%
+\contentsline {section}{Anexos}{52}{section*.31}%
+\contentsline {section}{Referencias bibliográficas}{65}{section*.49}%

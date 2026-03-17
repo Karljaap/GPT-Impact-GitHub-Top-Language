@@ -113,7 +113,7 @@ Agradezco a todas las personas que hicieron posible la culminación de esta tesi
 \begin{singlespacing}
 \section{Resumen}
 
-En los últimos años, la Inteligencia Artificial ha comenzado a transformar de manera significativa la producción de software y la forma en que los desarrolladores interactúan con herramientas de programación. En particular, la aparición de ChatGPT ha proporcionado a los programadores un nuevo recurso para el análisis, la generación y la depuración de código, así como para la resolución de problemas técnicos y la aceleración de procesos de aprendizaje. Este tipo de herramientas, basadas en modelos de lenguaje de gran escala, permite sugerir fragmentos de código, explicar funciones complejas y asistir en la documentación de proyectos, lo cual puede reducir los tiempos de desarrollo y mejorar la productividad de los equipos de programación. En este contexto, el objetivo del presente estudio es evaluar el impacto de ChatGPT en la producción de software durante el periodo comprendido entre el primer trimestre de 2020 y el cuarto trimestre de 2023. Para ello, se utiliza la base de datos GitHub Innovation Graph, que proporciona información agregada sobre actividad de desarrollo a nivel internacional. La estrategia empírica se basa en la aplicación de los métodos de Diferencias en Diferencias, Control Sintético y Diferencias en Diferencias Sintética con el fin de identificar cambios en la actividad de desarrollo asociados con la disponibilidad del servicio. Los resultados muestran un impacto diferenciado en el número de \textit{unique pushers} por cada 100 mil habitantes en los países con acceso a ChatGPT en comparación con aquellos donde el servicio no está disponible.
+La aparición de ChatGPT ha transformado la forma en que los desarrolladores interactúan con herramientas de programación al proporcionar asistencia automatizada para la generación, análisis y depuración de código, reduciendo las barreras de entrada al desarrollo profesional de software. Este estudio evalúa el impacto causal de la disponibilidad de ChatGPT sobre la actividad de desarrollo durante el período Q1-2020--Q4-2023, utilizando la base de datos GitHub Innovation Graph, que registra trimestralmente el número de \textit{unique pushers} por cada 100 mil habitantes a nivel de país y lenguaje de programación. La estrategia empírica explota la variación exógena generada por las decisiones gubernamentales de restringir el acceso al servicio, aplicando los métodos de Diferencias en Diferencias, Control Sintético y Diferencias en Diferencias Sintética (SDID) sobre diez lenguajes de programación. Las tendencias paralelas pretratamiento se validan mediante inspección visual de las trayectorias del contrafactual y gráficos de análisis de evento. Los resultados muestran un impacto positivo y estadísticamente significativo: el estimador SDID documenta incrementos de entre 15\% y 36\% en el número de programadores activos en GitHub respecto al período pretratamiento, con los mayores efectos relativos en TypeScript (35.9\%), Go (32.3\%) y JavaScript (22.7\%). Estos efectos operan principalmente por el margen extensivo, atrayendo nuevos programadores a plataformas colaborativas. La robustez se verifica mediante tres ejercicios complementarios: prueba placebo con tratamiento ficticio en el período pretratamiento, re-estimación con grupo de control restringido que excluye nueve países con restricciones sistémicas de internet y produce resultados cualitativamente idénticos, y análisis de pesos endógenos del estimador SDID.
 
 \textbf{Palabras clave:} chatgpt, LLM, diferencia en diferencias sintética
 
@@ -125,7 +125,7 @@ En los últimos años, la Inteligencia Artificial ha comenzado a transformar de 
 \addcontentsline{toc}{section}{Abstract}
 \section*{Abstract}
 
-In recent years, Artificial Intelligence has begun to significantly transform software production and the way developers interact with programming tools. In particular, the emergence of ChatGPT has provided programmers with a new resource for code analysis, generation, and debugging, as well as for solving technical problems and accelerating learning processes. Tools based on large language models can suggest code snippets, explain complex functions, assist in the documentation of projects, and support developers during different stages of the software development cycle. These capabilities may reduce development time, improve productivity, and facilitate knowledge acquisition among programmers with different levels of experience. Within this context, the objective of this study is to evaluate the impact of ChatGPT on software production during the period from the first quarter of 2020 to the fourth quarter of 2023. To accomplish this, the study uses the GitHub Innovation Graph database, which provides aggregated information on software development activity across countries. The empirical strategy relies on the application of Difference-in-Differences, Synthetic Control, and Synthetic Difference-in-Differences methods in order to identify changes in development activity associated with the availability of the service. The results show a differentiated impact on the number of \textit{unique pushers} per 100,000 inhabitants in countries that have access to ChatGPT compared with those where the service is not available.
+The emergence of ChatGPT has transformed how developers interact with programming tools by providing automated assistance for code generation, analysis, and debugging. This study causally evaluates the impact of ChatGPT availability on software development activity over Q1-2020--Q4-2023, using the GitHub Innovation Graph database, which provides quarterly, country-level records of the number of \textit{unique pushers} per 100,000 inhabitants across programming languages. The empirical strategy exploits the exogenous variation generated by governmental decisions to restrict access to the service, applying Difference-in-Differences, Synthetic Control, and Synthetic Difference-in-Differences (SDID) methods to ten widely used programming languages. Pre-treatment parallel trends are validated through visual inspection of counterfactual trajectories and event study graphs. Results show a positive and statistically significant impact: the SDID estimator documents increases of between 15\% and 36\% in the number of active GitHub developers relative to the pre-treatment baseline, with the largest relative effects in TypeScript (35.9\%), Go (32.3\%), and JavaScript (22.7\%). These effects operate primarily through the extensive margin, reducing barriers to entry into software development and attracting new programmers to collaborative platforms. Robustness is further verified through three complementary exercises: a placebo test with fictitious treatment assigned in the pre-treatment period, a re-estimation with a restricted control group excluding nine countries with systematic internet restrictions that yields qualitatively identical results, and an analysis of the endogenous unit weights of the SDID estimator.
 
 \textbf{Keywords:} chatgpt, LLM, synthetic difference in differences
 
@@ -162,9 +162,9 @@ Antes de la introducción de ChatGPT, la industria del software ya estaba compro
 
 La arquitectura \textit{transformer} se ha vuelto fundamental en dicho subcampo, debido a que optimiza tanto el entrenamiento como la implementación de modelos centrados en la interacción entre palabras en el lenguaje natural. OpenAI ha liderado la construcción de esta arquitectura con el desarrollo de la serie de modelos GPT (Generative Pretrained Transformer), ejemplos extraordinarios de Grandes Modelos de Lingüísticos (LLM). Dichos modelos, diseñados para procesar y generar texto coherente y relevante, han sido implementados en ChatGPT, un chatbot que aprovecha su habilidad para generar respuestas basadas en una amplia base de datos de temas variados, incluyendo consultas de programación (OpenAI, 2018). Lo cual ha impulsado su uso en la industria del software al cumplir el rol de orientador y asistente sobre diferentes lenguajes de programación.
 
-Desafortunadamente, se ha identificado a un grupo que no posee la disponibilidad del servicio del chatbot. La razón principal de ello se debe al establecimiento de restricciones de acceso a ChatGPT en países como China, Irán, Siria, Rusia, Corea del Norte, Cuba e Italia, los cuales han sido promovidos por preocupaciones de seguridad nacional, privacidad o cumplimiento de regulaciones locales (Martínez, 2023). Al respecto, algunos autores han señalado que esta limitación ha inhibido la innovación y provocado que estas regiones se mantengan atrasadas en la economía digital global, dado que los desarrolladores de software no han podido aprovechar los beneficios del chatbot (Del Rio-Chanona et. al, 2023).
+Desafortunadamente, se ha identificado a un grupo que no posee la disponibilidad del servicio del chatbot. La razón principal de ello se debe al establecimiento de restricciones de acceso a ChatGPT en países como China, Irán, Siria, Rusia, Corea del Norte, Cuba e Italia, los cuales han sido promovidos por preocupaciones de seguridad nacional, privacidad o cumplimiento de regulaciones locales (Martínez, 2023). Al respecto, algunos autores han señalado que esta limitación ha inhibido la innovación y provocado que estas regiones se mantengan atrasadas en la economía digital global, dado que los desarrolladores de software no han podido aprovechar los beneficios del chatbot (Del Rio-Chanona et al., 2023).
 
-Ante ello, recientes estudios han manifestado los desafíos de ChatGPT. Gallea (2023) observa un rendimiento deficiente del chatbot en responder a consultas complejas de código en los lenguajes de programación Python y R. Brynjolfsson et al. (2023) mencionan que las alucinaciones son responsables de que herramientas populares basadas en modelos de lenguaje, como ChatGPT, generen información falsa o engañosa de forma impredecible. Demirci et. al (2024) ponen de relieve el problema de la reducción de oferta de trabajos ligados a la codificación para trabajadores independientes y enfatizan la necesidad de encontrar soluciones. Del Río-Chanona et al. (2023) advierten que, al proporcionar información de manera eficiente y privada, ChatGPT puede reducir significativamente la disponibilidad de datos públicos, lo que plantea un desafío para la obtención de datos de entrenamiento para futuros modelos y pone en cuestión la sostenibilidad a largo plazo de estas tecnologías avanzadas.
+Ante ello, recientes estudios han manifestado los desafíos de ChatGPT. Gallea (2023) observa un rendimiento deficiente del chatbot en responder a consultas complejas de código en los lenguajes de programación Python y R. Brynjolfsson et al. (2023) mencionan que las alucinaciones son responsables de que herramientas populares basadas en modelos de lenguaje, como ChatGPT, generen información falsa o engañosa de forma impredecible. Demirci et al. (2024) ponen de relieve el problema de la reducción de oferta de trabajos ligados a la codificación para trabajadores independientes y enfatizan la necesidad de encontrar soluciones. Del Río-Chanona et al. (2023) advierten que, al proporcionar información de manera eficiente y privada, ChatGPT puede reducir significativamente la disponibilidad de datos públicos, lo que plantea un desafío para la obtención de datos de entrenamiento para futuros modelos y pone en cuestión la sostenibilidad a largo plazo de estas tecnologías avanzadas.
 
 A pesar de la popularidad y la rápida adopción de herramientas de IA como ChatGPT en el desarrollo de software, existe una notable falta de investigaciones empíricas que evalúen de manera sistemática su impacto real. Este estudio se propone llenar ese vacío y busca determinar si ChatGPT ha contribuido a acelerar la generación de software en los últimos años. Además, se examinarán tanto los beneficios como los desafíos asociados al uso de la generación automatizada de código. Con este enfoque, se pretende proporcionar una evaluación integral que resalte los beneficios y también los riesgos potenciales, ofreciendo orientación clara para futuras políticas y prácticas sobre la integración de IA en la industria.
 
@@ -197,7 +197,7 @@ Los Modelos de Lenguaje Grande, cuya sigla en inglés es LLM (Large Language Mod
 
 \subsection{ChatGPT: Un Modelo de Lenguaje de Gran escala}
 
-Según Tlili et al. (2023), ChatGPT es un chatbot con interfaz de inteligencia artificial conversacional. Este modelo de lenguaje fue desarrollado por OpenAI con base en una arquitectura GPT (Generative Pre-trained Transformer). Es considerado un LLM, como mencionan Kalla et. al.  (2023) y Abu et. al (2023) por su estructura de redes neuronales profundas con múltiples capas de transformadores y que están diseñados para procesar y generar respuestas coherentes en un lenguaje natural. Según Shen et. al (2024), sus algoritmos han sido entrenados con extensas bases de datos textuales obtenidas de internet, demostrando una capacidad impresionante para responder preguntas y realizar diversas tareas con calidad competitiva a la humana.
+Según Tlili et al. (2023), ChatGPT es un chatbot con interfaz de inteligencia artificial conversacional. Este modelo de lenguaje fue desarrollado por OpenAI con base en una arquitectura GPT (Generative Pre-trained Transformer). Es considerado un LLM, como mencionan Kalla et al..  (2023) y Abu et al. (2023) por su estructura de redes neuronales profundas con múltiples capas de transformadores y que están diseñados para procesar y generar respuestas coherentes en un lenguaje natural. Según Shen et al. (2024), sus algoritmos han sido entrenados con extensas bases de datos textuales obtenidas de internet, demostrando una capacidad impresionante para responder preguntas y realizar diversas tareas con calidad competitiva a la humana.
 
 
 
@@ -386,6 +386,18 @@ Los pesos temporales $\hat{\boldsymbol{\lambda}}^{sdid}$ se obtienen haciendo qu
 \]
 
 
+\subsection{Estrategia de identificación}
+
+La estrategia de identificación de este estudio se basa en la variación exógena generada por las decisiones gubernamentales de restringir el acceso a ChatGPT. La variable de tratamiento $W_{it}$ toma valor 1 para los países con disponibilidad del servicio a partir del cuarto trimestre de 2022. Esta variación presenta dos características favorables para la identificación causal: (i) el inicio del tratamiento es simultáneo para todas las unidades tratadas (diseño de bloque), lo que elimina la heterogeneidad en el momento de adopción y simplifica la construcción del contrafactual; y (ii) las restricciones gubernamentales obedecen a decisiones regulatorias, geopolíticas y de seguridad nacionales previas al lanzamiento del servicio, lo que reduce el riesgo de endogeneidad respecto a la actividad de desarrollo en GitHub.
+
+El supuesto central de identificación es la \textit{tendencia paralela condicional}: en ausencia de ChatGPT, la evolución del número de \textit{unique pushers} en el grupo tratado habría seguido una trayectoria comparable a la del contrafactual sintético, construido mediante las ponderaciones SDID. Este supuesto es validado empíricamente mediante dos estrategias complementarias: (i) la inspección visual de las trayectorias pretratamiento en las Figuras 5--14, que muestran un ajuste cercano entre el grupo tratado y el control sintético en los 12 trimestres anteriores a Q4-2022; y (ii) los gráficos de análisis de evento del Anexo C, donde los \textit{gaps} período a período entre el grupo tratado y el control sintético se concentran estadísticamente en torno a cero durante el período pretratamiento.
+
+La principal amenaza a la identificación es la no-aleatoriedad del grupo de control: los 29 países sin acceso a ChatGPT no lo bloquearon por razones aleatorias. Un subconjunto de ellos ---clasificado como \textit{Not Free} con puntaje inferior a 25 en el índice \textit{Freedom on the Net} 2022 de Freedom House (China, Rusia, Irán, Cuba, Bielorrusia, Siria, Tayikistán, Vietnam y Turkmenistán)--- presenta restricciones sistémicas de internet, ecosistemas tecnológicos estructuralmente distintos y menores niveles de actividad en GitHub, lo que puede dificultar la comparación con el grupo tratado.
+
+Para cuantificar en qué medida estos países influyen en la construcción del contrafactual, se extrajeron los pesos $\omega$ asignados por el estimador SDID a cada unidad de control en las diez especificaciones de lenguaje. Estos pesos se presentan en el Cuadro~6 (Sección de Tablas). Los resultados revelan un patrón heterogéneo: China (CN) recibe el peso promedio más bajo del grupo (0.019), notablemente inferior al promedio del resto de controles (0.032), en línea con la singularidad estructural de su ecosistema tecnológico centrado en Gitee. En contraste, Bielorrusia (BY\,=\,0.076), Rusia (RU\,=\,0.071) y Vietnam (VN\,=\,0.068) reciben pesos superiores al promedio, lo que refleja que sus trayectorias de actividad en GitHub son cuantitativamente comparables con las del grupo tratado en el período pretratamiento. Este hallazgo indica que SDID los utiliza como comparadores genuinamente válidos; la prueba decisiva es la especificación con grupo de control restringido, donde se re-estima el modelo excluyendo explícitamente los nueve censores severos.
+
+Como verificación adicional, se re-estimó el modelo SDID excluyendo explícitamente los nueve censores severos del grupo de control (Cuadro 5). Los resultados son cualitativamente idénticos a la especificación principal, con diferencias porcentuales de magnitud reducida, lo que confirma que las estimaciones no dependen de estos países. Por último, se implementó una prueba placebo con tratamiento ficticio en Q2-2021 (véase Cuadro 4), cuyo análisis se discute en la sección de resultados.
+
 \subsection{Inferencia}
 
 Los datos empleados en este estudio son exclusivos, puesto que permiten incluir un gran número de unidades tratadas, todas expuestas de manera simultánea. Esta característica brinda la oportunidad de aplicar el estimador \textit{bootstrap}, que Arkhangelsky et al. (2021) demostraron ser asintóticamente normal cuando se cuenta con un gran número de unidades tratadas. Para el diseño del algoritmo \textit{bootstrap} destinado a estimar el error estándar de los estimadores del ATE, se remite a Clarke et al. (2023).
@@ -395,24 +407,43 @@ Los datos empleados en este estudio son exclusivos, puesto que permiten incluir 
 
 En esta sección se presentan los resultados del análisis estadístico sobre el impacto de la disponibilidad de ChatGPT en la actividad de desarrollo de software, enfocándonos en los diez lenguajes de programación más utilizados. Para este análisis, hemos empleado tres enfoques metodológicos robustos: Diferencia en Diferencias, Control Sintético y Diferencia en Diferencias Sintéticas. El objetivo es medir el número de \textit{unique pushers} por cada 100 mil habitantes y evaluar las diferencias entre los países con acceso a ChatGPT y aquellos sin acceso. Los resultados, desglosados por lenguaje de programación y país, proporcionan una perspectiva detallada de cómo ChatGPT ha influido en la productividad de los desarrolladores a lo largo del tiempo. A continuación, se presentan las conclusiones clave, ilustradas mediante figuras comparativas y tablas de estadísticas descriptivas.
 
-La \hyperref[tab:tabla3]{Tabla 3} presenta el impacto de la disponibilidad de ChatGPT en el desarrollo de software respecto a cada lenguaje de programación. Para el lenguaje C, la disponibilidad de ChatGPT produjo un incremento significativo de 2,689 \textit{unique pushers} (error estándar de 0,439) según la estimación DiD, con aumentos adicionales observados en CS y SDiD (2,005 y 1,276 \textit{unique pushers}, respectivamente), ambos estadísticamente significativos. En C\#, la estimación DiD muestra un incremento significativo de 1,499 \textit{unique pushers} (error estándar de 0,456), con un efecto también significativo en CS (1,255); sin embargo, el estimador SDiD no alcanza significancia estadística (0,443). Para C++, se reporta un aumento de 2,210 \textit{unique pushers} según la estimación DiD (error estándar de 0,409), con incrementos significativos también en CS y SDiD (2,002 y 1,131 \textit{unique pushers}, respectivamente). En Go, la disponibilidad de ChatGPT resultó en un aumento de 1,411 \textit{unique pushers} (error estándar de 0,253) según DiD, con incrementos significativos en CS y SDiD (1,081 y 0,720 \textit{unique pushers}). En Java, se registra un incremento de 2,810 \textit{unique pushers} (error estándar de 0,886) según DiD, con aumentos en CS y SDiD (2,597 y 1,725 \textit{unique pushers}), siendo los tres estimadores estadísticamente significativos. Para JavaScript, se evidencia el mayor impacto con un aumento de 13,635 \textit{unique pushers} (error estándar de 2,989) según DiD, con incrementos en CS y SDiD (10,737 y 8,303 \textit{unique pushers}), todos significativos. En PHP, se observa un aumento de 0,904 \textit{unique pushers} (error estándar de 0,390) según DiD, con incrementos en CS y SDiD (0,907 y 0,916 \textit{unique pushers}), todos con significancia estadística al 5\%. Python muestra el segundo mayor impacto con un incremento de 7,688 \textit{unique pushers} (error estándar de 1,130) según DiD, con aumentos en CS y SDiD (6,156 y 4,525 \textit{unique pushers}), todos significativos al 1\%. En Ruby, la estimación DiD no alcanza significancia estadística (0,262; error estándar de 0,243), mientras que CS y SDiD muestran incrementos significativos de 0,662 y 0,808 \textit{unique pushers}, respectivamente. Finalmente, en TypeScript, se registra un incremento significativo de 7,181 \textit{unique pushers} (error estándar de 0,750) según DiD, con aumentos en CS y SDiD (3,673 y 3,078 \textit{unique pushers}), ambos estadísticamente significativos.
+El \hyperref[tab:tabla3]{Cuadro 3} presenta las estimaciones del efecto del tratamiento para los tres métodos. El resultado más destacable es la consistencia de signo: en los diez lenguajes analizados, los tres estimadores arrojan efectos positivos, lo que refleja un patrón robusto de mayor actividad en GitHub tras la disponibilidad de ChatGPT. En términos absolutos, los lenguajes con mayor base de usuarios registran los incrementos más elevados: JavaScript lidera con un ATT-SDID de 8.303 \textit{unique pushers} adicionales por cada 100 mil habitantes, seguido por Python (4.525) y TypeScript (3.078). Los lenguajes de sistemas (C, C++) y PHP muestran efectos absolutos menores pero estadísticamente significativos y consistentes entre los tres estimadores. La única excepción es C\#, donde el estimador SDID no alcanza significancia estadística (0.443, SE\,=\,0.464), aunque DiD y SC sí lo hacen (1.499 y 1.255, respectivamente). Esta divergencia sugiere sensibilidad al supuesto de tendencias paralelas para ese lenguaje; es notable que en la especificación con grupo de control restringido (Cuadro~5), el efecto para C\# sí resulta significativo (0.965**), lo que indica que parte de la imprecisión puede atribuirse a la influencia de unidades de control estructuralmente distintas.
+
+Estos resultados son coherentes con un mecanismo de \textit{margen extensivo}: la asistencia en codificación que provee ChatGPT reduce las barreras de entrada al desarrollo de software, facilitando que programadores con menor experiencia inicien o retomen su actividad en plataformas colaborativas como GitHub. La variable dependiente ---\textit{unique pushers}, el número de desarrolladores únicos que realizan al menos un \textit{push} en el trimestre--- captura precisamente esta expansión del conjunto de participantes activos, y no un aumento en la intensidad del trabajo de quienes ya eran usuarios habituales. Este canal de incorporación es especialmente activo en lenguajes con comunidades en rápido crecimiento, alta representación en los datos de entrenamiento del modelo y documentación abundante en línea, factores que amplifican la utilidad de ChatGPT como asistente de aprendizaje.
 
 Por otra parte, de la \hyperref[fig:figura5]{Figura 5} -- \hyperref[fig:figura14]{Figura 14}, se muestran las tendencias y ponderaciones estimadas de \textit{unique pushers} por cada 100 mil personas para diferentes lenguajes de programación, utilizando los métodos Diferencia en Diferencias (DiD), Control Sintético (CS) y Diferencia en Diferencias Sintética (SDiD). Cada figura se divide en seis paneles: los paneles (a) y (b) presentan los resultados del método DiD, los paneles (c) y (d) muestran los resultados del método CS, y los paneles (e) y (f) ilustran los resultados del método SDiD.
 
 En cuanto al ajuste y validación del contrafactual, el método DiD, como se observa en los paneles (a), muestra divergencia en las tendencias para el grupo tratado y el grupo de control antes del tratamiento, indicando que la suposición de tendencias paralelas no se cumple, llevando a estimaciones sesgadas del impacto del tratamiento. Por otro lado, el método CS, ilustrado en los paneles (c), muestra tendencias más similares antes del tratamiento, sugiriendo un mejor ajuste del contrafactual. Sin embargo, la falta de ponderación temporal puede afectar la precisión post-tratamiento. El método SDiD, representado en los paneles (e), muestra tendencias muy similares antes del tratamiento, validando así la construcción del contrafactual. El área sombreada en estos paneles indica la ponderación temporal, destacando la importancia relativa de cada periodo pre-tratamiento y mejorando la precisión del ajuste. La divergencia clara entre las líneas después del tratamiento sugiere un impacto significativo del tratamiento, indicando que SDiD ha proporcionado un ajuste preciso y confiable. Como validación adicional, el Anexo C presenta los gráficos de análisis de evento SDID para los diez lenguajes, donde el gap trimestral entre el grupo tratado y su control sintético se normaliza para que el período pre-tratamiento se concentre en torno a cero; la estabilidad de estos gaps pre-tratamiento confirma la adecuación del contrafactual construido.
 
+En términos de magnitud relativa, los efectos SDID estimados son económicamente significativos. Tomando como referencia los promedios pretratamiento de cada lenguaje (\textit{Baseline Mean} en el Cuadro 3), los efectos representan incrementos porcentuales sustanciales: TypeScript registra el mayor aumento relativo (35.9\%), seguido por Go (32.3\%), Python (22.6\%), JavaScript (22.7\%) y C (20.5\%). Los lenguajes con menor efecto relativo son Java (15.0\%), PHP y Ruby (14.4\% cada uno) y C++ (16.6\%). C\#, cuyo estimador SDID no resulta significativo, registra un efecto relativo de apenas 6.8\%. El mayor efecto relativo en TypeScript y Go, frente al menor en PHP y los lenguajes de sistemas maduros (C, C++), es coherente con la hipótesis de que la magnitud del impacto es proporcional al margen potencial de nuevos usuarios: los lenguajes con mayor crecimiento de demanda en el mercado laboral concentran una mayor proporción de programadores que se inician con ayuda de herramientas de IA generativa.
+
+Como validación adicional de la estrategia de identificación, el Cuadro 4 presenta los resultados de la prueba placebo, en la que el tratamiento se asigna de forma ficticia en Q2-2021 restringiendo la muestra a los 11 trimestres pretratamiento. Los resultados muestran un patrón informativo: para cinco lenguajes (C\#, C++, Java, PHP, Ruby) los estimadores placebo son estadísticamente indistinguibles de cero, confirmando la ausencia de efectos espurios. Para los cinco restantes (C, Go, JavaScript, Python, TypeScript) se detectan efectos placebo positivos pero de magnitud sustancialmente menor que los reales: el cociente entre el ATT placebo y el ATT real promedia 0.38, lo que indica que aproximadamente el 62\% del efecto estimado es atribuible al tratamiento y no a tendencias preexistentes. Esta diferencia en magnitud, combinada con la coincidencia temporal entre el lanzamiento de ChatGPT y la aceleración observada en las trayectorias post-Q4-2022, refuerza la interpretación causal de los resultados principales.
+
 En el método DiD, representado en los paneles (b), todos los estados de control reciben el mismo peso, lo cual es indicado por la línea roja horizontal constante. Este método no considera la heterogeneidad entre las unidades de control, lo que puede ser una limitación significativa si las tendencias previas al tratamiento no son paralelas. Por otro lado, el método CS, ilustrado en los paneles (d), asigna pesos específicos a las unidades de control, permitiendo una mayor flexibilidad y una mejor adaptación a las características específicas de las unidades de control. La línea roja horizontal en estos paneles refleja la media ponderada de los pesos asignados, que puede cambiar dependiendo de la distribución de los pesos. En CS, las cruces representan los pesos igual a 0 y los puntos representan pesos mayores a cero, con el tamaño de los puntos indicando la magnitud del peso. El método SDiD, mostrado en los paneles (f), asigna pesos variables tanto a las unidades de control como a los periodos de tiempo, proporcionando una asignación de pesos más robusta y flexible. La línea roja horizontal en estos paneles también refleja la media ponderada de los pesos, cambiando significativamente debido a la ponderación adicional por el tiempo. En SDiD, las cruces representan los pesos igual a 0 y los puntos representan pesos mayores a cero, con el tamaño de los puntos indicando la magnitud del peso.
 
 Al comparar la \hyperref[fig:figura14]{Figura 14} (C) y la \hyperref[fig:figura10]{Figura 10} (Ruby), se observa que Ruby muestra una mayor dispersión y variabilidad en la asignación de pesos en comparación con C, y las tendencias pre-tratamiento no cumplen con la suposición de paralelismo tan bien como en C. En Ruby, las cruces que indican pesos igual a 0 son más frecuentes, sugiriendo que varias unidades de control no contribuyen al contrafactual. Una mayor variabilidad de pesos implica que algunas unidades de control tienen una influencia mucho mayor en la construcción del contrafactual, lo cual puede reflejar una mayor heterogeneidad en las características del grupo de control. Al comparar la \hyperref[fig:figura8]{Figura 8} (Java) y la \hyperref[fig:figura7]{Figura 7} (Python), se nota que Python presenta una mayor variabilidad en la asignación de pesos y una divergencia post-tratamiento más marcada. Los puntos en Python indican una mayor heterogeneidad en las unidades de control en comparación con Java. Una menor variabilidad de pesos, como se observa en Java, sugiere que las unidades de control son más homogéneas y que cada una contribuye de manera más equitativa a la construcción del contrafactual. Asimismo, la \hyperref[fig:figura12]{Figura 12} (C\#), \hyperref[fig:figura13]{Figura 13} (C++), \hyperref[fig:figura9]{Figura 9} (Go), \hyperref[fig:figura6]{Figura 6} (JavaScript), \hyperref[fig:figura11]{Figura 11} (PHP) y \hyperref[fig:figura5]{Figura 5} (TypeScript) muestran tendencias pre y post-tratamiento relativamente paralelas y homogéneas. Las asignaciones de pesos en CS y SDiD son bastante similares, con poca variabilidad y pocas cruces representando pesos igual a 0. Esto sugiere que, para estos lenguajes, las unidades de control son bastante homogéneas y la ponderación temporal no muestra grandes variaciones.
 
+\subsection{Análisis de robustez e identificación}
+
+\noindent\textbf{Pesos $\omega$ del estimador SDID para los censores severos.}
+Un argumento central para confiar en la estrategia de identificación es que el propio estimador SDID pondera internamente las unidades de control según su capacidad de replicar las trayectorias pretratamiento del grupo tratado. El Cuadro~6 presenta los pesos $\omega$ asignados a los nueve países con restricciones sistémicas de internet (Freedom on the Net 2022 $<$ 25) en las diez especificaciones de lenguaje. El patrón es heterogéneo: China (CN) recibe el peso más bajo del grupo (promedio\,=\,0.019, frente a 0.032 del resto de controles), consistente con la singularidad de su ecosistema tecnológico centrado en Gitee. En contraste, Bielorrusia (BY\,=\,0.076), Rusia (RU\,=\,0.071) y Vietnam (VN\,=\,0.068) concentran pesos por encima del promedio del grupo de control, lo que indica que sus trayectorias de actividad en GitHub son cuantitativamente comparables con las del grupo tratado durante el período pretratamiento. Este hallazgo implica que el estimador los utiliza como comparadores válidos; la verificación directa de que su inclusión no distorsiona los resultados se realiza mediante la especificación con grupo de control restringido (Cuadro~5).
+
+\noindent\textbf{Especificación con grupo de control restringido.}
+Como verificación explícita, el Cuadro 5 re-estima el modelo SDID excluyendo los nueve censores severos del grupo de control, reduciéndolo de 29 a 20 países. Las estimaciones resultantes son cualitativamente idénticas a la especificación principal: la dirección del efecto se mantiene en los diez lenguajes, la significancia estadística es equivalente en todos los casos donde el modelo principal era significativo, y las diferencias porcentuales entre ambas especificaciones son de magnitud reducida. Este resultado confirma que los hallazgos principales no dependen de las unidades de control más problemáticas y son robustos a la composición del grupo de comparación.
+
+\noindent\textbf{Prueba placebo.}
+El Cuadro 4, discutido en la sección anterior, complementa el análisis mostrando que al asignar el tratamiento de forma ficticia en el período pretratamiento, los efectos estimados son sustancialmente menores (cociente promedio 0.38 respecto a los efectos reales), lo que descarta que los resultados principales sean explicados por tendencias preexistentes.
+
+En conjunto, los tres ejercicios de validación ---pesos omega endógenos, grupo de control restringido, y prueba placebo--- articulan una estrategia de identificación multicapa que aborda directamente las amenazas más relevantes a la validez causal del diseño.
+
 \clearpage
 \section{Conclusiones y recomendaciones de política}
 
-En conclusión, los resultados obtenidos mediante el modelo SDID indican que la disponibilidad de ChatGPT en la mayoría de los países del mundo ha tenido un impacto positivo y diferenciado en el desarrollo de software en varios lenguajes de programación. Específicamente, se observó un aumento notable en la cantidad de desarrolladores que utilizan lenguajes como JavaScript, Python, Java y TypeScript. Estos hallazgos sugieren que la asistencia proporcionada por ChatGPT motiva el desarrollo de software en estos lenguajes. Por otro lado, lenguajes como C\# no mostraron un impacto significativo, lo que sugiere la necesidad de investigaciones adicionales para entender las razones detrás de esta disparidad. Podría ser que factores específicos del lenguaje o del contexto de uso influyan en la efectividad de ChatGPT. Este impacto sobre el desarrollo de software muestra variaciones significativas entre diferentes contextos nacionales también resalta que el impacto de esta herramienta no es uniforme. Factores como la infraestructura tecnológica, la adopción de tecnologías y las políticas de apoyo al desarrollo de software pueden desempeñar un papel crucial en la determinación de la magnitud del impacto.
+En conclusión, los resultados obtenidos mediante el modelo SDID indican que la disponibilidad de ChatGPT en la mayoría de los países del mundo ha tenido un impacto positivo y diferenciado en el desarrollo de software en varios lenguajes de programación. Específicamente, se observó un aumento notable en la cantidad de desarrolladores que utilizan lenguajes como JavaScript, Python, Java y TypeScript. Estos hallazgos sugieren que la asistencia proporcionada por ChatGPT motiva el desarrollo de software en estos lenguajes. Por otro lado, C\# presenta un patrón heterogéneo entre estimadores: DID y SC arrojan efectos positivos y significativos (1.499 y 1.255 \textit{unique pushers}, respectivamente), mientras que el estimador SDID, que impone las tendencias paralelas de forma más estricta, no alcanza significancia estadística (0.443). Esta divergencia sugiere que la estimación del impacto en C\# es sensible al supuesto de tendencias paralelas, lo que motiva interpretarla con cautela. Este impacto sobre el desarrollo de software muestra variaciones significativas entre diferentes contextos nacionales también resalta que el impacto de esta herramienta no es uniforme. Factores como la infraestructura tecnológica, la adopción de tecnologías y las políticas de apoyo al desarrollo de software pueden desempeñar un papel crucial en la determinación de la magnitud del impacto.
 
 Por tanto, aunque ChatGPT no constituye un asistente de codificación perfecto y presenta desafíos en cuanto a precisión y calidad del código generado, la evidencia muestra que su disponibilidad ha contribuido de manera significativa al crecimiento del número de desarrolladores activos en el campo de la ciencia de datos. Esta herramienta ha facilitado la entrada de nuevos programadores, ha acelerado la resolución de problemas comunes y ha promovido una mayor participación en plataformas colaborativas como GitHub. Así, su impacto positivo en el ecosistema de desarrollo justifica una discusión profunda sobre su integración responsable en los flujos de trabajo tecnológicos y su papel en la configuración futura del trabajo en la economía digital.
 
-En línea con los resultados obtenidos, una primera recomendación de política consiste en dotar de acceso gratuito a versiones avanzadas de ChatGPT para desarrolladores junior orientados a ciencia de datos dentro de empresas vinculadas al sector tecnológico. Esta medida podría implementarse mediante incentivos para que las empresas inviertan en la adquisición de suscripciones a la versión premium de la herramienta por periodos iniciales de seis meses renovables. La evidencia sugiere que los desarrolladores juniores utilizan ChatGPT principalmente para resolver consultas básicas y superar barreras iniciales en el proceso de programación, mientras que, a medida que adquieren mayor experiencia, continúan utilizándolo para acelerar su productividad. Asimismo, las versiones avanzadas del modelo presentan mayores capacidades de asistencia en programación, lo que puede facilitar el desarrollo de tareas técnicas y mejorar la integración de nuevos programadores en entornos laborales reales. El periodo de seis meses permitiría evaluar razonablemente la evolución del desempeño del trabajador, por lo que se recomienda establecer criterios de elegibilidad verificables, como la exigencia de cuentas de GitHub validadas y con actividad reciente, permitiendo observar la generación de código a lo largo del tiempo y asegurar que el beneficio se dirija efectivamente a perfiles junior.
+En línea con los resultados obtenidos ---que documentan incrementos de entre 15\% y 36\% en el número de programadores activos en GitHub para los países con acceso a ChatGPT--- una primera recomendación de política consiste en dotar de acceso gratuito a versiones avanzadas de ChatGPT para desarrolladores junior orientados a ciencia de datos dentro de empresas vinculadas al sector tecnológico. Esta medida podría implementarse mediante incentivos para que las empresas inviertan en la adquisición de suscripciones a la versión premium de la herramienta por periodos iniciales de seis meses renovables. La evidencia sugiere que los desarrolladores juniores utilizan ChatGPT principalmente para resolver consultas básicas y superar barreras iniciales en el proceso de programación, mientras que, a medida que adquieren mayor experiencia, continúan utilizándolo para acelerar su productividad. Asimismo, las versiones avanzadas del modelo presentan mayores capacidades de asistencia en programación, lo que puede facilitar el desarrollo de tareas técnicas y mejorar la integración de nuevos programadores en entornos laborales reales. El periodo de seis meses permitiría evaluar razonablemente la evolución del desempeño del trabajador, por lo que se recomienda establecer criterios de elegibilidad verificables, como la exigencia de cuentas de GitHub validadas y con actividad reciente, permitiendo observar la generación de código a lo largo del tiempo y asegurar que el beneficio se dirija efectivamente a perfiles junior.
 
 De manera complementaria, se recomienda implementar incentivos a la productividad asociados al uso de herramientas de inteligencia artificial dentro de las empresas del sector software, mediante la asignación de bonos económicos a trabajadores que evidencien mejoras en su rendimiento atribuibles al uso de estas tecnologías. El monto del incentivo podría ser determinado por cada empresa según sus objetivos y capacidades internas. Para garantizar una evaluación objetiva, el acceso a este beneficio debería sustentarse en mecanismos de seguimiento bimensuales que consideren indicadores como la cantidad de horas de uso de herramientas de inteligencia artificial, el volumen de tareas completadas con su asistencia y el cumplimiento de estándares mínimos de calidad establecidos por los equipos de aseguramiento de calidad (Quality Assurance, QA). De esta forma, ambas medidas contribuirían a fomentar una adopción productiva y responsable de la inteligencia artificial, fortaleciendo la participación de desarrolladores en el ecosistema tecnológico y promoviendo mejoras medibles en el desempeño laboral.
 
@@ -421,7 +452,7 @@ De manera complementaria, se recomienda implementar incentivos a la productivida
 
 El presente estudio tiene varias limitaciones que deben tenerse en cuenta al interpretar los resultados.
 
-En primer lugar, la composición del grupo de control constituye la principal amenaza a la validez interna del diseño. Los países que bloquearon el acceso a ChatGPT no lo hicieron de forma aleatoria: en su mayoría presentan mayor control estatal sobre internet, menores niveles de libertad digital y ecosistemas tecnológicos estructuralmente distintos a los del grupo tratado (ej. China, Rusia, Irán). Esta no-aleatoriedad puede generar un sesgo de selección en la estimación del ATT que el SDiD mitiga, pero no elimina por completo. Futuros trabajos deberían explorar estrategias de identificación alternativas que permitan controlar más directamente por estas diferencias estructurales.
+En primer lugar, la composición del grupo de control es la principal amenaza a la validez interna del diseño. Los países que bloquearon ChatGPT no lo hicieron de forma aleatoria: muchos presentan mayor control estatal sobre internet y ecosistemas tecnológicos estructuralmente distintos (ej. China, Rusia, Irán). Esta no-aleatoriedad es abordada mediante tres estrategias complementarias presentadas en la Sección de Resultados: (i) el análisis de pesos $\omega$ endógenos del SDID (Cuadro~6), que revela un patrón heterogéneo ---China recibe el peso más bajo (0.019), mientras que Bielorrusia, Rusia y Vietnam obtienen pesos por encima del promedio del grupo de control, lo que indica que sus trayectorias en GitHub son genuinamente comparables con las del grupo tratado---; (ii) la re-estimación con grupo de control restringido (Cuadro~5, sin los 9 países con Freedom on the Net $<$ 25), que produce resultados cualitativamente idénticos a la especificación principal; y (iii) la prueba placebo con tratamiento ficticio (Cuadro~4). A pesar de estas mitigaciones, no es posible descartar completamente que diferencias estructurales no capturadas por las trayectorias pretratamiento afecten las estimaciones.
 
 En segundo lugar, existe un problema de interferencia en el tratamiento derivado del uso de VPN. Una proporción no despreciable de desarrolladores en países clasificados como ``sin acceso'' puede haber utilizado redes privadas virtuales para acceder a ChatGPT durante el período analizado. Si este fenómeno es generalizado, especialmente en países tecnológicamente activos como China o Rusia, el efecto estimado estaría subestimado (atenuación hacia cero), ya que la distinción entre grupo tratado y de control sería menos nítida de lo que el diseño asume.
 
@@ -497,6 +528,9 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 
 % Tabla 3 — generada por all_code_python.py (Section 5)
 \input{output/tables/gpt_impact_github_DataScience.tex}
+\input{output/tables/placebo_test.tex}
+\input{output/tables/robustness_restricted_control.tex}
+\input{output/tables/omega_weights_table.tex}
 
 
 
@@ -863,7 +897,7 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 \centering
 \caption{Mapa de disponibilidad global de ChatGPT}
 \label{fig:mapa_gpt}
-\includegraphics[width=\textwidth]{chatgpt_global_availability_map.png}
+\includegraphics[width=\textwidth]{output/figures/chatgpt_global_availability_map.png}
 \end{figure}
 
 
@@ -890,28 +924,28 @@ AU & Australia & CN & China \\
 AT & Austria & CD & Congo, The Democratic Republic of the \\
 AZ & Azerbaijan & CU & Cuba \\
 BD & Bangladesh & EG & Egypt \\
-BB & Barbados & SZ & Eswatini \\
-BE & Belgium & ET & Ethiopia \\
-BZ & Belize & GP & Guadeloupe \\
-BJ & Benin & HK & Hong Kong \\
-BT & Bhutan & IR & Iran, Islamic Republic of \\
-BO & Bolivia, Plurinational State of & LA & Lao People's Democratic Republic \\
-BA & Bosnia and Herzegovina & LY & Libya \\
-BW & Botswana & MO & Macao \\
-BR & Brazil & PR & Puerto Rico \\
-BN & Brunei Darussalam & RU & Russian Federation \\
-BG & Bulgaria & RE & Réunion \\
-BF & Burkina Faso & SO & Somalia \\
-CV & Cabo Verde & SD & Sudan \\
-CA & Canada & SY & Syrian Arab Republic \\
-CL & Chile & TJ & Tajikistan \\
-CO & Colombia & TM & Turkmenistan \\
-CG & Congo & TR & Türkiye \\
-CR & Costa Rica & UZ & Uzbekistan \\
-HR & Croatia & VE & Venezuela, Bolivarian Republic of \\
-CY & Cyprus & VN & Viet Nam \\
-CZ & Czechia & YE & Yemen \\
-CI & Côte d'Ivoire & ZW & Zimbabwe \\
+BB & Barbados & ET & Ethiopia \\
+BE & Belgium & IR & Iran, Islamic Republic of \\
+BZ & Belize & LA & Lao People's Democratic Republic \\
+BJ & Benin & LY & Libya \\
+BT & Bhutan & MO & Macao \\
+BO & Bolivia, Plurinational State of & PR & Puerto Rico \\
+BA & Bosnia and Herzegovina & RU & Russian Federation \\
+BW & Botswana & RE & Réunion \\
+BR & Brazil & SO & Somalia \\
+BN & Brunei Darussalam & SD & Sudan \\
+BG & Bulgaria & SY & Syrian Arab Republic \\
+BF & Burkina Faso & TJ & Tajikistan \\
+CV & Cabo Verde & TM & Turkmenistan \\
+CA & Canada & TR & Türkiye \\
+CL & Chile & UZ & Uzbekistan \\
+CO & Colombia & VE & Venezuela, Bolivarian Republic of \\
+CG & Congo & VN & Viet Nam \\
+CR & Costa Rica & YE & Yemen \\
+HR & Croatia & ZW & Zimbabwe \\
+CY & Cyprus &  &  \\
+CZ & Czechia &  &  \\
+CI & Côte d'Ivoire &  &  \\
 DK & Denmark &  &  \\
 DO & Dominican Republic &  &  \\
 EC & Ecuador &  &  \\
@@ -1024,7 +1058,7 @@ ZM & Zambia &  &  \\
 
 \noindent\textbf{Variables de control utilizadas}
 
-Las variables de control empleadas en la estimación con controles (Cuadro 4) fueron extraídas del \textbf{Banco Mundial} y corresponden a dos indicadores de infraestructura digital:
+Las variables de control empleadas en la estimación con controles (Cuadro 7) fueron extraídas del \textbf{Banco Mundial} y corresponden a dos indicadores de infraestructura digital:
 
 \begin{itemize}
   \item \textbf{Porcentaje de individuos que usan computadora}: obtenido del indicador \textit{Percentage of individuals using a computer} (ITU DataHub, vía World Bank Data360, código \texttt{ITU\_DH\_INV\_COMP}). Mide la proporción de la población que utiliza una computadora, capturando el nivel de adopción tecnológica en el hogar y la capacidad técnica promedio del país.
@@ -1089,7 +1123,6 @@ group & quarter\_samples & year\_samples & final\_samples & lost\_q\_to\_y \\
 \toprule
 iso2\_code & gpt\_available \\
 \midrule
-EU & -- \\
 XK & 0 \\
 HK & 1 \\
 \bottomrule
@@ -1097,12 +1130,10 @@ HK & 1 \\
 \end{table}
 
 
-\textit{Missing}\textit{values}\textit{o datos vacíos }\textit{por }\textit{país}
-
-
-
 \begin{table}[H]
 \centering
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\caption*{\textit{Missing values o datos vacíos por país}}
 \begin{tabular}{lcc}
 \toprule
 iso2\_code & gpt\_available\_country & n\_rows\_missing \\
@@ -1132,7 +1163,7 @@ YE & 0 & 160 \\
 
 
 % Tabla controles — generada por all_code_python.py (Section 6)
-\setcounter{table}{3}
+\setcounter{table}{6}
 \input{output/tables/gpt_impact_github_DataScience_controls.tex}
 
 \clearpage
@@ -1145,62 +1176,62 @@ YE & 0 & 160 \\
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{output/figures/Csdid_event_study.png}
 \caption{Análisis de evento SDID — C}
+\includegraphics[width=0.85\textwidth]{output/figures/Csdid_event_study.png}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{output/figures/C_hashtagsdid_event_study.png}
 \caption{Análisis de evento SDID — C\#}
+\includegraphics[width=0.85\textwidth]{output/figures/C_hashtagsdid_event_study.png}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{output/figures/C_plussdid_event_study.png}
 \caption{Análisis de evento SDID — C++}
+\includegraphics[width=0.85\textwidth]{output/figures/C_plussdid_event_study.png}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{output/figures/Gosdid_event_study.png}
 \caption{Análisis de evento SDID — Go}
+\includegraphics[width=0.85\textwidth]{output/figures/Gosdid_event_study.png}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{output/figures/Javasdid_event_study.png}
 \caption{Análisis de evento SDID — Java}
+\includegraphics[width=0.85\textwidth]{output/figures/Javasdid_event_study.png}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{output/figures/JavaScriptsdid_event_study.png}
 \caption{Análisis de evento SDID — JavaScript}
+\includegraphics[width=0.85\textwidth]{output/figures/JavaScriptsdid_event_study.png}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{output/figures/PHPsdid_event_study.png}
 \caption{Análisis de evento SDID — PHP}
+\includegraphics[width=0.85\textwidth]{output/figures/PHPsdid_event_study.png}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{output/figures/Pythonsdid_event_study.png}
 \caption{Análisis de evento SDID — Python}
+\includegraphics[width=0.85\textwidth]{output/figures/Pythonsdid_event_study.png}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{output/figures/Rubysdid_event_study.png}
 \caption{Análisis de evento SDID — Ruby}
+\includegraphics[width=0.85\textwidth]{output/figures/Rubysdid_event_study.png}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{output/figures/TypeScriptsdid_event_study.png}
 \caption{Análisis de evento SDID — TypeScript}
+\includegraphics[width=0.85\textwidth]{output/figures/TypeScriptsdid_event_study.png}
 \end{figure}
 
 \clearpage
