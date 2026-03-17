@@ -462,7 +462,7 @@ TypeScript & 3.46  & 0.00 & 224.19 & 17.55 & 11.79 & 0.00 & 275.74 & 45.14  \\
 }
 \end{table}
 
-\smallskip\noindent\small\textit{\textit{Nota.} Estadísticos descriptivos (media, mínimo, máximo y desviación estándar) para países del grupo control en periodos pre y post tratamiento. Elaboración propia con datos de GitHub (2020–2023).      }\normalsize
+\smallskip\noindent\small\textit{Nota.} \small Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de control incluye los 32 países sin acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboración propia.\normalsize
 
 
 \begin{table}[H]
@@ -491,7 +491,7 @@ TypeScript & 17.32 & 0.00 & 181.23 & 21.61 & 18.83 & 0.00 & 181.23 & 23.56 \\
 }
 \end{table}
 
-\smallskip\noindent\small\textit{\textit{Nota.} Estadísticos descriptivos (media, mínimo, máximo y desviación estándar) para países del grupo tratado en periodos pre y post tratamiento. Elaboración propia con datos de GitHub (2020–2023).      }\normalsize
+\smallskip\noindent\small\textit{Nota.} \small Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de tratamiento incluye los 133 países con acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboración propia.\normalsize
 
 
 % Tabla 3 — generada por Stata (Section 5 de all_code.py)
@@ -1011,10 +1011,23 @@ ZM & Zambia &  &  \\
 
 \clearpage
 {\noindent\large\bfseries Anexo B}\\[4pt]
-{\noindent\bfseries Justificación de la no inclusión de variables de control}
+{\noindent\bfseries Variables de control y justificación de su no inclusión en el modelo base}
 
-\begin{flushleft}
-En el presente estudio, no se incorporaron variables de control adicionales en las estimaciones realizadas mediante los métodos Difference-in-Differences (DID), Synthetic Control (SC) y Synthetic Difference-in-Differences (SDID). Esta decisión se fundamenta principalmente en la limitada disponibilidad de variables comparables para todos los países incluidos en el análisis. Si bien existen diversas bases de datos internacionales con información potencialmente relevante, como las del Banco Mundial, muchas de ellas no ofrecen una cobertura completa o no son compatibles con la estructura de panel utilizada en esta investigación. La base de datos empleada se encuentra organizada en forma de un panel consistente para un conjunto específico de países y periodos, y al realizar el proceso de imputación para pasar de datos trimestrales a datos anuales, el número de observaciones se redujo de 26 400 a 6 600. Adicionalmente, la incorporación de variables provenientes de fuentes externas implicó nuevas pérdidas de muestras debido a valores faltantes, lo que redujo aún más la muestra disponible. Como se muestra en las dos primeras tablas, inicialmente se produjo la eliminación de tres países (dos pertenecientes al grupo de control y uno al grupo tratado), y posteriormente la presencia de valores vacíos en las variables adicionales generó una reducción aproximada de 340 observaciones adicionales, provocando además un desbalance entre los grupos de tratamiento y control. Esta reducción en el número de unidades disponibles compromete la estabilidad y validez de las estimaciones, especialmente en los métodos SC y SDID, los cuales requieren un conjunto amplio y depurado de países comparables para construir un contrafactual válido.
+\noindent\textbf{Variables de control utilizadas}
+
+Las variables de control empleadas en la estimación con controles (Cuadro 5) fueron extraídas del \textbf{Banco Mundial} y corresponden a dos indicadores de infraestructura digital:
+
+\begin{itemize}
+  \item \textbf{Porcentaje de individuos que usan computadora}: obtenido del indicador \textit{Percentage of individuals using a computer} (ITU DataHub, vía World Bank Data360, código \texttt{ITU\_DH\_INV\_COMP}). Mide la proporción de la población que utiliza una computadora, capturando el nivel de adopción tecnológica en el hogar y la capacidad técnica promedio del país.
+  \item \textbf{Porcentaje de individuos que usan internet}: extraído de los Indicadores de Desarrollo Mundial del Banco Mundial (indicador \texttt{IT.NET.USER.ZS}). Mide el porcentaje de la población con acceso a internet, variable fundamental puesto que constituye un prerrequisito para utilizar plataformas de desarrollo como GitHub y herramientas basadas en la nube.
+\end{itemize}
+
+Estas variables fueron consideradas como controles porque capturan diferencias estructurales en infraestructura digital entre países que podrían influir de manera independiente sobre la actividad de desarrollo en GitHub. Al incluirlas, se busca aislar el efecto específico de la disponibilidad de ChatGPT de tendencias más amplias de desarrollo digital preexistentes. Ambos indicadores se encuentran disponibles con frecuencia anual y fueron interpolados a frecuencia trimestral para su incorporación en el panel.
+
+\bigskip
+\noindent\textbf{Justificación de la no inclusión en el modelo base}
+
+En el presente estudio, no se incorporaron variables de control adicionales en las estimaciones del modelo base realizadas mediante los métodos Difference-in-Differences (DID), Synthetic Control (SC) y Synthetic Difference-in-Differences (SDID). Esta decisión se fundamenta principalmente en la limitada disponibilidad de variables comparables para todos los países incluidos en el análisis. Si bien existen diversas bases de datos internacionales con información potencialmente relevante, como las del Banco Mundial, muchas de ellas no ofrecen una cobertura completa o no son compatibles con la estructura de panel utilizada en esta investigación. La base de datos empleada se encuentra organizada en forma de un panel consistente para un conjunto específico de países y periodos, y al realizar el proceso de imputación para pasar de datos trimestrales a datos anuales, el número de observaciones se redujo de 26 400 a 6 600. Adicionalmente, la incorporación de variables provenientes de fuentes externas implicó nuevas pérdidas de muestras debido a valores faltantes, lo que redujo aún más la muestra disponible. Como se muestra en las dos primeras tablas, inicialmente se produjo la eliminación de tres países (dos pertenecientes al grupo de control y uno al grupo tratado), y posteriormente la presencia de valores vacíos en las variables adicionales generó una reducción aproximada de 340 observaciones adicionales, provocando además un desbalance entre los grupos de tratamiento y control. Esta reducción en el número de unidades disponibles compromete la estabilidad y validez de las estimaciones, especialmente en los métodos SC y SDID, los cuales requieren un conjunto amplio y depurado de países comparables para construir un contrafactual válido.
 
 
 
@@ -1100,8 +1113,6 @@ YE & 0 & 30 \\
 
 % Tabla controles — generada por Stata (Section 6 de all_code.py)
 \input{output/tables/gpt_impact_github_DataScience_controls.tex}
-
-\end{flushleft}
 
 \clearpage
 % ── Referencias bibliográficas ────────────────────────────────────────────────
