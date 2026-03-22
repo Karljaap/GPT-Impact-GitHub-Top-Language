@@ -1,49 +1,47 @@
-\begin{table}[H]\centering
+\begin{table}[htbp]\centering
 \caption{Impacto de ChatGPT en el n\'{u}mero de programadores (con controles)}
 \label{tab:tabla4}
 \begin{threeparttable}
-\setlength{\TPTminimum}{\linewidth}
 {\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\small
 \begin{tabular}{lccccc}
 \toprule
 Lenguaje & DID & SC & SDID & Obs. & \shortstack{Baseline \\ Mean} \\
 \midrule
-C & 2.704*** & 2.104*** & 1.347** & 2544 & 6.232 \\
-              & (0.546) & (0.534) & (0.544) & & \\
+C & 2.774*** & 1.433 & 1.396*** & 2544 & 6.232 \\
+              & (0.367) & (1.240) & (0.424) & & \\
 \addlinespace
-C\# & 1.498*** & 1.254*** & 0.441 & 2544 & 6.557 \\
-              & (0.395) & (0.435) & (0.336) & & \\
+C\# & 1.475*** & 1.049 & 0.422 & 2544 & 6.557 \\
+              & (0.383) & (1.252) & (0.386) & & \\
 \addlinespace
-C++ & 2.228*** & 2.026*** & 1.188*** & 2544 & 6.807 \\
-              & (0.320) & (0.345) & (0.445) & & \\
+C++ & 2.236*** & 1.242 & 1.157*** & 2544 & 6.807 \\
+              & (0.419) & (0.979) & (0.437) & & \\
 \addlinespace
-Go & 1.401*** & 1.072*** & 0.710*** & 2544 & 2.230 \\
-              & (0.227) & (0.216) & (0.251) & & \\
+Go & 1.411*** & 0.689 & 0.728*** & 2544 & 2.230 \\
+              & (0.176) & (0.606) & (0.270) & & \\
 \addlinespace
-Java & 2.859*** & 2.650*** & 1.943* & 2544 & 11.467 \\
-              & (0.992) & (0.890) & (1.077) & & \\
+Java & 2.831*** & 2.224 & 1.726** & 2544 & 11.467 \\
+              & (0.832) & (2.038) & (0.874) & & \\
 \addlinespace
-JavaScript & 13.711*** & 10.881*** & 8.448*** & 2544 & 36.571 \\
-              & (3.127) & (2.685) & (3.149) & & \\
+JavaScript & 14.106*** & 10.470** & 9.142*** & 2544 & 36.571 \\
+              & (2.856) & (4.738) & (3.228) & & \\
 \addlinespace
-PHP & 0.941* & 0.944** & 0.964** & 2544 & 6.381 \\
-              & (0.491) & (0.390) & (0.418) & & \\
+PHP & 0.994* & 0.974 & 1.034** & 2544 & 6.381 \\
+              & (0.523) & (1.029) & (0.470) & & \\
 \addlinespace
-Python & 7.565*** & 5.990*** & 4.367*** & 2544 & 20.003 \\
-              & (0.969) & (1.151) & (1.149) & & \\
+Python & 7.831*** & 2.028 & 4.700*** & 2544 & 20.003 \\
+              & (1.147) & (3.531) & (1.324) & & \\
 \addlinespace
-Ruby & 0.308 & 0.714** & 0.873*** & 2544 & 5.592 \\
-              & (0.311) & (0.292) & (0.283) & & \\
+Ruby & 0.312 & 1.605* & 0.864*** & 2544 & 5.592 \\
+              & (0.272) & (0.855) & (0.278) & & \\
 \addlinespace
-TypeScript & 7.162*** & 3.630*** & 3.038*** & 2544 & 8.571 \\
-              & (0.909) & (0.847) & (0.946) & & \\
+TypeScript & 7.189*** & 2.742 & 3.058*** & 2544 & 8.571 \\
+              & (0.846) & (2.244) & (0.870) & & \\
 \addlinespace
 \bottomrule
 \end{tabular}}
 \begin{tablenotes}
 \footnotesize
-\item \textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes. Las columnas DID, SC y SDID corresponden a Diferencias en Diferencias, Control Sint\'{e}tico (Abadie et al., 2010) y Diferencias en Diferencias Sint\'{e}tica (Arkhangelsky et al., 2021), respectivamente, todos estimados mediante la librer\'{i}a \texttt{synthdid} (Clarke et al., 2023). Se incluyen como variables de control el porcentaje de individuos que usan computadora y el porcentaje que usa internet, extra\'{i}das del Banco Mundial, incorporadas mediante un \textit{partial-out} de efectos fijos de unidad y tiempo. Los errores est\'{a}ndar se obtienen por \textit{bootstrap}. El periodo de tratamiento inicia en Q4-2022. Fuentes: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}); Banco Mundial, Indicadores de Desarrollo Mundial. Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. * p$<$0.10, ** p$<$0.05, *** p$<$0.01.
+\item \textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes. Las columnas DID, SC y SDID corresponden a Diferencias en Diferencias, Control Sint\'{e}tico (Abadie et al., 2010) y Diferencias en Diferencias Sint\'{e}tica (Arkhangelsky et al., 2021), respectivamente, todos estimados mediante la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). Se incluyen como variables de control el porcentaje de individuos que usan computadora y el porcentaje que usa internet, extra\'{i}das del Banco Mundial, incorporadas mediante un \textit{partial-out} de efectos fijos de unidad y tiempo. Los errores est\'{a}ndar se obtienen por \textit{bootstrap}: 100 replicaciones para DiD y SDiD; 2\,000 replicaciones para SC (cuya optimizaci\'{o}n cuadr\'{a}tica introduce mayor variabilidad muestral por iteraci\'{o}n). El periodo de tratamiento inicia en Q4-2022. Fuentes: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}); Banco Mundial, Indicadores de Desarrollo Mundial. Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

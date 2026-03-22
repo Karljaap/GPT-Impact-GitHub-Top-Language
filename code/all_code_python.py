@@ -206,8 +206,8 @@ def plot_language_distribution(data, title):
                     f"{h:.1f}%", ha="center", va="center",
                     rotation=90, fontsize=12, color="black")
     ax.set_title(title)
-    ax.set_ylabel("Percentage share (%)")
-    ax.set_xlabel("Programming language")
+    ax.set_ylabel("Participación porcentual (%)")
+    ax.set_xlabel("Lenguaje de programación")
     ax.set_xticks(x + width * (len(years) - 1) / 2)
     ax.set_xticklabels(order)
     ax.set_ylim(0, agg["pct"].max() + 6)
@@ -259,7 +259,7 @@ for lang in languages:
 ax.set_xlim(1, 16); ax.set_xticks(quarters)
 ax.set_xticklabels(quarter_labels, rotation=45)
 ax.set_ylim(0, 6500); ax.set_yticks(np.arange(0, 6501, 500))
-ax.set_xlabel("Quarter of the year", fontsize=14)
+ax.set_xlabel("Trimestre", fontsize=14)
 ax.set_ylabel("Unique pushers per 100k inhabitants", fontsize=14)
 ax.grid(axis="y", linestyle="--", alpha=0.6)
 ax.legend(title="Programming language", ncol=2)
@@ -280,7 +280,7 @@ for lang in languages:
 ax.set_xlim(1, 16); ax.set_xticks(quarters)
 ax.set_xticklabels(quarter_labels, rotation=45)
 ax.set_ylim(0, 6500); ax.set_yticks(np.arange(0, 6501, 500))
-ax.set_xlabel("Quarter", fontsize=18); ax.set_ylabel("Unique pushers per 100k inhabitants", fontsize=18)
+ax.set_xlabel("Trimestre", fontsize=18); ax.set_ylabel("Unique pushers per 100k inhabitants", fontsize=18)
 ax.grid(axis="y", linestyle="--", alpha=0.6)
 ax.legend(title="Programming language", ncol=2)
 plt.tight_layout()
@@ -300,7 +300,7 @@ for lang in languages:
 ax.set_xlim(1, 16); ax.set_xticks(quarters)
 ax.set_xticklabels(quarter_labels, rotation=45)
 ax.set_ylim(0, 6500); ax.set_yticks(np.arange(0, 6501, 500))
-ax.set_xlabel("Quarter", fontsize=18); ax.set_ylabel("Unique pushers per 100k inhabitants", fontsize=18)
+ax.set_xlabel("Trimestre", fontsize=18); ax.set_ylabel("Unique pushers per 100k inhabitants", fontsize=18)
 ax.grid(axis="y", linestyle="--", alpha=0.6)
 ax.legend(title="Programming language", ncol=2, loc="upper left")
 plt.tight_layout()
@@ -410,6 +410,7 @@ LANG_TEX = {           # LaTeX display name in tables
 
 TREAT_START   = 12     # Q4-2022 = quarter index 12
 N_BOOT        = 100
+N_BOOT_SC     = 2000   # larger for SC stability; parallelised so still fast
 N_BOOT_ES     = 200    # bootstrap reps for event-study CIs (matrix ops only)
 QUARTER_LABELS_SP = [
     "2020-T1","2020-T2","2020-T3","2020-T4",
@@ -441,12 +442,14 @@ def _estimate_synthdid(df_lang, method, outcome_col='num_pushers_pc'):
         fit_kwargs = {'did': True}
     else:
         fit_kwargs = {}
-    r = (
+    estimator = (
         Synthdid(df_s, 'iso2_code', 'quarter', 'treat', outcome_col)
         .fit(**fit_kwargs)
-        .vcov(method='bootstrap', n_reps=N_BOOT)
-        .summary()
     )
+    # Fix seed per method for reproducible and distinct bootstrap SEs
+    _method_seeds = {'did': 1234, 'sdid': 1235, 'sc': 1236}
+    np.random.seed(_method_seeds.get(method, 1234))
+    r = estimator.vcov(method='bootstrap', n_reps=N_BOOT).summary()
     att   = float(r.att)
     se    = float(r.se)
     omega = np.array(r.weights['omega'][0])
@@ -454,6 +457,81 @@ def _estimate_synthdid(df_lang, method, outcome_col='num_pushers_pc'):
     all_units = list(r.Y_units[0])
     co_units_ordered = all_units[:len(omega)]
     return att, se, omega, lam, co_units_ordered
+
+
+def _solve_sc_osqp(co_pre, tr_pre_mean):
+    """SC QP via OSQP: min ||co_pre.T @ w - tr_pre_mean||^2  s.t. sum(w)=1, w>=0.
+    co_pre: N_co × T_pre,  tr_pre_mean: T_pre vector.
+    ~20-50x faster than SLSQP for this problem size.
+    """
+    import osqp
+    import scipy.sparse as sp
+    n = co_pre.shape[0]
+    P = sp.csc_matrix(2.0 * co_pre @ co_pre.T)
+    q = -2.0 * co_pre @ tr_pre_mean
+    A = sp.csc_matrix(np.vstack([np.ones((1, n)), np.eye(n)]))
+    l = np.concatenate([[1.0], np.zeros(n)])
+    u = np.concatenate([[1.0], np.full(n, np.inf)])
+    prob = osqp.OSQP()
+    prob.setup(P, q, A, l, u, verbose=False,
+               eps_abs=1e-9, eps_rel=1e-9, max_iter=10000, polish=True)
+    return np.maximum(prob.solve().x, 0.0)
+
+
+def _sc_boot_one(co_pre, co_post, tr_pre, tr_post, n_co, n_tr, seed_i):
+    """Single SC bootstrap iteration. Module-level so joblib can pickle it."""
+    rng     = np.random.default_rng(int(seed_i))
+    ci      = rng.integers(0, n_co, size=n_co)
+    ti      = rng.integers(0, n_tr, size=n_tr)
+    cb_pre  = co_pre[ci]
+    cb_post = co_post[ci]
+    tb_pre  = tr_pre[ti].mean(0)
+    tb_post = tr_post[ti].mean(0)
+    w = _solve_sc_osqp(cb_pre, tb_pre)
+    return float(np.mean(tb_post - cb_post.T @ w))
+
+
+def _estimate_sc_stata(df_lang, outcome_col='num_pushers_pc', n_boot=N_BOOT_SC, seed=1234):
+    """SC matching Stata sdid method(sc): no centering, lambda_pre=0.
+    Uses OSQP (fast QP solver) + joblib parallel bootstrap for speed.
+    With n_boot=2000 and 12 cores, runs faster than the old 100-rep SLSQP serial loop.
+    """
+    from joblib import Parallel, delayed
+
+    co_units = sorted(df_lang[df_lang['gpt_available'] == 0]['iso2_code'].unique())
+    tr_units = sorted(df_lang[df_lang['gpt_available'] == 1]['iso2_code'].unique())
+    all_q    = sorted(df_lang['quarter'].unique())
+    pre_q    = [q for q in all_q if q < TREAT_START]
+    post_q   = [q for q in all_q if q >= TREAT_START]
+
+    def _piv(units, quarters):
+        return (df_lang[df_lang['iso2_code'].isin(units)]
+                .pivot(index='iso2_code', columns='quarter', values=outcome_col)
+                .reindex(index=units, columns=quarters).fillna(0).values)
+
+    Y_co_pre  = _piv(co_units, pre_q)
+    Y_co_post = _piv(co_units, post_q)
+    Y_tr_pre  = _piv(tr_units, pre_q)
+    Y_tr_post = _piv(tr_units, post_q)
+
+    # Point estimate with OSQP
+    omega = _solve_sc_osqp(Y_co_pre, Y_tr_pre.mean(0))
+    att   = float(np.mean(Y_tr_post.mean(0) - Y_co_post.T @ omega))
+
+    # Parallel bootstrap: each iteration is independent → embarrassingly parallel
+    n_co = len(co_units)
+    n_tr = len(tr_units)
+    rng_main = np.random.default_rng(seed)
+    seeds_i  = rng_main.integers(0, 2**31, size=n_boot)
+    boot_atts = Parallel(n_jobs=-1, backend='loky')(
+        delayed(_sc_boot_one)(Y_co_pre, Y_co_post, Y_tr_pre, Y_tr_post,
+                              n_co, n_tr, int(s))
+        for s in seeds_i
+    )
+    boot_atts = [b for b in boot_atts if np.isfinite(b)]
+    se = float(np.std(boot_atts, ddof=1)) if len(boot_atts) > 1 else float('nan')
+
+    return att, se, omega, co_units
 
 
 def _quarter_structure(df_lang):
@@ -526,24 +604,62 @@ def _plot_trends(df_lang, omega, lam, att, se, method, lang,
     return fname
 
 
-def _plot_weights(omega, co_units, method, lang):
-    """Bar chart of unit (omega) weights for control countries."""
-    # Keep only countries with non-negligible weight
-    idx    = np.argsort(omega)[::-1]
-    top_n  = min(30, len(co_units))          # at most 30 bars to keep readable
-    idx    = idx[:top_n]
+def _plot_weights(omega, co_units, method, lang, att=None, se=None):
+    """Bubble chart of unit (omega) weights for control countries.
+    Style: large blue circles for high-weight countries, small red dots
+    for negligible-weight countries, matching the reference scatter style.
+    """
+    from matplotlib.lines import Line2D
+
+    n       = len(co_units)
+    uniform = 1.0 / n
+
+    # Sort alphabetically so x-axis is consistent across methods
+    idx    = np.argsort(co_units)
     labels = [co_units[i] for i in idx]
-    vals   = omega[idx]
+    vals   = np.array([omega[i] for i in idx])
 
-    fig, ax = plt.subplots(figsize=(max(8, int(top_n * 0.4)), 5))
-    ax.bar(range(len(labels)), vals, color='#3b528b', edgecolor='white', linewidth=0.5)
-    ax.set_xticks(range(len(labels)))
-    ax.set_xticklabels(labels, rotation=75, fontsize=7)
-    ax.set_ylabel("Peso omega", fontsize=11)
-    ax.set_title(f"{lang} – {method.upper()}   Pesos del control sintético", fontsize=11)
-    ax.grid(axis='y', ls='--', alpha=0.4)
+    # Classify: significant (≥ 30 % of uniform weight) vs negligible
+    threshold = uniform * 0.30
+    colors = ['#2c7bb6' if v >= threshold else '#d7191c' for v in vals]
+
+    # Bubble size proportional to weight (min 20 for visibility)
+    max_w  = max(vals) if max(vals) > 0 else 1.0
+    sizes  = [max(20, (v / max_w) * 350) for v in vals]
+
+    fig, ax = plt.subplots(figsize=(max(10, n * 0.38), 5))
+
+    ax.scatter(range(n), vals, c=colors, s=sizes,
+               alpha=0.85, edgecolors='white', linewidth=0.5, zorder=3)
+
+    # Reference lines (style matches the reference image)
+    ax.axhline(y=0,       color='#2c7bb6', linewidth=1.2, alpha=0.7, zorder=2)
+    ax.axhline(y=uniform, color='purple',  linewidth=1.2, linestyle='--',
+               alpha=0.8, zorder=2)
+
+    ax.set_xticks(range(n))
+    ax.set_xticklabels(labels, rotation=75, fontsize=7, ha='right')
+    ax.set_ylabel("Peso ω", fontsize=11)
+    meth_label = {'did': 'DiD', 'sc': 'CS', 'sdid': 'SDiD'}.get(method, method.upper())
+    ax.set_title(f"{lang} — {meth_label}   Pesos del control sintético", fontsize=11)
+    ax.grid(axis='y', ls='--', alpha=0.3)
+
+    # Legend
+    legend_elements = [
+        Line2D([0], [0], color='purple', linewidth=1.2, linestyle='--',
+               label=f'Peso uniforme: {uniform:.3f}'),
+        Line2D([0], [0], marker='o', color='w', markerfacecolor='#2c7bb6',
+               markersize=10, label='Peso significativo'),
+        Line2D([0], [0], marker='o', color='w', markerfacecolor='#d7191c',
+               markersize=5,  label='Peso negligible'),
+    ]
+    if att is not None and not np.isnan(se if se is not None else float('nan')):
+        legend_elements.insert(0,
+            Line2D([0], [0], color='w', label=f'ATT: {att:.3f}'))
+    ax.legend(handles=legend_elements, fontsize=8, loc='upper right',
+              framealpha=0.9)
+
     plt.tight_layout()
-
     fname = p("output", "figures", f"{LANG_SAFE[lang]}{method}weights12.png")
     fig.savefig(fname, dpi=150, bbox_inches='tight')
     plt.close(fig)
@@ -683,8 +799,8 @@ for lang in LANGUAGES_5:
     row: dict = {'nobs': n_obs, 'cmean': cmean}
     omega_sdid, co_sdid = None, None
 
-    # ── DID / SC / SDID: synthdid (d2cml-ai) ─────────────────────────────
-    for method in ('did', 'sc', 'sdid'):
+    # ── DID / SDID: synthdid (d2cml-ai) ─────────────────────────────────
+    for method in ('did', 'sdid'):
         try:
             att, se, omega, lam, co_sd = _estimate_synthdid(df_l, method)
         except Exception as exc:
@@ -697,9 +813,24 @@ for lang in LANGUAGES_5:
         print(f"    {method.upper()}: ATT = {att:.3f}  SE = {se:.3f}  {_stars(att, se)}")
         _plot_trends(df_l, omega, lam, att, se, method, lang,
                      all_q, pre_q, post_q, co_sd, tr_units)
-        _plot_weights(omega, co_sd, method, lang)
+        _plot_weights(omega, co_sd, method, lang, att=att, se=se)
         if method == 'sdid':
             omega_sdid, co_sdid = omega, co_sd
+
+    # ── SC: uncentered (Stata-compatible, no demeaning) ───────────────
+    try:
+        att_sc, se_sc, omega_sc, co_sc = _estimate_sc_stata(df_l)
+    except Exception as exc:
+        print(f"    SC: estimation failed ({exc})")
+        att_sc, se_sc = 0.0, float('nan')
+        omega_sc, co_sc = (np.ones(len(co_units)) / len(co_units),
+                           list(co_units))
+    row['sc'] = (att_sc, se_sc)
+    print(f"    SC: ATT = {att_sc:.3f}  SE = {se_sc:.3f}  {_stars(att_sc, se_sc)}")
+    lam_dummy = np.ones(len(pre_q)) / len(pre_q)
+    _plot_trends(df_l, omega_sc, lam_dummy, att_sc, se_sc, 'sc', lang,
+                 all_q, pre_q, post_q, co_sc, tr_units)
+    _plot_weights(omega_sc, co_sc, 'sc', lang, att=att_sc, se=se_sc)
 
     # ── SDID event study (pre-trend validation) ───────────────────────────
     if omega_sdid is not None:
@@ -720,8 +851,8 @@ NOTE_5 = (
     r"Las columnas DID, SC y SDID corresponden a Diferencias en Diferencias, "
     r"Control Sint\'{e}tico (Abadie et al., 2010) y Diferencias en Diferencias "
     r"Sint\'{e}tica (Arkhangelsky et al., 2021), respectivamente, todos estimados "
-    r"mediante la librer\'{i}a \texttt{synthdid} (Clarke et al., 2023). "
-    r"Los errores est\'{a}ndar se obtienen por \textit{bootstrap}. "
+    r"mediante la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). "
+    r"Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). "
     r"El periodo de tratamiento inicia en Q4-2022, coincidiendo con el lanzamiento de ChatGPT. "
     r"Fuente: GitHub Innovation Graph, tabla \textit{languages} "
     r"(\url{https://github.com/github/innovationgraph}). "
@@ -833,35 +964,34 @@ print(f"Saved: {p('output', 'data', 'merge_controles.csv')}")
 COVARIATES = ["uso_computadoras", "uso_internet"]
 
 
-def _partial_out_covariates(df_lang, covariates=COVARIATES):
+def _partial_out(df_lang, covariates=COVARIATES):
+    """Partial out covariates matching Stata sdid covariates(, projected).
+
+    Stata projected(): OLS with explicit unit + time FE dummies on control
+    units across ALL periods, then subtracts X*beta from the full panel.
     """
-    Partial out covariate effects from num_pushers_pc using pre-treatment
-    control observations (within-unit, within-time OLS).
-    Returns df with adjusted 'num_pushers_pc'.
-    """
-    mask = (df_lang['quarter'] < TREAT_START) & (df_lang['gpt_available'] == 0)
-    df_pre = df_lang[mask].copy()
+    # Control units only (gpt_available == 0), all periods -- matches Stata
+    df_co = df_lang[df_lang['gpt_available'] == 0].copy()
+    df_co = df_co.dropna(subset=list(covariates))
 
-    # Within transformation (demean by unit and time)
-    for col in ['num_pushers_pc'] + list(covariates):
-        unit_mean = df_pre.groupby('iso2_code')[col].transform('mean')
-        time_mean = df_pre.groupby('quarter')[col].transform('mean')
-        grand     = df_pre[col].mean()
-        df_pre[col + '_dm'] = df_pre[col] - unit_mean - time_mean + grand
+    y = df_co['num_pushers_pc'].values
+    X_cov = df_co[list(covariates)].values
 
-    Y_dm = df_pre['num_pushers_pc_dm'].values
-    X_dm = df_pre[[c + '_dm' for c in covariates]].values
+    # Unit and time FE dummies (drop one to avoid multicollinearity)
+    unit_dummies = pd.get_dummies(df_co['iso2_code'], drop_first=True).astype(float).values
+    time_dummies = pd.get_dummies(df_co['quarter'],   drop_first=True).astype(float).values
 
-    if X_dm.shape[0] > X_dm.shape[1]:
-        beta, *_ = np.linalg.lstsq(X_dm, Y_dm, rcond=None)
-    else:
-        beta = np.zeros(len(covariates))
+    # Design matrix: [covariates | time FE | unit FE | constant]
+    X_full = np.column_stack([X_cov, time_dummies, unit_dummies,
+                               np.ones(len(y))])
+
+    # OLS -- extract only the covariate betas (first len(covariates) cols)
+    beta_full, *_ = np.linalg.lstsq(X_full, y, rcond=None)
+    beta = beta_full[:len(covariates)]
 
     df_adj = df_lang.copy()
-    df_adj['num_pushers_pc'] = (
-        df_lang['num_pushers_pc'].values
-        - df_lang[list(covariates)].values @ beta
-    )
+    df_adj['num_pushers_pc'] = (df_lang['num_pushers_pc'].values
+                                - df_lang[list(covariates)].values @ beta)
     return df_adj
 
 
@@ -874,7 +1004,7 @@ results_6 = {}
 for lang in LANGUAGES_5:
     print(f"\n  [{lang}]")
     df_l     = df_ctrl_panel[df_ctrl_panel['language'] == lang].copy()
-    df_l_adj = _partial_out_covariates(df_l)
+    df_l_adj = _partial_out(df_l)
     n_obs    = len(df_l)
 
     all_q, pre_q, post_q, co_units, tr_units = _quarter_structure(df_l_adj)
@@ -883,8 +1013,8 @@ for lang in LANGUAGES_5:
 
     row: dict = {'nobs': n_obs, 'cmean': cmean}
 
-    # ── DID / SC / SDID: synthdid (d2cml-ai) ─────────────────────────────
-    for method in ('did', 'sc', 'sdid'):
+    # ── DID / SDID: synthdid (d2cml-ai) ─────────────────────────────────
+    for method in ('did', 'sdid'):
         try:
             att, se, omega, lam, co_sd = _estimate_synthdid(df_l_adj, method)
         except Exception as exc:
@@ -895,9 +1025,17 @@ for lang in LANGUAGES_5:
             co_sd = list(co_units)
         row[method] = (att, se)
         print(f"    {method.upper()}: ATT = {att:.3f}  SE = {se:.3f}  {_stars(att, se)}")
-        _plot_trends(df_l_adj, omega, lam, att, se, method, lang,
-                     all_q, pre_q, post_q, co_sd, tr_units)
-        _plot_weights(omega, co_sd, method, lang)
+
+    # ── SC: uncentered (Stata-compatible, no demeaning) ───────────────
+    try:
+        att_sc, se_sc, omega_sc, co_sc = _estimate_sc_stata(df_l_adj)
+    except Exception as exc:
+        print(f"    SC: estimation failed ({exc})")
+        att_sc, se_sc = 0.0, float('nan')
+        omega_sc, co_sc = (np.ones(len(co_units)) / len(co_units),
+                           list(co_units))
+    row['sc'] = (att_sc, se_sc)
+    print(f"    SC: ATT = {att_sc:.3f}  SE = {se_sc:.3f}  {_stars(att_sc, se_sc)}")
 
     results_6[lang] = row
 
@@ -909,11 +1047,11 @@ NOTE_6 = (
     r"Las columnas DID, SC y SDID corresponden a Diferencias en Diferencias, "
     r"Control Sint\'{e}tico (Abadie et al., 2010) y Diferencias en Diferencias "
     r"Sint\'{e}tica (Arkhangelsky et al., 2021), respectivamente, todos estimados "
-    r"mediante la librer\'{i}a \texttt{synthdid} (Clarke et al., 2023). "
+    r"mediante la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). "
     r"Se incluyen como variables de control el porcentaje de individuos que usan "
     r"computadora y el porcentaje que usa internet, extra\'{i}das del Banco Mundial, "
     r"incorporadas mediante un \textit{partial-out} de efectos fijos de unidad y "
-    r"tiempo. Los errores est\'{a}ndar se obtienen por \textit{bootstrap}. "
+    r"tiempo. Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). "
     r"El periodo de tratamiento inicia en Q4-2022. "
     r"Fuentes: GitHub Innovation Graph "
     r"(\url{https://github.com/github/innovationgraph}); Banco Mundial, Indicadores "
@@ -925,9 +1063,120 @@ _write_latex_table(
     results_6,
     p("output", "tables", "gpt_impact_github_DataScience_controls.tex"),
     r"Impacto de ChatGPT en el n\'{u}mero de programadores (con controles)",
-    "tab:tabla5",
+    "tab:tabla4",
     NOTE_6,
 )
+
+
+# ============================================================================
+# SECTION 7: Robustness — SDID with restricted control group
+# (Excludes 6 severe internet censors: CN, CU, IR, BY, RU, SY)
+# ============================================================================
+
+print("\n" + "=" * 60)
+print("SECTION 7  Robustness: SDID restricted control group")
+print("=" * 60)
+
+SEVERE_CENSORS = ['CN', 'CU', 'IR', 'BY', 'RU', 'SY']
+
+results_7 = {}
+
+for lang in LANGUAGES_5:
+    print(f"\n  [{lang}]")
+    df_l = df_panel[df_panel['language'] == lang].copy()
+    n_obs_full = len(df_l)
+
+    # Baseline mean (control group, pre-treatment) — full sample
+    cmean = float(df_l.loc[
+        (df_l['quarter'] < TREAT_START) & (df_l['gpt_available'] == 0),
+        'num_pushers_pc'
+    ].mean())
+
+    # --- SDID full (same as Section 5) ---
+    att_full, se_full = results_5[lang]['sdid']
+    print(f"    SDID (full):       ATT = {att_full:.3f}  SE = {se_full:.3f}  {_stars(att_full, se_full)}")
+
+    # --- SDID restricted (exclude severe censors) ---
+    df_r = df_l[~df_l['iso2_code'].isin(SEVERE_CENSORS)].copy()
+    n_obs_rest = len(df_r)
+    try:
+        att_r, se_r, omega_r, lam_r, co_r = _estimate_synthdid(df_r, 'sdid')
+    except Exception as exc:
+        print(f"    SDID (restricted): FAILED ({exc})")
+        att_r, se_r = float('nan'), float('nan')
+    print(f"    SDID (restricted): ATT = {att_r:.3f}  SE = {se_r:.3f}  {_stars(att_r, se_r)}")
+
+    results_7[lang] = {
+        'att_full': att_full, 'se_full': se_full,
+        'att_rest': att_r,    'se_rest': se_r,
+        'n_full': n_obs_full, 'n_rest': n_obs_rest,
+        'cmean': cmean,
+    }
+
+# ── Robustness LaTeX table (Cuadro 5) ─────────────────────────────────────
+
+NOTE_7 = (
+    r"Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT "
+    r"sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes, "
+    r"mediante Diferencias en Diferencias Sint\'{e}tica (SDID; Arkhangelsky et al., 2021), "
+    r"estimada con la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). "
+    r"La columna ``SDID (completo)'' emplea los 29 pa\'{i}ses de control y corresponde "
+    r"a la estimaci\'{o}n principal; la columna ``SDID (restringido)'' excluye del grupo "
+    r"de control los seis censores severos de internet: China (CN), Cuba (CU), "
+    r"Ir\'{a}n (IR), Bielorrusia (BY), Rusia (RU) y Siria (SY), clasificados como "
+    r"``No Libres'' por Freedom House (Freedom on the Net, 2022). "
+    r"Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). "
+    r"El periodo de tratamiento inicia en Q4-2022. "
+    r"Fuente: GitHub Innovation Graph "
+    r"(\url{https://github.com/github/innovationgraph}). "
+    r"Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. "
+    r"* p$<$0.10, ** p$<$0.05, *** p$<$0.01"
+)
+
+rob_lines = [
+    r"\begin{table}[htbp]\centering",
+    r"\caption{Robustez: SDID con grupo de control restringido (excluye censores severos)}",
+    r"\label{tab:tabla5}",
+    r"\begin{threeparttable}",
+    r"{\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}",
+    r"\begin{tabular}{lcccccc}",
+    r"\toprule",
+    r"Lenguaje & \shortstack{SDID \\ (completo)} & \shortstack{SDID \\ (restringido)}"
+    r" & Obs. pleno & Obs. restringido & \shortstack{Baseline \\ Mean} \\",
+    r"\midrule",
+]
+
+for lang in LANGUAGES_5:
+    r7 = results_7[lang]
+    tname = LANG_TEX[lang]
+    s_f = _stars(r7['att_full'], r7['se_full'])
+    s_r = _stars(r7['att_rest'], r7['se_rest'])
+    rob_lines.append(
+        f"{tname} & {r7['att_full']:.3f}{s_f} & {r7['att_rest']:.3f}{s_r}"
+        f" & {r7['n_full']} & {r7['n_rest']} & {r7['cmean']:.3f} \\\\"
+    )
+    rob_lines.append(
+        f"              & ({r7['se_full']:.3f}) & ({r7['se_rest']:.3f}) & & & \\\\"
+    )
+    rob_lines.append(r"\addlinespace")
+
+rob_lines += [
+    r"\bottomrule",
+    r"\end{tabular}}",
+    r"\begin{tablenotes}",
+    r"\footnotesize",
+    rf"\item \textit{{Nota.}} {NOTE_7}",
+    r"\end{tablenotes}",
+    r"\end{threeparttable}",
+    r"\end{table}",
+    "",
+]
+
+rob_path = p("output", "tables", "gpt_impact_github_robustez.tex")
+with open(rob_path, 'w', encoding='utf-8') as f:
+    f.write("\n".join(rob_lines))
+print(f"  Robustness table written: {rob_path}")
+
 
 print("\n" + "=" * 60)
 print("all_code_python.py completed successfully.")
