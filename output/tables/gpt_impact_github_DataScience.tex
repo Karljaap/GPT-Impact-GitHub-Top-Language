@@ -7,41 +7,41 @@
 \toprule
 Lenguaje & DID & SC & SDID & Obs. & \shortstack{Baseline \\ Mean} \\
 \midrule
-C & 2.689*** & 1.634 & 1.276*** & 2544 & 6.232 \\
-              & (0.365) & (1.137) & (0.451) & & \\
+C & 2{,}689*** & 1{,}634 & 1{,}276*** & 2544 & 6{,}232 \\
+              & (0{,}365) & (1{,}137) & (0{,}451) & & \\
 \addlinespace
-C\# & 1.499*** & 1.001 & 0.443 & 2544 & 6.557 \\
-              & (0.381) & (1.263) & (0.379) & & \\
+C\# & 1{,}499*** & 1{,}001 & 0{,}443 & 2544 & 6{,}557 \\
+              & (0{,}381) & (1{,}263) & (0{,}379) & & \\
 \addlinespace
-C++ & 2.210*** & 1.212 & 1.131*** & 2544 & 6.807 \\
-              & (0.417) & (0.959) & (0.435) & & \\
+C++ & 2{,}210*** & 1{,}212 & 1{,}131*** & 2544 & 6{,}807 \\
+              & (0{,}417) & (0{,}959) & (0{,}435) & & \\
 \addlinespace
-Go & 1.411*** & 0.686 & 0.720*** & 2544 & 2.230 \\
-              & (0.177) & (0.606) & (0.269) & & \\
+Go & 1{,}411*** & 0{,}686 & 0{,}720*** & 2544 & 2{,}230 \\
+              & (0{,}177) & (0{,}606) & (0{,}269) & & \\
 \addlinespace
-Java & 2.810*** & 2.206 & 1.725** & 2544 & 11.467 \\
-              & (0.827) & (2.089) & (0.872) & & \\
+Java & 2{,}810*** & 2{,}206 & 1{,}725** & 2544 & 11{,}467 \\
+              & (0{,}827) & (2{,}089) & (0{,}872) & & \\
 \addlinespace
-JavaScript & 13.635*** & 9.451* & 8.303*** & 2544 & 36.571 \\
-              & (2.719) & (5.307) & (3.180) & & \\
+JavaScript & 13{,}635*** & 9{,}451* & 8{,}303*** & 2544 & 36{,}571 \\
+              & (2{,}719) & (5{,}307) & (3{,}180) & & \\
 \addlinespace
-PHP & 0.904* & 1.078 & 0.916** & 2544 & 6.381 \\
-              & (0.507) & (1.013) & (0.465) & & \\
+PHP & 0{,}904* & 1{,}078 & 0{,}916** & 2544 & 6{,}381 \\
+              & (0{,}507) & (1{,}013) & (0{,}465) & & \\
 \addlinespace
-Python & 7.688*** & 1.604 & 4.525*** & 2544 & 20.003 \\
-              & (1.193) & (3.552) & (1.321) & & \\
+Python & 7{,}688*** & 1{,}604 & 4{,}525*** & 2544 & 20{,}003 \\
+              & (1{,}193) & (3{,}552) & (1{,}321) & & \\
 \addlinespace
-Ruby & 0.262 & 1.521 & 0.808*** & 2544 & 5.592 \\
-              & (0.266) & (0.946) & (0.274) & & \\
+Ruby & 0{,}262 & 1{,}521 & 0{,}808*** & 2544 & 5{,}592 \\
+              & (0{,}266) & (0{,}946) & (0{,}274) & & \\
 \addlinespace
-TypeScript & 7.181*** & 3.263 & 3.078*** & 2544 & 8.571 \\
-              & (0.832) & (2.290) & (0.873) & & \\
+TypeScript & 7{,}181*** & 3{,}263 & 3{,}078*** & 2544 & 8{,}571 \\
+              & (0{,}832) & (2{,}290) & (0{,}873) & & \\
 \addlinespace
 \bottomrule
 \end{tabular}}
 \begin{tablenotes}
 \footnotesize
-\item \textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes. Las columnas DID, SC y SDID corresponden a Diferencias en Diferencias, Control Sint\'{e}tico (Abadie et al., 2010) y Diferencias en Diferencias Sint\'{e}tica (Arkhangelsky et al., 2021), respectivamente, todos estimados mediante la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). Los errores est\'{a}ndar se obtienen por \textit{bootstrap}: 100 replicaciones para DiD y SDiD; 2\,000 replicaciones para SC (cuya optimizaci\'{o}n cuadr\'{a}tica introduce mayor variabilidad muestral por iteraci\'{o}n). El periodo de tratamiento inicia en Q4-2022, coincidiendo con el lanzamiento de ChatGPT. Fuente: GitHub Innovation Graph, tabla \textit{languages} (\url{https://github.com/github/innovationgraph}). Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01
+\item \textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes. Las columnas DID, SC y SDID corresponden a Diferencias en Diferencias, Control Sint\'{e}tico (Abadie et al., 2010) y Diferencias en Diferencias Sint\'{e}tica (Arkhangelsky et al., 2021), respectivamente, todos estimados mediante la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). El periodo de tratamiento inicia en Q4-2022, coincidiendo con el lanzamiento de ChatGPT. Fuente: GitHub Innovation Graph, tabla \textit{languages} (\url{https://github.com/github/innovationgraph}). Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

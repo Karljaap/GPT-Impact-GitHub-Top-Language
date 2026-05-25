@@ -10,20 +10,22 @@
 \contentsline {subsection}{\numberline {3.3}Hipótesis}{8}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Revisión de Literatura}{9}{section.4}%
 \contentsline {subsection}{\numberline {4.1}ChatGPT: Un Modelo de Lenguaje de Gran escala}{9}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Las versiones de ChatGPT}{9}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Capacidades de ChatGPT}{10}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Evidencia empírica}{12}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Datos}{16}{section.5}%
-\contentsline {section}{\numberline {6}Estadísticos descriptivos}{18}{section.6}%
-\contentsline {section}{\numberline {7}Metodología}{20}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Diferencia en Diferencias (DiD)}{20}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Control Sintético (CS)}{21}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Diferencia en Diferencias Sintética (SDiD)}{22}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Inferencia}{23}{subsection.7.4}%
-\contentsline {section}{\numberline {8}Resultados}{24}{section.8}%
-\contentsline {section}{\numberline {9}Conclusiones y recomendaciones de política}{27}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Limitaciones del estudio}{28}{subsection.9.1}%
-\contentsline {section}{\numberline {10}Tablas}{30}{section.10}%
-\contentsline {section}{\numberline {11}Figuras}{33}{section.11}%
-\contentsline {section}{Anexos}{47}{section*.26}%
-\contentsline {section}{Referencias bibliográficas}{61}{section*.46}%
+\contentsline {subsection}{\numberline {4.2}Las versiones de ChatGPT: línea de tiempo de mejoras y limitaciones (2020--2023)}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Capacidades de ChatGPT}{11}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Marco teórico económico}{12}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Evidencia empírica}{14}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Datos}{18}{section.5}%
+\contentsline {section}{\numberline {6}Estadísticos descriptivos}{20}{section.6}%
+\contentsline {section}{\numberline {7}Metodología}{22}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Diferencia en Diferencias (DiD)}{22}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Control Sintético (CS)}{23}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Diferencia en Diferencias Sintética (SDiD)}{24}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Inferencia}{25}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Pruebas de robustez: placebos in-space y sensibilidad del pool de donantes}{25}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Resultados}{27}{section.8}%
+\contentsline {section}{\numberline {9}Conclusiones y recomendaciones de política}{31}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Limitaciones del estudio}{32}{subsection.9.1}%
+\contentsline {section}{\numberline {10}Tablas}{35}{section.10}%
+\contentsline {section}{\numberline {11}Figuras}{39}{section.11}%
+\contentsline {section}{Anexos}{56}{section*.31}%
+\contentsline {section}{Referencias bibliográficas}{70}{section*.51}%

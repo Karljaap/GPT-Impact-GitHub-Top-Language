@@ -1,0 +1,212 @@
+SECTION 1  Skipped: balanced panel cached at C:\Users\Jesus\OneDrive\Documentos\GPT-Impact-GitHub-Top-Language\output\data\data_langs_balanced.csv
+Map saved to: C:\Users\Jesus\OneDrive\Documentos\GPT-Impact-GitHub-Top-Language\output\figures\chatgpt_global_availability_map.png
+
+============================================================
+SECTION 5  DID / SC / SDID (no controls)
+============================================================
+
+  [C]
+    DID: ATT = 2.689  SE = 0.365  ***
+    SDID: ATT = 1.276  SE = 0.451  ***
+    SC: ATT = 1.634  SE = 1.137  
+    Event study: saved
+
+  [C#]
+    DID: ATT = 1.499  SE = 0.381  ***
+    SDID: ATT = 0.443  SE = 0.379  
+    SC: ATT = 1.001  SE = 1.263  
+    Event study: saved
+
+  [C++]
+    DID: ATT = 2.210  SE = 0.417  ***
+    SDID: ATT = 1.131  SE = 0.435  ***
+    SC: ATT = 1.212  SE = 0.959  
+    Event study: saved
+
+  [Go]
+    DID: ATT = 1.411  SE = 0.177  ***
+    SDID: ATT = 0.720  SE = 0.269  ***
+    SC: ATT = 0.686  SE = 0.606  
+    Event study: saved
+
+  [Java]
+    DID: ATT = 2.810  SE = 0.827  ***
+    SDID: ATT = 1.725  SE = 0.872  **
+    SC: ATT = 2.206  SE = 2.089  
+    Event study: saved
+
+  [JavaScript]
+    DID: ATT = 13.635  SE = 2.719  ***
+    SDID: ATT = 8.303  SE = 3.180  ***
+    SC: ATT = 9.451  SE = 5.307  *
+    Event study: saved
+
+  [PHP]
+    DID: ATT = 0.904  SE = 0.507  *
+    SDID: ATT = 0.916  SE = 0.465  **
+    SC: ATT = 1.078  SE = 1.013  
+    Event study: saved
+
+  [Python]
+    DID: ATT = 7.688  SE = 1.193  ***
+    SDID: ATT = 4.525  SE = 1.321  ***
+    SC: ATT = 1.604  SE = 3.552  
+    Event study: saved
+
+  [Ruby]
+    DID: ATT = 0.262  SE = 0.266  
+    SDID: ATT = 0.808  SE = 0.274  ***
+    SC: ATT = 1.521  SE = 0.946  
+    Event study: saved
+
+  [TypeScript]
+    DID: ATT = 7.181  SE = 0.832  ***
+    SDID: ATT = 3.078  SE = 0.873  ***
+    SC: ATT = 3.263  SE = 2.290  
+    Event study: saved
+  Table written: C:\Users\Jesus\OneDrive\Documentos\GPT-Impact-GitHub-Top-Language\output\tables\gpt_impact_github_DataScience.tex
+
+============================================================
+SECTION 6  Merge controls + Python DID / SC / SDID (with controls)
+============================================================
+Base principal: (25600, 16)
+Computadoras (trimestral): (540, 4)
+Internet (trimestral): (2804, 4)
+Base final: (25600, 18)
+  uso_computadoras: 20200 valores faltantes -> 0
+  uso_internet: 2800 valores faltantes -> 0
+Saved: C:\Users\Jesus\OneDrive\Documentos\GPT-Impact-GitHub-Top-Language\output\data\merge_controles.csv
+
+  [C]
+    DID: ATT = 2.774  SE = 0.367  ***
+    SDID: ATT = 1.396  SE = 0.424  ***
+    SC: ATT = 1.433  SE = 1.240  
+
+  [C#]
+    DID: ATT = 1.475  SE = 0.383  ***
+    SDID: ATT = 0.422  SE = 0.386  
+    SC: ATT = 1.049  SE = 1.252  
+
+  [C++]
+    DID: ATT = 2.236  SE = 0.419  ***
+    SDID: ATT = 1.157  SE = 0.437  ***
+    SC: ATT = 1.242  SE = 0.979  
+
+  [Go]
+    DID: ATT = 1.411  SE = 0.176  ***
+    SDID: ATT = 0.728  SE = 0.270  ***
+    SC: ATT = 0.689  SE = 0.606  
+
+  [Java]
+    DID: ATT = 2.831  SE = 0.832  ***
+    SDID: ATT = 1.726  SE = 0.874  **
+    SC: ATT = 2.224  SE = 2.038  
+
+  [JavaScript]
+    DID: ATT = 14.106  SE = 2.856  ***
+    SDID: ATT = 9.142  SE = 3.228  ***
+    SC: ATT = 10.470  SE = 4.738  **
+
+  [PHP]
+    DID: ATT = 0.994  SE = 0.523  *
+    SDID: ATT = 1.034  SE = 0.470  **
+    SC: ATT = 0.974  SE = 1.029  
+
+  [Python]
+    DID: ATT = 7.831  SE = 1.147  ***
+    SDID: ATT = 4.700  SE = 1.324  ***
+    SC: ATT = 2.028  SE = 3.531  
+
+  [Ruby]
+    DID: ATT = 0.312  SE = 0.272  
+    SDID: ATT = 0.864  SE = 0.278  ***
+    SC: ATT = 1.605  SE = 0.855  *
+
+  [TypeScript]
+    DID: ATT = 7.189  SE = 0.846  ***
+    SDID: ATT = 3.058  SE = 0.870  ***
+    SC: ATT = 2.742  SE = 2.244  
+  Table written: C:\Users\Jesus\OneDrive\Documentos\GPT-Impact-GitHub-Top-Language\output\tables\gpt_impact_github_DataScience_controls.tex
+
+============================================================
+SECTION 7  Robustness: SDID restricted control group
+============================================================
+
+  [C]
+    SDID (full):       ATT = 1.276  SE = 0.451  ***
+    SDID (restricted): ATT = 0.922  SE = 0.486  *
+
+  [C#]
+    SDID (full):       ATT = 0.443  SE = 0.379  
+    SDID (restricted): ATT = 0.402  SE = 0.616  
+
+  [C++]
+    SDID (full):       ATT = 1.131  SE = 0.435  ***
+    SDID (restricted): ATT = 1.281  SE = 0.571  **
+
+  [Go]
+    SDID (full):       ATT = 0.720  SE = 0.269  ***
+    SDID (restricted): ATT = 0.598  SE = 0.467  
+
+  [Java]
+    SDID (full):       ATT = 1.725  SE = 0.872  **
+    SDID (restricted): ATT = 1.112  SE = 0.971  
+
+  [JavaScript]
+    SDID (full):       ATT = 8.303  SE = 3.180  ***
+    SDID (restricted): ATT = 3.728  SE = 2.054  *
+
+  [PHP]
+    SDID (full):       ATT = 0.916  SE = 0.465  **
+    SDID (restricted): ATT = 0.697  SE = 0.452  
+
+  [Python]
+    SDID (full):       ATT = 4.525  SE = 1.321  ***
+    SDID (restricted): ATT = 4.949  SE = 1.574  ***
+
+  [Ruby]
+    SDID (full):       ATT = 0.808  SE = 0.274  ***
+    SDID (restricted): ATT = 0.564  SE = 0.280  **
+
+  [TypeScript]
+    SDID (full):       ATT = 3.078  SE = 0.873  ***
+    SDID (restricted): ATT = 1.601  SE = 0.991  
+  Robustness table written: C:\Users\Jesus\OneDrive\Documentos\GPT-Impact-GitHub-Top-Language\output\tables\gpt_impact_github_robustez.tex
+
+============================================================
+SECTION 8  Robustness: in-space placebos + LOO donor pool
+============================================================
+
+  [8.1] In-space placebos (Abadie 2010 style)
+    C            obs=  1.276  placebo mean=  0.039  p=0.103  (n=29, fails=0)
+    C#           obs=  0.443  placebo mean= -0.010  p=0.207  (n=29, fails=0)
+    C++          obs=  1.131  placebo mean=  0.071  p=0.138  (n=29, fails=0)
+    Go           obs=  0.720  placebo mean= -0.007  p=0.034  (n=29, fails=0)
+    Java         obs=  1.725  placebo mean= -0.065  p=0.103  (n=29, fails=0)
+    JavaScript   obs=  8.303  placebo mean= -0.161  p=0.069  (n=29, fails=0)
+    PHP          obs=  0.916  placebo mean= -0.243  p=0.172  (n=29, fails=0)
+    Python       obs=  4.525  placebo mean=  0.355  p=0.069  (n=29, fails=0)
+    Ruby         obs=  0.808  placebo mean= -0.009  p=0.034  (n=29, fails=0)
+    TypeScript   obs=  3.078  placebo mean=  0.022  p=0.069  (n=29, fails=0)
+
+  [8.2] Leave-one-out donor pool sensitivity
+    C            obs=  1.276  LOO[  1.095,   1.436]  med=  1.278  (n=29, fails=0)
+    C#           obs=  0.443  LOO[  0.411,   0.824]  med=  0.435  (n=29, fails=0)
+    C++          obs=  1.131  LOO[  1.016,   1.278]  med=  1.122  (n=29, fails=0)
+    Go           obs=  0.720  LOO[  0.587,   0.839]  med=  0.721  (n=29, fails=0)
+    Java         obs=  1.725  LOO[  1.072,   2.646]  med=  1.726  (n=29, fails=0)
+    JavaScript   obs=  8.303  LOO[  4.642,   9.322]  med=  8.300  (n=29, fails=0)
+    PHP          obs=  0.916  LOO[  0.415,   1.124]  med=  0.909  (n=29, fails=0)
+    Python       obs=  4.525  LOO[  3.553,   5.111]  med=  4.520  (n=29, fails=0)
+    Ruby         obs=  0.808  LOO[  0.667,   0.853]  med=  0.807  (n=29, fails=0)
+    TypeScript   obs=  3.078  LOO[  1.904,   3.598]  med=  3.081  (n=29, fails=0)
+
+  Placebo/LOO table written: C:\Users\Jesus\OneDrive\Documentos\GPT-Impact-GitHub-Top-Language\output\tables\gpt_impact_github_placebo_loo.tex
+  [8.4] Robustness forest plot
+  Forest plot saved: C:\Users\Jesus\OneDrive\Documentos\GPT-Impact-GitHub-Top-Language\output\figures\robustness_forest_plot.png
+  [8.5] Per-language placebo distribution panel
+  Placebo panel saved: C:\Users\Jesus\OneDrive\Documentos\GPT-Impact-GitHub-Top-Language\output\figures\placebo_distribution_panel.png
+
+============================================================
+all_code_python.py completed successfully.
+============================================================

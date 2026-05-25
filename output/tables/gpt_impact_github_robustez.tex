@@ -7,41 +7,41 @@
 \toprule
 Lenguaje & \shortstack{SDID \\ (completo)} & \shortstack{SDID \\ (restringido)} & Obs. pleno & Obs. restringido & \shortstack{Baseline \\ Mean} \\
 \midrule
-C & 1.276*** & 0.922* & 2544 & 2448 & 1.339 \\
-              & (0.451) & (0.486) & & & \\
+C & 1{,}276*** & 0{,}922* & 2544 & 2448 & 1{,}339 \\
+              & (0{,}451) & (0{,}486) & & & \\
 \addlinespace
-C\# & 0.443 & 0.402 & 2544 & 2448 & 2.032 \\
-              & (0.379) & (0.616) & & & \\
+C\# & 0{,}443 & 0{,}402 & 2544 & 2448 & 2{,}032 \\
+              & (0{,}379) & (0{,}616) & & & \\
 \addlinespace
-C++ & 1.131*** & 1.281** & 2544 & 2448 & 1.666 \\
-              & (0.435) & (0.571) & & & \\
+C++ & 1{,}131*** & 1{,}281** & 2544 & 2448 & 1{,}666 \\
+              & (0{,}435) & (0{,}571) & & & \\
 \addlinespace
-Go & 0.720*** & 0.598 & 2544 & 2448 & 0.468 \\
-              & (0.269) & (0.467) & & & \\
+Go & 0{,}720*** & 0{,}598 & 2544 & 2448 & 0{,}468 \\
+              & (0{,}269) & (0{,}467) & & & \\
 \addlinespace
-Java & 1.725** & 1.112 & 2544 & 2448 & 3.669 \\
-              & (0.872) & (0.971) & & & \\
+Java & 1{,}725** & 1{,}112 & 2544 & 2448 & 3{,}669 \\
+              & (0{,}872) & (0{,}971) & & & \\
 \addlinespace
-JavaScript & 8.303*** & 3.728* & 2544 & 2448 & 12.652 \\
-              & (3.180) & (2.054) & & & \\
+JavaScript & 8{,}303*** & 3{,}728* & 2544 & 2448 & 12{,}652 \\
+              & (3{,}180) & (2{,}054) & & & \\
 \addlinespace
-PHP & 0.916** & 0.697 & 2544 & 2448 & 2.044 \\
-              & (0.465) & (0.452) & & & \\
+PHP & 0{,}916** & 0{,}697 & 2544 & 2448 & 2{,}044 \\
+              & (0{,}465) & (0{,}452) & & & \\
 \addlinespace
-Python & 4.525*** & 4.949*** & 2544 & 2448 & 5.502 \\
-              & (1.321) & (1.574) & & & \\
+Python & 4{,}525*** & 4{,}949*** & 2544 & 2448 & 5{,}502 \\
+              & (1{,}321) & (1{,}574) & & & \\
 \addlinespace
-Ruby & 0.808*** & 0.564** & 2544 & 2448 & 1.367 \\
-              & (0.274) & (0.280) & & & \\
+Ruby & 0{,}808*** & 0{,}564** & 2544 & 2448 & 1{,}367 \\
+              & (0{,}274) & (0{,}280) & & & \\
 \addlinespace
-TypeScript & 3.078*** & 1.601 & 2544 & 2448 & 2.056 \\
-              & (0.873) & (0.991) & & & \\
+TypeScript & 3{,}078*** & 1{,}601 & 2544 & 2448 & 2{,}056 \\
+              & (0{,}873) & (0{,}991) & & & \\
 \addlinespace
 \bottomrule
 \end{tabular}}
 \begin{tablenotes}
 \footnotesize
-\item \textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes, mediante Diferencias en Diferencias Sint\'{e}tica (SDID; Arkhangelsky et al., 2021), estimada con la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). La columna ``SDID (completo)'' emplea los 29 pa\'{i}ses de control y corresponde a la estimaci\'{o}n principal; la columna ``SDID (restringido)'' excluye del grupo de control los seis censores severos de internet: China (CN), Cuba (CU), Ir\'{a}n (IR), Bielorrusia (BY), Rusia (RU) y Siria (SY), clasificados como ``No Libres'' por Freedom House (Freedom on the Net, 2022). Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). La columna ``Baseline Mean'' se calcula como el promedio ponderado (por pesos SDiD) de los pa\'{i}ses de control en el per\'{i}odo pretratamiento; su diferencia respecto a los Cuadros~3 y~4 refleja la distinta composici\'{o}n del grupo de control en cada especificaci\'{o}n. El periodo de tratamiento inicia en Q4-2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. * p$<$0.10, ** p$<$0.05, *** p$<$0.01
+\item \textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes, mediante Diferencias en Diferencias Sint\'{e}tica (SDID; Arkhangelsky et al., 2021), estimada con la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). La columna ``SDID (completo)'' emplea los 29 pa\'{i}ses de control y corresponde a la estimaci\'{o}n principal; la columna ``SDID (restringido)'' excluye del grupo de control los seis censores severos de internet: China (CN), Cuba (CU), Ir\'{a}n (IR), Bielorrusia (BY), Rusia (RU) y Siria (SY), clasificados como ``No Libres'' por Freedom House (Freedom on the Net, 2022). Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). El periodo de tratamiento inicia en Q4-2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. * p$<$0.10, ** p$<$0.05, *** p$<$0.01
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

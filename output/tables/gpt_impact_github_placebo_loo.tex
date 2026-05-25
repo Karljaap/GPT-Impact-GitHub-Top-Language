@@ -1,0 +1,28 @@
+\begin{table}[htbp]\centering
+\caption{Robustez SDID: placebos in-space y sensibilidad del pool de donantes (LOO)}
+\label{tab:tabla6}
+\begin{threeparttable}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+ & ATT & Media & p-valor & LOO & LOO & LOO \\
+Lenguaje & observado & placebos & placebo & m\'{i}n. & mediana & m\'{a}x. \\
+\midrule
+C & 1{,}276 & 0{,}039 & 0{,}103 & 1{,}095 & 1{,}278 & 1{,}436 \\
+C\# & 0{,}443 & -0{,}010 & 0{,}207 & 0{,}411 & 0{,}435 & 0{,}824 \\
+C++ & 1{,}131 & 0{,}071 & 0{,}138 & 1{,}016 & 1{,}122 & 1{,}278 \\
+Go & 0{,}720 & -0{,}007 & 0{,}034 & 0{,}587 & 0{,}721 & 0{,}839 \\
+Java & 1{,}725 & -0{,}065 & 0{,}103 & 1{,}072 & 1{,}726 & 2{,}646 \\
+JavaScript & 8{,}303 & -0{,}161 & 0{,}069 & 4{,}642 & 8{,}300 & 9{,}322 \\
+PHP & 0{,}916 & -0{,}243 & 0{,}172 & 0{,}415 & 0{,}909 & 1{,}124 \\
+Python & 4{,}525 & 0{,}355 & 0{,}069 & 3{,}553 & 4{,}520 & 5{,}111 \\
+Ruby & 0{,}808 & -0{,}009 & 0{,}034 & 0{,}667 & 0{,}807 & 0{,}853 \\
+TypeScript & 3{,}078 & 0{,}022 & 0{,}069 & 1{,}904 & 3{,}081 & 3{,}598 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+\item \textit{Nota.} Pruebas de robustez del estimador SDID. \textit{Placebos in-space}: para cada uno de los 29 pa\'{i}ses del grupo de control se le asigna un tratamiento placebo y se reestima el SDID restringiendo la muestra al grupo de control; el p-valor placebo es la fracci\'{o}n de placebos cuyo $|ATT|$ es mayor o igual al $|ATT|$ observado, una prueba no param\'{e}trica \textit{a la} Abadie (2010, 2021). \textit{Donor pool LOO}: se elimina un pa\'{i}s de control a la vez del pool de donantes y se reestima el SDID con los 28 pa\'{i}ses restantes m\'{a}s los 130 pa\'{i}ses tratados; las columnas reportan el m\'{i}nimo, mediana y m\'{a}ximo de las 29 estimaciones \textit{leave-one-out} (Arkhangelsky et al., 2021). Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboraci\'{o}n propia.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

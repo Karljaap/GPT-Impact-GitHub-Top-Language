@@ -30,7 +30,6 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 import pycountry
-from countryinfo import CountryInfo as CInfo
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -41,140 +40,149 @@ import warnings
 
 warnings.simplefilter('ignore', FutureWarning)
 
-data = pd.read_csv(
-    "https://raw.githubusercontent.com/github/innovationgraph/main/data/languages.csv",
-    delimiter=','
-)
+# Skip URL fetch + countryinfo step when the balanced panel already exists.
+# countryinfo is incompatible with Python 3.12 (uses deprecated pkgutil.ImpImporter).
+_BALANCED_CSV = p("output", "data", "data_langs_balanced.csv")
+_REBUILD_PANEL = not os.path.exists(_BALANCED_CSV)
+if not _REBUILD_PANEL:
+    print(f"SECTION 1  Skipped: balanced panel cached at {_BALANCED_CSV}")
 
-data = data.drop(columns=["language_type"])
-data = data[data.iso2_code != "EU"]
-data = data[data.iso2_code != "XK"]
+if _REBUILD_PANEL:
+    from countryinfo import CountryInfo as CInfo
+    data = pd.read_csv(
+        "https://raw.githubusercontent.com/github/innovationgraph/main/data/languages.csv",
+        delimiter=','
+    )
 
-nan_rows_count = data.isna().any(axis=1).sum()
-print(f"There are {nan_rows_count} rows with NaN values in the dataset.")
+    data = data.drop(columns=["language_type"])
+    data = data[data.iso2_code != "EU"]
+    data = data[data.iso2_code != "XK"]
 
-data[data["iso2_code"].isnull()] = "NA"
+    nan_rows_count = data.isna().any(axis=1).sum()
+    print(f"There are {nan_rows_count} rows with NaN values in the dataset.")
 
-top_program_lang = programming_languages = [
-    "C", "C#", "C++", "Go", "Java", "JavaScript",
-    "PHP", "Python", "Ruby", "TypeScript"
-]
+    data[data["iso2_code"].isnull()] = "NA"
 
-data_filter = data[data['language'].isin(top_program_lang)].reset_index(drop=True)
-data_filter['year_quarter'] = (data_filter['year'].astype(str)
-                               + '-Q' + data_filter['quarter'].astype(str))
-data_filter = data_filter.reset_index(drop=True)
-data_filter['unique_id'] = data_filter['iso2_code'] + '-' + data_filter['language']
+    top_program_lang = programming_languages = [
+        "C", "C#", "C++", "Go", "Java", "JavaScript",
+        "PHP", "Python", "Ruby", "TypeScript"
+    ]
 
-# Restrict to countries that actually appear in 2020-2023 data (quarters 1-16)
-# Prevents countries that only appear in 2024+ from entering the balanced panel as all-zeros
-data_filter_1_16 = data_filter[(data_filter['year'] >= 2020) & (data_filter['year'] <= 2023)]
-iso2_code  = pd.DataFrame({'iso2_code':  data_filter_1_16['iso2_code'].unique()})
-language   = pd.DataFrame({'language':   data_filter['language'].unique()})
-year_quarter = pd.DataFrame({'year_quarter': data_filter['year_quarter'].unique()})
+    data_filter = data[data['language'].isin(top_program_lang)].reset_index(drop=True)
+    data_filter['year_quarter'] = (data_filter['year'].astype(str)
+                                   + '-Q' + data_filter['quarter'].astype(str))
+    data_filter = data_filter.reset_index(drop=True)
+    data_filter['unique_id'] = data_filter['iso2_code'] + '-' + data_filter['language']
 
-balanced_panel = iso2_code.merge(language, how='cross').merge(year_quarter, how='cross')
-balanced_panel["unique_id"] = balanced_panel["iso2_code"] + "-" + balanced_panel["language"]
+    # Restrict to countries that actually appear in 2020-2023 data (quarters 1-16)
+    # Prevents countries that only appear in 2024+ from entering the balanced panel as all-zeros
+    data_filter_1_16 = data_filter[(data_filter['year'] >= 2020) & (data_filter['year'] <= 2023)]
+    iso2_code  = pd.DataFrame({'iso2_code':  data_filter_1_16['iso2_code'].unique()})
+    language   = pd.DataFrame({'language':   data_filter['language'].unique()})
+    year_quarter = pd.DataFrame({'year_quarter': data_filter['year_quarter'].unique()})
 
-balanced_df = balanced_panel.merge(
-    data_filter, on=['unique_id', 'year_quarter'], how='left', suffixes=('', '_y')
-)
-balanced_df = balanced_df.loc[:, ~balanced_df.columns.str.endswith('_y')]
+    balanced_panel = iso2_code.merge(language, how='cross').merge(year_quarter, how='cross')
+    balanced_panel["unique_id"] = balanced_panel["iso2_code"] + "-" + balanced_panel["language"]
 
-def quarter_to_int(quarter_string):
-    year, q = quarter_string.split('-')
-    return 4 * (int(year) - 2020) + int(q[1])
+    balanced_df = balanced_panel.merge(
+        data_filter, on=['unique_id', 'year_quarter'], how='left', suffixes=('', '_y')
+    )
+    balanced_df = balanced_df.loc[:, ~balanced_df.columns.str.endswith('_y')]
 
-balanced_df['quarter'] = balanced_df['year_quarter'].apply(quarter_to_int)
-balanced_df['year']    = balanced_df['year_quarter'].str.split('-').str[0]
-balanced_df.loc[balanced_df["num_pushers"].isnull(), "num_pushers"] = 0
+    def quarter_to_int(quarter_string):
+        year, q = quarter_string.split('-')
+        return 4 * (int(year) - 2020) + int(q[1])
 
-def country_to_iso2(country_name):
-    try:
-        return pycountry.countries.get(name=country_name).alpha_2
-    except AttributeError:
-        special_cases = {
-            "Czechia (Czech Republic)": "CZ", "Congo (Congo-Brazzaville)": "CG",
-            "Holy See": "VA", "Timor-Leste (East Timor)": "TL",
-            "Ukraine (with certain exceptions)": "UA", "Taiwan": "TW",
-            "Bolivia": "BO", "Tanzania": "TZ", "South Korea": "KR",
-            "Moldova": "MD", "Brunei": "BN"
-        }
-        return special_cases.get(country_name)
+    balanced_df['quarter'] = balanced_df['year_quarter'].apply(quarter_to_int)
+    balanced_df['year']    = balanced_df['year_quarter'].str.split('-').str[0]
+    balanced_df.loc[balanced_df["num_pushers"].isnull(), "num_pushers"] = 0
 
-gpt_countries_list = [
-    "Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia",
-    "Australia","Austria","Azerbaijan","Bahamas","Bangladesh","Barbados","Belgium",
-    "Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil",
-    "Brunei","Bulgaria","Burkina Faso","Cabo Verde","Canada","Chile","Colombia",
-    "Comoros","Congo (Congo-Brazzaville)","Costa Rica","Côte d'Ivoire","Croatia",
-    "Cyprus","Czechia","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador",
-    "El Salvador","Estonia","Fiji","Finland","France","Gabon","Gambia","Georgia",
-    "Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana",
-    "Haiti","Holy See","Honduras","Hungary","Iceland","India","Indonesia","Iraq",
-    "Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya",
-    "Kiribati","Kuwait","Kyrgyzstan","Latvia","Lebanon","Lesotho","Liberia",
-    "Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia",
-    "Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico",
-    "Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique",
-    "Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua",
-    "Niger","Nigeria","North Macedonia","Norway","Oman","Pakistan","Palau",
-    "Palestine, State of","Panama","Papua New Guinea","Paraguay","Peru","Philippines",
-    "Poland","Portugal","Qatar","Romania","Rwanda","Saint Kitts and Nevis",
-    "Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino",
-    "Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles",
-    "Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","South Africa",
-    "South Korea","Spain","Sri Lanka","Suriname","Sweden","Switzerland","Taiwan",
-    "Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago",
-    "Tunisia","Turkey","Tuvalu","Uganda","Ukraine","United Arab Emirates",
-    "United Kingdom","United States","Uruguay","Vanuatu","Zambia"
-]
-
-gpt_countries_iso = [country_to_iso2(c) for c in gpt_countries_list]
-balanced_df["gpt_available"] = balanced_df["iso2_code"].apply(
-    lambda r: 1 if r in gpt_countries_iso else 0
-)
-
-countries = data.iso2_code.unique()
-
-def create_populations_dictionary():
-    country_populations = {}
-    special_cases = {"MM": 54688774, "PS": 5483450, "ME": 602445, "AD": 79824}
-    for country in countries:
+    def country_to_iso2(country_name):
         try:
-            country_populations[country] = CInfo(country).info()["population"]
-        except KeyError:
+            return pycountry.countries.get(name=country_name).alpha_2
+        except AttributeError:
+            special_cases = {
+                "Czechia (Czech Republic)": "CZ", "Congo (Congo-Brazzaville)": "CG",
+                "Holy See": "VA", "Timor-Leste (East Timor)": "TL",
+                "Ukraine (with certain exceptions)": "UA", "Taiwan": "TW",
+                "Bolivia": "BO", "Tanzania": "TZ", "South Korea": "KR",
+                "Moldova": "MD", "Brunei": "BN"
+            }
+            return special_cases.get(country_name)
+
+    gpt_countries_list = [
+        "Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia",
+        "Australia","Austria","Azerbaijan","Bahamas","Bangladesh","Barbados","Belgium",
+        "Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil",
+        "Brunei","Bulgaria","Burkina Faso","Cabo Verde","Canada","Chile","Colombia",
+        "Comoros","Congo (Congo-Brazzaville)","Costa Rica","Côte d'Ivoire","Croatia",
+        "Cyprus","Czechia","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador",
+        "El Salvador","Estonia","Fiji","Finland","France","Gabon","Gambia","Georgia",
+        "Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana",
+        "Haiti","Holy See","Honduras","Hungary","Iceland","India","Indonesia","Iraq",
+        "Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya",
+        "Kiribati","Kuwait","Kyrgyzstan","Latvia","Lebanon","Lesotho","Liberia",
+        "Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia",
+        "Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico",
+        "Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique",
+        "Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua",
+        "Niger","Nigeria","North Macedonia","Norway","Oman","Pakistan","Palau",
+        "Palestine, State of","Panama","Papua New Guinea","Paraguay","Peru","Philippines",
+        "Poland","Portugal","Qatar","Romania","Rwanda","Saint Kitts and Nevis",
+        "Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino",
+        "Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles",
+        "Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","South Africa",
+        "South Korea","Spain","Sri Lanka","Suriname","Sweden","Switzerland","Taiwan",
+        "Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago",
+        "Tunisia","Turkey","Tuvalu","Uganda","Ukraine","United Arab Emirates",
+        "United Kingdom","United States","Uruguay","Vanuatu","Zambia"
+    ]
+
+    gpt_countries_iso = [country_to_iso2(c) for c in gpt_countries_list]
+    balanced_df["gpt_available"] = balanced_df["iso2_code"].apply(
+        lambda r: 1 if r in gpt_countries_iso else 0
+    )
+
+    countries = data.iso2_code.unique()
+
+    def create_populations_dictionary():
+        country_populations = {}
+        special_cases = {"MM": 54688774, "PS": 5483450, "ME": 602445, "AD": 79824}
+        for country in countries:
             try:
-                fallback_name = pycountry.countries.lookup(country).name
-                country_populations[country] = CInfo(fallback_name).info()["population"]
+                country_populations[country] = CInfo(country).info()["population"]
             except KeyError:
-                print(country)
-                country_populations[country] = special_cases[country]
-    return country_populations
+                try:
+                    fallback_name = pycountry.countries.lookup(country).name
+                    country_populations[country] = CInfo(fallback_name).info()["population"]
+                except KeyError:
+                    print(country)
+                    country_populations[country] = special_cases[country]
+        return country_populations
 
-country_populations = create_populations_dictionary()
+    country_populations = create_populations_dictionary()
 
-balanced_df["population"] = balanced_df["iso2_code"].map(country_populations)
-balanced_df.loc[:, "num_pushers_pc"] = (
-    (balanced_df["num_pushers"] / balanced_df["population"] * 100000)
-    .replace([np.inf, -np.inf], 0).fillna(0).astype("float64")
-)
-balanced_df.loc[:, "post1"]              = (balanced_df["quarter"] >= 12).astype("int8")
-balanced_df.loc[:, "post2"]              = (balanced_df["quarter"] >= 13).astype("int8")
-balanced_df.loc[:, "gpt_available_post1"]= (balanced_df["gpt_available"] & balanced_df["post1"]).astype("int8")
-balanced_df.loc[:, "gpt_available_post2"]= (balanced_df["gpt_available"] & balanced_df["post2"]).astype("int8")
-balanced_df["Treatment"]                 = (balanced_df["gpt_available_post1"] * balanced_df["post1"]).astype("int8")
+    balanced_df["population"] = balanced_df["iso2_code"].map(country_populations)
+    balanced_df.loc[:, "num_pushers_pc"] = (
+        (balanced_df["num_pushers"] / balanced_df["population"] * 100000)
+        .replace([np.inf, -np.inf], 0).fillna(0).astype("float64")
+    )
+    balanced_df.loc[:, "post1"]              = (balanced_df["quarter"] >= 12).astype("int8")
+    balanced_df.loc[:, "post2"]              = (balanced_df["quarter"] >= 13).astype("int8")
+    balanced_df.loc[:, "gpt_available_post1"]= (balanced_df["gpt_available"] & balanced_df["post1"]).astype("int8")
+    balanced_df.loc[:, "gpt_available_post2"]= (balanced_df["gpt_available"] & balanced_df["post2"]).astype("int8")
+    balanced_df["Treatment"]                 = (balanced_df["gpt_available_post1"] * balanced_df["post1"]).astype("int8")
 
-balanced_df.loc[:, "year"]       = balanced_df["year"].astype("int16")
-balanced_df.loc[:, "quarter"]    = balanced_df["quarter"].astype("int16")
-balanced_df.loc[:, "population"] = balanced_df["population"].astype("int64")
-balanced_df.loc[:, "num_pushers"]= balanced_df["num_pushers"].astype("float64")
-balanced_df.loc[:, "gpt_available"] = balanced_df["gpt_available"].clip(0, 1).astype("int8")
+    balanced_df.loc[:, "year"]       = balanced_df["year"].astype("int16")
+    balanced_df.loc[:, "quarter"]    = balanced_df["quarter"].astype("int16")
+    balanced_df.loc[:, "population"] = balanced_df["population"].astype("int64")
+    balanced_df.loc[:, "num_pushers"]= balanced_df["num_pushers"].astype("float64")
+    balanced_df.loc[:, "gpt_available"] = balanced_df["gpt_available"].clip(0, 1).astype("int8")
 
-balanced_df = balanced_df[(balanced_df["quarter"] >= 1) & (balanced_df["quarter"] <= 16)]
+    balanced_df = balanced_df[(balanced_df["quarter"] >= 1) & (balanced_df["quarter"] <= 16)]
 
-print(balanced_df.isna().sum())
-balanced_df.to_csv(p("output", "data", "data_langs_balanced.csv"))
+    print(balanced_df.isna().sum())
+    balanced_df.to_csv(p("output", "data", "data_langs_balanced.csv"))
 
 
 # ============================================================================
@@ -258,6 +266,8 @@ for lang in languages:
             label=lang, color=color_map[lang])
 ax.set_xlim(1, 16); ax.set_xticks(quarters)
 ax.set_xticklabels(quarter_labels, rotation=45)
+ax.axvline(x=12, color='red', linestyle='--', linewidth=2.5,
+           label='Lanzamiento ChatGPT (Q4-2022)', zorder=2.5)
 ax.set_ylim(0, 6500); ax.set_yticks(np.arange(0, 6501, 500))
 ax.set_xlabel("Trimestre", fontsize=14)
 ax.set_ylabel("Unique pushers per 100k inhabitants", fontsize=14)
@@ -279,6 +289,8 @@ for lang in languages:
             label=lang, color=color_map[lang])
 ax.set_xlim(1, 16); ax.set_xticks(quarters)
 ax.set_xticklabels(quarter_labels, rotation=45)
+ax.axvline(x=12, color='red', linestyle='--', linewidth=2.5,
+           label='Lanzamiento ChatGPT (Q4-2022)', zorder=2.5)
 ax.set_ylim(0, 6500); ax.set_yticks(np.arange(0, 6501, 500))
 ax.set_xlabel("Trimestre", fontsize=18); ax.set_ylabel("Unique pushers per 100k inhabitants", fontsize=18)
 ax.grid(axis="y", linestyle="--", alpha=0.6)
@@ -299,6 +311,8 @@ for lang in languages:
             label=lang, color=color_map[lang])
 ax.set_xlim(1, 16); ax.set_xticks(quarters)
 ax.set_xticklabels(quarter_labels, rotation=45)
+ax.axvline(x=12, color='red', linestyle='--', linewidth=2.5,
+           label='Lanzamiento ChatGPT (Q4-2022)', zorder=2.5)
 ax.set_ylim(0, 6500); ax.set_yticks(np.arange(0, 6501, 500))
 ax.set_xlabel("Trimestre", fontsize=18); ax.set_ylabel("Unique pushers per 100k inhabitants", fontsize=18)
 ax.grid(axis="y", linestyle="--", alpha=0.6)
@@ -363,6 +377,145 @@ output_png = p("output", "figures", "chatgpt_global_availability_map.png")
 fig.savefig(output_png, dpi=600, bbox_inches="tight", transparent=False)
 plt.close(fig)
 print(f"Map saved to: {output_png}")
+
+
+# ============================================================================
+# SECTION 4.5: Timeline of ChatGPT improvements and limitations (2020-2023)
+# ============================================================================
+
+print("\n" + "=" * 60)
+print("SECTION 4.5  ChatGPT timeline figure")
+print("=" * 60)
+
+# Map calendar date to fractional year for plotting
+def _date_to_x(year, month):
+    return year + (month - 1) / 12.0
+
+# Timeline window
+_x_min, _x_max = _date_to_x(2020, 1), _date_to_x(2024, 1)
+
+fig, ax = plt.subplots(figsize=(15, 7.5))
+
+# ── Treatment start (Q4-2022) vertical band ──────────────────────────────────
+ax.axvspan(_date_to_x(2022, 10), _x_max, alpha=0.06, color='red', zorder=0)
+ax.axvline(_date_to_x(2022, 11), color='red', linewidth=2.5, linestyle='--',
+           zorder=2, label='Lanzamiento ChatGPT (Nov 2022)')
+
+# ── Lane 1: GitHub Copilot events (top) ──────────────────────────────────────
+y_copilot = 3.2
+ax.hlines(y_copilot, _date_to_x(2021, 6), _x_max, color='#5b8def',
+          linewidth=4, alpha=0.55, zorder=1)
+ax.plot(_date_to_x(2021, 6), y_copilot, marker='o', markersize=11,
+        color='#1f4ea8', zorder=3)
+ax.annotate('Copilot\n(preview)\nJun 2021',
+            xy=(_date_to_x(2021, 6), y_copilot),
+            xytext=(_date_to_x(2021, 6), y_copilot + 0.45),
+            ha='center', fontsize=9, fontweight='bold',
+            color='#1f4ea8')
+ax.plot(_date_to_x(2022, 6), y_copilot, marker='o', markersize=11,
+        color='#1f4ea8', zorder=3)
+ax.annotate('Copilot\ncomercial\n10 USD/mes\nJun 2022',
+            xy=(_date_to_x(2022, 6), y_copilot),
+            xytext=(_date_to_x(2022, 6), y_copilot + 0.45),
+            ha='center', fontsize=9, fontweight='bold',
+            color='#1f4ea8')
+
+# ── Lane 2: ChatGPT events (middle) ──────────────────────────────────────────
+y_gpt = 2.0
+ax.hlines(y_gpt, _date_to_x(2022, 11), _x_max, color='#2ca02c',
+          linewidth=4, alpha=0.55, zorder=1)
+ax.plot(_date_to_x(2022, 11), y_gpt, marker='*', markersize=22,
+        color='#1a7a1a', zorder=3)
+ax.annotate('ChatGPT (GPT-3.5)\ngratuito y masivo\nNov 2022',
+            xy=(_date_to_x(2022, 11), y_gpt),
+            xytext=(_date_to_x(2022, 11), y_gpt + 0.45),
+            ha='center', fontsize=9.5, fontweight='bold',
+            color='#1a7a1a')
+ax.plot(_date_to_x(2023, 3), y_gpt, marker='*', markersize=18,
+        color='#1a7a1a', zorder=3)
+ax.annotate('GPT-4 vía Plus\n20 USD/mes\nMar 2023',
+            xy=(_date_to_x(2023, 3), y_gpt),
+            xytext=(_date_to_x(2023, 3), y_gpt + 0.45),
+            ha='center', fontsize=9, fontweight='bold',
+            color='#1a7a1a')
+ax.plot(_date_to_x(2023, 7), y_gpt, marker='*', markersize=16,
+        color='#1a7a1a', zorder=3)
+ax.annotate('Code Interpreter\n+ plugins\nJul 2023',
+            xy=(_date_to_x(2023, 7), y_gpt),
+            xytext=(_date_to_x(2023, 7), y_gpt + 0.45),
+            ha='center', fontsize=9, color='#1a7a1a')
+
+# ── Lane 3: Limitations (bottom) ─────────────────────────────────────────────
+y_lim = 0.7
+# Hallucinations span: from launch through GPT-4 adoption
+ax.hlines(y_lim, _date_to_x(2022, 11), _date_to_x(2023, 4),
+          color='#d62728', linewidth=8, alpha=0.45, zorder=1)
+ax.annotate('Alucinaciones\nfrecuentes',
+            xy=(_date_to_x(2023, 1), y_lim),
+            xytext=(_date_to_x(2023, 1), y_lim - 0.55),
+            ha='center', fontsize=8.5, color='#a31a1a', fontweight='bold')
+
+# Training cutoff line (Sep 2021)
+ax.plot(_date_to_x(2021, 9), y_lim, marker='v', markersize=10,
+        color='#a31a1a', zorder=3)
+ax.annotate('Corte de\nentrenamiento\n(GPT-3.5)\nSep 2021',
+            xy=(_date_to_x(2021, 9), y_lim),
+            xytext=(_date_to_x(2021, 9), y_lim - 0.55),
+            ha='center', fontsize=8.5, color='#a31a1a')
+
+# Context window evolution
+ax.annotate('Contexto: 4{,}096 tokens (GPT-3.5)\n$\\rightarrow$ 8{,}192--32{,}768 (GPT-4)',
+            xy=(_date_to_x(2023, 8), y_lim),
+            xytext=(_date_to_x(2023, 8), y_lim - 0.55),
+            ha='center', fontsize=8.5, color='#a31a1a', fontweight='bold')
+
+# ── Axis: years and quarters ────────────────────────────────────────────────
+year_ticks  = [_date_to_x(y, 1) for y in (2020, 2021, 2022, 2023, 2024)]
+year_labels = ['2020', '2021', '2022', '2023', '2024']
+ax.set_xticks(year_ticks)
+ax.set_xticklabels(year_labels, fontsize=11)
+
+# Quarter minor grid
+quarter_ticks = [_date_to_x(y, m) for y in (2020, 2021, 2022, 2023) for m in (1, 4, 7, 10)]
+ax.set_xticks(quarter_ticks, minor=True)
+ax.grid(which='major', axis='x', linestyle='-', alpha=0.25)
+ax.grid(which='minor', axis='x', linestyle=':',  alpha=0.18)
+
+# Lane labels
+ax.text(_x_min - 0.05, y_copilot, 'GitHub\nCopilot',
+        fontsize=10.5, fontweight='bold', va='center', ha='right',
+        color='#1f4ea8')
+ax.text(_x_min - 0.05, y_gpt, 'ChatGPT',
+        fontsize=10.5, fontweight='bold', va='center', ha='right',
+        color='#1a7a1a')
+ax.text(_x_min - 0.05, y_lim, 'Limitaciones',
+        fontsize=10.5, fontweight='bold', va='center', ha='right',
+        color='#a31a1a')
+
+# Pre-period shading (pretratamiento)
+ax.axvspan(_x_min, _date_to_x(2022, 10), alpha=0.04, color='grey', zorder=0)
+ax.text(_date_to_x(2021, 6), 4.3, 'Pre-tratamiento (Q1-2020 -- Q3-2022)',
+        ha='center', fontsize=10, color='dimgrey', style='italic')
+ax.text(_date_to_x(2023, 6), 4.3, 'Post-tratamiento (Q4-2022 -- Q4-2023)',
+        ha='center', fontsize=10, color='#a31a1a', style='italic',
+        fontweight='bold')
+
+ax.set_xlim(_x_min - 0.5, _x_max + 0.05)
+ax.set_ylim(-0.2, 4.6)
+ax.set_yticks([])
+for s in ('top', 'right', 'left'):
+    ax.spines[s].set_visible(False)
+ax.spines['bottom'].set_color('#888')
+
+ax.legend(loc='lower right', fontsize=10, framealpha=0.95)
+ax.set_title('Línea de tiempo: mejoras y limitaciones de ChatGPT (2020--2023)',
+             fontsize=13, fontweight='bold', pad=12)
+
+plt.tight_layout()
+timeline_path = p("output", "figures", "chatgpt_timeline.png")
+fig.savefig(timeline_path, dpi=200, bbox_inches='tight')
+plt.close(fig)
+print(f"  Timeline saved: {timeline_path}")
 
 
 # ============================================================================
@@ -735,6 +888,15 @@ def _plot_event_study(lang, rel, gap, lower, upper):
     return fname
 
 
+def _fmt_es(x, n=3):
+    """Format float with comma as decimal separator (Spanish convention).
+    The ``{,}`` token keeps proper LaTeX math spacing.
+    """
+    if x is None or (isinstance(x, float) and np.isnan(x)):
+        return "---"
+    return f"{x:.{n}f}".replace(".", "{,}")
+
+
 def _write_latex_table(results_dict, outpath, caption, label, note_text):
     """Write a threeparttable LaTeX file from results_dict."""
     lines = [
@@ -760,11 +922,11 @@ def _write_latex_table(results_dict, outpath, caption, label, note_text):
         cm = row['cmean']
 
         lines.append(
-            f"{tname} & {b1:.3f}{s1} & {b2:.3f}{s2} & {b3:.3f}{s3}"
-            f" & {n} & {cm:.3f} \\\\"
+            f"{tname} & {_fmt_es(b1)}{s1} & {_fmt_es(b2)}{s2} & {_fmt_es(b3)}{s3}"
+            f" & {n} & {_fmt_es(cm)} \\\\"
         )
         lines.append(
-            f"              & ({e1:.3f}) & ({e2:.3f}) & ({e3:.3f}) & & \\\\"
+            f"              & ({_fmt_es(e1)}) & ({_fmt_es(e2)}) & ({_fmt_es(e3)}) & & \\\\"
         )
         lines.append(r"\addlinespace")
 
@@ -1152,11 +1314,11 @@ for lang in LANGUAGES_5:
     s_f = _stars(r7['att_full'], r7['se_full'])
     s_r = _stars(r7['att_rest'], r7['se_rest'])
     rob_lines.append(
-        f"{tname} & {r7['att_full']:.3f}{s_f} & {r7['att_rest']:.3f}{s_r}"
-        f" & {r7['n_full']} & {r7['n_rest']} & {r7['cmean']:.3f} \\\\"
+        f"{tname} & {_fmt_es(r7['att_full'])}{s_f} & {_fmt_es(r7['att_rest'])}{s_r}"
+        f" & {r7['n_full']} & {r7['n_rest']} & {_fmt_es(r7['cmean'])} \\\\"
     )
     rob_lines.append(
-        f"              & ({r7['se_full']:.3f}) & ({r7['se_rest']:.3f}) & & & \\\\"
+        f"              & ({_fmt_es(r7['se_full'])}) & ({_fmt_es(r7['se_rest'])}) & & & \\\\"
     )
     rob_lines.append(r"\addlinespace")
 
@@ -1176,6 +1338,257 @@ rob_path = p("output", "tables", "gpt_impact_github_robustez.tex")
 with open(rob_path, 'w', encoding='utf-8') as f:
     f.write("\n".join(rob_lines))
 print(f"  Robustness table written: {rob_path}")
+
+
+# ============================================================================
+# SECTION 8: Robustness — In-space placebos + LOO donor pool sensitivity
+# (Addresses jury comments: Abadie 2021, Arkhangelsky et al. 2021)
+# ============================================================================
+
+print("\n" + "=" * 60)
+print("SECTION 8  Robustness: in-space placebos + LOO donor pool")
+print("=" * 60)
+
+
+def _sdid_point_only(df_lang, outcome_col='num_pushers_pc'):
+    """SDID point estimate using estimator.att directly (skips bootstrap)."""
+    df_s = df_lang[['iso2_code', 'quarter', outcome_col, 'gpt_available']].copy()
+    df_s['treat'] = (
+        (df_s['gpt_available'] == 1) & (df_s['quarter'] >= TREAT_START)
+    ).astype(int)
+    estimator = Synthdid(df_s, 'iso2_code', 'quarter', 'treat', outcome_col).fit()
+    return float(estimator.att)
+
+
+# ── 8.1 In-space placebos ─────────────────────────────────────────────────────
+# For each control country, assign it a placebo treatment and re-run SDID on
+# the control group only. The observed ATT is benchmarked against this
+# distribution to derive a non-parametric p-value (Abadie, 2010, 2021).
+
+print("\n  [8.1] In-space placebos (Abadie 2010 style)")
+placebo_results = {}
+
+for lang in LANGUAGES_5:
+    df_l = df_panel[df_panel['language'] == lang].copy()
+    control_units = sorted(df_l[df_l['gpt_available'] == 0]['iso2_code'].unique())
+
+    placebo_atts = []
+    fails = 0
+    for placebo_iso in control_units:
+        df_p = df_l[df_l['gpt_available'] == 0].copy()
+        df_p['gpt_available'] = (df_p['iso2_code'] == placebo_iso).astype(int)
+        try:
+            att_p = _sdid_point_only(df_p)
+            if np.isfinite(att_p):
+                placebo_atts.append((placebo_iso, att_p))
+            else:
+                fails += 1
+        except Exception:
+            fails += 1
+
+    att_obs = results_5[lang]['sdid'][0]
+    placebo_arr = np.array([a for _, a in placebo_atts])
+    p_value = (float(np.mean(np.abs(placebo_arr) >= abs(att_obs)))
+               if placebo_arr.size > 0 else float('nan'))
+
+    placebo_results[lang] = {
+        'att_obs':       att_obs,
+        'placebos':      placebo_atts,
+        'placebo_mean':  float(np.mean(placebo_arr)) if placebo_arr.size else float('nan'),
+        'placebo_std':   float(np.std(placebo_arr, ddof=1)) if placebo_arr.size > 1 else float('nan'),
+        'p_value':       p_value,
+        'n_placebos':    int(placebo_arr.size),
+        'n_fails':       fails,
+    }
+    print(f"    {lang:<12s} obs={att_obs:7.3f}  placebo mean={placebo_results[lang]['placebo_mean']:7.3f}"
+          f"  p={p_value:.3f}  (n={placebo_arr.size}, fails={fails})")
+
+
+# ── 8.2 Leave-one-out donor pool sensitivity ─────────────────────────────────
+# Drop one control country at a time, re-estimate SDID with the remaining 28
+# donors plus the full set of 130 treated countries. Checks robustness of the
+# headline ATT against the choice of donor pool.
+
+print("\n  [8.2] Leave-one-out donor pool sensitivity")
+loo_results = {}
+
+for lang in LANGUAGES_5:
+    df_l = df_panel[df_panel['language'] == lang].copy()
+    control_units = sorted(df_l[df_l['gpt_available'] == 0]['iso2_code'].unique())
+
+    loo_atts = []
+    fails = 0
+    for drop_iso in control_units:
+        df_loo = df_l[df_l['iso2_code'] != drop_iso].copy()
+        try:
+            att_loo = _sdid_point_only(df_loo)
+            if np.isfinite(att_loo):
+                loo_atts.append((drop_iso, att_loo))
+            else:
+                fails += 1
+        except Exception:
+            fails += 1
+
+    att_obs = results_5[lang]['sdid'][0]
+    loo_arr = np.array([a for _, a in loo_atts])
+
+    loo_results[lang] = {
+        'att_obs':    att_obs,
+        'loo':        loo_atts,
+        'loo_min':    float(np.min(loo_arr))    if loo_arr.size else float('nan'),
+        'loo_max':    float(np.max(loo_arr))    if loo_arr.size else float('nan'),
+        'loo_median': float(np.median(loo_arr)) if loo_arr.size else float('nan'),
+        'loo_std':    float(np.std(loo_arr, ddof=1)) if loo_arr.size > 1 else float('nan'),
+        'n_loo':      int(loo_arr.size),
+        'n_fails':    fails,
+    }
+    print(f"    {lang:<12s} obs={att_obs:7.3f}  LOO[{loo_results[lang]['loo_min']:7.3f},"
+          f" {loo_results[lang]['loo_max']:7.3f}]  med={loo_results[lang]['loo_median']:7.3f}"
+          f"  (n={loo_arr.size}, fails={fails})")
+
+
+# ── 8.3 LaTeX summary table (Cuadro 6) ────────────────────────────────────────
+
+NOTE_8 = (
+    r"Pruebas de robustez del estimador SDID. \textit{Placebos in-space}: para "
+    r"cada uno de los 29 pa\'{i}ses del grupo de control se le asigna un "
+    r"tratamiento placebo y se reestima el SDID restringiendo la muestra al "
+    r"grupo de control; el p-valor placebo es la fracci\'{o}n de placebos cuyo "
+    r"$|ATT|$ es mayor o igual al $|ATT|$ observado, una prueba no param\'{e}trica "
+    r"\textit{a la} Abadie (2010, 2021). \textit{Donor pool LOO}: se elimina un "
+    r"pa\'{i}s de control a la vez del pool de donantes y se reestima el SDID "
+    r"con los 28 pa\'{i}ses restantes m\'{a}s los 130 pa\'{i}ses tratados; las "
+    r"columnas reportan el m\'{i}nimo, mediana y m\'{a}ximo de las 29 estimaciones "
+    r"\textit{leave-one-out} (Arkhangelsky et al., 2021). Fuente: GitHub "
+    r"Innovation Graph (\url{https://github.com/github/innovationgraph}). "
+    r"Elaboraci\'{o}n propia."
+)
+
+placebo_lines = [
+    r"\begin{table}[htbp]\centering",
+    r"\caption{Robustez SDID: placebos in-space y sensibilidad del pool de donantes (LOO)}",
+    r"\label{tab:tabla6}",
+    r"\begin{threeparttable}",
+    r"\small",
+    r"\begin{tabular}{lcccccc}",
+    r"\toprule",
+    r" & ATT & Media & p-valor & LOO & LOO & LOO \\",
+    r"Lenguaje & observado & placebos & placebo & m\'{i}n. & mediana & m\'{a}x. \\",
+    r"\midrule",
+]
+
+for lang in LANGUAGES_5:
+    tname = LANG_TEX[lang]
+    pr = placebo_results[lang]
+    lr = loo_results[lang]
+    placebo_lines.append(
+        f"{tname} & {_fmt_es(pr['att_obs'])} & {_fmt_es(pr['placebo_mean'])}"
+        f" & {_fmt_es(pr['p_value'])} & {_fmt_es(lr['loo_min'])}"
+        f" & {_fmt_es(lr['loo_median'])} & {_fmt_es(lr['loo_max'])} \\\\"
+    )
+
+placebo_lines += [
+    r"\bottomrule",
+    r"\end{tabular}",
+    r"\begin{tablenotes}",
+    r"\footnotesize",
+    rf"\item \textit{{Nota.}} {NOTE_8}",
+    r"\end{tablenotes}",
+    r"\end{threeparttable}",
+    r"\end{table}",
+    "",
+]
+
+pl_path = p("output", "tables", "gpt_impact_github_placebo_loo.tex")
+with open(pl_path, 'w', encoding='utf-8') as f:
+    f.write("\n".join(placebo_lines))
+print(f"\n  Placebo/LOO table written: {pl_path}")
+
+
+# ── 8.4 Forest-plot figure: observed ATT vs LOO range vs placebo IC95 ─────────
+
+print("  [8.4] Robustness forest plot")
+
+fig, ax = plt.subplots(figsize=(11, 7))
+y_pos = np.arange(len(LANGUAGES_5))[::-1]
+
+from matplotlib.lines import Line2D as _L2D
+
+for i, lang in enumerate(LANGUAGES_5):
+    y = y_pos[i]
+    pr = placebo_results[lang]
+    lr = loo_results[lang]
+
+    placebo_arr = np.array([a for _, a in pr['placebos']])
+    if placebo_arr.size > 0:
+        plac_lo, plac_hi = np.percentile(placebo_arr, [2.5, 97.5])
+        ax.plot([plac_lo, plac_hi], [y, y], color='lightgrey', linewidth=9,
+                solid_capstyle='round', alpha=0.75, zorder=1)
+
+    if not (np.isnan(lr['loo_min']) or np.isnan(lr['loo_max'])):
+        ax.plot([lr['loo_min'], lr['loo_max']], [y, y], color='steelblue',
+                linewidth=3.5, solid_capstyle='round', zorder=2)
+    if not np.isnan(lr['loo_median']):
+        ax.plot(lr['loo_median'], y, marker='|', color='steelblue',
+                markersize=14, markeredgewidth=2.5, zorder=3)
+
+    ax.plot(pr['att_obs'], y, marker='o', color='red', markersize=10,
+            markeredgecolor='black', markeredgewidth=0.8, zorder=4)
+
+ax.axvline(0, color='black', linewidth=0.8, linestyle='--', alpha=0.6)
+ax.set_yticks(y_pos)
+ax.set_yticklabels(LANGUAGES_5)
+ax.set_xlabel('ATT (unique pushers por 100 mil habitantes)', fontsize=11)
+ax.set_title('Robustez SDID: ATT observado, rango LOO y banda placebo 95 %',
+             fontsize=12)
+ax.grid(axis='x', linestyle='--', alpha=0.4)
+
+legend_elements = [
+    _L2D([0], [0], marker='o', color='w', markerfacecolor='red',
+         markeredgecolor='black', markersize=9, label='ATT observado (SDID)'),
+    _L2D([0], [0], color='steelblue', lw=3.5, label='Rango LOO (mín--máx)'),
+    _L2D([0], [0], color='lightgrey', lw=9, alpha=0.75, label='Placebo IC 95%'),
+]
+ax.legend(handles=legend_elements, loc='lower right', fontsize=10, framealpha=0.9)
+
+plt.tight_layout()
+forest_path = p("output", "figures", "robustness_forest_plot.png")
+fig.savefig(forest_path, dpi=200, bbox_inches='tight')
+plt.close(fig)
+print(f"  Forest plot saved: {forest_path}")
+
+
+# ── 8.5 Per-language placebo distribution panel ───────────────────────────────
+# 5x2 grid: histogram of placebo ATTs + vertical line for observed ATT.
+
+print("  [8.5] Per-language placebo distribution panel")
+
+fig, axes = plt.subplots(5, 2, figsize=(12, 14), sharex=False)
+axes = axes.ravel()
+for i, lang in enumerate(LANGUAGES_5):
+    ax_i = axes[i]
+    pr = placebo_results[lang]
+    placebo_arr = np.array([a for _, a in pr['placebos']])
+    if placebo_arr.size > 0:
+        ax_i.hist(placebo_arr, bins=15, color='lightgrey', edgecolor='dimgrey',
+                  alpha=0.85, zorder=1)
+    ax_i.axvline(pr['att_obs'], color='red', linewidth=2.2, zorder=3,
+                 label=f"ATT obs.: {pr['att_obs']:.3f}")
+    ax_i.axvline(0, color='black', linewidth=0.7, linestyle='--', alpha=0.5)
+    ax_i.set_title(f"{lang}   p-val = {pr['p_value']:.3f}", fontsize=10)
+    ax_i.set_xlabel('ATT placebo', fontsize=8)
+    ax_i.set_ylabel('Frecuencia', fontsize=8)
+    ax_i.tick_params(labelsize=8)
+    ax_i.legend(fontsize=8, loc='upper right')
+    ax_i.grid(axis='y', linestyle='--', alpha=0.3)
+
+plt.suptitle('Distribución de ATT placebo — prueba de Abadie por lenguaje',
+             fontsize=13, y=1.0)
+plt.tight_layout()
+panel_path = p("output", "figures", "placebo_distribution_panel.png")
+fig.savefig(panel_path, dpi=180, bbox_inches='tight')
+plt.close(fig)
+print(f"  Placebo panel saved: {panel_path}")
 
 
 print("\n" + "=" * 60)
