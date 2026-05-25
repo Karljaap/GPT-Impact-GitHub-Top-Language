@@ -1,0 +1,12 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Motivación}{3}{0}{1}
+\beamer@sectionintoc {2}{Pregunta e hipótesis}{5}{0}{2}
+\beamer@sectionintoc {3}{Marco teórico}{7}{0}{3}
+\beamer@sectionintoc {4}{Evidencia empírica}{9}{0}{4}
+\beamer@sectionintoc {5}{Línea de tiempo}{11}{0}{5}
+\beamer@sectionintoc {6}{Datos}{13}{0}{6}
+\beamer@sectionintoc {7}{Metodología}{18}{0}{7}
+\beamer@sectionintoc {8}{Resultados}{23}{0}{8}
+\beamer@sectionintoc {9}{Robustez}{28}{0}{9}
+\beamer@sectionintoc {10}{Limitaciones}{33}{0}{10}
+\beamer@sectionintoc {11}{Conclusiones y política}{34}{0}{11}
