@@ -869,10 +869,10 @@ def _plot_event_study(lang, rel, gap, lower, upper):
     x = np.array(rel)
     ax.fill_between(x, lower, upper, alpha=0.20, color='steelblue', label='IC 95%')
     ax.plot(x, gap, marker='o', color='steelblue', lw=1.8, ms=5, label='Gap SDID')
-    ax.axhline(0,    color='black', lw=0.8, ls='--', alpha=0.6)
-    ax.axvline(-0.5, color='red',   lw=1.2, ls='--', label='Inicio trat. (Q4-2022)')
+    ax.axhline(0, color='black', lw=0.8, ls='--', alpha=0.6)
+    ax.axvline(0, color='red',   lw=1.5, ls='--', label='Inicio trat. (Q4-2022)')
     if any(r < 0 for r in rel):
-        ax.axvspan(min(x) - 0.5, -0.5, alpha=0.06, color='grey')
+        ax.axvspan(min(x) - 0.5, 0, alpha=0.06, color='grey')
     ax.set_xticks(x)
     xlabels = [str(r) if i % 2 == 0 else '' for i, r in enumerate(rel)]
     ax.set_xticklabels(xlabels, fontsize=8)

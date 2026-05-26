@@ -34,6 +34,22 @@
 \setbeamerfont{caption}{size=\scriptsize}
 \setbeamerfont{frametitle}{series=\bfseries,size=\large}
 
+% ── Slides divisores automáticos al inicio de cada sección ───────────────────
+\AtBeginSection[]{%
+  {%
+  \setbeamercolor{background canvas}{bg=pucpblue}
+  \setbeamertemplate{headline}{}
+  \setbeamertemplate{footline}{}
+  \begin{frame}[plain]
+  \vfill
+  \centering
+  \color{white}
+  {\Huge\bfseries \insertsectionhead}\par
+  \vfill
+  \end{frame}
+  }%
+}
+
 % ── Paquetes ──────────────────────────────────────────────────────────────────
 \usepackage{graphicx}
 \graphicspath{{output/figures/}}
@@ -87,14 +103,14 @@
   \item[\textbf{7.}] Metodología (DiD, CS, SDiD)
   \item[\textbf{8.}] Resultados principales
   \item[\textbf{9.}] Pruebas de robustez
-  \item[\textbf{10.}] Conclusiones y política
+  \item[\textbf{10.}] Limitaciones y conclusiones
 \end{enumerate}
 \end{column}
 \end{columns}
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
-\section{Motivación}
+\section{1. Motivación}
 % ════════════════════════════════════════════════════════════════════════════
 
 \begin{frame}{Motivación}
@@ -137,7 +153,7 @@ Si ChatGPT efectivamente aumenta la productividad o la entrada de desarrolladore
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
-\section{Pregunta e hipótesis}
+\section{2. Pregunta e hipótesis}
 % ════════════════════════════════════════════════════════════════════════════
 
 \begin{frame}{Pregunta de investigación}
@@ -174,7 +190,7 @@ Si ChatGPT efectivamente aumenta la productividad o la entrada de desarrolladore
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
-\section{Marco teórico}
+\section{3. Marco teórico}
 % ════════════════════════════════════════════════════════════════════════════
 
 \begin{frame}{Marco teórico (I): Acemoglu \& Restrepo}
@@ -233,7 +249,7 @@ Stigler (1961) modela la búsqueda como un costo que el agente paga para reducir
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
-\section{Evidencia empírica}
+\section{4. Evidencia empírica}
 % ════════════════════════════════════════════════════════════════════════════
 
 \begin{frame}{Evidencia empírica: impacto económico de la IA}
@@ -278,7 +294,7 @@ Li y Krishnamachari (2024) & \textcolor{green!45!black}{$\uparrow$ \textbf{Posit
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
-\section{Línea de tiempo}
+\section{5. Línea de tiempo}
 % ════════════════════════════════════════════════════════════════════════════
 
 \begin{frame}{Línea de tiempo: ChatGPT y limitaciones (2020--2023)}
@@ -324,7 +340,7 @@ Li y Krishnamachari (2024) & \textcolor{green!45!black}{$\uparrow$ \textbf{Posit
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
-\section{Datos}
+\section{6. Datos}
 % ════════════════════════════════════════════════════════════════════════════
 
 \begin{frame}{Fuente y variable de interés}
@@ -423,7 +439,7 @@ PHP        &  2,27 &  7,54 &  3,46 &  8,24 \\
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
-\section{Metodología}
+\section{7. Metodología}
 % ════════════════════════════════════════════════════════════════════════════
 
 \begin{frame}{Marco común: resultados potenciales}
@@ -525,7 +541,7 @@ Y_{it} = \mu + \alpha_i + \beta_t + \tau^{DiD}\, W_{it} + \varepsilon_{it}
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
-\section{Resultados}
+\section{8. Resultados}
 % ════════════════════════════════════════════════════════════════════════════
 
 \begin{frame}{Resultados principales: ATT por método (Cuadro 3)}
@@ -594,7 +610,7 @@ La significancia \textit{bootstrap} no es la única evidencia que conviene revis
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
-\section{Robustez}
+\section{9. Robustez}
 % ════════════════════════════════════════════════════════════════════════════
 
 \begin{frame}{Robustez (1): grupo de control restringido}
@@ -719,7 +735,7 @@ La significancia \textit{bootstrap} para C, C++ y Java coexiste con p-valores pl
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
-\section{Limitaciones}
+\section{10. Limitaciones y conclusiones}
 % ════════════════════════════════════════════════════════════════════════════
 
 \begin{frame}{Limitaciones reconocidas}
@@ -737,7 +753,7 @@ La significancia \textit{bootstrap} para C, C++ y Java coexiste con p-valores pl
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
-\section{Conclusiones y política}
+% (sigue dentro de la sección 10 — no se abre nueva sección)
 % ════════════════════════════════════════════════════════════════════════════
 
 \begin{frame}{Conclusiones (1): hallazgo central}

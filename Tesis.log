@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.14)  25 MAY 2026 12:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.14)  25 MAY 2026 18:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1344,78 +1344,78 @@ ignored error: Infinite glue shrinkage found in box being split [59] [60]
 
 ] [62] (output/tables/gpt_impact_github_DataScience_controls.tex)
 (output/tables/gpt_impact_github_robustez.tex) [63] [64] [65]
-<output/figures/Csdid_event_study.png, id=798, 714.9912pt x 282.3348pt>
+<output/figures/Csdid_event_study.png, id=798, 859.2903pt x 352.31625pt>
 File: output/figures/Csdid_event_study.png Graphic file (type png)
 <use output/figures/Csdid_event_study.png>
 Package pdftex.def Info: output/figures/Csdid_event_study.png  used on input li
 ne 1238.
-(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
-<output/figures/C_hashtagsdid_event_study.png, id=799, 714.9912pt x 282.3348pt>
-
+(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
+<output/figures/C_hashtagsdid_event_study.png, id=799, 859.2903pt x 352.31625pt
+>
 File: output/figures/C_hashtagsdid_event_study.png Graphic file (type png)
 <use output/figures/C_hashtagsdid_event_study.png>
 Package pdftex.def Info: output/figures/C_hashtagsdid_event_study.png  used on 
 input line 1244.
-(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
-<output/figures/C_plussdid_event_study.png, id=800, 714.9912pt x 282.3348pt>
+(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
+<output/figures/C_plussdid_event_study.png, id=800, 859.2903pt x 352.31625pt>
 File: output/figures/C_plussdid_event_study.png Graphic file (type png)
 <use output/figures/C_plussdid_event_study.png>
 Package pdftex.def Info: output/figures/C_plussdid_event_study.png  used on inp
 ut line 1250.
-(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
+(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
  [66
 
  <./output/figures/Csdid_event_study.png> <./output/figures/C_hashtagsdid_event
 _study.png>]
-<output/figures/Gosdid_event_study.png, id=807, 715.473pt x 282.3348pt>
+<output/figures/Gosdid_event_study.png, id=807, 859.65166pt x 352.31625pt>
 File: output/figures/Gosdid_event_study.png Graphic file (type png)
 <use output/figures/Gosdid_event_study.png>
 Package pdftex.def Info: output/figures/Gosdid_event_study.png  used on input l
 ine 1256.
-(pdftex.def)             Requested size: 386.96027pt x 152.69975pt.
-<output/figures/Javasdid_event_study.png, id=808, 714.9912pt x 282.3348pt>
+(pdftex.def)             Requested size: 386.96027pt x 158.5946pt.
+<output/figures/Javasdid_event_study.png, id=808, 859.2903pt x 352.31625pt>
 File: output/figures/Javasdid_event_study.png Graphic file (type png)
 <use output/figures/Javasdid_event_study.png>
 Package pdftex.def Info: output/figures/Javasdid_event_study.png  used on input
  line 1262.
-(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
-<output/figures/JavaScriptsdid_event_study.png, id=809, 714.9912pt x 282.3348pt
->
+(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
+<output/figures/JavaScriptsdid_event_study.png, id=809, 859.2903pt x 352.31625p
+t>
 File: output/figures/JavaScriptsdid_event_study.png Graphic file (type png)
 <use output/figures/JavaScriptsdid_event_study.png>
 Package pdftex.def Info: output/figures/JavaScriptsdid_event_study.png  used on
  input line 1268.
-(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
+(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
 
 [67 <./output/figures/C_plussdid_event_study.png> <./output/figures/Gosdid_even
 t_study.png> <./output/figures/Javasdid_event_study.png>]
-<output/figures/PHPsdid_event_study.png, id=817, 715.473pt x 282.3348pt>
+<output/figures/PHPsdid_event_study.png, id=817, 859.65166pt x 352.31625pt>
 File: output/figures/PHPsdid_event_study.png Graphic file (type png)
 <use output/figures/PHPsdid_event_study.png>
 Package pdftex.def Info: output/figures/PHPsdid_event_study.png  used on input 
 line 1275.
-(pdftex.def)             Requested size: 386.96027pt x 152.69975pt.
-<output/figures/Pythonsdid_event_study.png, id=818, 714.9912pt x 282.3348pt>
+(pdftex.def)             Requested size: 386.96027pt x 158.5946pt.
+<output/figures/Pythonsdid_event_study.png, id=818, 859.2903pt x 352.31625pt>
 File: output/figures/Pythonsdid_event_study.png Graphic file (type png)
 <use output/figures/Pythonsdid_event_study.png>
 Package pdftex.def Info: output/figures/Pythonsdid_event_study.png  used on inp
 ut line 1281.
-(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
-<output/figures/Rubysdid_event_study.png, id=819, 714.9912pt x 282.3348pt>
+(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
+<output/figures/Rubysdid_event_study.png, id=819, 859.2903pt x 352.31625pt>
 File: output/figures/Rubysdid_event_study.png Graphic file (type png)
 <use output/figures/Rubysdid_event_study.png>
 Package pdftex.def Info: output/figures/Rubysdid_event_study.png  used on input
  line 1287.
-(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
+(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
  [68 <./output/figures/JavaScriptsdid_event_study.png> <./output/figures/PHPsdi
 d_event_study.png> <./output/figures/Pythonsdid_event_study.png>]
-<output/figures/TypeScriptsdid_event_study.png, id=827, 714.9912pt x 282.3348pt
->
+<output/figures/TypeScriptsdid_event_study.png, id=827, 859.2903pt x 352.31625p
+t>
 File: output/figures/TypeScriptsdid_event_study.png Graphic file (type png)
 <use output/figures/TypeScriptsdid_event_study.png>
 Package pdftex.def Info: output/figures/TypeScriptsdid_event_study.png  used on
  input line 1293.
-(pdftex.def)             Requested size: 386.96027pt x 152.80315pt.
+(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
  [69 <./output/figures/Rubysdid_event_study.png> <./output/figures/TypeScriptsd
 id_event_study.png>]
 Underfull \hbox (badness 6001) in paragraph at lines 1313--1314
@@ -1520,7 +1520,7 @@ sers/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C
 :/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb
 ><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a
 .pfb>
-Output written on Tesis.pdf (75 pages, 8649479 bytes).
+Output written on Tesis.pdf (75 pages, 9269448 bytes).
 PDF statistics:
  1059 PDF objects out of 1200 (max. 8388607)
  188 named destinations out of 1000 (max. 500000)

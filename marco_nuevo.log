@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.14)  25 MAY 2026 18:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.14)  25 MAY 2026 21:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./documentacion.tex
-(documentacion.tex
+**./marco_nuevo.tex
+(marco_nuevo.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -265,8 +265,19 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.st
-y
+)) (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks29
+\thm@bodyfont=\toks30
+\thm@headfont=\toks31
+\thm@notefont=\toks32
+\thm@headpunct=\toks33
+\thm@preskip=\skip55
+\thm@postskip=\skip56
+\thm@headsep=\skip57
+\dth@everypar=\toks34
+)
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen168
 \lightrulewidth=\dimen169
@@ -285,21 +296,23 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count306
 \@lastruleclass=\count307
 \@thisrulewidth=\dimen180
-) (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+)
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \col@sep=\dimen181
 \ar@mcellbox=\box56
 \extrarowheight=\dimen182
-\NC@list=\toks29
-\extratabsurround=\skip55
-\backup@length=\skip56
+\NC@list=\toks35
+\extratabsurround=\skip58
+\backup@length=\skip59
 \ar@cellbox=\box57
 )
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
-Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen183
-\c@nlinenum=\count308
-\TeXr@lab=\toks30
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip60
+\multirow@cntb=\count308
+\multirow@dima=\skip61
+\bigstrutjot=\dimen183
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
@@ -318,27 +331,6 @@ Package caption Info: Standard document class detected.
 )
 \c@caption@flags=\count309
 \c@continuedfloat=\count310
-)
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
-Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
-Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
-Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-)
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
-fg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: pdftex.def on input line 106.
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
-File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
-))
-\Gin@req@height=\dimen192
-\Gin@req@width=\dimen193
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
@@ -393,7 +385,7 @@ ty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen194
+\@linkdim=\dimen192
 \Hy@linkcounter=\count312
 \Hy@pagecounter=\count313
  (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
@@ -424,7 +416,7 @@ Package hyperref Info: Bookmarks ON on input line 4462.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4801.
-\XeTeXLinkMargin=\dimen195
+\XeTeXLinkMargin=\dimen193
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -435,8 +427,8 @@ Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
 \Fld@menulength=\count316
-\Field@Width=\dimen196
-\Fld@charsize=\dimen197
+\Field@Width=\dimen194
+\Fld@charsize=\dimen195
 Package hyperref Info: Hyper figures OFF on input line 6078.
 Package hyperref Info: Link nesting OFF on input line 6083.
 Package hyperref Info: Hyper index ON on input line 6086.
@@ -466,15 +458,7 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 84.
 )
-\Hy@SectionHShift=\skip57
-)
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count322
-\float@exts=\toks31
-\float@box=\box58
-\@float@everytoks=\toks32
-\@floatcapt=\box59
+\Hy@SectionHShift=\skip62
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
@@ -483,6 +467,10 @@ Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
@@ -504,13 +492,13 @@ sty
 y
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
 -common.tex
-\pgfutil@everybye=\toks33
-\pgfutil@tempdima=\dimen198
-\pgfutil@tempdimb=\dimen199
+\pgfutil@everybye=\toks36
+\pgfutil@tempdima=\dimen196
+\pgfutil@tempdimb=\dimen197
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
 -latex.def
-\pgfutil@abb=\box60
+\pgfutil@abb=\box58
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
 code.tex
@@ -521,6 +509,24 @@ Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.
 sty
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+)
+\Gin@req@height=\dimen198
+\Gin@req@width=\dimen199
+)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.
 sty
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
@@ -529,12 +535,12 @@ Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
 .code.tex
-\pgfkeys@pathtoks=\toks34
-\pgfkeys@temptoks=\toks35
+\pgfkeys@pathtoks=\toks37
+\pgfkeys@temptoks=\toks38
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
 libraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks36
+\pgfkeys@tmptoks=\toks39
 ))
 \pgf@x=\dimen256
 \pgf@y=\dimen257
@@ -548,14 +554,14 @@ libraryfiltered.code.tex
 \pgf@yd=\dimen265
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count323
-\c@pgf@countb=\count324
-\c@pgf@countc=\count325
-\c@pgf@countd=\count326
-\t@pgf@toka=\toks37
-\t@pgf@tokb=\toks38
-\t@pgf@tokc=\toks39
-\pgf@sys@id@count=\count327
+\c@pgf@counta=\count322
+\c@pgf@countb=\count323
+\c@pgf@countc=\count324
+\c@pgf@countd=\count325
+\t@pgf@toka=\toks40
+\t@pgf@tokb=\toks41
+\t@pgf@tokc=\toks42
+\pgf@sys@id@count=\count326
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
 fg
@@ -574,8 +580,8 @@ File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
 ssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfsyssoftpath@smallbuffer@items=\count328
-\pgfsyssoftpath@bigbuffer@items=\count329
+\pgfsyssoftpath@smallbuffer@items=\count327
+\pgfsyssoftpath@bigbuffer@items=\count328
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
 sprotocol.code.tex
@@ -592,11 +598,11 @@ code.tex)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
 r.code.tex
 \pgfmath@dimen=\dimen266
-\pgfmath@count=\count330
-\pgfmath@box=\box61
-\pgfmath@toks=\toks40
-\pgfmath@stack@operand=\toks41
-\pgfmath@stack@operation=\toks42
+\pgfmath@count=\count329
+\pgfmath@box=\box59
+\pgfmath@toks=\toks43
+\pgfmath@stack@operand=\toks44
+\pgfmath@stack@operation=\toks45
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
 ions.code.tex)
@@ -620,7 +626,7 @@ ions.integerarithmetics.code.tex)
 code.tex)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
 .code.tex
-\c@pgfmathroundto@lastzeros=\count331
+\c@pgfmathroundto@lastzeros=\count330
 ))
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
 tex)
@@ -657,10 +663,10 @@ File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 escopes.code.tex
 File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfpic=\box62
-\pgf@hbox=\box63
-\pgf@layerbox@main=\box64
-\pgf@picture@serial@count=\count332
+\pgfpic=\box60
+\pgf@hbox=\box61
+\pgf@layerbox@main=\box62
+\pgf@picture@serial@count=\count331
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 egraphicstate.code.tex
@@ -695,8 +701,8 @@ File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 eshade.code.tex
 File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@max=\dimen290
-\pgf@sys@shading@range@num=\count333
-\pgf@shadingcount=\count334
+\pgf@sys@shading@range@num=\count332
+\pgf@shadingcount=\count333
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 eimage.code.tex
@@ -705,7 +711,7 @@ File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 eexternal.code.tex
 File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfexternal@startupbox=\box65
+\pgfexternal@startupbox=\box63
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 elayers.code.tex
@@ -726,7 +732,7 @@ File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
 shapes.code.tex
 File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfnodeparttextbox=\box66
+\pgfnodeparttextbox=\box64
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
 plot.code.tex
@@ -756,8 +762,8 @@ code.tex
 Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
 \pgffor@iter=\dimen293
 \pgffor@skip=\dimen294
-\pgffor@stack=\toks43
-\pgffor@toks=\toks44
+\pgffor@stack=\toks46
+\pgffor@toks=\toks47
 ))
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z\tikz.code.tex
@@ -766,7 +772,7 @@ Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
 aryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@plot@mark@count=\count335
+\pgf@plot@mark@count=\count334
 \pgfplotmarksize=\dimen295
 )
 \tikz@lastx=\dimen296
@@ -777,23 +783,23 @@ File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \tikz@lastmovetoy=\dimen301
 \tikzleveldistance=\dimen302
 \tikzsiblingdistance=\dimen303
-\tikz@figbox=\box67
-\tikz@figbox@bg=\box68
-\tikz@tempbox=\box69
-\tikz@tempbox@bg=\box70
-\tikztreelevel=\count336
-\tikznumberofchildren=\count337
-\tikznumberofcurrentchild=\count338
-\tikz@fig@count=\count339
+\tikz@figbox=\box65
+\tikz@figbox@bg=\box66
+\tikz@tempbox=\box67
+\tikz@tempbox@bg=\box68
+\tikztreelevel=\count335
+\tikznumberofchildren=\count336
+\tikznumberofcurrentchild=\count337
+\tikz@fig@count=\count338
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
 matrix.code.tex
 File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfmatrixcurrentrow=\count340
-\pgfmatrixcurrentcolumn=\count341
-\pgf@matrix@numberofcolumns=\count342
+\pgfmatrixcurrentrow=\count339
+\pgfmatrixcurrentcolumn=\count340
+\pgf@matrix@numberofcolumns=\count341
 )
-\tikz@expandcount=\count343
+\tikz@expandcount=\count342
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z/libraries\tikzlibrarytopaths.code.tex
@@ -801,8 +807,8 @@ File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )))
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
 Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks45
-\verbatim@line=\toks46
+\every@verbatim=\toks48
+\verbatim@line=\toks49
 \verbatim@in@stream=\read4
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/environ\environ.sty
@@ -812,30 +818,30 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 ty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\tcb@titlebox=\box71
-\tcb@upperbox=\box72
-\tcb@lowerbox=\box73
-\tcb@phantombox=\box74
-\c@tcbbreakpart=\count344
-\c@tcblayer=\count345
-\c@tcolorbox@number=\count346
-\l__tcobox_tmpa_box=\box75
+\tcb@titlebox=\box69
+\tcb@upperbox=\box70
+\tcb@lowerbox=\box71
+\tcb@phantombox=\box72
+\c@tcbbreakpart=\count343
+\c@tcblayer=\count344
+\c@tcolorbox@number=\count345
+\l__tcobox_tmpa_box=\box73
 \l__tcobox_tmpa_dim=\dimen304
+\tcb@temp=\box74
+\tcb@temp=\box75
 \tcb@temp=\box76
 \tcb@temp=\box77
-\tcb@temp=\box78
-\tcb@temp=\box79
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
-\labelindent=\skip58
+\labelindent=\skip63
 \enit@outerparindent=\dimen305
-\enit@toks=\toks47
-\enit@inbox=\box80
-\enit@count@id=\count347
-\enitdp@description=\count348
+\enit@toks=\toks50
+\enit@inbox=\box78
+\enit@count@id=\count346
+\enitdp@description=\count347
 )
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 73
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 56
 .
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1phv.fd
@@ -844,42 +850,42 @@ File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count349
-) (documentacion.aux
+\l__color_backend_stack_int=\count348
+) (marco_nuevo.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
 (babel)             Reported on input line 11.
 )
-\openout1 = `documentacion.aux'.
+\openout1 = `marco_nuevo.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Info: Redefining \. on input line 73.
-LaTeX Info: Redefining \% on input line 73.
-LaTeX Info: Redefining \microtypecontext on input line 73.
-Package microtype Info: Applying patch `item' on input line 73.
-Package microtype Info: Applying patch `toc' on input line 73.
-Package microtype Info: Applying patch `eqnum' on input line 73.
-Package microtype Info: Applying patch `footnote' on input line 73.
-Package microtype Info: Applying patch `verbatim' on input line 73.
-LaTeX Info: Redefining \microtypesetup on input line 73.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Info: Redefining \. on input line 56.
+LaTeX Info: Redefining \% on input line 56.
+LaTeX Info: Redefining \microtypecontext on input line 56.
+Package microtype Info: Applying patch `item' on input line 56.
+Package microtype Info: Applying patch `toc' on input line 56.
+Package microtype Info: Applying patch `eqnum' on input line 56.
+Package microtype Info: Applying patch `footnote' on input line 56.
+Package microtype Info: Applying patch `verbatim' on input line 56.
+LaTeX Info: Redefining \microtypesetup on input line 56.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -903,14 +909,14 @@ Package microtype Info: Loading generic protrusion settings for font family
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* h-part:(L,W,R)=(76.82234pt, 443.86319pt, 76.82234pt)
 * v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=455.24411pt
+* \textwidth=443.86319pt
 * \textheight=702.78308pt
-* \oddsidemargin=-1.1381pt
-* \evensidemargin=-1.1381pt
+* \oddsidemargin=4.55235pt
+* \evensidemargin=4.55235pt
 * \topmargin=-38.1381pt
 * \headheight=12.0pt
 * \headsep=25.0pt
@@ -930,24 +936,28 @@ Package microtype Info: Loading generic protrusion settings for font family
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
+Package hyperref Info: Link coloring ON on input line 56.
+(marco_nuevo.out) (marco_nuevo.out)
+\@outlinefile=\write4
+\openout4 = `marco_nuevo.out'.
+
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count350
+\scratchcounter=\count349
 \scratchdimen=\dimen306
-\scratchbox=\box81
-\nofMPsegments=\count351
-\nofMParguments=\count352
-\everyMPshowfont=\toks48
-\MPscratchCnt=\count353
+\scratchbox=\box79
+\nofMPsegments=\count350
+\nofMParguments=\count351
+\everyMPshowfont=\toks51
+\MPscratchCnt=\count352
 \MPscratchDim=\dimen307
-\MPnumerator=\count354
-\makeMPintoPDFobject=\count355
-\everyMPtoPDFconversion=\toks49
+\MPnumerator=\count353
+\makeMPintoPDFobject=\count354
+\everyMPtoPDFconversion=\toks52
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -959,55 +969,43 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring ON on input line 73.
- (documentacion.out) (documentacion.out)
-\@outlinefile=\write4
-\openout4 = `documentacion.out'.
-
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 81.
- [1
-
-{C:/Users/Jesus/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Jesu
-s/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] (documentacion.to
-c
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 7
-.
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 59.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 5
+9.
+ (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
-.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5
+9.
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-7.
+59.
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-7.
+59.
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 7.
+(Font)              <12> on input line 59.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 7.
+(Font)              <8> on input line 59.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 7.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 7.
+(Font)              <6> on input line 59.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 59.
+
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1015,7 +1013,8 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 7.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 59.
+
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1023,96 +1022,90 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.23 ...jecutivo de los hallazgos}{20}{section.17}
-                                                  % [1])
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 61.
+
+(marco_nuevo.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 4.
+ [1
+
+{C:/Users/Jesus/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Jesu
+s/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}{C:/Users/Jesus/App
+Data/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}])
 \tf@toc=\write5
-\openout5 = `documentacion.toc'.
+\openout5 = `marco_nuevo.toc'.
 
  [2]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 130.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 88.
  [3
 
-] [4{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.
-enc}{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}
 {C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
-] [5] [6]
-[7]
-<output/figures/language_distribution_gpt_available_2020_2023.png, id=163, 1149
-.093pt x 570.933pt>
-File: output/figures/language_distribution_gpt_available_2020_2023.png Graphic 
-file (type png)
-<use output/figures/language_distribution_gpt_available_2020_2023.png>
-Package pdftex.def Info: output/figures/language_distribution_gpt_available_202
-0_2023.png  used on input line 275.
-(pdftex.def)             Requested size: 386.96027pt x 192.26776pt.
- [8]
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 283.
-<output/figures/language_trend_gpt_countries_2020_2023.png, id=172, 1583.1948pt
- x 715.7139pt>
-File: output/figures/language_trend_gpt_countries_2020_2023.png Graphic file (t
-ype png)
-<use output/figures/language_trend_gpt_countries_2020_2023.png>
-Package pdftex.def Info: output/figures/language_trend_gpt_countries_2020_2023.
-png  used on input line 297.
-(pdftex.def)             Requested size: 432.48051pt x 195.50597pt.
- [9 <./output/figures/language_distribution_gpt_available_2020_2023.png>] [10 <
-./output/figures/language_trend_gpt_countries_2020_2023.png>]
-<output/figures/Pythonsdidtrends12.png, id=186, 859.5312pt x 355.0866pt>
-File: output/figures/Pythonsdidtrends12.png Graphic file (type png)
-<use output/figures/Pythonsdidtrends12.png>
-Package pdftex.def Info: output/figures/Pythonsdidtrends12.png  used on input l
-ine 335.
-(pdftex.def)             Requested size: 432.48051pt x 178.66983pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 336.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 336.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 336.
-<output/figures/Pythonsdidweights12.png, id=187, 789.1884pt x 353.6412pt>
-File: output/figures/Pythonsdidweights12.png Graphic file (type png)
-<use output/figures/Pythonsdidweights12.png>
-Package pdftex.def Info: output/figures/Pythonsdidweights12.png  used on input 
-line 341.
-(pdftex.def)             Requested size: 432.48051pt x 193.80176pt.
- [11 <./output/figures/Pythonsdidtrends12.png>] [12 <./output/figures/Pythonsdi
-dweights12.png>]
+{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
 ! Incompatible glue units.
 \es@sppercent ...fnum \gluestretchorder \lastskip 
                                                   =\z@ \unskip \fi \textorma...
-l.380 ...mento relativo de aproximadamente $23\,\%
+l.113 ...uce el tiempo de trabajo al menos $50\,\%
                                                   $.
 I'm going to assume that 1mu=1pt when they're mixed.
 
-[13] [14]
-<output/figures/robustness_forest_plot.png, id=214, 786.2976pt x 497.57895pt>
-File: output/figures/robustness_forest_plot.png Graphic file (type png)
-<use output/figures/robustness_forest_plot.png>
-Package pdftex.def Info: output/figures/robustness_forest_plot.png  used on inp
-ut line 436.
-(pdftex.def)             Requested size: 455.24411pt x 288.0873pt.
- [15] [16 <./output/figures/robustness_forest_plot.png>]
-<output/figures/placebo_distribution_panel.png, id=228, 860.013pt x 1016.1965pt
->
-File: output/figures/placebo_distribution_panel.png Graphic file (type png)
-<use output/figures/placebo_distribution_panel.png>
-Package pdftex.def Info: output/figures/placebo_distribution_panel.png  used on
- input line 465.
-(pdftex.def)             Requested size: 432.48051pt x 511.02762pt.
- [17 <./output/figures/placebo_distribution_panel.png>]
-<output/figures/chatgpt_timeline.png, id=235, 1206.22072pt x 679.338pt>
-File: output/figures/chatgpt_timeline.png Graphic file (type png)
-<use output/figures/chatgpt_timeline.png>
-Package pdftex.def Info: output/figures/chatgpt_timeline.png  used on input lin
-e 492.
-(pdftex.def)             Requested size: 455.24411pt x 256.38892pt.
- [18 <./output/figures/chatgpt_timeline.png>] [19] [20] [21] (documentacion.aux
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 132.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 132.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 132.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4] [5{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathe
+x.enc}]
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10.95> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 236.
+ [6] [7] [8] [9] [10]
+! Incompatible glue units.
+\es@sppercent ...fnum \gluestretchorder \lastskip 
+                                                  =\z@ \unskip \fi \textorma...
+l.438 ...al de productividad del orden del $10\,\%
+                                                  $--$30\,\%$ del nivel huma...
+I'm going to assume that 1mu=1pt when they're mixed.
+
+! Incompatible glue units.
+\es@sppercent ...fnum \gluestretchorder \lastskip 
+                                                  =\z@ \unskip \fi \textorma...
+l.438 ...uctividad del orden del $10\,\%$--$30\,\%
+                                                  $ del nivel humano cumple ...
+I'm going to assume that 1mu=1pt when they're mixed.
+
+[11] [12] [13] [14]
+! Incompatible glue units.
+\es@sppercent ...fnum \gluestretchorder \lastskip 
+                                                  =\z@ \unskip \fi \textorma...
+l.644 ...estadísticamente significativo al $5\,\%
+                                                  $ o mejor. Esto valida H1 ...
+I'm going to assume that 1mu=1pt when they're mixed.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[15] [16] [17] [18]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
+54.
+
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [19
+
+{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
+(marco_nuevo.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -1120,30 +1113,39 @@ LaTeX Info: Redefining \% on input line 11.
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
-Package rerunfilecheck Info: File `documentacion.out' has not changed.
-(rerunfilecheck)             Checksum: 6656BAFCD3E1FDAE0DAEB495EFAD988C;5861.
+Package rerunfilecheck Info: File `marco_nuevo.out' has not changed.
+(rerunfilecheck)             Checksum: C9EB1C434AD85CC30B0FF9F446A5C5E9;5803.
  ) 
 Here is how much of TeX's memory you used:
- 29155 strings out of 467871
- 551881 string characters out of 5418376
- 959766 words of memory out of 5000000
- 57126 multiletter control sequences out of 15000+600000
- 706547 words of font info for 332 fonts, out of 8000000 for 9000
+ 29287 strings out of 467871
+ 551865 string characters out of 5418376
+ 968719 words of memory out of 5000000
+ 57107 multiletter control sequences out of 15000+600000
+ 746134 words of font info for 397 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,6n,108p,1012b,791s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
-b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb
-><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><
-C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pf
-b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvbo8
-a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uh
-vr8a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic
-/uhvro8a.pfb>
-Output written on documentacion.pdf (22 pages, 1761825 bytes).
+ 116i,14n,121p,1010b,806s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
+b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pf
+b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
+b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb
+><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb>
+<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><
+C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C
+:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/
+Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Us
+ers/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Us
+ers/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Use
+rs/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/User
+s/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/User
+s/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm1
+0.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uh
+vb8a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic
+/uhvbo8a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helv
+etic/uhvr8a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/h
+elvetic/uhvro8a.pfb>
+Output written on marco_nuevo.pdf (19 pages, 320534 bytes).
 PDF statistics:
- 321 PDF objects out of 1000 (max. 8388607)
- 73 named destinations out of 1000 (max. 500000)
- 65760 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 445 PDF objects out of 1000 (max. 8388607)
+ 122 named destinations out of 1000 (max. 500000)
+ 99037 words of extra memory for PDF output out of 106986 (max. 10000000)
 

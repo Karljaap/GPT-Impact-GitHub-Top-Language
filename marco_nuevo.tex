@@ -1,0 +1,795 @@
+\documentclass[11pt,a4paper]{article}
+
+% ── encoding & language ──────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+
+% ── typography ───────────────────────────────────────────────────────────────
+\usepackage{lmodern}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{microtype}
+\usepackage{setspace}
+\onehalfspacing
+
+% ── page layout ──────────────────────────────────────────────────────────────
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.7cm,right=2.7cm]{geometry}
+
+% ── math, tables, links ──────────────────────────────────────────────────────
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue]{hyperref}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+
+\addto\captionsspanish{%
+  \renewcommand{\contentsname}{Índice}%
+}
+
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% Caja de definiciones / proposiciones
+\newtcolorbox{prop}[1][]{
+  colback=blue!4!white,
+  colframe=blue!50!black,
+  boxrule=0.8pt,
+  arc=2pt,
+  left=8pt,right=8pt,
+  before skip=10pt,after skip=10pt,
+  #1
+}
+
+\theoremstyle{definition}
+\newtheorem*{hipotesis}{Hipótesis}
+\newtheorem*{prediccion}{Predicción}
+
+\title{\Large Marco teórico adaptado:\\ \textbf{Adopción heterogénea de IA generativa con exposición lingüística diferencial}\\[0.5em] \large \textit{Documento complementario a la tesis}}
+\author{Jesus Alberto Nicho Rosado \quad $\bullet$ \quad Karl Willem Janampa Aparicio \\[0.3em] \small Asesor: Alexander Wilder Quispe Rojas \\[0.3em] \small Pontificia Universidad Católica del Perú}
+\date{Lima, 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent Este documento propone una adaptación formal del marco teórico de la tesis ``Impacto de la disponibilidad de ChatGPT en el desarrollo de software orientado a Ciencia de Datos (2020--2023)''. Se integran dos desarrollos recientes en la economía de la inteligencia artificial: el modelo de tareas con automatización parcial de Acemoglu (2024) y el constructo de exposición laboral a modelos de lenguaje de Eloundou, Manning, Mishkin y Rock (2023). El marco propuesto formaliza la hipótesis de heterogeneidad por lenguaje mediante un parámetro estructural identificable y genera predicciones empíricamente verificables. Se demuestra que los resultados del Cuadro 3 y Cuadro 6 de la tesis son consistentes con las predicciones del modelo, y se propone una extensión natural en forma de prueba de mecanismo basada en \textit{benchmarks} independientes de capacidades de ChatGPT por lenguaje.
+\end{abstract}
+
+\vspace{0.5em}
+\textbf{Palabras clave:} ChatGPT, IA generativa, automatización de tareas, exposición laboral, SDID, ciencia de datos.
+
+\bigskip
+\hrule
+\bigskip
+\tableofcontents
+\bigskip
+\hrule
+
+\clearpage
+
+% ════════════════════════════════════════════════════════════════════════════
+\section{Motivación de la adaptación}
+
+El marco teórico original de la tesis se sustenta en dos vertientes: (i) la reasignación de tareas entre capital y trabajo de Acemoglu y Restrepo (2018, 2019) y (ii) los costos de búsqueda de Stigler (1961). Ambos son apropiados como fundamento, pero presentan dos limitaciones que la presente adaptación busca corregir:
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{No formalizan la heterogeneidad por lenguaje.} La hipótesis H2 de la tesis ---que el efecto se acentúa en lenguajes como Python y JavaScript--- queda argumentada de manera narrativa (``mayor documentación técnica''), sin un parámetro estructural que la represente.
+  \item \textbf{No incorporan literatura econométrica reciente sobre IA generativa.} En el período 2023--2024 surgieron contribuciones específicamente sobre el impacto laboral de modelos de lenguaje grande (LLM) que ofrecen instrumentos conceptuales más precisos que el marco general de automatización pre-2020.
+\end{enumerate}
+
+La presente adaptación integra dos contribuciones recientes:
+\begin{itemize}[leftmargin=*]
+  \item Acemoglu (2024), ``\textit{The Simple Macroeconomics of AI}'', que actualiza el marco de tareas con automatización parcial específicamente para IA.
+  \item Eloundou, Manning, Mishkin y Rock (2023), ``\textit{GPTs are GPTs}'', que ofrece un constructo formal de exposición laboral a modelos de lenguaje.
+\end{itemize}
+
+% ════════════════════════════════════════════════════════════════════════════
+\section{Marco teórico base}
+
+\subsection{ChatGPT como tecnología de propósito general}
+
+Siguiendo a Aghion, Jones y Jones (2017), ChatGPT se caracteriza como una \textbf{tecnología de propósito general} (GPT, \textit{General Purpose Technology}), por cumplir los tres criterios canónicos: (i) pervasividad sectorial; (ii) mejora dinámica a través de versiones sucesivas (GPT-3.5, GPT-4, GPT-4o); y (iii) generación de innovaciones complementarias (plug-ins, agentes, integraciones con editores de código). Esta caracterización es relevante porque las GPTs producen efectos macroeconómicos cuya identificación requiere ventanas de tiempo más largas que las disponibles para una sola tecnología específica.
+
+\subsection{Automatización parcial y reinstauración (Acemoglu, 2024)}
+
+Acemoglu (2024) modela una economía con un continuo de tareas $z \in [0, 1]$, cada una con productividad relativa entre humanos e IA. La fracción $\tau$ de tareas automatizables, una vez expuesta a IA, experimenta un ahorro de costo $\rho$ (denominado \textit{cost saving share}). El efecto agregado sobre la productividad total de los factores depende de:
+\begin{equation}
+\Delta \text{PTF} \approx \tau \cdot \rho \cdot \sigma
+\end{equation}
+donde $\sigma$ es la elasticidad de sustitución entre tareas.
+
+El parámetro clave es $\tau \cdot \rho$, que captura la \textbf{exposición efectiva} del sector a la nueva tecnología. Sectores con muchas tareas automatizables y altos ahorros por tarea experimentan mayores efectos.
+
+\subsection{Exposición laboral heterogénea (Eloundou et al., 2023)}
+
+Eloundou, Manning, Mishkin y Rock (2023) construyen, sobre la clasificación ocupacional O*NET, dos índices de exposición:
+\begin{itemize}[leftmargin=*]
+  \item $\alpha_j$: fracción de tareas de la ocupación $j$ donde un LLM reduce el tiempo de trabajo al menos $50\,\%$.
+  \item $\beta_j$: fracción ampliada que incluye exposición vía herramientas adicionales (Code Interpreter, navegación, \textit{plugins}).
+\end{itemize}
+Los autores documentan que los lenguajes de programación con \textbf{mayor representación en el corpus de entrenamiento} (Python, JavaScript) presentan exposiciones $\alpha$ y $\beta$ sistemáticamente mayores que lenguajes especializados o nicho.
+
+\subsection{Costos de búsqueda y aprendizaje (Stigler, 1961)}
+
+La economía de la información clásica modela la búsqueda como un costo paramétrico. Para un programador, este costo se concreta en tiempo dedicado a documentación, foros (Stack Overflow), tutoriales y experimentación. ChatGPT actúa como un \textit{shock} negativo sobre la función de costos de búsqueda, complementando los mecanismos de Acemoglu (2024) por el lado de los costos individuales del desarrollador.
+
+% ════════════════════════════════════════════════════════════════════════════
+\section{Modelo formal adaptado}
+\label{sec:modelo}
+
+\subsection{Notación y variables}
+
+\begin{table}[h!]
+\centering
+\small
+\renewcommand{\arraystretch}{1.30}
+\begin{tabular}{p{1.6cm}p{8cm}p{4cm}}
+\toprule
+\textbf{Símbolo} & \textbf{Definición} & \textbf{Observabilidad} \\
+\midrule
+$Y_{ict}$ & \textit{Unique pushers} por 100 mil habitantes en país $i$, lenguaje $c$, trimestre $t$ & Observable (GitHub) \\
+$A_{it}$ & Indicador binario de disponibilidad de ChatGPT en país $i$ en trimestre $t$ & Observable \\
+$\theta_c$ & Exposición estructural del lenguaje $c$ a la asistencia de LLMs & Latente \\
+$\tau_c$ & Fracción de tareas de programación en $c$ automatizables por IA & Latente \\
+$\rho_c$ & \textit{Cost saving share} promedio en tareas automatizadas de $c$ & Latente \\
+$\phi_i$ & Capacidad de absorción tecnológica del país $i$ & Latente \\
+$\alpha_i,\,\beta_t,\,\delta_c$ & Efectos fijos de país, trimestre y lenguaje & Estimables \\
+$\eta_{ict}$ & Shock idiosincrático de media cero & Inobservable \\
+\bottomrule
+\end{tabular}
+\caption{Notación del modelo adaptado.}
+\end{table}
+
+\subsection{Derivación paso a paso de la ecuación principal}
+\label{sec:derivacion}
+
+A continuación se deriva la ecuación principal del modelo a partir de primeros principios, en ocho pasos progresivos, cada uno descompuesto en sub-pasos algebraicos explícitos. El objetivo es hacer transparente cómo cada componente teórico (Acemoglu 2024, Eloundou et al.\ 2023, Stigler 1961) se traduce en parámetros concretos del estimando, sin saltos algebraicos.
+
+% ─── PASO 1 ──────────────────────────────────────────────────────────────────
+\subsubsection*{Paso 1 --- Función de producción de código a nivel de tarea}
+
+\textbf{1.1 Por qué un continuo de tareas.} Siguiendo a Acemoglu (2024), la actividad de programación en un lenguaje $c$ se descompone como un \textit{continuo de micro-tareas} $z \in [0, 1]$. Cada tarea $z$ representa una unidad elemental de trabajo (escribir una función, depurar un error, consultar la sintaxis de una API, etc.). La elección de un continuo en lugar de un conjunto finito es una convención que permite usar herramientas de cálculo integral; es equivalente, en el límite, a sumar sobre un número grande de tareas discretas.
+
+\textbf{1.2 Productividades elementales.} Para cada tarea $z$ se definen dos productividades:
+
+\begin{itemize}[leftmargin=*]
+  \item $h_c(z) > 0$: productividad de un humano resolviendo la tarea $z$ en el lenguaje $c$ (líneas de código, módulos completados, o cualquier métrica equivalente por unidad de tiempo).
+  \item $a_c(z) \geq 0$: productividad de ChatGPT resolviendo la tarea $z$ \textbf{condicional} al acceso a la herramienta. Se admite $a_c(z) = 0$ para tareas en las que ChatGPT no aporta nada (por ejemplo, debugging que requiere ejecución en hardware).
+\end{itemize}
+
+\textbf{1.3 Decisión óptima del desarrollador en cada tarea.} Sea $\mu_j \in \{0, 1\}$ el indicador de si el desarrollador $j$ tiene acceso a ChatGPT ($\mu_j = 1$) o no ($\mu_j = 0$). Asumiendo que el desarrollador racional elige, para cada tarea, el método más productivo entre los disponibles, la productividad efectiva en la tarea $z$ es:
+
+\begin{equation}
+y_{jc}(z;\mu_j) \,=\, \max\!\bigl\{\,h_c(z),\; \mu_j\cdot a_c(z)\,\bigr\}
+\label{eq:paso1_tarea}
+\end{equation}
+
+Casos límite:
+\begin{itemize}[leftmargin=*]
+  \item Si $\mu_j = 0$: \;\; $y_{jc}(z;0) = \max\{h_c(z), 0\} = h_c(z)$ \;\; (no hay alternativa, usa lo humano).
+  \item Si $\mu_j = 1$: \;\; $y_{jc}(z;1) = \max\{h_c(z), a_c(z)\}$ \;\; (elige lo más productivo entre humano e IA).
+\end{itemize}
+
+\textbf{1.4 Producción total como integral.} Sumando (integrando) sobre todas las tareas:
+
+\begin{equation}
+y_{jc}(\mu_j) \,=\, \int_0^1 \max\!\bigl\{\,h_c(z),\; \mu_j\cdot a_c(z)\,\bigr\}\, dz
+\label{eq:paso1}
+\end{equation}
+
+Esta es la \textbf{función de producción individual} del desarrollador. Reduce el problema continuo a un único número $y_{jc}(\mu_j)$ que representa la producción total de código del desarrollador $j$ trabajando en el lenguaje $c$ bajo el régimen $\mu_j$.
+
+\textbf{1.5 Dos producciones específicas.} En particular:
+
+\begin{equation}
+y_{jc}(0) \,=\, \int_0^1 h_c(z)\, dz, \qquad
+y_{jc}(1) \,=\, \int_0^1 \max\!\bigl\{\,h_c(z),\; a_c(z)\,\bigr\}\, dz
+\label{eq:paso1_casos}
+\end{equation}
+
+Como por construcción $\max\{h, a\} \geq h$ para cualquier $a$, se sigue que $y_{jc}(1) \geq y_{jc}(0)$: la disponibilidad de ChatGPT \textbf{nunca} reduce la productividad (en este modelo determinístico), y la aumenta estrictamente cuando existe al menos una tarea con $a_c(z) > h_c(z)$.
+
+% ─── PASO 2 ──────────────────────────────────────────────────────────────────
+\subsubsection*{Paso 2 --- Identificación del conjunto de tareas automatizables}
+
+\textbf{2.1 Definición del conjunto.} Una tarea $z$ se denomina \textbf{automatizable} si la productividad de ChatGPT \textit{supera estrictamente} a la humana:
+
+\begin{equation}
+\mathcal{Z}_c^{\text{auto}} \,=\, \bigl\{\, z \in [0,1] : a_c(z) > h_c(z)\, \bigr\}
+\label{eq:paso2}
+\end{equation}
+
+Se usa desigualdad estricta ($>$) en lugar de débil ($\geq$) para descartar tareas donde ambas alternativas son indistinguibles --- en esos casos ChatGPT no aporta ganancia marginal, así que excluirlas no afecta los cálculos de productividad.
+
+\textbf{2.2 Reescribiendo el máximo usando la indicadora.} La producción óptima con acceso, $\max\{h_c(z), a_c(z)\}$, puede escribirse como una combinación lineal de los dos componentes según si $z$ pertenece o no al conjunto automatizable:
+
+\begin{equation}
+\max\!\bigl\{\,h_c(z),\; a_c(z)\,\bigr\} \,=\,
+\underbrace{h_c(z)\cdot\mathbf{1}\!\bigl[z \notin \mathcal{Z}_c^{\text{auto}}\bigr]}_{\text{tareas no automatizadas}}
+\,+\,
+\underbrace{a_c(z)\cdot\mathbf{1}\!\bigl[z \in \mathcal{Z}_c^{\text{auto}}\bigr]}_{\text{tareas automatizadas}}
+\label{eq:paso2_max}
+\end{equation}
+
+Esta reescritura es algebraicamente equivalente al $\max$ pero facilita la integración por separado de los dos componentes.
+
+\textbf{2.3 Medida de tareas automatizables.} La medida de Lebesgue del conjunto automatizable ---es decir, el porcentaje del trabajo de programación susceptible a IA--- es:
+
+\begin{equation}
+\tau_c \,=\, \int_0^1 \mathbf{1}\!\bigl[\, z \in \mathcal{Z}_c^{\text{auto}}\, \bigr]\, dz \,=\, \int_0^1 \mathbf{1}\!\bigl[\, a_c(z) > h_c(z)\, \bigr]\, dz
+\label{eq:tauc}
+\end{equation}
+
+Por construcción, $\tau_c \in [0, 1]$. Si $\tau_c = 0$, ChatGPT no aporta nada en el lenguaje $c$; si $\tau_c = 1$, ChatGPT supera a un humano en absolutamente toda tarea del lenguaje.
+
+\textbf{2.4 Interpretación económica.} El parámetro $\tau_c$ es alto cuando el lenguaje $c$ tiene amplia documentación pública en el corpus de entrenamiento de ChatGPT (Stack Overflow, GitHub, blogs técnicos, etc.). Bajo la lente de Eloundou et al.\ (2023), $\tau_c$ se interpreta como el equivalente lingüístico del índice $\alpha$ ocupacional. Para Python y JavaScript ---con millones de respuestas en Stack Overflow--- $\tau_c$ es típicamente alta; para lenguajes de nicho (Elixir, Erlang, Racket) es baja.
+
+% ─── PASO 3 ──────────────────────────────────────────────────────────────────
+\subsubsection*{Paso 3 --- Ahorro de costo por tarea automatizable}
+
+\textbf{3.1 Definición del \textit{cost saving share} tarea-específico.} Para cada tarea $z \in \mathcal{Z}_c^{\text{auto}}$, se define el ahorro \textit{relativo} (no absoluto) que ChatGPT introduce sobre la productividad humana:
+
+\begin{equation}
+s_c(z) \,=\, \frac{a_c(z) - h_c(z)}{h_c(z)}
+\label{eq:ahorro}
+\end{equation}
+
+\textbf{3.2 Propiedades.} Por la definición \eqref{eq:paso2} de tarea automatizable, $a_c(z) > h_c(z) \Rightarrow s_c(z) > 0$. Adicionalmente:
+\begin{itemize}[leftmargin=*]
+  \item Si $a_c(z) = 2h_c(z)$, entonces $s_c(z) = 1$ (ChatGPT duplica la productividad humana).
+  \item No hay cota superior: si ChatGPT resuelve la tarea de manera trivial mientras al humano le toma horas, $s_c(z)$ puede ser arbitrariamente grande.
+  \item En el límite donde la tarea es totalmente automatizada ($h_c(z) \to 0^+$), $s_c(z) \to \infty$. Por eso se trabaja con el conjunto $\mathcal{Z}_c^{\text{auto}}$ donde $h_c(z) > 0$ (asegurado por el supuesto del Paso 1).
+\end{itemize}
+
+\textbf{3.3 ¿Por qué relativo y no absoluto?} El ahorro relativo $s_c(z)$ es invariante a la elección de unidades de productividad (líneas de código por hora, módulos por día, etc.). El ahorro absoluto $a_c(z) - h_c(z)$ dependería de la unidad. Esta invariancia es importante porque los lenguajes tienen escalas distintas de productividad nominal y se busca un parámetro comparable entre ellos.
+
+\textbf{3.4 Ahorro promedio del lenguaje.} Promediando $s_c(z)$ sobre las tareas automatizables del lenguaje:
+
+\begin{equation}
+\rho_c \,=\, \frac{1}{\tau_c}\int_{\mathcal{Z}_c^{\text{auto}}} s_c(z)\, dz
+\label{eq:rhoc}
+\end{equation}
+
+El factor $\tau_c^{-1}$ es necesario para normalizar la integral (que solo cubre $\mathcal{Z}_c^{\text{auto}}$ de medida $\tau_c$, no $[0,1]$ de medida 1). Bajo esta definición, $\rho_c$ es la magnitud promedio del ahorro \textit{condicional} a que la tarea sea automatizable.
+
+\textbf{3.5 Interpretación: Stigler (1961).} El concepto de ``costo de búsqueda'' de Stigler se materializa en $\rho_c$. En tareas donde el desarrollador antes pasaba horas buscando en Stack Overflow, el ChatGPT colapsa ese tiempo a segundos --- $\rho_c$ es alto. En tareas donde la búsqueda era trivial (ej. sintaxis de una función estándar), $\rho_c$ es bajo. Por tanto, $\rho_c$ correlaciona positivamente con el costo pre-tecnológico promedio de búsqueda en el lenguaje $c$.
+
+% ─── PASO 4 ──────────────────────────────────────────────────────────────────
+\subsubsection*{Paso 4 --- Ganancia individual de productividad con acceso a IA}
+
+\textbf{4.1 Calculando $y_{jc}(1)$ usando la reescritura del Paso 2.} Sustituyendo \eqref{eq:paso2_max} en \eqref{eq:paso1}:
+
+\begin{align}
+y_{jc}(1) &\,=\, \int_0^1\Bigl[\,h_c(z)\,\mathbf{1}[z \notin \mathcal{Z}_c^{\text{auto}}] + a_c(z)\,\mathbf{1}[z \in \mathcal{Z}_c^{\text{auto}}]\,\Bigr]\,dz \notag \\
+&\,=\, \int_{[0,1]\setminus\mathcal{Z}_c^{\text{auto}}}\!\!\!\! h_c(z)\,dz \,+\, \int_{\mathcal{Z}_c^{\text{auto}}}\!\! a_c(z)\,dz
+\label{eq:y1_descompuesto}
+\end{align}
+
+\textbf{4.2 Recordando $y_{jc}(0)$.} Por \eqref{eq:paso1_casos}, $y_{jc}(0) = \int_0^1 h_c(z)\,dz$. Esta integral cubre \textit{todo} $[0,1]$ usando $h_c$. Reescribiéndola en términos de los mismos dos conjuntos del paso 4.1:
+
+\begin{equation}
+y_{jc}(0) \,=\, \int_{[0,1]\setminus\mathcal{Z}_c^{\text{auto}}}\!\!\!\! h_c(z)\,dz \,+\, \int_{\mathcal{Z}_c^{\text{auto}}}\!\! h_c(z)\,dz
+\label{eq:y0_descompuesto}
+\end{equation}
+
+\textbf{4.3 Restando: la integral fuera de $\mathcal{Z}_c^{\text{auto}}$ se cancela.} Al restar \eqref{eq:y0_descompuesto} de \eqref{eq:y1_descompuesto}, el primer término (tareas no automatizadas) es idéntico en ambos casos y se cancela:
+
+\begin{equation}
+\Delta y_{jc} \,\equiv\, y_{jc}(1) - y_{jc}(0) \,=\, \int_{\mathcal{Z}_c^{\text{auto}}}\!\!\bigl[\,a_c(z) - h_c(z)\,\bigr]\, dz
+\label{eq:delta_y_int}
+\end{equation}
+
+\textbf{4.4 Reescribiendo el integrando con el cost saving share.} Multiplicando y dividiendo por $h_c(z)$:
+
+\begin{equation}
+a_c(z) - h_c(z) \,=\, h_c(z)\cdot\frac{a_c(z) - h_c(z)}{h_c(z)} \,=\, h_c(z)\cdot s_c(z)
+\end{equation}
+
+Sustituyendo en \eqref{eq:delta_y_int}:
+
+\begin{equation}
+\Delta y_{jc} \,=\, \int_{\mathcal{Z}_c^{\text{auto}}}\!\! h_c(z)\,s_c(z)\, dz
+\label{eq:delta_y_hs}
+\end{equation}
+
+\textbf{4.5 Definiendo la productividad humana promedio en tareas automatizables.} Sea:
+
+\begin{equation}
+\bar{h}_c \,\equiv\, \frac{1}{\tau_c}\int_{\mathcal{Z}_c^{\text{auto}}}\!\! h_c(z)\,dz
+\label{eq:hbar}
+\end{equation}
+
+Para que la igualdad $\int_{\mathcal{Z}_c^{\text{auto}}} h_c\,s_c\,dz = \tau_c\,\rho_c\,\bar{h}_c$ se sostenga \textit{exactamente}, se requiere que $h_c(z)$ y $s_c(z)$ sean \textit{independientes} sobre el conjunto $\mathcal{Z}_c^{\text{auto}}$ (covarianza cero). Bajo este supuesto:
+
+\begin{equation}
+\Delta y_{jc} \,=\, \tau_c\,\rho_c\,\bar{h}_c
+\label{eq:paso4}
+\end{equation}
+
+(El supuesto de independencia es estándar en modelos task-based; relajarlo introduce un término de covarianza adicional sin alterar la forma funcional principal.)
+
+\textbf{4.6 Normalización de la unidad de productividad.} Las unidades de $y$ son arbitrarias (líneas de código por hora, módulos por día, etc.). Elegimos $\bar{h}_c = 1$ como normalización de unidades --- esto define la unidad de productividad como ``la productividad humana promedio en tareas automatizables del lenguaje''. Con esta elección:
+
+\begin{equation}
+\boxed{\;\Delta y_{jc} \,=\, \tau_c\,\rho_c\;}
+\label{eq:gananciaprod}
+\end{equation}
+
+\textbf{4.7 Interpretación.} La ganancia individual de productividad por tener acceso a ChatGPT en el lenguaje $c$ es exactamente el producto $\tau_c\,\rho_c$: la fracción de tareas automatizables multiplicada por el ahorro relativo promedio. Esta es la formulación más simple posible del \textbf{efecto desplazamiento} de Acemoglu y Restrepo (2018).
+
+% ─── PASO 5 ──────────────────────────────────────────────────────────────────
+\subsubsection*{Paso 5 --- Decisión de entrada al mercado de programadores}
+
+\textbf{5.1 Población de potenciales desarrolladores.} En el país $i$ hay $N_i$ individuos. Cada uno tiene una \textbf{habilidad innata} $\eta$ relevante para la programación (capacidad analítica, formación previa, motivación, etc.). Sea $F_i$ la función de distribución acumulada de $\eta$ en la población del país $i$, con densidad $f_i = F_i'$.
+
+\textbf{5.2 Utilidad de un potencial desarrollador.} Un individuo con habilidad $\eta$ tiene dos opciones:
+\begin{itemize}[leftmargin=*]
+  \item Trabajar como programador en el lenguaje $c$, obteniendo utilidad $U_{\text{prog}}(\eta;\mu_j) = \eta + y_{jc}(\mu_j)$ ---donde $\eta$ representa el componente de utilidad propio de su habilidad (satisfacción intelectual, capacidad de aprendizaje) y $y_{jc}(\mu_j)$ es la productividad observable (que se traduce en ingresos o impacto profesional).
+  \item Dedicarse a otra actividad, obteniendo una utilidad de reserva $U_{\text{out}} = r_i$ (común a todos los individuos del país, refleja oportunidades laborales alternativas).
+\end{itemize}
+
+\textbf{5.3 Condición de participación.} El individuo se vuelve desarrollador activo si y solo si:
+
+\begin{equation}
+\underbrace{\eta + y_{jc}(\mu_j)}_{U_{\text{prog}}} \,\geq\, \underbrace{r_i}_{U_{\text{out}}}
+\label{eq:entrada}
+\end{equation}
+
+\textbf{5.4 Umbral mínimo de habilidad: caso sin IA.} Sin acceso a IA ($\mu_j = 0$), reordenando \eqref{eq:entrada}:
+
+\begin{equation}
+\eta \,\geq\, r_i - y_{jc}(0) \quad\Longleftrightarrow\quad \eta \,\geq\, \eta_c^{*\,(0)}
+\end{equation}
+
+donde se ha definido:
+
+\begin{equation}
+\eta_c^{*\,(0)} \,\equiv\, r_i - y_{jc}(0)
+\label{eq:umbral0}
+\end{equation}
+
+\textbf{5.5 Umbral mínimo de habilidad: caso con IA.} Análogamente, con acceso a IA ($\mu_j = 1$):
+
+\begin{equation}
+\eta_c^{*\,(1)} \,\equiv\, r_i - y_{jc}(1)
+\label{eq:umbral1}
+\end{equation}
+
+\textbf{5.6 Diferencia de umbrales.} Restando \eqref{eq:umbral1} de \eqref{eq:umbral0}:
+
+\begin{align}
+\eta_c^{*\,(0)} - \eta_c^{*\,(1)}
+&\,=\, \bigl[r_i - y_{jc}(0)\bigr] - \bigl[r_i - y_{jc}(1)\bigr] \notag \\
+&\,=\, y_{jc}(1) - y_{jc}(0) \notag \\
+&\,=\, \Delta y_{jc} \,=\, \tau_c\rho_c
+\label{eq:dif_umbral}
+\end{align}
+
+donde la última igualdad usa \eqref{eq:gananciaprod}.
+
+\textbf{5.7 Conclusión del paso.} La disponibilidad de ChatGPT \textbf{reduce el umbral mínimo de habilidad} para entrar a programar en el lenguaje $c$ en una magnitud exactamente igual a la ganancia individual de productividad:
+
+\begin{equation}
+\boxed{\;\eta_c^{*\,(1)} \,=\, \eta_c^{*\,(0)} \,-\, \tau_c\rho_c\;}
+\end{equation}
+
+\textbf{Interpretación: efecto reinstauración.} Este es el \textbf{efecto reinstauración} de Acemoglu y Restrepo (2019): individuos que antes no tenían habilidad suficiente para que la programación les compensara su utilidad de reserva, ahora pueden participar gracias a la asistencia de IA.
+
+% ─── PASO 6 ──────────────────────────────────────────────────────────────────
+\subsubsection*{Paso 6 --- Agregación a desarrolladores activos en el país}
+
+\textbf{6.1 Conteo de desarrolladores activos.} Bajo el régimen $\mu$ (acceso o no a IA), el número total de desarrolladores activos en el lenguaje $c$ en el país $i$ es la masa de individuos con habilidad por encima del umbral:
+
+\begin{equation}
+\text{Devs}_{ic}(\mu) \,=\, N_i \cdot \Pr\!\bigl(\,\eta \geq \eta_c^{*\,(\mu)}\,\bigr) \,=\, N_i\cdot\bigl[\,1 - F_i\!\bigl(\eta_c^{*\,(\mu)}\bigr)\,\bigr]
+\label{eq:devs}
+\end{equation}
+
+\textbf{6.2 Diferencia entre los dos regímenes.}
+
+\begin{align}
+\text{Devs}_{ic}(1) - \text{Devs}_{ic}(0)
+&\,=\, N_i\cdot\bigl\{\bigl[1 - F_i\!\bigl(\eta_c^{*\,(1)}\bigr)\bigr] - \bigl[1 - F_i\!\bigl(\eta_c^{*\,(0)}\bigr)\bigr]\bigr\} \notag \\
+&\,=\, N_i\cdot\bigl[\,F_i\!\bigl(\eta_c^{*\,(0)}\bigr) \,-\, F_i\!\bigl(\eta_c^{*\,(1)}\bigr)\,\bigr]
+\label{eq:dif_devs}
+\end{align}
+
+(El intercambio de signo se debe a que $\eta_c^{*\,(1)} < \eta_c^{*\,(0)}$: como el umbral baja, la masa por encima aumenta.)
+
+\textbf{6.3 Expansión de Taylor de primer orden de $F_i$ alrededor de $\eta_c^{*\,(0)}$.} Por la definición de derivada, para $\Delta\eta \equiv \eta_c^{*\,(0)} - \eta_c^{*\,(1)}$ pequeño:
+
+\begin{equation}
+F_i\!\bigl(\eta_c^{*\,(1)}\bigr) \,=\, F_i\!\bigl(\eta_c^{*\,(0)} - \Delta\eta\bigr) \,\approx\, F_i\!\bigl(\eta_c^{*\,(0)}\bigr) \,-\, f_i\!\bigl(\eta_c^{*\,(0)}\bigr)\cdot\Delta\eta \,+\, O(\Delta\eta^2)
+\label{eq:taylor}
+\end{equation}
+
+donde $f_i = F_i'$ es la densidad. Despreciando los términos de orden $\Delta\eta^2$ y superiores (justificación en \textbf{6.5}):
+
+\begin{equation}
+F_i\!\bigl(\eta_c^{*\,(0)}\bigr) - F_i\!\bigl(\eta_c^{*\,(1)}\bigr) \,\approx\, f_i\!\bigl(\eta_c^{*\,(0)}\bigr)\cdot\Delta\eta
+\label{eq:dif_F}
+\end{equation}
+
+\textbf{6.4 Sustituyendo en la diferencia de desarrolladores.} Combinando \eqref{eq:dif_F} en \eqref{eq:dif_devs} y usando $\Delta\eta = \tau_c\rho_c$ por el Paso 5:
+
+\begin{equation}
+\text{Devs}_{ic}(1) - \text{Devs}_{ic}(0) \,\approx\, N_i\cdot f_i\!\bigl(\eta_c^{*\,(0)}\bigr)\cdot \tau_c\rho_c
+\label{eq:dif_aprox}
+\end{equation}
+
+\textbf{6.5 ¿Cuándo es válida la aproximación de primer orden?} El término de segundo orden despreciado es:
+
+\[
+\frac{1}{2}\,f_i'\!\bigl(\eta_c^{*\,(0)}\bigr)\cdot(\Delta\eta)^2
+\]
+
+Esta magnitud es despreciable respecto al término de primer orden $f_i\cdot\Delta\eta$ cuando:
+
+\[
+\frac{|f_i'\cdot\Delta\eta|}{2\,f_i} \,\ll\, 1
+\]
+
+Es decir, cuando la perturbación $\Delta\eta = \tau_c\rho_c$ es pequeña en relación a la escala característica de variación de la densidad de habilidades. En la práctica, una ganancia individual de productividad del orden del $10\,\%$--$30\,\%$ del nivel humano cumple esta condición ampliamente.
+
+\textbf{6.6 Interpretación.} El aumento absoluto en desarrolladores activos es proporcional al producto de tres factores independientes:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Población del país $N_i$}: cuantas más personas, más potenciales desarrolladores marginales.
+  \item \textbf{Densidad de habilidades en el umbral $f_i\!\bigl(\eta_c^*\bigr)$}: cuántos individuos tenían habilidad cercana al umbral antes del tratamiento. Esta densidad captura la \textbf{capacidad de absorción tecnológica}: países con muchas personas técnicamente formadas pero al borde de no entrar a programar (educación digital incipiente, internet difundido) responden más fuerte al \textit{shock}.
+  \item \textbf{Ganancia individual de productividad $\tau_c\rho_c$}: cuánto baja el umbral por la disponibilidad de IA.
+\end{itemize}
+
+% ─── PASO 7 ──────────────────────────────────────────────────────────────────
+\subsubsection*{Paso 7 --- Conversión a per cápita y definición de la capacidad de absorción}
+
+\textbf{7.1 ¿Por qué per cápita?} La variable de resultado de la tesis es \textit{unique pushers por cada 100\,000 habitantes}, no el conteo absoluto. La normalización per cápita es estándar en economía aplicada porque elimina el efecto mecánico del tamaño poblacional (un país de 300 millones tendrá más desarrolladores que uno de 1 millón sin que esto refleje diferencias económicas relevantes).
+
+\textbf{7.2 Definición operativa.}
+
+\begin{equation}
+Y_{ic} \,\equiv\, \frac{\text{Devs}_{ic}}{N_i}\cdot 10^5
+\label{eq:Y_def}
+\end{equation}
+
+El factor $10^5$ es solo la elección de la escala (``por 100 mil''); podría ser cualquier constante positiva sin alterar la interpretación.
+
+\textbf{7.3 Aplicando la normalización a la diferencia.} Dividiendo \eqref{eq:dif_aprox} por $N_i$ y multiplicando por $10^5$:
+
+\begin{equation}
+\Delta Y_{ic} \,=\, \frac{\text{Devs}_{ic}(1) - \text{Devs}_{ic}(0)}{N_i}\cdot 10^5 \,\approx\, 10^5\cdot f_i\!\bigl(\eta_c^{*\,(0)}\bigr)\cdot \tau_c\rho_c
+\label{eq:DY_inter}
+\end{equation}
+
+(Nota que $N_i$ se canceló: el efecto per cápita es independiente del tamaño poblacional, a primer orden.)
+
+\textbf{7.4 Definición compacta de la capacidad de absorción.} Agrupamos los términos específicos del país en un solo parámetro:
+
+\begin{equation}
+\phi_i \,\equiv\, 10^5\cdot f_i\!\bigl(\eta_c^{*\,(0)}\bigr)
+\label{eq:phi}
+\end{equation}
+
+\textbf{7.5 Resultado final.}
+
+\begin{equation}
+\boxed{\;\Delta Y_{ic} \,=\, \tau_c\,\rho_c\,\phi_i\;}
+\label{eq:deltaYic}
+\end{equation}
+
+\textbf{7.6 Síntesis: tres parámetros, tres mecanismos teóricos.}
+\begin{itemize}[leftmargin=*]
+  \item $\tau_c$ --- \textbf{mecanismo Eloundou et al.\ (2023)}: fracción de tareas del lenguaje expuestas a LLMs.
+  \item $\rho_c$ --- \textbf{mecanismo Stigler (1961)}: ahorro relativo de costos de búsqueda promedio.
+  \item $\phi_i$ --- \textbf{mecanismo Acemoglu-Restrepo (2019)}: capacidad de absorción del país, operacionalmente la densidad de potenciales desarrolladores en el margen.
+\end{itemize}
+
+% ─── PASO 8 ──────────────────────────────────────────────────────────────────
+\subsubsection*{Paso 8 --- Especificación de panel con efectos fijos}
+
+\textbf{8.1 Necesidad de indicadores temporales y de tratamiento.} La derivación previa contempla solo dos regímenes ($\mu = 0$ o $\mu = 1$). En el panel real, la disponibilidad de ChatGPT varía por país y trimestre. Se introduce:
+
+\begin{equation}
+A_{it} \,\in\, \{0, 1\}, \quad A_{it} \,=\, \begin{cases}
+1 & \text{si ChatGPT está disponible en el país } i \text{ en el trimestre } t\\
+0 & \text{en caso contrario}
+\end{cases}
+\end{equation}
+
+\textbf{8.2 Generalización temporal del resultado.} Bajo $A_{it} = 0$, el outcome es $Y_{ict} \,=\, Y_{ic}(0)$. Bajo $A_{it} = 1$, el outcome es $Y_{ic}(0) + \tau_c\rho_c\phi_i$ por \eqref{eq:deltaYic}. Estos dos casos se pueden escribir unificadamente:
+
+\begin{equation}
+Y_{ict} \,=\, Y_{ic}(0) \,+\, \tau_c\rho_c\phi_i\,A_{it}
+\label{eq:unif}
+\end{equation}
+
+\textbf{8.3 Descomposición de la línea base $Y_{ic}(0)$.} El componente $Y_{ic}(0)$ ---outcome sin tratamiento--- depende de características no atribuibles al tratamiento. Lo descomponemos aditivamente:
+
+\begin{equation}
+Y_{ic}(0) \,=\, \alpha_i \,+\, \beta_t \,+\, \delta_c \,+\, \eta_{ict}
+\label{eq:Yic_0_decomp}
+\end{equation}
+
+donde:
+\begin{itemize}[leftmargin=*]
+  \item $\alpha_i$ --- \textbf{efecto fijo de país}: captura niveles de actividad propios del país independientes del lenguaje y del trimestre (ej.\ tamaño relativo del ecosistema tech, salarios, infraestructura).
+  \item $\beta_t$ --- \textbf{efecto fijo temporal}: captura shocks globales contemporáneos (crecimiento de GitHub a nivel mundial, expansión del software \textit{open source}).
+  \item $\delta_c$ --- \textbf{efecto fijo de lenguaje}: captura popularidad estructural del lenguaje independiente del país y del trimestre (Python siempre tendrá más actividad que Ruby, en cualquier país y trimestre).
+  \item $\eta_{ict}$ --- \textbf{shock idiosincrático}: variabilidad residual, con $\mathbb{E}[\eta_{ict}] = 0$ y exógeno respecto a $A_{it}$.
+\end{itemize}
+
+\textbf{8.4 Ecuación principal del modelo.} Sustituyendo \eqref{eq:Yic_0_decomp} en \eqref{eq:unif}:
+
+\begin{prop}[]
+\begin{equation}
+\boxed{\;Y_{ict} \,=\, \alpha_i \,+\, \beta_t \,+\, \delta_c \,+\, \underbrace{\tau_c\,\rho_c}_{\equiv\,\theta_c}\,\phi_i\,A_{it} \,+\, \eta_{ict}\;}
+\label{eq:principal}
+\end{equation}
+\end{prop}
+
+\textbf{8.5 Identificación.} El parámetro de interés es el coeficiente que multiplica al regresor $A_{it}$, es decir, el producto $\theta_c\cdot\phi_i$. Bajo el supuesto de \textbf{exogeneidad condicional} ---que el shock $\eta_{ict}$ es independiente de $A_{it}$ condicional a los efectos fijos--- el estimador de mínimos cuadrados ponderados del SDID identifica consistentemente este producto. La estrategia de identificación queda formalmente justificada en la Sección~5 (Identificación) más adelante.
+
+\subsection{Resumen visual de la derivación}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.30}
+\begin{tabular}{cp{8cm}l}
+\toprule
+\textbf{Paso} & \textbf{De qué se obtiene}                                   & \textbf{Resultado} \\
+\midrule
+1 & Función de producción tarea por tarea (Acemoglu, 2024)         & $y_{jc} = \int_0^1 \max\{h, \mu a\}\,dz$ \\
+2 & Identificación de tareas automatizables                         & $\tau_c = |\mathcal{Z}_c^{\text{auto}}|$ \\
+3 & Ahorro promedio por tarea automatizable                          & $\rho_c$ \\
+4 & Ganancia individual de productividad por acceso a IA             & $\Delta y_{jc} = \tau_c \rho_c$ \\
+5 & Reducción del umbral de entrada a la profesión                   & $\Delta \eta_c^* = -\tau_c \rho_c$ \\
+6 & Ganancia agregada en desarrolladores activos                     & $\propto N_i \cdot f_i \cdot \tau_c \rho_c$ \\
+7 & Definición de capacidad de absorción y conversión a per cápita   & $\Delta Y_{ic} = \tau_c\rho_c\phi_i$ \\
+8 & Especificación con efectos fijos y shock idiosincrático          & Ecuación \eqref{eq:principal} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Especificación principal (recapitulación)}
+
+La actividad de desarrollo del lenguaje $c$ en el país $i$ durante el trimestre $t$ queda modelada por \eqref{eq:principal}. Definiendo la exposición efectiva del lenguaje:
+
+\begin{equation}
+\theta_c \,\equiv\, \tau_c\,\rho_c
+\label{eq:theta}
+\end{equation}
+
+la interacción $\theta_c\,\phi_i$ captura simultáneamente la heterogeneidad por lenguaje (via $\theta_c$) y por país (via $\phi_i$). Esta es la base estructural que justifica el uso del SDID con efectos heterogéneos por lenguaje en la tesis.
+
+\subsection{Efecto promedio del tratamiento por lenguaje}
+
+A partir de \eqref{eq:principal}, el efecto promedio del tratamiento sobre los tratados (ATT) específico por lenguaje es:
+
+\begin{equation}
+\text{ATT}_c \,=\, \mathbb{E}\!\left[Y_{ict}(1) - Y_{ict}(0) \mid i \in \mathcal{T},\, t > T_0\right] \,=\, \theta_c \,\bar{\phi}_{\mathcal{T}}
+\label{eq:att}
+\end{equation}
+
+donde $\bar{\phi}_{\mathcal{T}}$ denota la capacidad promedio de absorción tecnológica entre los 130 países tratados. Bajo este modelo, el ATT estimado por SDID en el Cuadro 3 de la tesis es una estimación consistente de $\theta_c \,\bar{\phi}_{\mathcal{T}}$.
+
+\subsection{Mecanismos subyacentes}
+
+El parámetro $\theta_c = \tau_c \cdot \rho_c$ resume dos mecanismos teóricos:
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Fracción automatizable $\tau_c$.} Determinada por:
+    \begin{itemize}\small
+      \item Cantidad de documentación pública del lenguaje en el corpus de entrenamiento.
+      \item Regularidad sintáctica (mayor regularidad $\Rightarrow$ mayor automatización).
+      \item Madurez del ecosistema de soporte (Stack Overflow, GitHub).
+    \end{itemize}
+  \item \textbf{\textit{Cost saving share} $\rho_c$.} Determinado por:
+    \begin{itemize}\small
+      \item Costo de búsqueda pre-tecnológica en el lenguaje (Stigler, 1961).
+      \item Complejidad de las tareas rutinarias automatizadas.
+    \end{itemize}
+\end{enumerate}
+
+Bajo esta descomposición, el \textbf{efecto reinstauración} de Acemoglu (2024) se interpreta como la entrada de programadores marginales una vez que $\rho_c$ reduce el costo de producción de código.
+
+% ════════════════════════════════════════════════════════════════════════════
+\section{Hipótesis verificables}
+\label{sec:hipotesis}
+
+El modelo \eqref{eq:principal} genera tres hipótesis falsificables:
+
+\begin{hipotesis}[H1: efecto positivo de la disponibilidad]
+\[
+\theta_c > 0 \quad \text{para todo } c \in \{\text{lenguajes analizados}\}
+\]
+El acceso a ChatGPT incrementa la actividad de desarrollo en todos los lenguajes considerados, con magnitudes potencialmente heterogéneas.
+\end{hipotesis}
+
+\begin{hipotesis}[H2: jerarquía de exposición por lenguaje]
+\[
+\text{rank}(\theta_c) \,\approx\, \text{rank}\!\left(\text{Doc}_c,\;\text{MCEVAL}_c\right)
+\]
+La jerarquía de magnitudes del ATT por lenguaje correlaciona positivamente con (a) la cantidad de documentación pública del lenguaje en datos de entrenamiento y (b) los \textit{benchmarks} de capacidad del modelo en cada lenguaje (Chai et al., 2024; Buscemi, 2023).
+\end{hipotesis}
+
+\begin{hipotesis}[H3: heterogeneidad por capacidad de absorción]
+\[
+\frac{\partial\, \text{ATT}_{ic}}{\partial\, \phi_i} \,=\, \theta_c \,>\, 0
+\]
+A mayor capacidad de absorción tecnológica del país $i$ (infraestructura digital, capital humano), mayor es el ATT individual. Esta predicción es verificable extendiendo la base con indicadores de desarrollo digital (Banco Mundial, ITU).
+\end{hipotesis}
+
+% ════════════════════════════════════════════════════════════════════════════
+\section{Identificación}
+
+La asignación al tratamiento $A_{it}$ no es aleatoria: depende de decisiones geopolíticas que correlacionan con variables institucionales del país. Sin embargo, la no-aleatoriedad opera \textbf{predominantemente a nivel país}, no a nivel lenguaje específico. Por tanto, la estrategia de identificación de la tesis es internamente coherente con el modelo:
+
+\begin{itemize}[leftmargin=*]
+  \item La variación a nivel país es absorbida por $\alpha_i$ (efectos fijos de unidad) y por la ponderación SDID de unidades.
+  \item La variación temporal global es absorbida por $\beta_t$ y por la ponderación SDID de períodos.
+  \item La variación residual es atribuible al término $\theta_c \,\phi_i\, A_{it}$, identificable bajo el supuesto de tendencias paralelas en el subpanel ponderado.
+\end{itemize}
+
+El estimador SDID (Arkhangelsky, Athey, Hirshberg, Imbens y Wager, 2021) es asintóticamente normal con muchas unidades tratadas ($N_{tr} = 130$), lo que justifica su uso como estimador principal.
+
+% ════════════════════════════════════════════════════════════════════════════
+\section{Validación con los resultados de la tesis}
+
+\subsection{Confirmación de H1}
+
+El Cuadro 3 de la tesis reporta que \textbf{9 de los 10 lenguajes} presentan ATT SDiD positivo y estadísticamente significativo al $5\,\%$ o mejor. Esto valida H1 con la excepción de C\# (ATT $= 0{,}443$, no significativo).
+
+\subsection{Confirmación de H2}
+
+Ordenando los ATT del Cuadro 3 de mayor a menor magnitud:
+
+\begin{table}[h!]
+\centering
+\small
+\renewcommand{\arraystretch}{1.20}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Lenguaje} & \textbf{ATT SDiD} & \textbf{Documentación} & \textbf{Capacidad LLM} \\
+\midrule
+JavaScript & 8,303 & Muy alta & Alta \\
+Python     & 4,525 & Muy alta & Muy alta \\
+TypeScript & 3,078 & Alta     & Alta \\
+Java       & 1,725 & Alta     & Media-alta \\
+C          & 1,276 & Media    & Media \\
+C++        & 1,131 & Media    & Media-baja \\
+PHP        & 0,916 & Media    & Media \\
+Ruby       & 0,808 & Media-baja & Baja \\
+Go         & 0,720 & Baja     & Baja \\
+C\#        & 0,443 & Media    & Baja (ecosistema cerrado) \\
+\bottomrule
+\end{tabular}
+\caption{Magnitud del ATT vs.\ documentación y capacidad LLM (\textit{rankings} cualitativos consistentes con Chai et al., 2024).}
+\end{table}
+
+La correlación entre la magnitud del ATT y la representación del lenguaje en datos de entrenamiento es \textbf{cualitativamente clara y consistente con H2}.
+
+\subsection{Pruebas de placebo: refinamiento de H1 y H2}
+
+El Cuadro 6 de la tesis estratifica la robustez en tres niveles:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Evidencia fuerte} (p-valor placebo $\leq 0{,}05$): Go, Ruby.
+  \item \textbf{Evidencia moderada} (p-valor placebo $\leq 0{,}10$): JavaScript, Python, TypeScript.
+  \item \textbf{Evidencia débil} (p-valor placebo $> 0{,}10$): C, C++, Java, PHP, C\#.
+\end{itemize}
+
+El modelo predice que los lenguajes con mayor $\theta_c$ deben mostrar evidencia más robusta. La consistencia con este patrón es parcial: JavaScript, Python y TypeScript están en niveles moderado/fuerte, mientras que C\# (el lenguaje con menor $\theta_c$ esperado por su ecosistema más cerrado) presenta evidencia débil. Esto valida el espíritu del modelo aunque sugiere que el componente $\rho_c$ (\textit{cost saving share}) tiene mayor varianza no modelada por el simple ranking de documentación.
+
+% ════════════════════════════════════════════════════════════════════════════
+\section{Extensión propuesta: test formal de mecanismo}
+
+El modelo admite una prueba directa del mecanismo de exposición lingüística. Sea $\hat{\theta}_c$ el ATT estandarizado por la media pre-tratamiento del grupo de control:
+
+\begin{equation}
+\hat{\theta}_c \,=\, \frac{\widehat{\text{ATT}}_c^{\text{SDID}}}{\bar{Y}_c^{\text{pre},\,\mathcal{C}}}
+\label{eq:theta_hat}
+\end{equation}
+
+Sea $M_c$ el \textit{score} de capacidad del lenguaje $c$ en el \textit{benchmark} MCEVAL de Chai et al. (2024), o equivalentemente el \textit{score} de Buscemi (2023). La prueba formal de mecanismo consiste en estimar:
+
+\begin{equation}
+\hat{\theta}_c \,=\, \gamma_0 + \gamma_1\,M_c + u_c, \qquad c \in \{C, C\#, C++, Go, Java, JS, PHP, Python, Ruby, TS\}
+\label{eq:mecanismo}
+\end{equation}
+
+\begin{prediccion}[Validación del mecanismo]
+Bajo el modelo \eqref{eq:principal}, se espera $\hat{\gamma}_1 > 0$ y estadísticamente significativo. La magnitud de $\hat{\gamma}_1$ informa sobre la elasticidad de la actividad de desarrollo respecto a la capacidad de asistencia del modelo.
+\end{prediccion}
+
+Si la regresión \eqref{eq:mecanismo} arrojase un $\hat{\gamma}_1$ positivo y significativo, se habría obtenido evidencia empírica del mecanismo causal específico, no solo de su existencia. Esto transformaría el carácter de la tesis: de \textit{evaluación de impacto} a \textit{prueba de mecanismo causal con sustento estructural}.
+
+% ════════════════════════════════════════════════════════════════════════════
+\section{Discusión y limitaciones del marco}
+
+\subsection{Aportes respecto al marco original}
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Formalización de H2.} La heterogeneidad por lenguaje se expresa mediante un parámetro estructural $\theta_c$ identificable, en lugar de un argumento descriptivo.
+  \item \textbf{Conexión micro-macro.} El ATT estimado a nivel agregado se deriva de una estructura individual coherente.
+  \item \textbf{Predicciones falsificables.} El modelo genera tres hipótesis verificables, no solo una. La H3 (heterogeneidad por capacidad de absorción) abre una agenda de investigación futura.
+  \item \textbf{Test de mecanismo.} La extensión \eqref{eq:mecanismo} permite trascender la mera evaluación de impacto y aportar evidencia sobre el canal causal específico.
+\end{enumerate}
+
+\subsection{Limitaciones del modelo}
+
+\begin{enumerate}[leftmargin=*]
+  \item El parámetro $\theta_c$ es identificable como producto $\tau_c \cdot \rho_c$, pero no es directamente descomponible sin datos adicionales sobre el contenido de tareas del programador.
+  \item La capacidad de absorción $\phi_i$ se mantiene como parámetro latente; su estimación requeriría datos exógenos sobre infraestructura digital del país.
+  \item El modelo es estático en el sentido de que no captura la dinámica de aprendizaje de los usuarios sobre cómo interactuar con el modelo (efecto no monotónico discutido en la Sección 4.2 de la tesis).
+\end{enumerate}
+
+\subsection{Agenda de investigación futura}
+
+\begin{itemize}[leftmargin=*]
+  \item Estimar $\hat{\gamma}_1$ en \eqref{eq:mecanismo} y reportar la prueba de mecanismo.
+  \item Extender la ventana postratamiento a 2024--2025 para evaluar dinámicas no monotónicas.
+  \item Incorporar heterogeneidad por nivel de desarrollo del país (ITU Digital Development Index, Banco Mundial).
+  \item Modelar formalmente la dinámica de aprendizaje del usuario y separar el efecto del modelo (GPT-3.5 vs.\ GPT-4) del efecto del aprendizaje del usuario.
+\end{itemize}
+
+% ════════════════════════════════════════════════════════════════════════════
+\section{Conclusión}
+
+El marco teórico adaptado integra dos contribuciones recientes (Acemoglu, 2024; Eloundou et al., 2023) con el marco original Acemoglu-Restrepo-Stigler de la tesis, formalizando la heterogeneidad por lenguaje mediante el parámetro estructural $\theta_c \equiv \tau_c \cdot \rho_c$. Los resultados empíricos del Cuadro 3 y Cuadro 6 son consistentes con las predicciones del modelo (H1 y H2), aunque la consistencia con H3 requiere extensiones empíricas adicionales.
+
+La extensión natural ---test formal de mecanismo mediante \eqref{eq:mecanismo}--- es una contribución de bajo costo metodológico y alto retorno académico que se recomienda implementar en una versión \textit{working paper} o publicación del trabajo.
+
+% ════════════════════════════════════════════════════════════════════════════
+\clearpage
+\section*{Referencias}
+\addcontentsline{toc}{section}{Referencias}
+\begin{singlespace}
+\begin{thebibliography}{99}
+\setlength{\itemsep}{0.7em}
+
+\bibitem{acemoglu2024}
+Acemoglu, D. (2024). The Simple Macroeconomics of AI. \textit{NBER Working Paper 32487}. \url{https://doi.org/10.3386/w32487}
+
+\bibitem{acemoglu2018}
+Acemoglu, D., \& Restrepo, P. (2018). The Race between Man and Machine: Implications of Technology for Growth, Factor Shares, and Employment. \textit{American Economic Review, 108}(6), 1488--1542.
+
+\bibitem{acemoglu2019}
+Acemoglu, D., \& Restrepo, P. (2019). Automation and New Tasks: How Technology Displaces and Reinstates Labor. \textit{Journal of Economic Perspectives, 33}(2), 3--30.
+
+\bibitem{aghion2017}
+Aghion, P., Jones, B. F., \& Jones, C. I. (2017). Artificial Intelligence and Economic Growth. En \textit{The Economics of Artificial Intelligence: An Agenda} (pp. 237--282). NBER / University of Chicago Press.
+
+\bibitem{arkhangelsky2021}
+Arkhangelsky, D., Athey, S., Hirshberg, D. A., Imbens, G. W., \& Wager, S. (2021). Synthetic Difference-in-Differences. \textit{American Economic Review, 111}(12), 4088--4118.
+
+\bibitem{buscemi2023}
+Buscemi, A. (2023). A Comparative Study of Code Generation using ChatGPT 3.5 across 10 Programming Languages. \textit{arXiv preprint} arXiv:2308.04477.
+
+\bibitem{chai2024}
+Chai, Z., Wang, S., Liang, J., et al. (2024). McEval: Massively Multilingual Code Evaluation. \textit{arXiv preprint} arXiv:2406.07436.
+
+\bibitem{cui2024}
+Cui, Z. K., Demirer, M., Jaffe, S., Musolff, L., Peng, S., \& Salz, T. (2024). The Effects of Generative AI on High-Skilled Work: Evidence from Three Field Experiments with Software Developers. \textit{SSRN Working Paper 4945566}.
+
+\bibitem{dellacqua2023}
+Dell'Acqua, F., McFowland, E., Mollick, E., et al. (2023). Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality. \textit{HBS Working Paper 24-013}.
+
+\bibitem{eloundou2023}
+Eloundou, T., Manning, S., Mishkin, P., \& Rock, D. (2023). GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models. \textit{arXiv preprint} arXiv:2303.10130. (Posteriormente publicado en \textit{Science}, 2024).
+
+\bibitem{noy2023}
+Noy, S., \& Zhang, W. (2023). Experimental evidence on the productivity effects of generative artificial intelligence. \textit{Science, 381}(6654), 187--192.
+
+\bibitem{stigler1961}
+Stigler, G. J. (1961). The Economics of Information. \textit{Journal of Political Economy, 69}(3), 213--225.
+
+\bibitem{brynjolfsson2023}
+Brynjolfsson, E., Li, D., \& Raymond, L. R. (2023). Generative AI at Work. \textit{NBER Working Paper 31161}.
+
+\end{thebibliography}
+\end{singlespace}
+
+\end{document}
