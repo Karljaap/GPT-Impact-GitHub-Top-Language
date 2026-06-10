@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.14)  25 MAY 2026 18:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.14)  2 JUN 2026 13:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -859,6 +859,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\helvet.sty
 Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
 )
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerfontthemep
+rofessionalfonts.sty)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerthemeMadri
 d.sty
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamercolortheme
@@ -1008,9 +1010,9 @@ File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )))
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 68.
+(hyperref)                removing `\\' on input line 80.
 
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 72
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 84
 .
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
@@ -1027,24 +1029,24 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 )
 \openout1 = `sustentacion.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1106,57 +1108,11 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 72.
+Package hyperref Info: Link coloring OFF on input line 84.
  (sustentacion.out) (sustentacion.out)
 \@outlinefile=\write5
 \openout5 = `sustentacion.out'.
 
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 72.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 72.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 72.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/phv/b/n on input line 72.
-\symnumbers=\mathgroup6
-\sympureletters=\mathgroup7
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/phv/m/n --> T1/lmr/m/n on input line 72.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> T1/phv/b/n on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> T1/phv/b/n on input line 72.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/phv/m/n on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> T1/phv/m/n on input line 72.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> T1/phv/m/it on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/bx/it --> T1/phv/m/it on input line 72.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 72.
-LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/phv/m/n --> T1/phv/b/n on input line 72.
-LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/phv/m/it --> T1/phv/b/it on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/phv/b/n --> T1/lmr/b/n on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/phv/b/n --> T1/phv/b/n on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/phv/m/n --> T1/phv/b/n on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/phv/m/it --> T1/phv/b/it on input line 72.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/lmtt/m/n --> T1/lmtt/b/n on input line 72.
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator-b
 asic-dictionary-English.dict
@@ -1182,8 +1138,8 @@ Dictionary: translator-numbers-dictionary, Language: English
 heorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \. on input line 72.
-LaTeX Info: Redefining \% on input line 72.
+LaTeX Info: Redefining \. on input line 84.
+LaTeX Info: Redefining \% on input line 84.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (sustentacion.nav) [1
@@ -1200,54 +1156,50 @@ s/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2
 ] [6
 
 ]
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 1
-75.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
+87.
 
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
-File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-75.
+87.
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-175.
+187.
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-175.
+187.
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 175.
+(Font)              <10> on input line 187.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 175.
+(Font)              <7> on input line 187.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 175.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 175
+(Font)              <5> on input line 187.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 187
 .
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 175
+LaTeX Font Info:    Trying to load font information for U+msb on input line 187
 .
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 175.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 175.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 175.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 187.
 
 [7
 
@@ -1258,147 +1210,112 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5> not available
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 228.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 240.
  [10
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 249.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 261.
+ [11
 
-! Incompatible glue units.
-\es@sppercent ...fnum \gluestretchorder \lastskip 
-                                                  =\z@ \unskip \fi \textorma...
-l.249 \end{frame}
-                 
-I'm going to assume that 1mu=1pt when they're mixed.
+{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 293.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 293.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 293.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 293.
+ [12
 
-[11
-
-] [12
+{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
+{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}
+] [13
 
 ]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 273.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 273.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 273.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 273.
-
-! Incompatible glue units.
-\es@sppercent ...fnum \gluestretchorder \lastskip 
-                                                  =\z@ \unskip \fi \textorma...
-l.273 \end{frame}
-                 
-I'm going to assume that 1mu=1pt when they're mixed.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 273--273
+Underfull \hbox (badness 10000) in paragraph at lines 317--317
 []|\T1/phv/m/n/8 Del Río-Chanona et al.
  []
 
-[13
-
-]
-! Incompatible glue units.
-\es@sppercent ...fnum \gluestretchorder \lastskip 
-                                                  =\z@ \unskip \fi \textorma...
-l.294 \end{frame}
-                 
-I'm going to assume that 1mu=1pt when they're mixed.
-
 [14
 
-{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
 ] [15
 
+] [16
+
 ]
-<output/figures/chatgpt_timeline.png, id=270, 1206.22072pt x 679.338pt>
+<output/figures/chatgpt_timeline.png, id=310, 1074.29355pt x 534.0753pt>
 File: output/figures/chatgpt_timeline.png Graphic file (type png)
 <use output/figures/chatgpt_timeline.png>
 Package pdftex.def Info: output/figures/chatgpt_timeline.png  used on input lin
-e 306.
-(pdftex.def)             Requested size: 435.24896pt x 245.1316pt.
+e 350.
+(pdftex.def)             Requested size: 362.56662pt x 180.2467pt.
+ [17
 
-Overfull \vbox (41.74342pt too high) detected at line 306
- []
+ <./output/figures/chatgpt_timeline.png>] [18
 
-[16
-
- <./output/figures/chatgpt_timeline.png>] [17
-
-] [18
+] [19
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-63.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
+07.
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [19
+) [20
 
 {C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}] [2
-0
+1
 
 ]
-<output/figures/chatgpt_global_availability_map.png, id=318, 1149.093pt x 598.0
+<output/figures/chatgpt_global_availability_map.png, id=362, 1149.093pt x 598.0
 3426pt>
 File: output/figures/chatgpt_global_availability_map.png Graphic file (type png
 )
 <use output/figures/chatgpt_global_availability_map.png>
 Package pdftex.def Info: output/figures/chatgpt_global_availability_map.png  us
-ed on input line 401.
-(pdftex.def)             Requested size: 435.24896pt x 226.52536pt.
-
-Overfull \vbox (22.13712pt too high) detected at line 401
- []
-
-[21
-
- <./output/figures/chatgpt_global_availability_map.png>]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 431.
-
-Overfull \vbox (1.55792pt too high) detected at line 431
- []
+ed on input line 445.
+(pdftex.def)             Requested size: 346.32613pt x 180.24205pt.
 
 [22
 
-]
-<output/figures/language_trend_gpt_countries_2020_2023.png, id=334, 1583.1948pt
- x 715.7139pt>
-File: output/figures/language_trend_gpt_countries_2020_2023.png Graphic file (t
-ype png)
-<use output/figures/language_trend_gpt_countries_2020_2023.png>
-Package pdftex.def Info: output/figures/language_trend_gpt_countries_2020_2023.
-png  used on input line 439.
-(pdftex.def)             Requested size: 435.24896pt x 196.76186pt.
-
-Overfull \vbox (1.84564pt too high) detected at line 439
+ <./output/figures/chatgpt_global_availability_map.png>]
+Overfull \vbox (1.55792pt too high) detected at line 475
  []
 
 [23
 
- <./output/figures/language_trend_gpt_countries_2020_2023.png>] [24
-
 ]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 467.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 467.
+<output/figures/language_trend_no_gpt_countries_2020_2023.png, id=378, 933.4875
+pt x 463.4916pt>
+File: output/figures/language_trend_no_gpt_countries_2020_2023.png Graphic file
+ (type png)
+<use output/figures/language_trend_no_gpt_countries_2020_2023.png>
+Package pdftex.def Info: output/figures/language_trend_no_gpt_countries_2020_20
+23.png  used on input line 483.
+(pdftex.def)             Requested size: 363.01886pt x 180.2447pt.
+ [24
+
+ <./output/figures/language_trend_no_gpt_countries_2020_2023.png>]
+<output/figures/language_trend_gpt_countries_2020_2023.png, id=387, 933.4875pt 
+x 463.4916pt>
+File: output/figures/language_trend_gpt_countries_2020_2023.png Graphic file (t
+ype png)
+<use output/figures/language_trend_gpt_countries_2020_2023.png>
+Package pdftex.def Info: output/figures/language_trend_gpt_countries_2020_2023.
+png  used on input line 491.
+(pdftex.def)             Requested size: 363.01886pt x 180.2447pt.
 
 [25
 
-{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}
-] [26
+ <./output/figures/language_trend_gpt_countries_2020_2023.png>] [26
 
 ]
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <7> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 505.
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <5> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 505.
- [27
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 519.
+
+[27
 
 ] [28
 
@@ -1410,87 +1327,76 @@ LaTeX Font Info:    Font shape `T1/phv/b/it' in size <5> not available
 
 ] [32
 
+] [33
+
+] [34
+
 ]
-<output/figures/Pythonsdidtrends12.png, id=449, 859.5312pt x 355.0866pt>
+<output/figures/Pythonsdidtrends12.png, id=503, 531.4254pt x 352.1958pt>
 File: output/figures/Pythonsdidtrends12.png Graphic file (type png)
 <use output/figures/Pythonsdidtrends12.png>
 Package pdftex.def Info: output/figures/Pythonsdidtrends12.png  used on input l
-ine 594.
-(pdftex.def)             Requested size: 435.24896pt x 179.81306pt.
- [33
+ine 646.
+(pdftex.def)             Requested size: 271.97209pt x 180.24625pt.
+ [35
 
  <./output/figures/Pythonsdidtrends12.png>]
-<output/figures/Pythonsdidweights12.png, id=458, 789.1884pt x 353.6412pt>
+<output/figures/Pythonsdidweights12.png, id=512, 534.3162pt x 353.6412pt>
 File: output/figures/Pythonsdidweights12.png Graphic file (type png)
 <use output/figures/Pythonsdidweights12.png>
 Package pdftex.def Info: output/figures/Pythonsdidweights12.png  used on input 
-line 602.
-(pdftex.def)             Requested size: 435.24896pt x 195.04286pt.
-
-! Incompatible glue units.
-\es@sppercent ...fnum \gluestretchorder \lastskip 
-                                                  =\z@ \unskip \fi \textorma...
-l.602 \end{frame}
-                 
-I'm going to assume that 1mu=1pt when they're mixed.
-
-
-Overfull \vbox (0.47069pt too high) detected at line 602
- []
-
-[34
+line 654.
+(pdftex.def)             Requested size: 272.34274pt x 180.25209pt.
+ [36
 
  <./output/figures/Pythonsdidweights12.png>]
-<output/figures/JavaScriptsdidtrends12.png, id=467, 859.5312pt x 355.0866pt>
+<output/figures/JavaScriptsdidtrends12.png, id=521, 531.4254pt x 352.1958pt>
 File: output/figures/JavaScriptsdidtrends12.png Graphic file (type png)
 <use output/figures/JavaScriptsdidtrends12.png>
 Package pdftex.def Info: output/figures/JavaScriptsdidtrends12.png  used on inp
-ut line 610.
-(pdftex.def)             Requested size: 435.24896pt x 179.81306pt.
- [35
+ut line 662.
+(pdftex.def)             Requested size: 271.97209pt x 180.24625pt.
+ [37
 
- <./output/figures/JavaScriptsdidtrends12.png>] [36
-
-] [37
-
-] [38
+ <./output/figures/JavaScriptsdidtrends12.png>] [38
 
 ] [39
 
+] [40
+
+] [41
+
 ]
-<output/figures/robustness_forest_plot.png, id=517, 786.2976pt x 497.57895pt>
+<output/figures/robustness_forest_plot.png, id=570, 786.2976pt x 497.57895pt>
 File: output/figures/robustness_forest_plot.png Graphic file (type png)
 <use output/figures/robustness_forest_plot.png>
 Package pdftex.def Info: output/figures/robustness_forest_plot.png  used on inp
-ut line 727.
+ut line 779.
 (pdftex.def)             Requested size: 300.23595pt x 189.98909pt.
- [40
+ [42
 
  <./output/figures/robustness_forest_plot.png>]
-<output/figures/placebo_panel_slides.png, id=526, 1003.8303pt x 648.62325pt>
+<output/figures/placebo_panel_slides.png, id=579, 1003.8303pt x 648.62325pt>
 File: output/figures/placebo_panel_slides.png Graphic file (type png)
 <use output/figures/placebo_panel_slides.png>
 Package pdftex.def Info: output/figures/placebo_panel_slides.png  used on input
- line 735.
+ line 787.
 (pdftex.def)             Requested size: 301.56499pt x 194.86165pt.
- [41
+ [43
 
- <./output/figures/placebo_panel_slides.png>] [42
-
-] [43
-
-] [44
+ <./output/figures/placebo_panel_slides.png>] [44
 
 ]
-Underfull \hbox (badness 1968) in paragraph at lines 799--799
-[]|\T1/phv/m/n/9 JavaScript, Python, Ty-
- []
-
 [45
 
 ] [46
 
-] [47
+]
+Underfull \hbox (badness 1968) in paragraph at lines 851--851
+[]|\T1/phv/m/n/9 JavaScript, Python, Ty-
+ []
+
+[47
 
 ] [48
 
@@ -1500,53 +1406,86 @@ Underfull \hbox (badness 1968) in paragraph at lines 799--799
 
 ] [51
 
+] [52
+
+] [53
+
 ]
-<output/figures/Pythonsdid_event_study.png, id=636, 859.2903pt x 352.31625pt>
+<output/figures/Pythonsdid_event_study.png, id=688, 570.4512pt x 315.0972pt>
 File: output/figures/Pythonsdid_event_study.png Graphic file (type png)
 <use output/figures/Pythonsdid_event_study.png>
 Package pdftex.def Info: output/figures/Pythonsdid_event_study.png  used on inp
-ut line 961.
-(pdftex.def)             Requested size: 435.24896pt x 178.4532pt.
- [52
+ut line 1013.
+(pdftex.def)             Requested size: 326.31824pt x 180.24672pt.
+ [54
 
  <./output/figures/Pythonsdid_event_study.png>]
-<output/figures/TypeScriptsdid_event_study.png, id=645, 859.2903pt x 352.31625p
-t>
+<output/figures/TypeScriptsdid_event_study.png, id=697, 570.4512pt x 315.0972pt
+>
 File: output/figures/TypeScriptsdid_event_study.png Graphic file (type png)
 <use output/figures/TypeScriptsdid_event_study.png>
 Package pdftex.def Info: output/figures/TypeScriptsdid_event_study.png  used on
- input line 970.
-(pdftex.def)             Requested size: 435.24896pt x 178.4532pt.
- [53
+ input line 1022.
+(pdftex.def)             Requested size: 326.31824pt x 180.24672pt.
+ [55
 
  <./output/figures/TypeScriptsdid_event_study.png>]
-<output/figures/JavaScriptsdid_event_study.png, id=654, 859.2903pt x 352.31625p
-t>
+<output/figures/JavaScriptsdid_event_study.png, id=707, 570.4512pt x 315.0972pt
+>
 File: output/figures/JavaScriptsdid_event_study.png Graphic file (type png)
 <use output/figures/JavaScriptsdid_event_study.png>
 Package pdftex.def Info: output/figures/JavaScriptsdid_event_study.png  used on
- input line 979.
-(pdftex.def)             Requested size: 435.24896pt x 178.4532pt.
- [54
+ input line 1031.
+(pdftex.def)             Requested size: 326.31824pt x 180.24672pt.
+ [56
 
  <./output/figures/JavaScriptsdid_event_study.png>]
-<output/figures/JavaScriptsdidweights12.png, id=663, 789.1884pt x 353.6412pt>
+<output/figures/JavaScriptsdidweights12.png, id=716, 534.3162pt x 353.6412pt>
 File: output/figures/JavaScriptsdidweights12.png Graphic file (type png)
 <use output/figures/JavaScriptsdidweights12.png>
 Package pdftex.def Info: output/figures/JavaScriptsdidweights12.png  used on in
-put line 988.
-(pdftex.def)             Requested size: 435.24896pt x 195.04286pt.
+put line 1040.
+(pdftex.def)             Requested size: 272.34274pt x 180.25209pt.
+ [57
 
-! Incompatible glue units.
-\es@sppercent ...fnum \gluestretchorder \lastskip 
-                                                  =\z@ \unskip \fi \textorma...
-l.988 \end{frame}
-                 
-I'm going to assume that 1mu=1pt when they're mixed.
+ <./output/figures/JavaScriptsdidweights12.png>] [58
 
-[55
+] [59
 
- <./output/figures/JavaScriptsdidweights12.png>]
+] [60
+
+] [61
+
+] [62
+
+] [63
+
+] [64
+
+] [65
+
+] [66
+
+] [67
+
+] [68
+
+] [69
+
+] [70
+
+]
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
+286.
+
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1phv.fd
+File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
+)
+[71
+
+] [72
+
+]
 \tf@nav=\write6
 \openout6 = `sustentacion.nav'.
 
@@ -1568,34 +1507,49 @@ Package rerunfilecheck Info: File `sustentacion.out' has not changed.
 (rerunfilecheck)             Checksum: 412A21A4B5FDAE753EEB6527A3F7D596;1429.
  ) 
 Here is how much of TeX's memory you used:
- 28894 strings out of 467871
- 574944 string characters out of 5418376
- 940232 words of memory out of 5000000
- 57051 multiletter control sequences out of 15000+600000
- 715812 words of font info for 136 fonts, out of 8000000 for 9000
+ 29065 strings out of 467871
+ 579905 string characters out of 5418376
+ 942534 words of memory out of 5000000
+ 57169 multiletter control sequences out of 15000+600000
+ 735473 words of font info for 132 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,123p,389b,878s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pf
-b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
-b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pf
-b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb
-><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><
-C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib7.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><
-C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C
-:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:
-/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:
-/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvbo8a.
-pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr
-8a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/u
-hvro8a.pfb>
-Output written on sustentacion.pdf (55 pages, 3475504 bytes).
+<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
+b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx7.pfb
+><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb>
+<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb>
+<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb>
+<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb>
+<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi5.pfb><
+C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C
+:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:
+/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/
+Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/U
+sers/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><C:/
+Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib7.pfb><C:/
+Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/U
+sers/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr5.pfb><C:/Use
+rs/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users
+/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/J
+esus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Jes
+us/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/Jesus
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Jesus
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy5.pfb><C:/Users/Jesus/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/Jesus/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/Jesus/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Jesus/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/Jesus/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Jesus/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Us
+ers/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msb
+m10.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/
+uhvb8a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvet
+ic/uhvbo8a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/he
+lvetic/uhvr8a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw
+/helvetic/uhvro8a.pfb>
+Output written on sustentacion.pdf (72 pages, 3667395 bytes).
 PDF statistics:
- 777 PDF objects out of 1000 (max. 8388607)
- 122 named destinations out of 1000 (max. 500000)
- 779 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1033 PDF objects out of 1200 (max. 8388607)
+ 156 named destinations out of 1000 (max. 500000)
+ 940 words of extra memory for PDF output out of 10000 (max. 10000000)
 

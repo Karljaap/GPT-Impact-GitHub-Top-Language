@@ -23,7 +23,8 @@
       "WebFetch(domain:www.portafolio.co)",
       "WebFetch(domain:www.researchgate.net)",
       "Bash(grep -n \"\\\\\\\\label{fig:figura\" \"c:/Users/ronco/Desktop/GPT-Impact-GitHub-Top-Language/Tesis.tex\")",
-      "Bash(pdflatex -interaction=nonstopmode Tesis.tex)"
+      "Bash(pdflatex -interaction=nonstopmode Tesis.tex)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }

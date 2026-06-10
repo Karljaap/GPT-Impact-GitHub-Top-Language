@@ -144,9 +144,28 @@ La Unión Europea (EU) aparece como agregado, lo que duplicaría las observacion
 % ════════════════════════════════════════════════════════════════════════════
 \section{Conceptos clave en una página}
 
-Antes de entrar en los métodos, conviene fijar siete conceptos que vas a ver mencionados muchas veces en la tesis. Si los entiendes acá, no tendrás que buscarlos en internet cada vez que aparezcan.
+Antes de entrar en los métodos, conviene fijar siete conceptos que vas a ver mencionados muchas veces en la tesis. Si los entiendes acá, no tendrás que buscarlos en internet cada vez que aparezcan. Cada concepto abre con una \textbf{analogía cotidiana} (en azul) para que la intuición entre primero, y recién después viene la definición formal.
+
+\begin{lectura}{Glosario en una frase (para tener a mano)}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}p{4cm}p{9.7cm}@{}}
+\textbf{Término} & \textbf{En una frase} \\
+\midrule
+ATT & Cuánto ayudó el tratamiento a quienes sí lo recibieron. \\
+Contrafactual & Qué habría pasado sin el tratamiento (el mundo paralelo que no vemos). \\
+Tendencias paralelas & Los dos grupos venían cambiando igual \emph{antes} del tratamiento. \\
+Error estándar / IC & El ``$\pm$'' del resultado: cuánta incertidumbre tiene. \\
+P-valor & Qué tan raro sería tu resultado si todo fuera puro azar. \\
+Bootstrap & Simular muchas veces el estudio barajando los mismos datos. \\
+Identificación causal & Probar una \emph{causa}, no solo que dos cosas van juntas. \\
+\end{tabular}
+\end{lectura}
 
 \subsection*{1. ATT (Average Treatment Effect on the Treated)}
+
+\begin{ideabox}{Analogía: el ensayo de un medicamento}
+El ATT responde: ¿cuánto mejoraron los pacientes que \emph{sí} tomaron la pastilla, comparado con cómo habrían estado sin tomarla? Acá la ``pastilla'' es tener ChatGPT disponible y los ``pacientes'' son los 130 países con acceso.
+\end{ideabox}
 
 \textbf{Definición.} El ATT es el efecto causal promedio que el tratamiento tuvo sobre las unidades que efectivamente lo recibieron. Es la diferencia esperada entre lo que pasó con los 130 países tratados y lo que les habría pasado si ChatGPT nunca hubiera estado disponible.
 
@@ -156,6 +175,10 @@ Antes de entrar en los métodos, conviene fijar siete conceptos que vas a ver me
 
 \subsection*{2. Contrafactual}
 
+\begin{ideabox}{Analogía: el paraguas}
+Sales con paraguas y no te mojas. El contrafactual es ``¿qué tan mojado estarías si \emph{no} hubieras llevado paraguas?''. Nunca lo ves directamente —ocurrió en un mundo que no pasó—, pero puedes estimarlo mirando a quienes salieron sin paraguas (el grupo de control).
+\end{ideabox}
+
 \textbf{Definición.} El contrafactual es lo que habría pasado en un mundo paralelo donde el tratamiento no ocurrió. Como nunca se puede observar directamente, los métodos econométricos lo aproximan a partir del grupo de control.
 
 \textbf{Ejemplo en esta tesis.} En las Figuras 5--14, paneles (a), (c) y (e), la línea roja es el contrafactual: el grupo tratado ``sintético'' construido a partir de los países sin acceso a ChatGPT. La diferencia entre la línea azul (lo observado) y la línea roja (lo que habría sucedido sin tratamiento) es el efecto causal.
@@ -163,6 +186,10 @@ Antes de entrar en los métodos, conviene fijar siete conceptos que vas a ver me
 \textbf{Para qué se usa.} La calidad con la que el método reconstruye el contrafactual determina la credibilidad del efecto. Por eso se comparan tres métodos: DiD, CS y SDiD construyen contrafactuales distintos.
 
 \subsection*{3. Tendencias paralelas}
+
+\begin{ideabox}{Analogía: dos autos en la carretera}
+Dos autos van separados siempre por 100 metros. Si uno acelera justo cuando le pones un motor nuevo, atribuyes la diferencia al motor. Pero si ya venía acercándose \emph{antes}, no puedes saber si fue el motor o su propia inercia. ``Tendencias paralelas'' significa que los dos grupos venían cambiando de forma pareja antes del tratamiento.
+\end{ideabox}
 
 \textbf{Definición.} Es el supuesto crítico del DiD: en ausencia del tratamiento, los grupos tratado y de control habrían evolucionado de forma paralela en el tiempo. Si esto no se cumple ---por ejemplo, si los países tratados ya venían creciendo más rápido antes del lanzamiento---, el DiD confunde el efecto del tratamiento con una tendencia preexistente.
 
@@ -172,6 +199,10 @@ Antes de entrar en los métodos, conviene fijar siete conceptos que vas a ver me
 
 \subsection*{4. Error estándar e intervalo de confianza}
 
+\begin{ideabox}{Analogía: el ``$\pm$'' de las encuestas}
+Cuando una encuesta dice ``52\,\% $\pm$ 3\,\%'', ese ``$\pm$ 3\,\%'' es la incertidumbre. El error estándar es lo mismo: mide cuánto ``bailaría'' tu resultado si repitieras el estudio con otra muestra de países. El intervalo de confianza es el rango donde es plausible que esté el efecto verdadero.
+\end{ideabox}
+
 \textbf{Definición.} El error estándar (SE) mide la incertidumbre del estimador: cuánto variaría el ATT si pudiéramos repetir el estudio con otra muestra de países. El intervalo de confianza al 95\,\% se construye aproximadamente como $\text{ATT} \pm 2 \times \text{SE}$ y representa el rango plausible del efecto verdadero.
 
 \textbf{Ejemplo en esta tesis.} En el Cuadro 3, Python SDID muestra ATT $= 4{,}525$ con SE $= 1{,}321$ (entre paréntesis). El intervalo de confianza al 95\,\% es aproximadamente $[4{,}525 - 2{,}642;\ 4{,}525 + 2{,}642] = [1{,}88;\ 7{,}17]$. Como no incluye cero, el efecto es estadísticamente distinto de cero.
@@ -179,6 +210,10 @@ Antes de entrar en los métodos, conviene fijar siete conceptos que vas a ver me
 \textbf{Para qué se usa.} Mide cuán preciso es el ATT estimado. Un SE chico significa más confianza; uno grande, mayor incertidumbre. Es lo que aparece entre paréntesis en \textbf{todos} los cuadros de resultados.
 
 \subsection*{5. P-valor y significancia estadística}
+
+\begin{ideabox}{Analogía: la moneda sospechosa}
+Lanzas una moneda 10 veces y salen 10 caras. El p-valor pregunta: ``si la moneda fuera justa (es decir, si el efecto verdadero fuera cero), ¿qué tan raro sería ver algo así?''. Un p-valor chico significa ``sería rarísimo por puro azar'', y eso respalda que el efecto es real y no suerte.
+\end{ideabox}
 
 \textbf{Definición.} El p-valor es la probabilidad de observar un efecto al menos tan grande como el estimado, suponiendo que el efecto verdadero fuera cero. Un p-valor pequeño indica que el resultado es poco probable por azar, lo que se llama ``significancia estadística''.
 
@@ -188,6 +223,10 @@ Antes de entrar en los métodos, conviene fijar siete conceptos que vas a ver me
 
 \subsection*{6. Bootstrap}
 
+\begin{ideabox}{Analogía: repetir el estudio sin repetirlo}
+No puedes rehacer el estudio mil veces en el mundo real. El bootstrap lo simula: baraja los mismos países una y otra vez (sacando algunos con repetición), recalcula el efecto en cada baraja, y observa cuánto varía. Esa variación es tu medida de incertidumbre.
+\end{ideabox}
+
 \textbf{Definición.} El bootstrap es una técnica para estimar la incertidumbre de un estimador sin asumir una distribución teórica. Funciona remuestreando los datos con reemplazo muchas veces, recalculando el estimador en cada muestra, y midiendo cuánto varía.
 
 \textbf{Ejemplo en esta tesis.} En la sección de Inferencia, se hacen 100 replicaciones bootstrap para DiD y SDiD, y 2\,000 para CS. En cada replicación se vuelven a sortear los países con reemplazo y se recalcula el ATT; el SE final es la desviación estándar de esas estimaciones.
@@ -195,6 +234,10 @@ Antes de entrar en los métodos, conviene fijar siete conceptos que vas a ver me
 \textbf{Para qué se usa.} Es la forma de calcular los SE cuando la fórmula teórica es complicada o cuando los supuestos clásicos (normalidad, homoscedasticidad) no aplican. Los números entre paréntesis de los Cuadros 3, 4 y 5 vienen de bootstrap.
 
 \subsection*{7. Identificación causal versus correlación}
+
+\begin{ideabox}{Analogía: el gallo y el amanecer}
+El gallo canta y luego sale el sol: van juntos (correlación), pero el gallo no causa el amanecer. Para probar una causa necesitas un ``gallo silenciado'' que \emph{no} cante y verificar si el sol igual sale. El grupo de control (países sin ChatGPT) es ese gallo silenciado: si el aumento aparece solo donde llegó ChatGPT y no en los demás, la causa se identifica.
+\end{ideabox}
 
 \textbf{Definición.} Correlación significa que dos variables se mueven juntas. Identificación causal significa probar que una variable es la \textbf{causa} del cambio en la otra, descartando otras explicaciones. Para identificar causalidad se necesita un diseño de investigación que aísle el efecto del tratamiento del resto.
 
@@ -217,6 +260,8 @@ La tesis usa tres métodos econométricos para estimar el efecto causal del lanz
 ``Mido el cambio antes--después en los tratados, y le resto el mismo cambio antes--después en los controles.''
 \end{ideabox}
 
+\textit{Analogía cotidiana:} piensa en dos tiendas vecinas. A una le pones un cartel nuevo y a la otra no. El cambio de ventas en la tienda \emph{sin} cartel te dice cuánto habrían subido las ventas de todos modos (la tendencia común); el cambio \emph{extra} en la tienda con cartel es el efecto del cartel.
+
 Si los \textit{unique pushers} en países con ChatGPT crecieron de 30 a 50 entre 2020 y 2023, y en países sin ChatGPT crecieron de 20 a 25 en el mismo período, el DiD diría: el efecto causal es $(50-30) - (25-20) = 20 - 5 = 15$ \textit{unique pushers} adicionales por cada 100k habitantes. La intuición es que el cambio en los controles representa la tendencia común que habría ocurrido sin tratamiento.
 
 \textbf{Su supuesto crítico:} Las tendencias paralelas. En ausencia del tratamiento, los dos grupos deberían haber evolucionado paralelamente. Si los países tratados ya venían creciendo más rápido antes del tratamiento, el DiD sobreestima el efecto.
@@ -226,6 +271,8 @@ Si los \textit{unique pushers} en países con ChatGPT crecieron de 30 a 50 entre
 \begin{ideabox}{La idea en una frase}
 ``Construyo un país tratado ``falso'' como un promedio ponderado de los países de control, de modo que copie las tendencias pre-tratamiento, y veo cómo se aleja del país real después del tratamiento.''
 \end{ideabox}
+
+\textit{Analogía cotidiana:} es como armar un ``país gemelo'' del grupo tratado con una receta. Si no existe un gemelo natural, lo fabricas mezclando porciones de varios países de control hasta que la mezcla calque la trayectoria previa del tratado —igual que un barista replica un sabor combinando varios granos.
 
 En vez de promediar todos los controles por igual (como hace DiD), CS le asigna mayor peso a los controles que se parecen más al grupo tratado en el pre-período. Por ejemplo, si Brasil y México tienen trayectorias pre-tratamiento parecidas, mientras que Irán es muy distinto, CS podría asignarle peso $0{,}45$ a Brasil, $0{,}50$ a México y $0{,}05$ a Irán. La unidad ``tratada sintética'' resultante imita la trayectoria pre-tratamiento mucho mejor que un promedio simple.
 
@@ -377,7 +424,7 @@ Este es el cuadro central de la tesis. Resume todos los resultados de los tres m
   \item \textbf{Tres estrellas ($***$):} el p-valor es menor que 0,01, lo que significa que es muy poco probable que un efecto de esta magnitud apareciera por azar si el efecto verdadero fuera cero.
 \end{itemize}
 
-\textbf{La columna Baseline Mean.} Indica el promedio pre-tratamiento del grupo de control para ese lenguaje. Sirve para dar contexto: un efecto de $+8{,}303$ sobre un baseline de $36{,}571$ es un aumento relativo de aproximadamente $23\,\%$.
+\textbf{La columna Baseline Mean.} Indica el promedio pre-tratamiento del grupo de control para ese lenguaje. Sirve para dar contexto: un efecto de $+8{,}303$ sobre un baseline de $36{,}571$ es un aumento relativo de aproximadamente 23\,\%.
 
 \textbf{Por qué tres métodos.} Cada método tiene supuestos distintos. Si los tres coinciden en signo y significancia, la conclusión es más sólida. Si uno difiere, hay que entender por qué. Por ejemplo, en Python el CS aparece sin significancia ($1{,}604$, SE $3{,}552$), mientras DiD y SDiD sí ($+7{,}688$ y $+4{,}525$, ambos con $***$): esto refleja que el CS puro tiene mayor varianza cuando la unidad tratada es agregada y heterogénea.
 

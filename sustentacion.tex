@@ -7,6 +7,10 @@
 \usepackage{lmodern}
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
+% Texto en Helvetica sans, pero math con fuentes lmodern correctas:
+% evita que beamer sustituya las fuentes math (las griegas mayúsculas
+% \Delta,\Theta,\Phi salían como cuadros negros en T1 sans).
+\usefonttheme{professionalfonts}
 
 % ── Tema ──────────────────────────────────────────────────────────────────────
 \usetheme{Madrid}
@@ -61,6 +65,14 @@
 \usepackage{tikz}
 \usepackage{xcolor}
 \usepackage{hyperref}
+
+% Colores para marcar los supuestos del modelo (Apéndice B)
+\definecolor{verdeverdicto}{RGB}{0, 110, 60}
+\definecolor{naranjasupp}{RGB}{160, 60, 0}
+
+% Fix babel-spanish: `\,\%` (thin space + porcentaje) en modo math dispara
+% \es@sppercent y rompe con "Incompatible glue units". Se restaura `\%` plano.
+\AtBeginDocument{\def\%{\char`\%\relax}}
 
 % ── Datos ─────────────────────────────────────────────────────────────────────
 \title[Impacto ChatGPT en GitHub]{Impacto de la disponibilidad de ChatGPT en el desarrollo de software orientado a Ciencia de Datos (2020--2023)}
@@ -248,6 +260,38 @@ Stigler (1961) modela la búsqueda como un costo que el agente paga para reducir
 \end{exampleblock}
 \end{frame}
 
+\begin{frame}{Marco teórico (III): modelo formal de adopción heterogénea}
+\small
+\begin{block}{De la tarea individual al panel agregado}
+El desarrollador elige el método más productivo en cada tarea $z\in[0,1]$:
+\[
+y_{jc}(z;\mu_j)=\max\{h_c(z),\,\mu_j\,a_c(z)\},\qquad \mu_j\in\{0,1\}.
+\]
+\end{block}
+
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\centering\textbf{\textcolor{pucpblue}{Exposición del lenguaje}}
+\[
+\theta_c=\underbrace{\tau_c}_{\substack{\text{frac.\ tareas}\\\text{automatizables}}}\!\cdot\!\underbrace{\rho_c}_{\substack{\text{ahorro}\\\text{relativo}}}
+\]
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering\textbf{\textcolor{pucpblue}{Absorción del país}}
+\[
+\phi_i=10^5\,f_i\!\bigl(\eta^*_c(0)\bigr)
+\]
+\end{column}
+\end{columns}
+
+\vspace{0.4em}
+\begin{exampleblock}{Ecuación estimable (resultado del modelo)}
+\centering
+$Y_{ict}=\alpha_i+\beta_t+\delta_c+\textcolor{pucpaccent}{\theta_c\,\phi_i}\,A_{it}+\eta_{ict}$
+\end{exampleblock}
+\centering\footnotesize El coeficiente del tratamiento se factoriza en \textbf{exposición} ($\theta_c$, por lenguaje) y \textbf{absorción} ($\phi_i$, por país) $\Rightarrow$ sustenta la \textbf{H2}. \textit{Derivación completa de 8 pasos en el Apéndice~B.}
+\end{frame}
+
 % ════════════════════════════════════════════════════════════════════════════
 \section{4. Evidencia empírica}
 % ════════════════════════════════════════════════════════════════════════════
@@ -299,7 +343,7 @@ Li y Krishnamachari (2024) & \textcolor{green!45!black}{$\uparrow$ \textbf{Posit
 
 \begin{frame}{Línea de tiempo: ChatGPT y limitaciones (2020--2023)}
 \centering
-\includegraphics[width=\textwidth,keepaspectratio]{chatgpt_timeline.png}
+\includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{chatgpt_timeline.png}
 
 \vspace{0.3em}
 \footnotesize \textit{Tres carriles:} GitHub Copilot (azul), ChatGPT (verde), Limitaciones (rojo, duraciones).
@@ -394,7 +438,7 @@ Base pública mantenida por GitHub con métricas agregadas de actividad de desar
 
 \begin{frame}{Mapa global de disponibilidad de ChatGPT}
 \centering
-\includegraphics[width=\textwidth,keepaspectratio]{chatgpt_global_availability_map.png}
+\includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{chatgpt_global_availability_map.png}
 
 \vspace{0.2em}
 \footnotesize \textbf{Azul:} países con acceso (tratados, $N=130$). \textbf{Gris claro:} países sin acceso (control, $N=29$).
@@ -430,9 +474,17 @@ PHP        &  2,27 &  7,54 &  3,46 &  8,24 \\
 \footnotesize \textit{Lectura:} ambos grupos crecen en el período. El efecto causal requiere comparar las \textbf{tasas} de cambio, no los niveles.
 \end{frame}
 
+\begin{frame}{Tendencias temporales (países sin ChatGPT)}
+\centering
+\includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{language_trend_no_gpt_countries_2020_2023.png}
+
+\vspace{0.2em}
+\footnotesize Línea vertical roja: lanzamiento de ChatGPT (Q4-2022). \textbf{En el grupo de control las series no muestran aceleración tras el tratamiento.}
+\end{frame}
+
 \begin{frame}{Tendencias temporales (países con ChatGPT)}
 \centering
-\includegraphics[width=\textwidth,keepaspectratio]{language_trend_gpt_countries_2020_2023.png}
+\includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{language_trend_gpt_countries_2020_2023.png}
 
 \vspace{0.2em}
 \footnotesize Línea vertical roja: lanzamiento de ChatGPT (Q4-2022). \textbf{Atención a la aceleración de JavaScript, Python y TypeScript post-tratamiento.}
@@ -587,7 +639,7 @@ La significancia \textit{bootstrap} no es la única evidencia que conviene revis
 
 \begin{frame}{Tendencias y contrafactual: Python}
 \centering
-\includegraphics[width=\textwidth,keepaspectratio]{Pythonsdidtrends12.png}
+\includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{Pythonsdidtrends12.png}
 
 \vspace{0.2em}
 \footnotesize Tratado (azul) vs. control sintético SDiD (rojo). Las trayectorias coinciden hasta Q4-2022; luego divergen. \textbf{ATT $= 4{,}525$} unique pushers por 100k.
@@ -595,7 +647,7 @@ La significancia \textit{bootstrap} no es la única evidencia que conviene revis
 
 \begin{frame}{Pesos del control sintético: Python}
 \centering
-\includegraphics[width=\textwidth,keepaspectratio]{Pythonsdidweights12.png}
+\includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{Pythonsdidweights12.png}
 
 \vspace{0.2em}
 \footnotesize \textbf{Puntos azules:} donantes con peso significativo ($\geq 30\,\%$ del peso uniforme). \textbf{Puntos rojos:} pesos negligibles. Línea morada: peso uniforme $1/N_c \approx 0{,}034$.
@@ -603,7 +655,7 @@ La significancia \textit{bootstrap} no es la única evidencia que conviene revis
 
 \begin{frame}{Tendencias y contrafactual: JavaScript}
 \centering
-\includegraphics[width=\textwidth,keepaspectratio]{JavaScriptsdidtrends12.png}
+\includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{JavaScriptsdidtrends12.png}
 
 \vspace{0.2em}
 \footnotesize \alert{\textbf{Atención:}} ligera pre-tendencia ascendente antes de Q4-2022 $\Rightarrow$ el efecto causal en JavaScript debe interpretarse con cautela pese a la alta significancia.
@@ -870,7 +922,7 @@ Sistema de \textbf{bonos económicos} a trabajadores que evidencien mejoras de r
 \vfill
 \centering
 \color{white}
-{\Huge\bfseries Apéndice}\par
+{\Huge\bfseries Apéndice A}\par
 \vspace{0.5em}
 {\Large Slides de respaldo para preguntas}\par
 \vfill
@@ -954,7 +1006,7 @@ El SDID pondera las celdas para construir un contrafactual más preciso que el D
 % ── A.3 Event study Python ───────────────────────────────────────────────────
 \begin{frame}{A.3 Event study SDID --- Python}
 \centering
-\includegraphics[width=\textwidth,keepaspectratio]{Pythonsdid_event_study.png}
+\includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{Pythonsdid_event_study.png}
 
 \vspace{0.1em}
 \footnotesize \textbf{Pre-tendencia plana} (gap cerca de cero antes de Q4-2022): el supuesto de paralelismo se cumple para Python $\Rightarrow$ el SDID estima el efecto causal de manera consistente.
@@ -963,7 +1015,7 @@ El SDID pondera las celdas para construir un contrafactual más preciso que el D
 % ── A.4 Event study TypeScript ───────────────────────────────────────────────
 \begin{frame}{A.4 Event study SDID --- TypeScript}
 \centering
-\includegraphics[width=\textwidth,keepaspectratio]{TypeScriptsdid_event_study.png}
+\includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{TypeScriptsdid_event_study.png}
 
 \vspace{0.1em}
 \footnotesize \textbf{Pre-tendencia plana} también para TypeScript. El efecto post-tratamiento es claro y la divergencia ocurre a partir de Q4-2022.
@@ -972,7 +1024,7 @@ El SDID pondera las celdas para construir un contrafactual más preciso que el D
 % ── A.5 Event study JavaScript (contraste) ───────────────────────────────────
 \begin{frame}{A.5 Event study SDID --- JavaScript (contraste)}
 \centering
-\includegraphics[width=\textwidth,keepaspectratio]{JavaScriptsdid_event_study.png}
+\includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{JavaScriptsdid_event_study.png}
 
 \vspace{0.1em}
 \footnotesize \alert{\textbf{Atención:}} en JavaScript se observa una ligera pre-tendencia creciente. El problema es \textbf{específico de este lenguaje}, no del método (ver A.3 y A.4 con pre-tendencias planas).
@@ -981,10 +1033,272 @@ El SDID pondera las celdas para construir un contrafactual más preciso que el D
 % ── A.6 Pesos JavaScript ─────────────────────────────────────────────────────
 \begin{frame}{A.6 Pesos del control sintético --- JavaScript}
 \centering
-\includegraphics[width=\textwidth,keepaspectratio]{JavaScriptsdidweights12.png}
+\includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{JavaScriptsdidweights12.png}
 
 \vspace{0.1em}
 \footnotesize \textbf{Puntos azules:} donantes con peso significativo ($\geq 30\,\%$ del peso uniforme). El contrafactual de JavaScript se construye con un conjunto diversificado de donantes, lo que reduce dependencia de cualquier país individual.
+\end{frame}
+
+% ════════════════════════════════════════════════════════════════════════════
+% APÉNDICE B — DERIVACIÓN FORMAL DEL MARCO TEÓRICO (8 PASOS)
+% Proceso completo paso a paso. Respaldo para Q&A sobre el modelo.
+% ════════════════════════════════════════════════════════════════════════════
+
+{
+\setbeamercolor{background canvas}{bg=pucpblue}
+\setbeamercolor{normal text}{fg=white}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+\vfill
+\centering
+\color{white}
+{\Huge\bfseries Apéndice B}\par
+\vspace{0.5em}
+{\Large Derivación formal del marco teórico --- 8 pasos}\par
+\vfill
+\footnotesize
+\begin{tabular}{rl}
+B.1 & Notación básica del modelo \\
+B.2 & Función de producción a nivel de tarea (Paso 1) \\
+B.3 & Conjunto de tareas automatizables (Paso 2) \\
+B.4 & Ahorro relativo por tarea (Paso 3) \\
+B.5 & Ganancia individual: partición con/sin IA (Paso 4.1--4.2) \\
+B.6 & Ganancia exacta y reescritura (Paso 4.3--4.4) \\
+B.7 & Identidad de covarianza (Paso 4.5) \\
+B.8 & Normalización de escala (Paso 4.6) \\
+B.9 & Decisión de entrada al mercado (Paso 5) \\
+B.10 & Agregación a desarrolladores activos (Paso 6) \\
+B.11 & Per cápita, absorción y separabilidad (Paso 7) \\
+B.12 & Especificación de panel con efectos fijos (Paso 8) \\
+B.13 & Resumen paso a paso \\
+B.14 & Síntesis de la derivación \\
+\end{tabular}
+\vfill
+\footnotesize\color{white} En \textcolor{orange!80!white}{naranja} se marcan los pasos que dependen de un supuesto no trivial.
+\vfill
+\end{frame}
+}
+
+% ── B.1 Notación ──────────────────────────────────────────────────────────────
+\begin{frame}{B.1 Notación básica del modelo}
+\small
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ll}
+\toprule
+\textbf{Símbolo} & \textbf{Significado} \\
+\midrule
+$z\in[0,1]$ & Tarea elemental de programación \\
+$h_c(z)>0$ & Productividad humana en la tarea $z$ del lenguaje $c$ \\
+$a_c(z)\ge 0$ & Productividad de ChatGPT en la tarea $z$ \\
+$\mu_j\in\{0,1\}$ & Acceso del desarrollador $j$ a ChatGPT \\
+$y_{jc}(\mu_j)$ & Producción total del desarrollador $j$ en lenguaje $c$ \\
+$\mathcal{Z}^{\mathrm{auto}}_c$ & Conjunto de tareas donde ChatGPT supera al humano \\
+$\tau_c$ & Fracción de tareas automatizables \\
+$\rho_c$ & Ahorro relativo promedio en tareas automatizables \\
+$\phi_i$ & Capacidad de absorción tecnológica del país $i$ \\
+$A_{it}$ & Disponibilidad de ChatGPT en país $i$, trimestre $t$ \\
+$Y_{ict}$ & \textit{Unique pushers} por 100\,mil hab.\ ($i$, $c$, $t$) \\
+\bottomrule
+\end{tabular}
+\end{frame}
+
+% ── B.2 Paso 1 ────────────────────────────────────────────────────────────────
+\begin{frame}{B.2 Función de producción a nivel de tarea (Paso 1)}
+\small
+El desarrollador elige el método más productivo en cada tarea $z\in[0,1]$, y la producción total integra sobre el continuo de tareas:
+\[
+y_{jc}(z;\mu_j)=\max\{h_c(z),\,\mu_j\,a_c(z)\},
+\qquad
+y_{jc}(\mu_j)=\int_0^1\max\{h_c(z),\,\mu_j\,a_c(z)\}\,dz.
+\]
+\begin{itemize}\small
+  \item $\mu_j=0$ (sin IA): $\ y_{jc}(0)=\int_0^1 h_c(z)\,dz\ $ (pues $h_c(z)>0$).
+  \item $\mu_j=1$ (con IA): $\ y_{jc}(1)=\int_0^1\max\{h_c,a_c\}\,dz\ \ge\ y_{jc}(0)$ puntualmente.
+\end{itemize}
+\end{frame}
+
+% ── B.3 Paso 2 ────────────────────────────────────────────────────────────────
+\begin{frame}{B.3 Conjunto de tareas automatizables (Paso 2)}
+\small
+Tareas con ganancia marginal estricta de la IA, y reescritura del máximo con la indicadora:
+\[
+\mathcal{Z}^{\mathrm{auto}}_c=\{z:a_c(z)>h_c(z)\},
+\quad
+\max\{h_c,a_c\}=h_c\,\mathbf{1}[z\notin\mathcal{Z}^{\mathrm{auto}}_c]+a_c\,\mathbf{1}[z\in\mathcal{Z}^{\mathrm{auto}}_c].
+\]
+\textbf{Comprobación por casos:}
+\begin{itemize}\small
+  \item $z\in\mathcal{Z}^{\mathrm{auto}}_c$: $a_c>h_c$, el máx.\ es $a_c$; indicadoras $1$ y $0$. \checkmark
+  \item $z\notin\mathcal{Z}^{\mathrm{auto}}_c$: $a_c\le h_c$, el máx.\ es $h_c$; indicadoras $0$ y $1$. \checkmark
+\end{itemize}
+Medida de tareas automatizables: $\ \tau_c=\int_0^1\mathbf{1}[a_c>h_c]\,dz\in[0,1]$.
+\end{frame}
+
+% ── B.4 Paso 3 ────────────────────────────────────────────────────────────────
+\begin{frame}{B.4 Ahorro relativo por tarea automatizable (Paso 3)}
+\small
+Para $z\in\mathcal{Z}^{\mathrm{auto}}_c$, el ahorro relativo que aporta la IA:
+\[
+s_c(z)=\frac{a_c(z)-h_c(z)}{h_c(z)}>0
+\qquad(\text{pues } a_c>h_c>0).
+\]
+Ahorro promedio \emph{condicional} a las tareas automatizables:
+\[
+\rho_c=\frac{1}{\tau_c}\int_{\mathcal{Z}^{\mathrm{auto}}_c}s_c(z)\,dz,\qquad \tau_c>0.
+\]
+\medskip
+{\footnotesize\textit{Nota:} si $\tau_c=0$ no hay tareas automatizables y el efecto se interpreta como nulo.}
+\end{frame}
+
+% ── B.5 Paso 4.1–4.2 ──────────────────────────────────────────────────────────
+\begin{frame}{B.5 Ganancia individual: partición con/sin IA (Paso 4.1--4.2)}
+\small
+Sustituyendo la reescritura con indicadoras y usando $\int_0^1 f\,\mathbf{1}[z\in A]\,dz=\int_A f\,dz$:
+\begin{align*}
+\text{Con IA:}\quad y_{jc}(1)&=\int_{[0,1]\setminus\mathcal{Z}^{\mathrm{auto}}_c}\!h_c\,dz+\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!a_c\,dz, \\[2pt]
+\text{Sin IA:}\quad y_{jc}(0)&=\int_{[0,1]\setminus\mathcal{Z}^{\mathrm{auto}}_c}\!h_c\,dz+\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!h_c\,dz.
+\end{align*}
+Ambas comparten exactamente el término sobre las tareas \emph{no} automatizables.
+\end{frame}
+
+% ── B.6 Paso 4.3–4.4 ──────────────────────────────────────────────────────────
+\begin{frame}{B.6 Ganancia exacta y reescritura (Paso 4.3--4.4)}
+\small
+Al restar, el término de tareas no automatizables se \textbf{cancela}:
+\[
+\Delta y_{jc}=y_{jc}(1)-y_{jc}(0)=\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!\bigl[a_c(z)-h_c(z)\bigr]\,dz.
+\]
+Usando $s_c=\dfrac{a_c-h_c}{h_c}\ \Rightarrow\ a_c-h_c=h_c\,s_c$:
+\[
+\boxed{\ \Delta y_{jc}=\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!h_c(z)\,s_c(z)\,dz\ }
+\]
+{\footnotesize\textit{Nota:} hasta aquí todo es \textbf{identidad exacta} --- la derivación no ha impuesto ningún supuesto.}
+\end{frame}
+
+% ── B.7 Paso 4.5 ──────────────────────────────────────────────────────────────
+\begin{frame}{B.7 Identidad de covarianza (Paso 4.5)}
+\small
+Definiendo los promedios condicionales sobre $\mathcal{Z}^{\mathrm{auto}}_c$,
+$\ \bar h_c=\tfrac{1}{\tau_c}\!\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!h_c\,dz\ $ y $\ \rho_c=\tfrac{1}{\tau_c}\!\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!s_c\,dz$, y aplicando la \textbf{identidad de covarianza}:
+\[
+\mathbb{E}_{\mathcal{Z}^{\mathrm{auto}}_c}[h_c\,s_c]=\mathbb{E}[h_c]\,\mathbb{E}[s_c]+\mathrm{Cov}(h_c,s_c)
+\ \Rightarrow\
+\Delta y_{jc}=\tau_c\bigl[\bar h_c\rho_c+\mathrm{Cov}_{\mathcal{Z}^{\mathrm{auto}}_c}(h_c,s_c)\bigr].
+\]
+\begin{alertblock}{\small Supuesto 1 --- covarianza cero}
+\centering Imponer $\mathrm{Cov}(h_c,s_c)=0\ \Rightarrow\ \Delta y_{jc}=\tau_c\,\rho_c\,\bar h_c$.
+\end{alertblock}
+{\footnotesize\textit{Nota:} es el \textbf{primer} supuesto no trivial; exige que productividad humana $h_c$ y ahorro relativo $s_c$ no estén correlacionados dentro de $\mathcal{Z}^{\mathrm{auto}}_c$.}
+\end{frame}
+
+% ── B.8 Paso 4.6 ──────────────────────────────────────────────────────────────
+\begin{frame}{B.8 Normalización de escala (Paso 4.6)}
+\small
+Se elige la unidad de producción tal que el promedio de productividad humana en las tareas automatizables sea unitario, $\bar h_c=1$:
+\[
+\boxed{\ \Delta y_{jc}=\tau_c\,\rho_c\ }
+\]
+Es decir, la ganancia individual es el producto \textbf{fracción automatizable} ($\tau_c$) $\times$ \textbf{ahorro relativo promedio} ($\rho_c$), que más adelante define la exposición del lenguaje $\theta_c$.
+\medskip
+{\footnotesize\textit{Nota:} no es un resultado empírico, es una \textbf{elección de escala}.}
+\end{frame}
+
+% ── B.9 Paso 5 ────────────────────────────────────────────────────────────────
+\begin{frame}{B.9 Decisión de entrada al mercado (Paso 5)}
+\small
+Utilidad de programar $U_{\mathrm{prog}}=\eta+y_{jc}(\mu_j)$ frente a la reserva $U_{\mathrm{out}}=r_i$; se entra si $\eta+y_{jc}(\mu_j)\ge r_i$. Umbral mínimo de habilidad:
+\[
+\eta^*_c(\mu)=r_i-y_{jc}(\mu)\ \Longrightarrow\ \eta^*_c(1)=\eta^*_c(0)-\underbrace{\tau_c\rho_c}_{\Delta y_{jc}}.
+\]
+El acceso a IA \textbf{reduce} el umbral de habilidad $\Rightarrow$ entran programadores marginales.
+\smallskip\\
+{\footnotesize\textit{Nota:} con la covarianza exacta, $\ \eta^*_c(1)=\eta^*_c(0)-\tau_c\bigl[\bar h_c\rho_c+\mathrm{Cov}(h_c,s_c)\bigr]$.}
+\end{frame}
+
+% ── B.10 Paso 6 ───────────────────────────────────────────────────────────────
+\begin{frame}{B.10 Agregación a desarrolladores activos (Paso 6)}
+\small
+Con población $N_i$ y CDF de habilidad $F_i$ (densidad $f_i$):
+\[
+\mathrm{Devs}_{ic}(\mu)=N_i\bigl[1-F_i(\eta^*_c(\mu))\bigr].
+\]
+Taylor de primer orden alrededor de $\eta^*_c(0)$, con $\Delta\eta=\tau_c\rho_c$:
+\[
+\mathrm{Devs}_{ic}(1)-\mathrm{Devs}_{ic}(0)\approx N_i\,f_i\!\bigl(\eta^*_c(0)\bigr)\,\tau_c\rho_c.
+\]
+\medskip
+{\footnotesize\textit{Nota:} la aproximación de Taylor es válida si $\Delta\eta=\tau_c\rho_c$ es pequeño frente a la escala en que cambia la densidad $f_i$.}
+\end{frame}
+
+% ── B.11 Paso 7 ───────────────────────────────────────────────────────────────
+\begin{frame}{B.11 Per cápita, absorción y separabilidad (Paso 7)}
+\small
+Resultado por cada 100\,000 habitantes:
+\[
+\Delta Y_{ic}=\frac{\mathrm{Devs}_{ic}(1)-\mathrm{Devs}_{ic}(0)}{N_i}\cdot10^5
+\approx \underbrace{10^5 f_i(\eta^*_c(0))}_{\phi_i}\cdot\underbrace{\tau_c\rho_c}_{\theta_c}\equiv\phi_i\,\theta_c.
+\]
+\begin{alertblock}{\small Supuesto 4 --- separabilidad país--lenguaje}
+\footnotesize Como $\eta^*_c(0)=r_i-y_{jc}(0)$ depende de $c$, en rigor $\phi_{ic}=10^5 f_i(\eta^*_c(0))$. Escribir $\phi_i$ (solo país) exige $f_i(\eta^*_c(0))\approx f_i$ (densidad plana en $c$), o equivalentemente que las productividades base $y_{jc}(0)$ sean similares entre lenguajes.
+\end{alertblock}
+{\footnotesize\textit{Nota:} sin separabilidad el ATT por lenguaje sigue identificado, pero como $\theta_c\,\bar\phi_{\mathcal{T},c}$ (absorción promedio del lenguaje).}
+\end{frame}
+
+% ── B.12 Paso 8 ───────────────────────────────────────────────────────────────
+\begin{frame}{B.12 Especificación de panel con efectos fijos (Paso 8)}
+\small
+Descomponiendo la línea base $Y_{ic}(0)=\alpha_i+\beta_t+\delta_c+\eta_{ict}$ y sustituyendo $\Delta Y_{ic}\approx\theta_c\phi_i\,A_{it}$ (con $A_{it}\in\{0,1\}$):
+\[
+\boxed{\ Y_{ict}=\alpha_i+\beta_t+\delta_c+\theta_c\,\phi_i\,A_{it}+\eta_{ict}\ }
+\]
+Para interpretación \emph{causal} se requiere exogeneidad condicional:
+\[
+\mathbb{E}[\eta_{ict}\mid\alpha_i,\beta_t,\delta_c,A_{it}]=0.
+\]
+\end{frame}
+
+% ── B.13 Resumen ──────────────────────────────────────────────────────────────
+\begin{frame}{B.13 Resumen paso a paso}
+\scriptsize
+\renewcommand{\arraystretch}{1.25}
+\centering
+\begin{tabular}{>{\bfseries}c p{6.0cm} p{4.7cm}}
+\toprule
+Paso & \textbf{Resultado} & \textbf{Tipo} \\
+\midrule
+1 & $y_{jc}(\mu_j)=\int_0^1\max\{h_c,\mu_j a_c\}dz$ & Identidad / definición \\
+2 & $\tau_c=\int_0^1\mathbf{1}[a_c>h_c]\,dz$ & Definición exacta \\
+3 & $\rho_c=\frac{1}{\tau_c}\int s_c\,dz$ & Definición exacta ($\tau_c>0$) \\
+4.1--4.4 & $\Delta y_{jc}=\int_{\mathcal{Z}^{\mathrm{auto}}_c}h_c s_c\,dz$ & Identidad exacta \\
+4.5 & $\Delta y_{jc}=\tau_c\rho_c\bar h_c$ & \textcolor{naranjasupp}{\textbf{Supuesto}: $\mathrm{Cov}(h_c,s_c)=0$} \\
+4.6 & $\Delta y_{jc}=\tau_c\rho_c$ & Normalización $\bar h_c=1$ \\
+5 & $\eta^*_c(1)=\eta^*_c(0)-\tau_c\rho_c$ & Depende del Paso 4 \\
+6 & $\approx N_i f_i(\eta^*_c(0))\,\tau_c\rho_c$ & Taylor 1.\textordmasculine\ orden \\
+7 & $\Delta Y_{ic}\approx\theta_c\phi_i$ & \textcolor{naranjasupp}{Aprox.\ + separabilidad $\phi_{ic}\!\approx\!\phi_i$} \\
+8 & $Y_{ict}=\alpha_i+\beta_t+\delta_c+\theta_c\phi_i A_{it}+\eta_{ict}$ & Especificación de panel \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.5em}
+\footnotesize En \textcolor{naranjasupp}{naranja}, los pasos que dependen de un \textbf{supuesto no trivial}; el resto son identidades o definiciones exactas.
+\end{frame}
+
+% ── B.14 Conclusión ───────────────────────────────────────────────────────────
+\begin{frame}{B.14 Síntesis de la derivación}
+\small
+La construcción no requiere ningún supuesto hasta $\ \Delta y_{jc}=\int_{\mathcal{Z}^{\mathrm{auto}}_c}h_c(z)\,s_c(z)\,dz$. De aquí en adelante se introducen los supuestos del modelo. La forma general de la ganancia individual es:
+\[
+\Delta y_{jc}=\tau_c\bigl[\bar h_c\,\rho_c+\mathrm{Cov}_{\mathcal{Z}^{\mathrm{auto}}_c}(h_c,s_c)\bigr],
+\]
+de la cual $\tau_c\rho_c\bar h_c$ es el caso particular con covarianza nula. La ecuación estimable $Y_{ict}=\alpha_i+\beta_t+\delta_c+\theta_c\phi_i A_{it}+\eta_{ict}$ se obtiene como modelo estructural simplificado a partir de \textbf{cuatro} supuestos:
+\begin{enumerate}\footnotesize
+  \item \textbf{Covarianza cero} entre productividad humana $h_c(z)$ y ahorro relativo $s_c(z)$ dentro de $\mathcal{Z}^{\mathrm{auto}}_c$.
+  \item \textbf{Normalización} $\bar h_c=1$ (elección de escala).
+  \item \textbf{Taylor de 1.\textordmasculine\ orden} para pasar de la caída del umbral al aumento de desarrolladores.
+  \item \textbf{Separabilidad país--lenguaje} ($\phi_{ic}\approx\phi_i$) para factorizar el coeficiente como $\theta_c\phi_i$.
+\end{enumerate}
 \end{frame}
 
 \end{document}

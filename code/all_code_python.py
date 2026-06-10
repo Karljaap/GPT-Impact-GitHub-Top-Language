@@ -202,11 +202,11 @@ def plot_language_distribution(data, title):
              .sort_values("pct", ascending=False)["language"].tolist())
     x = np.arange(len(order))
     width = 0.22
-    fig, ax = plt.subplots(figsize=(16, 8))
+    fig, ax = plt.subplots(figsize=(12, 6.5))
     colors = plt.cm.Pastel1.colors
     for i, year in enumerate(years):
         vals = agg[agg["year"] == year].set_index("language").loc[order]["pct"]
-        bars = ax.bar(x + i * width, vals, width, label=f"Year {year}",
+        bars = ax.bar(x + i * width, vals, width, label=f"Año {year}",
                       color=colors[i], edgecolor="gray", linewidth=0.8)
         for bar in bars:
             h = bar.get_height()
@@ -214,12 +214,13 @@ def plot_language_distribution(data, title):
                     f"{h:.1f}%", ha="center", va="center",
                     rotation=90, fontsize=12, color="black")
     ax.set_title(title)
-    ax.set_ylabel("Participación porcentual (%)")
-    ax.set_xlabel("Lenguaje de programación")
+    ax.set_ylabel("Participación porcentual (%)", fontsize=15)
+    ax.set_xlabel("Lenguaje de programación", fontsize=15)
     ax.set_xticks(x + width * (len(years) - 1) / 2)
-    ax.set_xticklabels(order)
+    ax.set_xticklabels(order, fontsize=13)
+    ax.tick_params(axis='y', labelsize=13)
     ax.set_ylim(0, agg["pct"].max() + 6)
-    ax.legend()
+    ax.legend(fontsize=13)
     ax.grid(axis="y", linestyle="--", alpha=0.4)
     plt.tight_layout()
     return fig
@@ -258,21 +259,21 @@ color_map = dict(zip(languages, plt.cm.tab10.colors))
 trend_all = (df.groupby(["language", "quarter"], as_index=False)
                .agg(num_pushers=("num_pushers_thousands", "mean")))
 
-fig, ax = plt.subplots(figsize=(22, 10))
+fig, ax = plt.subplots(figsize=(13, 6.5))
 for lang in languages:
     sub = (trend_all[trend_all["language"] == lang]
            .set_index("quarter").reindex(quarters))
     ax.plot(quarters, sub["num_pushers"], marker="o", linewidth=2.8,
             label=lang, color=color_map[lang])
 ax.set_xlim(1, 16); ax.set_xticks(quarters)
-ax.set_xticklabels(quarter_labels, rotation=45)
+ax.set_xticklabels(quarter_labels, rotation=45, fontsize=13)
 ax.axvline(x=12, color='red', linestyle='--', linewidth=2.5,
            label='Lanzamiento ChatGPT (Q4-2022)', zorder=2.5)
 ax.set_ylim(0, 6500); ax.set_yticks(np.arange(0, 6501, 500))
 ax.set_xlabel("Trimestre", fontsize=14)
 ax.set_ylabel("Unique pushers per 100k inhabitants", fontsize=14)
 ax.grid(axis="y", linestyle="--", alpha=0.6)
-ax.legend(title="Programming language", ncol=2)
+ax.legend(title="Lenguaje de programación", ncol=2, fontsize=13, title_fontsize=14)
 plt.tight_layout()
 fig.savefig(p("output", "figures", "language_trend_2020_2023.png"),
             dpi=300, bbox_inches="tight")
@@ -280,21 +281,22 @@ plt.close(fig)
 
 df_gpt = df[df["gpt_available"] == 1]
 trend_gpt = (df_gpt.groupby(["language", "quarter"], as_index=False)
-                   .agg(num_pushers=("num_pushers_thousands", "mean")))
-fig, ax = plt.subplots(figsize=(22, 10))
+                   .agg(num_pushers=("num_pushers_pc", "mean")))
+fig, ax = plt.subplots(figsize=(13, 6.5))
 for lang in languages:
     sub = (trend_gpt[trend_gpt["language"] == lang]
            .set_index("quarter").reindex(quarters))
     ax.plot(quarters, sub["num_pushers"], marker="o", linewidth=2.8,
             label=lang, color=color_map[lang])
 ax.set_xlim(1, 16); ax.set_xticks(quarters)
-ax.set_xticklabels(quarter_labels, rotation=45)
+ax.set_xticklabels(quarter_labels, rotation=45, fontsize=13)
 ax.axvline(x=12, color='red', linestyle='--', linewidth=2.5,
            label='Lanzamiento ChatGPT (Q4-2022)', zorder=2.5)
-ax.set_ylim(0, 6500); ax.set_yticks(np.arange(0, 6501, 500))
-ax.set_xlabel("Trimestre", fontsize=18); ax.set_ylabel("Unique pushers per 100k inhabitants", fontsize=18)
+ax.set_ylim(0, 70); ax.set_yticks(np.arange(0, 71, 5))
+ax.set_xlabel("Trimestre", fontsize=16); ax.set_ylabel("Unique pushers por 100k hab.", fontsize=16)
+ax.tick_params(axis='both', labelsize=13)
 ax.grid(axis="y", linestyle="--", alpha=0.6)
-ax.legend(title="Programming language", ncol=2)
+ax.legend(title="Lenguaje de programación", ncol=2, fontsize=13, title_fontsize=14)
 plt.tight_layout()
 fig.savefig(p("output", "figures", "language_trend_gpt_countries_2020_2023.png"),
             dpi=300, bbox_inches="tight")
@@ -302,21 +304,22 @@ plt.close(fig)
 
 df_no_gpt = df[df["gpt_available"] == 0]
 trend_no_gpt = (df_no_gpt.groupby(["language", "quarter"], as_index=False)
-                          .agg(num_pushers=("num_pushers_thousands", "mean")))
-fig, ax = plt.subplots(figsize=(22, 10))
+                          .agg(num_pushers=("num_pushers_pc", "mean")))
+fig, ax = plt.subplots(figsize=(13, 6.5))
 for lang in languages:
     sub = (trend_no_gpt[trend_no_gpt["language"] == lang]
            .set_index("quarter").reindex(quarters))
     ax.plot(quarters, sub["num_pushers"], marker="o", linewidth=2.8,
             label=lang, color=color_map[lang])
 ax.set_xlim(1, 16); ax.set_xticks(quarters)
-ax.set_xticklabels(quarter_labels, rotation=45)
+ax.set_xticklabels(quarter_labels, rotation=45, fontsize=13)
 ax.axvline(x=12, color='red', linestyle='--', linewidth=2.5,
            label='Lanzamiento ChatGPT (Q4-2022)', zorder=2.5)
-ax.set_ylim(0, 6500); ax.set_yticks(np.arange(0, 6501, 500))
-ax.set_xlabel("Trimestre", fontsize=18); ax.set_ylabel("Unique pushers per 100k inhabitants", fontsize=18)
+ax.set_ylim(0, 70); ax.set_yticks(np.arange(0, 71, 5))
+ax.set_xlabel("Trimestre", fontsize=16); ax.set_ylabel("Unique pushers por 100k hab.", fontsize=16)
+ax.tick_params(axis='both', labelsize=13)
 ax.grid(axis="y", linestyle="--", alpha=0.6)
-ax.legend(title="Programming language", ncol=2, loc="upper left")
+ax.legend(title="Lenguaje de programación", ncol=2, fontsize=13, title_fontsize=14, loc="upper left")
 plt.tight_layout()
 fig.savefig(p("output", "figures", "language_trend_no_gpt_countries_2020_2023.png"),
             dpi=300, bbox_inches="tight")
@@ -729,25 +732,41 @@ def _plot_trends(df_lang, omega, lam, att, se, method, lang,
     x       = list(range(len(all_q)))
     qlabels = [QUARTER_LABELS_SP[q - 1] for q in all_q]
 
-    fig, ax = plt.subplots(figsize=(12, 5))
-    ax.plot(x, treated,   label='Tratado',       color='#2c7bb6', lw=2, marker='o', ms=4)
-    ax.plot(x, synthetic, label='Control Sint.', color='#d7191c', lw=2,
-            marker='s', ms=4, ls='--')
+    fig, ax = plt.subplots(figsize=(7.5, 5))
+    ax.plot(x, treated,   label='Tratado',       color='#2c7bb6', lw=2.6, marker='o', ms=6)
+    ax.plot(x, synthetic, label='Control Sint.', color='#d7191c', lw=2.6,
+            marker='s', ms=6, ls='--')
 
     onset = len(pre_q)
-    ax.axvline(x=onset - 0.5, color='gray', ls=':', lw=1.5)
+    ax.axvline(x=onset, color='gray', ls=':', lw=1.8)
+
+    # SDID: shaded band of temporal (lambda) weights over pre-treatment periods.
+    # Replicates the canonical synthdid plot: band height linear in lambda,
+    # anchored to the data range (lambda * height/3 + base). Not drawn for DiD
+    # (uniform lambda) or SC (lambda = 0).
+    if method == 'sdid' and lam is not None and len(lam) == len(pre_q):
+        vals   = np.concatenate([treated, synthetic])
+        y_min, y_max = vals.min(), vals.max()
+        height = y_max - y_min
+        base   = y_min - height / 5
+        band   = np.asarray(lam) * height / 3 + base
+        xpre   = list(range(len(pre_q)))
+        ax.fill_between(xpre, base, band, alpha=0.6, color='gray',
+                        zorder=1, label='Pesos temporales λ')
 
     ax.set_xticks(x)
-    ax.set_xticklabels(qlabels, rotation=45, fontsize=8)
-    ax.set_xlabel("Trimestre", fontsize=11)
-    ax.set_ylabel("Pushers únicos por 100k hab.", fontsize=10)
-    ax.legend(fontsize=10)
+    ax.set_xticklabels(qlabels, rotation=45, fontsize=12)
+    ax.tick_params(axis='y', labelsize=13)
+    ax.set_xlabel("Trimestre", fontsize=15)
+    ax.set_ylabel("Unique pushers por 100k hab.", fontsize=15)
+    # SDID (panel e): pin legend upper-left so all figures 5-14 are consistent.
+    ax.legend(fontsize=14, loc='upper left' if method == 'sdid' else 'best')
     ax.grid(axis='y', ls='--', alpha=0.4)
 
     stars = _stars(att, se)
     ax.set_title(
         f"{lang} – {method.upper()}   ATT = {att:.3f}{stars}   (SE = {se:.3f})",
-        fontsize=11
+        fontsize=14
     )
     plt.tight_layout()
 
@@ -778,12 +797,12 @@ def _plot_weights(omega, co_units, method, lang, att=None, se=None):
 
     # Bubble size proportional to weight (min 20 for visibility)
     max_w  = max(vals) if max(vals) > 0 else 1.0
-    sizes  = [max(20, (v / max_w) * 350) for v in vals]
+    sizes  = [max(45, (v / max_w) * 520) for v in vals]
 
-    fig, ax = plt.subplots(figsize=(max(10, n * 0.38), 5))
+    fig, ax = plt.subplots(figsize=(7.5, 5))
 
     ax.scatter(range(n), vals, c=colors, s=sizes,
-               alpha=0.85, edgecolors='white', linewidth=0.5, zorder=3)
+               alpha=0.85, edgecolors='white', linewidth=0.6, zorder=3)
 
     # Reference lines (style matches the reference image)
     ax.axhline(y=0,       color='#2c7bb6', linewidth=1.2, alpha=0.7, zorder=2)
@@ -791,10 +810,11 @@ def _plot_weights(omega, co_units, method, lang, att=None, se=None):
                alpha=0.8, zorder=2)
 
     ax.set_xticks(range(n))
-    ax.set_xticklabels(labels, rotation=75, fontsize=7, ha='right')
-    ax.set_ylabel("Peso ω", fontsize=11)
+    ax.set_xticklabels(labels, rotation=75, fontsize=10, ha='right')
+    ax.tick_params(axis='y', labelsize=13)
+    ax.set_ylabel("Peso ω", fontsize=15)
     meth_label = {'did': 'DiD', 'sc': 'CS', 'sdid': 'SDiD'}.get(method, method.upper())
-    ax.set_title(f"{lang} — {meth_label}   Pesos del control sintético", fontsize=11)
+    ax.set_title(f"{lang} — {meth_label}   Pesos del control sintético", fontsize=14)
     ax.grid(axis='y', ls='--', alpha=0.3)
 
     # Legend
@@ -802,14 +822,14 @@ def _plot_weights(omega, co_units, method, lang, att=None, se=None):
         Line2D([0], [0], color='purple', linewidth=1.2, linestyle='--',
                label=f'Peso uniforme: {uniform:.3f}'),
         Line2D([0], [0], marker='o', color='w', markerfacecolor='#2c7bb6',
-               markersize=10, label='Peso significativo'),
+               markersize=13, label='Peso significativo'),
         Line2D([0], [0], marker='o', color='w', markerfacecolor='#d7191c',
-               markersize=5,  label='Peso negligible'),
+               markersize=7,  label='Peso negligible'),
     ]
     if att is not None and not np.isnan(se if se is not None else float('nan')):
         legend_elements.insert(0,
             Line2D([0], [0], color='w', label=f'ATT: {att:.3f}'))
-    ax.legend(handles=legend_elements, fontsize=8, loc='upper right',
+    ax.legend(handles=legend_elements, fontsize=12, loc='upper right',
               framealpha=0.9)
 
     plt.tight_layout()
@@ -865,21 +885,22 @@ def _plot_event_study(lang, rel, gap, lower, upper):
     Event study plot: SDID gap per period with 95% CI band.
     Pre-treatment periods hovering near zero validates the SDID counterfactual.
     """
-    fig, ax = plt.subplots(figsize=(10, 4))
+    fig, ax = plt.subplots(figsize=(8, 4.5))
     x = np.array(rel)
     ax.fill_between(x, lower, upper, alpha=0.20, color='steelblue', label='IC 95%')
-    ax.plot(x, gap, marker='o', color='steelblue', lw=1.8, ms=5, label='Gap SDID')
-    ax.axhline(0, color='black', lw=0.8, ls='--', alpha=0.6)
-    ax.axvline(0, color='red',   lw=1.5, ls='--', label='Inicio trat. (Q4-2022)')
+    ax.plot(x, gap, marker='o', color='steelblue', lw=2.4, ms=7, label='Gap SDID')
+    ax.axhline(0, color='black', lw=1.0, ls='--', alpha=0.6)
+    ax.axvline(0, color='red',   lw=2.0, ls='--', label='Inicio trat. (Q4-2022)')
     if any(r < 0 for r in rel):
         ax.axvspan(min(x) - 0.5, 0, alpha=0.06, color='grey')
     ax.set_xticks(x)
     xlabels = [str(r) if i % 2 == 0 else '' for i, r in enumerate(rel)]
-    ax.set_xticklabels(xlabels, fontsize=8)
-    ax.set_xlabel('Trimestres relativos al tratamiento (0 = Q4-2022)', fontsize=10)
-    ax.set_ylabel('Gap (Tratado \u2212 Control Sint\u00e9tico)', fontsize=10)
-    ax.set_title(f'{lang} \u2014 An\u00e1lisis de evento SDID (pre-tendencias)', fontsize=11)
-    ax.legend(fontsize=9, loc='upper left')
+    ax.set_xticklabels(xlabels, fontsize=12)
+    ax.tick_params(axis='y', labelsize=12)
+    ax.set_xlabel('Trimestres relativos al tratamiento (0 = Q4-2022)', fontsize=14)
+    ax.set_ylabel('Gap (Tratado \u2212 Control Sint\u00e9tico)', fontsize=14)
+    ax.set_title(f'{lang} \u2014 An\u00e1lisis de evento SDID (pre-tendencias)', fontsize=15)
+    ax.legend(fontsize=13, loc='upper left')
     ax.grid(axis='y', ls='--', alpha=0.3)
     plt.tight_layout()
     fname = p("output", "figures", f"{LANG_SAFE[lang]}sdid_event_study.png")

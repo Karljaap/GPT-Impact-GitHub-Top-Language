@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.14)  25 MAY 2026 18:48
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.5.29)  2 JUN 2026 16:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -11,30 +11,98 @@ Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
 File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count275
-\c@section=\count276
-\c@subsection=\count277
-\c@subsubsection=\count278
-\c@paragraph=\count279
-\c@subparagraph=\count280
-\c@figure=\count281
-\c@table=\count282
+\c@part=\count271
+\c@section=\count272
+\c@subsection=\count273
+\c@subsubsection=\count274
+\c@paragraph=\count275
+\c@subparagraph=\count276
+\c@figure=\count277
+\c@table=\count278
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen148
 )
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
-Package: inputenc 2024/02/08 v1.3d Input encoding file
-\inpenc@prehook=\toks17
-\inpenc@posthook=\toks18
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
 )
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.sty
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
+e.sty
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2025-12-24 L3 programming layer (loader) 
+
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-xet
+ex.def
+File: l3backend-xetex.def 2025-10-09 L3 backend support: XeTeX
+\g__graphics_track_int=\count279
+\g__pdfannot_backend_int=\count280
+\g__pdfannot_backend_link_int=\count281
+))
+Package: xparse 2025-10-09 L3 Experimental document command parser
+)
+Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
+
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec-xetex
+.sty
+Package: fontspec-xetex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTe
+X
+\l__fontspec_script_int=\count282
+\l__fontspec_language_int=\count283
+\l__fontspec_strnum_int=\count284
+\l__fontspec_tmp_int=\count285
+\l__fontspec_tmpa_int=\count286
+\l__fontspec_tmpb_int=\count287
+\l__fontspec_tmpc_int=\count288
+\l__fontspec_em_int=\count289
+\l__fontspec_emdef_int=\count290
+\l__fontspec_strong_int=\count291
+\l__fontspec_strongdef_int=\count292
+\l__fontspec_tmpa_dim=\dimen149
+\l__fontspec_tmpb_dim=\dimen150
+\l__fontspec_tmpc_dim=\dimen151
+ (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 )
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.cfg))
+)
+
+Package fontspec Info: 
+(fontspec)             Font family 'Arial(0)' created for font 'Arial' with
+(fontspec)             options [Ligatures=TeX].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"Arial/OT:script=latn;language=dflt;mapping=tex-text;
+"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"Arial/OT:script=latn;language=dflt;+smcp;mapping=tex
+-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"Arial/B/OT:script=latn;language=dflt;mapping=tex-tex
+t;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"Arial/B/OT:script=latn;language=dflt;+smcp;mapping=t
+ex-text;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"Arial/I/OT:script=latn;language=dflt;mapping=tex-tex
+t;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"Arial/I/OT:script=latn;language=dflt;+smcp;mapping=t
+ex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"Arial/BI/OT:script=latn;language=dflt;mapping=tex-te
+xt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"Arial/BI/OT:script=latn;language=dflt;+smcp;mapping=
+tex-text;"
+
+ (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
 Package: babel 2025/12/11 v25.17 The multilingual framework for LuaLaTeX, pdfLa
 TeX and XeLaTeX
-\babel@savecnt=\count283
+\babel@savecnt=\count293
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
 ne 2068.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
@@ -49,12 +117,12 @@ LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?)
 on input line 2076.
 LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
 on input line 2101.
-\U@D=\dimen149
+\U@D=\dimen152
 \l@unhyphenated=\language79
 
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/babel\xebabel.def)
 \bbl@readstream=\read2
-\bbl@dirlevel=\count284
+\bbl@dirlevel=\count294
 Package babel Info: Configuration files are deprecated, as
 (babel)             they can break document portability.
 (babel)             Reported on input line 4196.
@@ -74,84 +142,46 @@ Package babel Info: Importing font and identification data for spanish
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/babel-spanish\spanish.l
 df
 Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
-\es@quottoks=\toks19
-\es@quotdepth=\count285
+\es@quottoks=\toks17
+\es@quotdepth=\count295
 Package babel Info: Making " an active character on input line 570.
 Package babel Info: Making . an active character on input line 675.
 Package babel Info: Making < an active character on input line 722.
 Package babel Info: Making > an active character on input line 722.
 ))
 LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1) 
-on input line 7.
+on input line 20.
 LaTeX Encoding Info:    Redeclaring text command \guillemotright (encoding OT1)
- on input line 7.
- (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
-Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
-(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-)
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\helvet.sty
-Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
+ on input line 20.
 
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks20
-))
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
 Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count286
+\etb@tempcnta=\count296
 )
-\MT@toks=\toks21
+\MT@toks=\toks19
 \MT@tempbox=\box53
-\MT@count=\count287
+\MT@count=\count297
 LaTeX Info: Redefining \noprotrusionifhmode on input line 1084.
 LaTeX Info: Redefining \leftprotrusion on input line 1085.
-\MT@prot@toks=\toks22
+\MT@prot@toks=\toks20
 LaTeX Info: Redefining \rightprotrusion on input line 1104.
 LaTeX Info: Redefining \textls on input line 1449.
-\MT@outer@kern=\dimen150
+\MT@outer@kern=\dimen153
 LaTeX Info: Redefining \microtypecontext on input line 2053.
 LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
-\MT@listname@count=\count288
+\MT@listname@count=\count298
 
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdf
-tex.def
-File: microtype-pdftex.def 2026/03/01 v3.2d Definitions specific to pdftex (RS)
-
-LaTeX Info: Redefining \lsstyle on input line 944.
-LaTeX Info: Redefining \lslig on input line 944.
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-xet
+ex.def
+File: microtype-xetex.def 2026/03/01 v3.2d Definitions specific to xetex (RS)
+LaTeX Info: Redefining \lsstyle on input line 443.
+LaTeX Info: Redefining \lslig on input line 451.
 \MT@outer@space=\skip51
 )
 Package microtype Info: Loading configuration file microtype.cfg.
@@ -169,22 +199,19 @@ Package: geometry 2026/03/07 v6.0 Page Geometry
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
-Package: iftex 2024/12/12 v1.0g TeX engine tests
-))
-\Gm@cnth=\count289
-\Gm@cntv=\count290
-\c@Gm@tempcnt=\count291
-\Gm@bindingoffset=\dimen151
-\Gm@wd@mp=\dimen152
-\Gm@odd@mp=\dimen153
-\Gm@even@mp=\dimen154
-\Gm@layoutwidth=\dimen155
-\Gm@layoutheight=\dimen156
-\Gm@layouthoffset=\dimen157
-\Gm@layoutvoffset=\dimen158
-\Gm@dimlist=\toks23
+)
+\Gm@cnth=\count299
+\Gm@cntv=\count300
+\c@Gm@tempcnt=\count301
+\Gm@bindingoffset=\dimen154
+\Gm@wd@mp=\dimen155
+\Gm@odd@mp=\dimen156
+\Gm@even@mp=\dimen157
+\Gm@layoutwidth=\dimen158
+\Gm@layoutheight=\dimen159
+\Gm@layouthoffset=\dimen160
+\Gm@layoutvoffset=\dimen161
+\Gm@dimlist=\toks21
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
@@ -197,24 +224,24 @@ Package: amstext 2024/11/17 v2.01 AMS text
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks24
-\ex@=\dimen159
+\@emptytoks=\toks22
+\ex@=\dimen162
 ))
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen160
+\pmbraise@=\dimen163
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count292
+\inf@bad=\count302
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count293
-\leftroot@=\count294
+\uproot@=\count303
+\leftroot@=\count304
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count295
-\DOTSCASE@=\count296
+\classnum@=\count305
+\DOTSCASE@=\count306
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -224,34 +251,34 @@ LaTeX Info: Redefining \big on input line 721.
 LaTeX Info: Redefining \Big on input line 722.
 LaTeX Info: Redefining \bigg on input line 723.
 LaTeX Info: Redefining \Bigg on input line 724.
-\big@size=\dimen161
+\big@size=\dimen164
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count297
+\macc@depth=\count307
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count298
+\c@MaxMatrixCols=\count308
 \dotsspace@=\muskip17
-\c@parentequation=\count299
-\dspbrk@lvl=\count300
-\tag@help=\toks25
-\row@=\count301
-\column@=\count302
-\maxfields@=\count303
-\andhelp@=\toks26
-\eqnshift@=\dimen162
-\alignsep@=\dimen163
-\tagshift@=\dimen164
-\tagwidth@=\dimen165
-\totwidth@=\dimen166
-\lineht@=\dimen167
-\@envbody=\toks27
+\c@parentequation=\count309
+\dspbrk@lvl=\count310
+\tag@help=\toks23
+\row@=\count311
+\column@=\count312
+\maxfields@=\count313
+\andhelp@=\toks24
+\eqnshift@=\dimen165
+\alignsep@=\dimen166
+\tagshift@=\dimen167
+\tagwidth@=\dimen168
+\totwidth@=\dimen169
+\lineht@=\dimen170
+\@envbody=\toks25
 \multlinegap=\skip53
 \multlinetaggap=\skip54
-\mathdisplay@stack=\toks28
+\mathdisplay@stack=\toks26
 LaTeX Info: Redefining \[ on input line 2950.
 LaTeX Info: Redefining \] on input line 2951.
 )
@@ -268,48 +295,48 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )) (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.st
 y
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen168
-\lightrulewidth=\dimen169
-\cmidrulewidth=\dimen170
-\belowrulesep=\dimen171
-\belowbottomsep=\dimen172
-\aboverulesep=\dimen173
-\abovetopsep=\dimen174
-\cmidrulesep=\dimen175
-\cmidrulekern=\dimen176
-\defaultaddspace=\dimen177
-\@cmidla=\count304
-\@cmidlb=\count305
-\@aboverulesep=\dimen178
-\@belowrulesep=\dimen179
-\@thisruleclass=\count306
-\@lastruleclass=\count307
-\@thisrulewidth=\dimen180
+\heavyrulewidth=\dimen171
+\lightrulewidth=\dimen172
+\cmidrulewidth=\dimen173
+\belowrulesep=\dimen174
+\belowbottomsep=\dimen175
+\aboverulesep=\dimen176
+\abovetopsep=\dimen177
+\cmidrulesep=\dimen178
+\cmidrulekern=\dimen179
+\defaultaddspace=\dimen180
+\@cmidla=\count314
+\@cmidlb=\count315
+\@aboverulesep=\dimen181
+\@belowrulesep=\dimen182
+\@thisruleclass=\count316
+\@lastruleclass=\count317
+\@thisrulewidth=\dimen183
 ) (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \LTleft=\skip55
 \LTright=\skip56
 \LTpre=\skip57
 \LTpost=\skip58
-\LTchunksize=\count308
-\LTcapwidth=\dimen181
+\LTchunksize=\count318
+\LTcapwidth=\dimen184
 \LT@head=\box56
 \LT@firsthead=\box57
 \LT@foot=\box58
 \LT@lastfoot=\box59
 \LT@gbox=\box60
-\LT@cols=\count309
-\LT@rows=\count310
-\c@LT@tables=\count311
-\c@LT@chunks=\count312
-\LT@p@ftn=\toks29
+\LT@cols=\count319
+\LT@rows=\count320
+\c@LT@tables=\count321
+\c@LT@chunks=\count322
+\LT@p@ftn=\toks27
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
-\col@sep=\dimen182
+\col@sep=\dimen185
 \ar@mcellbox=\box61
-\extrarowheight=\dimen183
-\NC@list=\toks30
+\extrarowheight=\dimen186
+\NC@list=\toks28
 \extratabsurround=\skip59
 \backup@length=\skip60
 \ar@cellbox=\box62
@@ -317,33 +344,33 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip61
-\multirow@cntb=\count313
+\multirow@cntb=\count323
 \multirow@dima=\skip62
-\bigstrutjot=\dimen184
+\bigstrutjot=\dimen187
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen185
-\c@nlinenum=\count314
-\TeXr@lab=\toks31
+\rotheadsize=\dimen188
+\c@nlinenum=\count324
+\TeXr@lab=\toks29
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen186
-\captionmargin=\dimen187
-\caption@leftmargin=\dimen188
-\caption@rightmargin=\dimen189
-\caption@width=\dimen190
-\caption@indent=\dimen191
-\caption@parindent=\dimen192
-\caption@hangindent=\dimen193
+\caption@tempdima=\dimen189
+\captionmargin=\dimen190
+\caption@leftmargin=\dimen191
+\caption@rightmargin=\dimen192
+\caption@width=\dimen193
+\caption@indent=\dimen194
+\caption@parindent=\dimen195
+\caption@hangindent=\dimen196
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count315
-\c@continuedfloat=\count316
+\c@caption@flags=\count325
+\c@continuedfloat=\count326
 Package caption Info: longtable package is loaded.
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
@@ -352,9 +379,9 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 ty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count317
+\c@subfigure=\count327
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count318
+\c@subtable=\count328
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/threeparttable\threepar
 ttable.sty
@@ -374,13 +401,13 @@ Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 106.
+Package graphics Info: Driver file: xetex.def on input line 106.
 
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
-File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\xetex.def
+File: xetex.def 2025/11/01 v5.0p Graphics/color driver for xetex
 ))
-\Gin@req@height=\dimen194
-\Gin@req@width=\dimen195
+\Gin@req@height=\dimen197
+\Gin@req@width=\dimen198
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
@@ -410,7 +437,7 @@ Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
+Package pdftexcmds Info: \pdfdraftmode not found.
 ))
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
@@ -428,28 +455,24 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count319
+\c@section@level=\count329
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
 ty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen196
-\Hy@linkcounter=\count320
-\Hy@pagecounter=\count321
+\@linkdim=\dimen199
+\Hy@linkcounter=\count330
+\Hy@pagecounter=\count331
  (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
-Now handling font encoding PD1 ...
-... no UTF-8 mapping file for font encoding PD1
 ) (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count322
+\Hy@SavedSpaceFactor=\count332
  (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
-Now handling font encoding PU ...
-... no UTF-8 mapping file for font encoding PU
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 4066.
 Package hyperref Info: Hyper figures OFF on input line 4195.
@@ -459,14 +482,14 @@ Package hyperref Info: Plain pages OFF on input line 4210.
 Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
-\c@Hy@tempcnt=\count323
+\c@Hy@tempcnt=\count333
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4801.
-\XeTeXLinkMargin=\dimen197
+\XeTeXLinkMargin=\dimen256
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -476,9 +499,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count324
-\Field@Width=\dimen198
-\Fld@charsize=\dimen199
+\Fld@menulength=\count334
+\Field@Width=\dimen257
+\Fld@charsize=\dimen258
 Package hyperref Info: Hyper figures OFF on input line 6078.
 Package hyperref Info: Link nesting OFF on input line 6083.
 Package hyperref Info: Hyper index ON on input line 6086.
@@ -486,16 +509,19 @@ Package hyperref Info: backreferencing OFF on input line 6093.
 Package hyperref Info: Link coloring ON on input line 6096.
 Package hyperref Info: Link coloring with OCG OFF on input line 6103.
 Package hyperref Info: PDF/A mode OFF on input line 6108.
-\Hy@abspage=\count325
-\c@Item=\count326
-\c@Hfootnote=\count327
+\Hy@abspage=\count335
+\c@Item=\count336
+\c@Hfootnote=\count337
 )
-Package hyperref Info: Driver (autodetected): hpdftex.
+Package hyperref Info: Driver (autodetected): hxetex.
 
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
-File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
-\Fld@listcount=\count328
-\c@bookmark@seq@number=\count329
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hxetex.def
+File: hxetex.def 2025-07-12 v7.01o Hyperref driver for XeTeX
+\pdfm@box=\box64
+\c@Hy@AnnotLevel=\count338
+\HyField@AnnotCount=\count339
+\Fld@listcount=\count340
+\c@bookmark@seq@number=\count341
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
 echeck.sty
@@ -515,23 +541,13 @@ Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count330
-\float@exts=\toks32
-\float@box=\box64
-\@float@everytoks=\toks33
-\@floatcapt=\box65
+\c@float@type=\count342
+\float@exts=\toks30
+\float@box=\box65
+\@float@everytoks=\toks31
+\@floatcapt=\box66
 )
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 52
-.
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1phv.fd
-File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
-)
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
-tex.def
-File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count331
-) (Tesis.aux
+(Tesis.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 Package babel Info: 'spanish' activates 'spanish' shorthands.
@@ -539,52 +555,107 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 )
 \openout1 = `Tesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Info: Redefining \. on input line 52.
-LaTeX Info: Redefining \% on input line 52.
-LaTeX Info: Redefining \microtypecontext on input line 52.
-Package microtype Info: Applying patch `item' on input line 52.
-Package microtype Info: Applying patch `toc' on input line 52.
-Package microtype Info: Applying patch `eqnum' on input line 52.
-Package microtype Info: Applying patch `footnote' on input line 52.
-Package microtype Info: Applying patch `verbatim' on input line 52.
-LaTeX Info: Redefining \microtypesetup on input line 52.
-Package microtype Info: Generating PDF output.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 178.
+LaTeX Font Info:    ... okay on input line 178.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 178.
+LaTeX Font Info:    ... okay on input line 178.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 178.
+LaTeX Font Info:    ... okay on input line 178.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 178.
+LaTeX Font Info:    ... okay on input line 178.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 178.
+LaTeX Font Info:    ... okay on input line 178.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 178.
+LaTeX Font Info:    ... okay on input line 178.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 178.
+LaTeX Font Info:    ... okay on input line 178.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 178.
+LaTeX Font Info:    ... okay on input line 178.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 178.
+LaTeX Font Info:    ... okay on input line 178.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 178.
+LaTeX Font Info:    ... okay on input line 178.
+
+Package fontspec Info: 
+(fontspec)             Adjusting the maths setup (use [no-math] to avoid
+(fontspec)             this).
+
+\symlegacymaths=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 178.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 178.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 178.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 178.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 178.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 178.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 178.
+LaTeX Font Info:    Redeclaring math accent \check on input line 178.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 178.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 178.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 178.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 178.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 178.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 178.
+
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/Arial(0)/m/n on input line 178.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 178.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> TU/Arial(0)/m/n on input line 178.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  TU/Arial(0)/m/n --> TU/Arial(0)/m/n on input line 178.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/Arial(0)/m/it on input line 178.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/Arial(0)/b/n on input line 178.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/Arial(0)/m/n on input line 178.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 178.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  TU/Arial(0)/m/n --> TU/Arial(0)/b/n on input line 178.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> TU/Arial(0)/b/it on input line 178.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/Arial(0)/b/n on input line 178.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 178.
+LaTeX Info: Redefining \. on input line 178.
+LaTeX Info: Redefining \% on input line 178.
+LaTeX Info: Redefining \microtypecontext on input line 178.
+Package microtype Info: Applying patch `item' on input line 178.
+Package microtype Info: Applying patch `toc' on input line 178.
+Package microtype Info: Applying patch `eqnum' on input line 178.
+Package microtype Info: Applying patch `footnote' on input line 178.
+Package microtype Info: Applying patch `verbatim' on input line 178.
+LaTeX Info: Redefining \microtypesetup on input line 178.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
-Package microtype Info: Automatic font expansion enabled (level 2),
-(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
-Package microtype Info: Using default expansion set `alltext-nott'.
-Package microtype Info: Patching command `\showhyphens'.
 Package microtype Info: No adjustment of tracking.
-Package microtype Info: No adjustment of interword spacing.
-Package microtype Info: No adjustment of character kerning.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
 Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `phv' (encoding: T1).
+(microtype)             `Arial' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: xetex
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -620,46 +691,22 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: threeparttable package is loaded.
 Package caption Info: End \AtBeginDocument code.
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
-ii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count332
-\scratchdimen=\dimen256
-\scratchbox=\box66
-\nofMPsegments=\count333
-\nofMParguments=\count334
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count335
-\MPscratchDim=\dimen257
-\MPnumerator=\count336
-\makeMPintoPDFobject=\count337
-\everyMPtoPDFconversion=\toks35
-)
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
-ase.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
-fg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-)) (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
 Package: color 2025/01/14 v1.3e Standard LaTeX Color (DPC)
+
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: pdftex.def on input line 149.
+Package color Info: Driver file: xetex.def on input line 149.
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 )
-Package hyperref Info: Link coloring ON on input line 52.
+Package hyperref Info: Link coloring ON on input line 178.
  (Tesis.out) (Tesis.out)
 \@outlinefile=\write3
 \openout3 = `Tesis.out'.
 
 *geometry* verbose mode - [ newgeometry ] result:
-* driver: pdftex
+* driver: xetex
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -690,63 +737,15 @@ Package hyperref Info: Link coloring ON on input line 52.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<output/figures/pucp_logo.jpg, id=123, 474.77374pt x 475.7775pt>
-File: output/figures/pucp_logo.jpg Graphic file (type jpg)
-<use output/figures/pucp_logo.jpg>
-Package pdftex.def Info: output/figures/pucp_logo.jpg  used on input line 69.
-(pdftex.def)             Requested size: 128.0374pt x 128.30917pt.
+File: output/figures/pucp_logo.jpg Graphic file (type bmp)
+<output/figures/pucp_logo.jpg>
  [1
 
 
-{C:/Users/Jesus/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Jesu
-s/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./output/figures/
-pucp_logo.jpg>]
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 97.
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.106 \clearpage
-                 [1
+] [1
 
 ]
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-16.
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
-File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
-File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
-(RS)
-)
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-16.
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
-File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-116.
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
-File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-116.
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
-File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 116.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 116.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 116.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 116
+LaTeX Font Info:    Trying to load font information for U+msa on input line 247
 .
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -755,7 +754,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 116
+LaTeX Font Info:    Trying to load font information for U+msb on input line 247
 .
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -764,12 +763,11 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.121 \clearpage
-                 [1
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+[1
 
 ] [2
 
@@ -794,696 +792,338 @@ LaTeX Info: Redefining \% on input line 1.
 \tf@lot=\write6
 \openout6 = `Tesis.lot'.
 
- [5]
-[6
+ [5] [1
+
+] [2] [3] [4
 
 ]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 171.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 171.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 171.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 171.
- [7] [8] [9
+[5] [6] [7] [8] [9] [10] [11] [12] [13
 
-] [10] [11] [12]
-Overfull \hbox (2.58214pt too wide) in paragraph at lines 235--236
-[]\T1/phv/m/n/12 (-20) En con-jun-to, am-bas ver-tien-tes teó-ri-cas pre-di-cen
- que la dis-po-ni-bi-li-dad de ChatGPT
- []
+] [14] [15
 
-[13] [14] [15] [16] [17] [18
+] [16] [17
 
-] [19] [20
+] [18] [19] [20]
+[21] [22
 
-] [21] [22
+] [23] [24] [25] [26
 
-{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
-{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/
-Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/
-Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}] [2
-3] [24] [25] [26] [27
-
-] [28]
-[29] [30] [31
-
-] [32] [33] [34]
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 513.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 5
-13.
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
+] [27] [28] [29]
 Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `lmtt' (encoding: T1).
+(microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 513.
- [35
 
-{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
 (output/tables/gpt_impact_github_DataScience.tex)
-(output/tables/gpt_impact_github_placebo_loo.tex) [36] [37] [38]
-<output/figures/language_distribution_gpt_available_2020_2023.png, id=538, 1149
-.093pt x 570.933pt>
+(output/tables/gpt_impact_github_placebo_loo.tex) [30
+
+] [31] [32]
 File: output/figures/language_distribution_gpt_available_2020_2023.png Graphic 
-file (type png)
-<use output/figures/language_distribution_gpt_available_2020_2023.png>
-Package pdftex.def Info: output/figures/language_distribution_gpt_available_202
-0_2023.png  used on input line 563.
-(pdftex.def)             Requested size: 455.24411pt x 226.19121pt.
-<output/figures/language_distribution_no_gpt_2020_2023.png, id=540, 1149.093pt 
-x 570.933pt>
+file (type bmp)
+<output/figures/language_distribution_gpt_available_2020_2023.png>
 File: output/figures/language_distribution_no_gpt_2020_2023.png Graphic file (t
-ype png)
-<use output/figures/language_distribution_no_gpt_2020_2023.png>
-Package pdftex.def Info: output/figures/language_distribution_no_gpt_2020_2023.
-png  used on input line 573.
-(pdftex.def)             Requested size: 455.24411pt x 226.19121pt.
- [39
-
- <./output/figures/language_distribution_gpt_available_2020_2023.png>]
-<output/figures/language_trend_gpt_countries_2020_2023.png, id=546, 1583.1948pt
- x 715.7139pt>
-File: output/figures/language_trend_gpt_countries_2020_2023.png Graphic file (t
-ype png)
-<use output/figures/language_trend_gpt_countries_2020_2023.png>
-Package pdftex.def Info: output/figures/language_trend_gpt_countries_2020_2023.
-png  used on input line 583.
-(pdftex.def)             Requested size: 455.24411pt x 205.79344pt.
- [40 <./output/figures/language_distribution_no_gpt_2020_2023.png>]
-<output/figures/language_trend_no_gpt_countries_2020_2023.png, id=552, 1583.194
-8pt x 715.7139pt>
-File: output/figures/language_trend_no_gpt_countries_2020_2023.png Graphic file
- (type png)
-<use output/figures/language_trend_no_gpt_countries_2020_2023.png>
-Package pdftex.def Info: output/figures/language_trend_no_gpt_countries_2020_20
-23.png  used on input line 593.
-(pdftex.def)             Requested size: 455.24411pt x 205.79344pt.
- [41 <./output/figures/language_trend_gpt_countries_2020_2023.png>]
-<output/figures/TypeScriptdidtrends12.png, id=559, 860.013pt x 355.0866pt>
-File: output/figures/TypeScriptdidtrends12.png Graphic file (type png)
-<use output/figures/TypeScriptdidtrends12.png>
-Package pdftex.def Info: output/figures/TypeScriptdidtrends12.png  used on inpu
-t line 608.
-(pdftex.def)             Requested size: 218.51521pt x 90.21808pt.
-<output/figures/TypeScriptdidweights12.png, id=560, 789.1884pt x 353.6412pt>
-File: output/figures/TypeScriptdidweights12.png Graphic file (type png)
-<use output/figures/TypeScriptdidweights12.png>
-Package pdftex.def Info: output/figures/TypeScriptdidweights12.png  used on inp
-ut line 612.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
-<output/figures/TypeScriptsctrends12.png, id=561, 859.5312pt x 355.0866pt>
-File: output/figures/TypeScriptsctrends12.png Graphic file (type png)
-<use output/figures/TypeScriptsctrends12.png>
-Package pdftex.def Info: output/figures/TypeScriptsctrends12.png  used on input
- line 616.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/TypeScriptscweights12.png, id=562, 789.1884pt x 353.6412pt>
-File: output/figures/TypeScriptscweights12.png Graphic file (type png)
-<use output/figures/TypeScriptscweights12.png>
-Package pdftex.def Info: output/figures/TypeScriptscweights12.png  used on inpu
-t line 620.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
-<output/figures/TypeScriptsdidtrends12.png, id=563, 860.013pt x 355.0866pt>
-File: output/figures/TypeScriptsdidtrends12.png Graphic file (type png)
-<use output/figures/TypeScriptsdidtrends12.png>
-Package pdftex.def Info: output/figures/TypeScriptsdidtrends12.png  used on inp
-ut line 624.
-(pdftex.def)             Requested size: 218.51521pt x 90.21808pt.
-<output/figures/TypeScriptsdidweights12.png, id=564, 789.1884pt x 353.6412pt>
-File: output/figures/TypeScriptsdidweights12.png Graphic file (type png)
-<use output/figures/TypeScriptsdidweights12.png>
-Package pdftex.def Info: output/figures/TypeScriptsdidweights12.png  used on in
-put line 628.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
- [42 <./output/figures/language_trend_no_gpt_countries_2020_2023.png>]
-<output/figures/JavaScriptdidtrends12.png, id=570, 859.5312pt x 355.0866pt>
-File: output/figures/JavaScriptdidtrends12.png Graphic file (type png)
-<use output/figures/JavaScriptdidtrends12.png>
-Package pdftex.def Info: output/figures/JavaScriptdidtrends12.png  used on inpu
-t line 638.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/JavaScriptdidweights12.png, id=571, 789.1884pt x 353.6412pt>
-File: output/figures/JavaScriptdidweights12.png Graphic file (type png)
-<use output/figures/JavaScriptdidweights12.png>
-Package pdftex.def Info: output/figures/JavaScriptdidweights12.png  used on inp
-ut line 642.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
-<output/figures/JavaScriptsctrends12.png, id=572, 859.5312pt x 355.0866pt>
-File: output/figures/JavaScriptsctrends12.png Graphic file (type png)
-<use output/figures/JavaScriptsctrends12.png>
-Package pdftex.def Info: output/figures/JavaScriptsctrends12.png  used on input
- line 646.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/JavaScriptscweights12.png, id=573, 789.1884pt x 353.6412pt>
-File: output/figures/JavaScriptscweights12.png Graphic file (type png)
-<use output/figures/JavaScriptscweights12.png>
-Package pdftex.def Info: output/figures/JavaScriptscweights12.png  used on inpu
-t line 650.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
-<output/figures/JavaScriptsdidtrends12.png, id=574, 859.5312pt x 355.0866pt>
-File: output/figures/JavaScriptsdidtrends12.png Graphic file (type png)
-<use output/figures/JavaScriptsdidtrends12.png>
-Package pdftex.def Info: output/figures/JavaScriptsdidtrends12.png  used on inp
-ut line 654.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/JavaScriptsdidweights12.png, id=575, 789.1884pt x 353.6412pt>
-File: output/figures/JavaScriptsdidweights12.png Graphic file (type png)
-<use output/figures/JavaScriptsdidweights12.png>
-Package pdftex.def Info: output/figures/JavaScriptsdidweights12.png  used on in
-put line 658.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
- [43 <./output/figures/TypeScriptdidtrends12.png> <./output/figures/TypeScriptd
-idweights12.png> <./output/figures/TypeScriptsctrends12.png> <./output/figures/
-TypeScriptscweights12.png> <./output/figures/TypeScriptsdidtrends12.png> <./out
-put/figures/TypeScriptsdidweights12.png>]
-<output/figures/Pythondidtrends12.png, id=586, 859.5312pt x 355.0866pt>
-File: output/figures/Pythondidtrends12.png Graphic file (type png)
-<use output/figures/Pythondidtrends12.png>
-Package pdftex.def Info: output/figures/Pythondidtrends12.png  used on input li
-ne 668.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/Pythondidweights12.png, id=587, 789.1884pt x 353.6412pt>
-File: output/figures/Pythondidweights12.png Graphic file (type png)
-<use output/figures/Pythondidweights12.png>
-Package pdftex.def Info: output/figures/Pythondidweights12.png  used on input l
-ine 672.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
-<output/figures/Pythonsctrends12.png, id=588, 860.013pt x 355.0866pt>
-File: output/figures/Pythonsctrends12.png Graphic file (type png)
-<use output/figures/Pythonsctrends12.png>
-Package pdftex.def Info: output/figures/Pythonsctrends12.png  used on input lin
-e 676.
-(pdftex.def)             Requested size: 218.51521pt x 90.21808pt.
-<output/figures/Pythonscweights12.png, id=589, 789.1884pt x 353.6412pt>
-File: output/figures/Pythonscweights12.png Graphic file (type png)
-<use output/figures/Pythonscweights12.png>
-Package pdftex.def Info: output/figures/Pythonscweights12.png  used on input li
-ne 680.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
-<output/figures/Pythonsdidtrends12.png, id=590, 859.5312pt x 355.0866pt>
-File: output/figures/Pythonsdidtrends12.png Graphic file (type png)
-<use output/figures/Pythonsdidtrends12.png>
-Package pdftex.def Info: output/figures/Pythonsdidtrends12.png  used on input l
-ine 684.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/Pythonsdidweights12.png, id=591, 789.1884pt x 353.6412pt>
-File: output/figures/Pythonsdidweights12.png Graphic file (type png)
-<use output/figures/Pythonsdidweights12.png>
-Package pdftex.def Info: output/figures/Pythonsdidweights12.png  used on input 
-line 688.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
- [44 <./output/figures/JavaScriptdidtrends12.png> <./output/figures/JavaScriptd
-idweights12.png> <./output/figures/JavaScriptsctrends12.png> <./output/figures/
-JavaScriptscweights12.png> <./output/figures/JavaScriptsdidtrends12.png> <./out
-put/figures/JavaScriptsdidweights12.png>]
-<output/figures/Javadidtrends12.png, id=602, 859.5312pt x 355.0866pt>
-File: output/figures/Javadidtrends12.png Graphic file (type png)
-<use output/figures/Javadidtrends12.png>
-Package pdftex.def Info: output/figures/Javadidtrends12.png  used on input line
- 698.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/Javadidweights12.png, id=603, 789.1884pt x 353.6412pt>
-File: output/figures/Javadidweights12.png Graphic file (type png)
-<use output/figures/Javadidweights12.png>
-Package pdftex.def Info: output/figures/Javadidweights12.png  used on input lin
-e 702.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
-<output/figures/Javasctrends12.png, id=604, 859.5312pt x 355.0866pt>
-File: output/figures/Javasctrends12.png Graphic file (type png)
-<use output/figures/Javasctrends12.png>
-Package pdftex.def Info: output/figures/Javasctrends12.png  used on input line 
-706.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/Javascweights12.png, id=605, 789.1884pt x 353.6412pt>
-File: output/figures/Javascweights12.png Graphic file (type png)
-<use output/figures/Javascweights12.png>
-Package pdftex.def Info: output/figures/Javascweights12.png  used on input line
- 710.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
-<output/figures/Javasdidtrends12.png, id=606, 859.5312pt x 355.0866pt>
-File: output/figures/Javasdidtrends12.png Graphic file (type png)
-<use output/figures/Javasdidtrends12.png>
-Package pdftex.def Info: output/figures/Javasdidtrends12.png  used on input lin
-e 714.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/Javasdidweights12.png, id=607, 789.1884pt x 353.6412pt>
-File: output/figures/Javasdidweights12.png Graphic file (type png)
-<use output/figures/Javasdidweights12.png>
-Package pdftex.def Info: output/figures/Javasdidweights12.png  used on input li
-ne 718.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
- [45 <./output/figures/Pythondidtrends12.png> <./output/figures/Pythondidweight
-s12.png> <./output/figures/Pythonsctrends12.png> <./output/figures/Pythonscweig
-hts12.png> <./output/figures/Pythonsdidtrends12.png> <./output/figures/Pythonsd
-idweights12.png>]
-<output/figures/Godidtrends12.png, id=618, 859.5312pt x 355.0866pt>
-File: output/figures/Godidtrends12.png Graphic file (type png)
-<use output/figures/Godidtrends12.png>
-Package pdftex.def Info: output/figures/Godidtrends12.png  used on input line 7
-28.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/Godidweights12.png, id=619, 789.1884pt x 354.123pt>
-File: output/figures/Godidweights12.png Graphic file (type png)
-<use output/figures/Godidweights12.png>
-Package pdftex.def Info: output/figures/Godidweights12.png  used on input line 
-732.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
-<output/figures/Gosctrends12.png, id=620, 860.013pt x 355.0866pt>
-File: output/figures/Gosctrends12.png Graphic file (type png)
-<use output/figures/Gosctrends12.png>
-Package pdftex.def Info: output/figures/Gosctrends12.png  used on input line 73
-6.
-(pdftex.def)             Requested size: 218.51521pt x 90.21808pt.
-<output/figures/Goscweights12.png, id=621, 789.1884pt x 354.123pt>
-File: output/figures/Goscweights12.png Graphic file (type png)
-<use output/figures/Goscweights12.png>
-Package pdftex.def Info: output/figures/Goscweights12.png  used on input line 7
-40.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
-<output/figures/Gosdidtrends12.png, id=622, 859.5312pt x 355.0866pt>
-File: output/figures/Gosdidtrends12.png Graphic file (type png)
-<use output/figures/Gosdidtrends12.png>
-Package pdftex.def Info: output/figures/Gosdidtrends12.png  used on input line 
-744.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/Gosdidweights12.png, id=623, 789.1884pt x 354.123pt>
-File: output/figures/Gosdidweights12.png Graphic file (type png)
-<use output/figures/Gosdidweights12.png>
-Package pdftex.def Info: output/figures/Gosdidweights12.png  used on input line
- 748.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
- [46 <./output/figures/Javadidtrends12.png> <./output/figures/Javadidweights12.
-png> <./output/figures/Javasctrends12.png> <./output/figures/Javascweights12.pn
-g> <./output/figures/Javasdidtrends12.png> <./output/figures/Javasdidweights12.
-png>]
-<output/figures/Rubydidtrends12.png, id=634, 859.5312pt x 355.0866pt>
-File: output/figures/Rubydidtrends12.png Graphic file (type png)
-<use output/figures/Rubydidtrends12.png>
-Package pdftex.def Info: output/figures/Rubydidtrends12.png  used on input line
- 758.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/Rubydidweights12.png, id=635, 789.1884pt x 353.6412pt>
-File: output/figures/Rubydidweights12.png Graphic file (type png)
-<use output/figures/Rubydidweights12.png>
-Package pdftex.def Info: output/figures/Rubydidweights12.png  used on input lin
-e 762.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
-<output/figures/Rubysctrends12.png, id=636, 860.013pt x 355.0866pt>
-File: output/figures/Rubysctrends12.png Graphic file (type png)
-<use output/figures/Rubysctrends12.png>
-Package pdftex.def Info: output/figures/Rubysctrends12.png  used on input line 
-766.
-(pdftex.def)             Requested size: 218.51521pt x 90.21808pt.
-<output/figures/Rubyscweights12.png, id=637, 789.1884pt x 353.6412pt>
-File: output/figures/Rubyscweights12.png Graphic file (type png)
-<use output/figures/Rubyscweights12.png>
-Package pdftex.def Info: output/figures/Rubyscweights12.png  used on input line
- 770.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
-<output/figures/Rubysdidtrends12.png, id=638, 859.5312pt x 355.0866pt>
-File: output/figures/Rubysdidtrends12.png Graphic file (type png)
-<use output/figures/Rubysdidtrends12.png>
-Package pdftex.def Info: output/figures/Rubysdidtrends12.png  used on input lin
-e 774.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/Rubysdidweights12.png, id=639, 789.1884pt x 353.6412pt>
-File: output/figures/Rubysdidweights12.png Graphic file (type png)
-<use output/figures/Rubysdidweights12.png>
-Package pdftex.def Info: output/figures/Rubysdidweights12.png  used on input li
-ne 778.
-(pdftex.def)             Requested size: 218.51521pt x 97.91805pt.
- [47 <./output/figures/Godidtrends12.png> <./output/figures/Godidweights12.png>
- <./output/figures/Gosctrends12.png> <./output/figures/Goscweights12.png> <./ou
-tput/figures/Gosdidtrends12.png> <./output/figures/Gosdidweights12.png>]
-<output/figures/PHPdidtrends12.png, id=651, 859.5312pt x 355.0866pt>
-File: output/figures/PHPdidtrends12.png Graphic file (type png)
-<use output/figures/PHPdidtrends12.png>
-Package pdftex.def Info: output/figures/PHPdidtrends12.png  used on input line 
-788.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/PHPdidweights12.png, id=652, 789.1884pt x 354.123pt>
-File: output/figures/PHPdidweights12.png Graphic file (type png)
-<use output/figures/PHPdidweights12.png>
-Package pdftex.def Info: output/figures/PHPdidweights12.png  used on input line
- 792.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
-<output/figures/PHPsctrends12.png, id=653, 860.013pt x 355.0866pt>
-File: output/figures/PHPsctrends12.png Graphic file (type png)
-<use output/figures/PHPsctrends12.png>
-Package pdftex.def Info: output/figures/PHPsctrends12.png  used on input line 7
-96.
-(pdftex.def)             Requested size: 218.51521pt x 90.21808pt.
-<output/figures/PHPscweights12.png, id=654, 789.1884pt x 354.123pt>
-File: output/figures/PHPscweights12.png Graphic file (type png)
-<use output/figures/PHPscweights12.png>
-Package pdftex.def Info: output/figures/PHPscweights12.png  used on input line 
-800.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
-<output/figures/PHPsdidtrends12.png, id=655, 859.5312pt x 355.0866pt>
-File: output/figures/PHPsdidtrends12.png Graphic file (type png)
-<use output/figures/PHPsdidtrends12.png>
-Package pdftex.def Info: output/figures/PHPsdidtrends12.png  used on input line
- 804.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/PHPsdidweights12.png, id=656, 789.1884pt x 354.123pt>
-File: output/figures/PHPsdidweights12.png Graphic file (type png)
-<use output/figures/PHPsdidweights12.png>
-Package pdftex.def Info: output/figures/PHPsdidweights12.png  used on input lin
-e 808.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
- [48 <./output/figures/Rubydidtrends12.png> <./output/figures/Rubydidweights12.
-png> <./output/figures/Rubysctrends12.png> <./output/figures/Rubyscweights12.pn
-g> <./output/figures/Rubysdidtrends12.png> <./output/figures/Rubysdidweights12.
-png>]
-<output/figures/C_hashtagdidtrends12.png, id=667, 859.5312pt x 355.0866pt>
-File: output/figures/C_hashtagdidtrends12.png Graphic file (type png)
-<use output/figures/C_hashtagdidtrends12.png>
-Package pdftex.def Info: output/figures/C_hashtagdidtrends12.png  used on input
- line 818.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/C_hashtagdidweights12.png, id=668, 789.1884pt x 354.123pt>
-File: output/figures/C_hashtagdidweights12.png Graphic file (type png)
-<use output/figures/C_hashtagdidweights12.png>
-Package pdftex.def Info: output/figures/C_hashtagdidweights12.png  used on inpu
-t line 822.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
-<output/figures/C_hashtagsctrends12.png, id=669, 859.5312pt x 355.0866pt>
-File: output/figures/C_hashtagsctrends12.png Graphic file (type png)
-<use output/figures/C_hashtagsctrends12.png>
-Package pdftex.def Info: output/figures/C_hashtagsctrends12.png  used on input 
-line 826.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/C_hashtagscweights12.png, id=670, 789.1884pt x 354.123pt>
-File: output/figures/C_hashtagscweights12.png Graphic file (type png)
-<use output/figures/C_hashtagscweights12.png>
-Package pdftex.def Info: output/figures/C_hashtagscweights12.png  used on input
- line 830.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
-<output/figures/C_hashtagsdidtrends12.png, id=671, 859.5312pt x 355.0866pt>
-File: output/figures/C_hashtagsdidtrends12.png Graphic file (type png)
-<use output/figures/C_hashtagsdidtrends12.png>
-Package pdftex.def Info: output/figures/C_hashtagsdidtrends12.png  used on inpu
-t line 834.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/C_hashtagsdidweights12.png, id=672, 789.1884pt x 354.123pt>
-File: output/figures/C_hashtagsdidweights12.png Graphic file (type png)
-<use output/figures/C_hashtagsdidweights12.png>
-Package pdftex.def Info: output/figures/C_hashtagsdidweights12.png  used on inp
-ut line 838.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
- [49 <./output/figures/PHPdidtrends12.png> <./output/figures/PHPdidweights12.pn
-g> <./output/figures/PHPsctrends12.png> <./output/figures/PHPscweights12.png> <
-./output/figures/PHPsdidtrends12.png> <./output/figures/PHPsdidweights12.png>]
-<output/figures/C_plusdidtrends12.png, id=683, 859.5312pt x 355.0866pt>
-File: output/figures/C_plusdidtrends12.png Graphic file (type png)
-<use output/figures/C_plusdidtrends12.png>
-Package pdftex.def Info: output/figures/C_plusdidtrends12.png  used on input li
-ne 848.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/C_plusdidweights12.png, id=684, 789.1884pt x 354.123pt>
-File: output/figures/C_plusdidweights12.png Graphic file (type png)
-<use output/figures/C_plusdidweights12.png>
-Package pdftex.def Info: output/figures/C_plusdidweights12.png  used on input l
-ine 852.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
-<output/figures/C_plussctrends12.png, id=685, 859.5312pt x 355.0866pt>
-File: output/figures/C_plussctrends12.png Graphic file (type png)
-<use output/figures/C_plussctrends12.png>
-Package pdftex.def Info: output/figures/C_plussctrends12.png  used on input lin
-e 856.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/C_plusscweights12.png, id=686, 789.1884pt x 354.123pt>
-File: output/figures/C_plusscweights12.png Graphic file (type png)
-<use output/figures/C_plusscweights12.png>
-Package pdftex.def Info: output/figures/C_plusscweights12.png  used on input li
-ne 860.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
-<output/figures/C_plussdidtrends12.png, id=687, 859.5312pt x 355.0866pt>
-File: output/figures/C_plussdidtrends12.png Graphic file (type png)
-<use output/figures/C_plussdidtrends12.png>
-Package pdftex.def Info: output/figures/C_plussdidtrends12.png  used on input l
-ine 864.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/C_plussdidweights12.png, id=688, 789.1884pt x 354.123pt>
-File: output/figures/C_plussdidweights12.png Graphic file (type png)
-<use output/figures/C_plussdidweights12.png>
-Package pdftex.def Info: output/figures/C_plussdidweights12.png  used on input 
-line 868.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
- [50 <./output/figures/C_hashtagdidtrends12.png> <./output/figures/C_hashtagdid
-weights12.png> <./output/figures/C_hashtagsctrends12.png> <./output/figures/C_h
-ashtagscweights12.png> <./output/figures/C_hashtagsdidtrends12.png> <./output/f
-igures/C_hashtagsdidweights12.png>]
-<output/figures/Cdidtrends12.png, id=699, 859.5312pt x 355.0866pt>
-File: output/figures/Cdidtrends12.png Graphic file (type png)
-<use output/figures/Cdidtrends12.png>
-Package pdftex.def Info: output/figures/Cdidtrends12.png  used on input line 87
-8.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/Cdidweights12.png, id=700, 789.1884pt x 354.123pt>
-File: output/figures/Cdidweights12.png Graphic file (type png)
-<use output/figures/Cdidweights12.png>
-Package pdftex.def Info: output/figures/Cdidweights12.png  used on input line 8
-82.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
-<output/figures/Csctrends12.png, id=701, 859.5312pt x 355.0866pt>
-File: output/figures/Csctrends12.png Graphic file (type png)
-<use output/figures/Csctrends12.png>
-Package pdftex.def Info: output/figures/Csctrends12.png  used on input line 886
-.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/Cscweights12.png, id=702, 789.1884pt x 354.123pt>
-File: output/figures/Cscweights12.png Graphic file (type png)
-<use output/figures/Cscweights12.png>
-Package pdftex.def Info: output/figures/Cscweights12.png  used on input line 89
-0.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
-<output/figures/Csdidtrends12.png, id=703, 859.5312pt x 355.0866pt>
-File: output/figures/Csdidtrends12.png Graphic file (type png)
-<use output/figures/Csdidtrends12.png>
-Package pdftex.def Info: output/figures/Csdidtrends12.png  used on input line 8
-94.
-(pdftex.def)             Requested size: 218.51521pt x 90.27225pt.
-<output/figures/Csdidweights12.png, id=704, 789.1884pt x 354.123pt>
-File: output/figures/Csdidweights12.png Graphic file (type png)
-<use output/figures/Csdidweights12.png>
-Package pdftex.def Info: output/figures/Csdidweights12.png  used on input line 
-898.
-(pdftex.def)             Requested size: 218.51521pt x 98.05144pt.
- [51 <./output/figures/C_plusdidtrends12.png> <./output/figures/C_plusdidweight
-s12.png> <./output/figures/C_plussctrends12.png> <./output/figures/C_plusscweig
-hts12.png> <./output/figures/C_plussdidtrends12.png> <./output/figures/C_plussd
-idweights12.png>]
-<output/figures/robustness_forest_plot.png, id=715, 786.2976pt x 497.57895pt>
-File: output/figures/robustness_forest_plot.png Graphic file (type png)
-<use output/figures/robustness_forest_plot.png>
-Package pdftex.def Info: output/figures/robustness_forest_plot.png  used on inp
-ut line 909.
-(pdftex.def)             Requested size: 455.24411pt x 288.0873pt.
- [52 <./output/figures/Cdidtrends12.png> <./output/figures/Cdidweights12.png> <
-./output/figures/Csctrends12.png> <./output/figures/Cscweights12.png> <./output
-/figures/Csdidtrends12.png> <./output/figures/Csdidweights12.png>]
-<output/figures/placebo_distribution_panel.png, id=726, 860.013pt x 1016.1965pt
->
-File: output/figures/placebo_distribution_panel.png Graphic file (type png)
-<use output/figures/placebo_distribution_panel.png>
-Package pdftex.def Info: output/figures/placebo_distribution_panel.png  used on
- input line 920.
-(pdftex.def)             Requested size: 455.24411pt x 537.91483pt.
- [53 <./output/figures/robustness_forest_plot.png>]
-<output/figures/chatgpt_timeline.png, id=733, 1206.22072pt x 679.338pt>
-File: output/figures/chatgpt_timeline.png Graphic file (type png)
-<use output/figures/chatgpt_timeline.png>
-Package pdftex.def Info: output/figures/chatgpt_timeline.png  used on input lin
-e 931.
-(pdftex.def)             Requested size: 455.24411pt x 256.38892pt.
- [54 <./output/figures/placebo_distribution_panel.png>] [55 <./output/figures/c
-hatgpt_timeline.png>]
-<output/figures/chatgpt_global_availability_map.png, id=744, 1149.093pt x 598.0
-3426pt>
-File: output/figures/chatgpt_global_availability_map.png Graphic file (type png
-)
-<use output/figures/chatgpt_global_availability_map.png>
-Package pdftex.def Info: output/figures/chatgpt_global_availability_map.png  us
-ed on input line 952.
-(pdftex.def)             Requested size: 455.24411pt x 236.92815pt.
-
-Overfull \hbox (9.60593pt too wide) in alignment at lines 957--962
- [] [] [] [] 
- []
-
-
-Overfull \hbox (9.60593pt too wide) in alignment at lines 962--967
- [] [] [] [] 
- []
-
-
-Overfull \hbox (9.60593pt too wide) in alignment at lines 967--968
- [] [] [] [] 
- []
-
-
-Overfull \hbox (9.60593pt too wide) in alignment at lines 968--1103
- [] [] [] [] 
- []
-
-ignored error: Infinite glue shrinkage found in box being split [56
-
- <./output/figures/chatgpt_global_availability_map.png>]
-ignored error: Infinite glue shrinkage found in box being split [57]
-ignored error: Infinite glue shrinkage found in box being split [58]
-ignored error: Infinite glue shrinkage found in box being split [59] [60]
-[61
-
-] [62] (output/tables/gpt_impact_github_DataScience_controls.tex)
-(output/tables/gpt_impact_github_robustez.tex) [63] [64] [65]
-<output/figures/Csdid_event_study.png, id=798, 859.2903pt x 352.31625pt>
-File: output/figures/Csdid_event_study.png Graphic file (type png)
-<use output/figures/Csdid_event_study.png>
-Package pdftex.def Info: output/figures/Csdid_event_study.png  used on input li
-ne 1238.
-(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
-<output/figures/C_hashtagsdid_event_study.png, id=799, 859.2903pt x 352.31625pt
->
-File: output/figures/C_hashtagsdid_event_study.png Graphic file (type png)
-<use output/figures/C_hashtagsdid_event_study.png>
-Package pdftex.def Info: output/figures/C_hashtagsdid_event_study.png  used on 
-input line 1244.
-(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
-<output/figures/C_plussdid_event_study.png, id=800, 859.2903pt x 352.31625pt>
-File: output/figures/C_plussdid_event_study.png Graphic file (type png)
-<use output/figures/C_plussdid_event_study.png>
-Package pdftex.def Info: output/figures/C_plussdid_event_study.png  used on inp
-ut line 1250.
-(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
- [66
-
- <./output/figures/Csdid_event_study.png> <./output/figures/C_hashtagsdid_event
-_study.png>]
-<output/figures/Gosdid_event_study.png, id=807, 859.65166pt x 352.31625pt>
-File: output/figures/Gosdid_event_study.png Graphic file (type png)
-<use output/figures/Gosdid_event_study.png>
-Package pdftex.def Info: output/figures/Gosdid_event_study.png  used on input l
-ine 1256.
-(pdftex.def)             Requested size: 386.96027pt x 158.5946pt.
-<output/figures/Javasdid_event_study.png, id=808, 859.2903pt x 352.31625pt>
-File: output/figures/Javasdid_event_study.png Graphic file (type png)
-<use output/figures/Javasdid_event_study.png>
-Package pdftex.def Info: output/figures/Javasdid_event_study.png  used on input
- line 1262.
-(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
-<output/figures/JavaScriptsdid_event_study.png, id=809, 859.2903pt x 352.31625p
-t>
-File: output/figures/JavaScriptsdid_event_study.png Graphic file (type png)
-<use output/figures/JavaScriptsdid_event_study.png>
-Package pdftex.def Info: output/figures/JavaScriptsdid_event_study.png  used on
- input line 1268.
-(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
-
-[67 <./output/figures/C_plussdid_event_study.png> <./output/figures/Gosdid_even
-t_study.png> <./output/figures/Javasdid_event_study.png>]
-<output/figures/PHPsdid_event_study.png, id=817, 859.65166pt x 352.31625pt>
-File: output/figures/PHPsdid_event_study.png Graphic file (type png)
-<use output/figures/PHPsdid_event_study.png>
-Package pdftex.def Info: output/figures/PHPsdid_event_study.png  used on input 
-line 1275.
-(pdftex.def)             Requested size: 386.96027pt x 158.5946pt.
-<output/figures/Pythonsdid_event_study.png, id=818, 859.2903pt x 352.31625pt>
-File: output/figures/Pythonsdid_event_study.png Graphic file (type png)
-<use output/figures/Pythonsdid_event_study.png>
-Package pdftex.def Info: output/figures/Pythonsdid_event_study.png  used on inp
-ut line 1281.
-(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
-<output/figures/Rubysdid_event_study.png, id=819, 859.2903pt x 352.31625pt>
-File: output/figures/Rubysdid_event_study.png Graphic file (type png)
-<use output/figures/Rubysdid_event_study.png>
-Package pdftex.def Info: output/figures/Rubysdid_event_study.png  used on input
- line 1287.
-(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
- [68 <./output/figures/JavaScriptsdid_event_study.png> <./output/figures/PHPsdi
-d_event_study.png> <./output/figures/Pythonsdid_event_study.png>]
-<output/figures/TypeScriptsdid_event_study.png, id=827, 859.2903pt x 352.31625p
-t>
-File: output/figures/TypeScriptsdid_event_study.png Graphic file (type png)
-<use output/figures/TypeScriptsdid_event_study.png>
-Package pdftex.def Info: output/figures/TypeScriptsdid_event_study.png  used on
- input line 1293.
-(pdftex.def)             Requested size: 386.96027pt x 158.65373pt.
- [69 <./output/figures/Rubysdid_event_study.png> <./output/figures/TypeScriptsd
-id_event_study.png>]
-Underfull \hbox (badness 6001) in paragraph at lines 1313--1314
-[]\T1/phv/m/n/12 (+20) Abu Ja-ber, M., Be-ga-no-vic, A., & Abd Al-mis-reb, A. (
-2023). Methods
- []
-
-
-Underfull \hbox (badness 2894) in paragraph at lines 1313--1314
-\T1/phv/m/n/12 (+20) and Ap-pli-ca-tions of ChatGPT in Soft-wa-re De-ve-lop-men
-t: A Li-te-ra-tu-re Re-
- []
-
-
-Underfull \hbox (badness 2486) in paragraph at lines 1313--1314
-\T1/phv/m/n/12 (+20) view. \T1/phv/m/sl/12 (+20) Southeast Eu-ro-pe Jour-nal of
- Soft Com-pu-ting, 12\T1/phv/m/n/12 (+20) (1), 08^^U12. [][]$\T1/lmtt/m/n/12 ht
-tps :
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1313--1314
-\T1/lmtt/m/n/12 / / www . researchgate . net / publication / 370872615 _ Method
-s _ and _ Applications _
- []
-
-[70
+ype bmp)
+<output/figures/language_distribution_no_gpt_2020_2023.png>
+ [33
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1343--1344
-[]\T1/phv/m/n/12 (+20) Coursera Staff. (2024). Most Po-pu-lar Pro-gram-ming Lan
--gua-ges
+File: output/figures/language_trend_gpt_countries_2020_2023.png Graphic file (t
+ype bmp)
+<output/figures/language_trend_gpt_countries_2020_2023.png>
+ [34]
+File: output/figures/language_trend_no_gpt_countries_2020_2023.png Graphic file
+ (type bmp)
+<output/figures/language_trend_no_gpt_countries_2020_2023.png>
+
+[35]
+File: output/figures/TypeScriptdidtrends12.png Graphic file (type bmp)
+<output/figures/TypeScriptdidtrends12.png>
+File: output/figures/TypeScriptdidweights12.png Graphic file (type bmp)
+<output/figures/TypeScriptdidweights12.png>
+File: output/figures/TypeScriptsctrends12.png Graphic file (type bmp)
+<output/figures/TypeScriptsctrends12.png>
+File: output/figures/TypeScriptscweights12.png Graphic file (type bmp)
+<output/figures/TypeScriptscweights12.png>
+File: output/figures/TypeScriptsdidtrends12.png Graphic file (type bmp)
+<output/figures/TypeScriptsdidtrends12.png>
+File: output/figures/TypeScriptsdidweights12.png Graphic file (type bmp)
+<output/figures/TypeScriptsdidweights12.png>
+ [36]
+File: output/figures/JavaScriptdidtrends12.png Graphic file (type bmp)
+<output/figures/JavaScriptdidtrends12.png>
+File: output/figures/JavaScriptdidweights12.png Graphic file (type bmp)
+<output/figures/JavaScriptdidweights12.png>
+File: output/figures/JavaScriptsctrends12.png Graphic file (type bmp)
+<output/figures/JavaScriptsctrends12.png>
+File: output/figures/JavaScriptscweights12.png Graphic file (type bmp)
+<output/figures/JavaScriptscweights12.png>
+File: output/figures/JavaScriptsdidtrends12.png Graphic file (type bmp)
+<output/figures/JavaScriptsdidtrends12.png>
+File: output/figures/JavaScriptsdidweights12.png Graphic file (type bmp)
+<output/figures/JavaScriptsdidweights12.png>
+ [37]
+File: output/figures/Pythondidtrends12.png Graphic file (type bmp)
+<output/figures/Pythondidtrends12.png>
+File: output/figures/Pythondidweights12.png Graphic file (type bmp)
+<output/figures/Pythondidweights12.png>
+File: output/figures/Pythonsctrends12.png Graphic file (type bmp)
+<output/figures/Pythonsctrends12.png>
+File: output/figures/Pythonscweights12.png Graphic file (type bmp)
+<output/figures/Pythonscweights12.png>
+File: output/figures/Pythonsdidtrends12.png Graphic file (type bmp)
+<output/figures/Pythonsdidtrends12.png>
+File: output/figures/Pythonsdidweights12.png Graphic file (type bmp)
+<output/figures/Pythonsdidweights12.png>
+ [38]
+File: output/figures/Javadidtrends12.png Graphic file (type bmp)
+<output/figures/Javadidtrends12.png>
+File: output/figures/Javadidweights12.png Graphic file (type bmp)
+<output/figures/Javadidweights12.png>
+File: output/figures/Javasctrends12.png Graphic file (type bmp)
+<output/figures/Javasctrends12.png>
+File: output/figures/Javascweights12.png Graphic file (type bmp)
+<output/figures/Javascweights12.png>
+File: output/figures/Javasdidtrends12.png Graphic file (type bmp)
+<output/figures/Javasdidtrends12.png>
+File: output/figures/Javasdidweights12.png Graphic file (type bmp)
+<output/figures/Javasdidweights12.png>
+ [39]
+File: output/figures/Godidtrends12.png Graphic file (type bmp)
+<output/figures/Godidtrends12.png>
+File: output/figures/Godidweights12.png Graphic file (type bmp)
+<output/figures/Godidweights12.png>
+File: output/figures/Gosctrends12.png Graphic file (type bmp)
+<output/figures/Gosctrends12.png>
+File: output/figures/Goscweights12.png Graphic file (type bmp)
+<output/figures/Goscweights12.png>
+File: output/figures/Gosdidtrends12.png Graphic file (type bmp)
+<output/figures/Gosdidtrends12.png>
+File: output/figures/Gosdidweights12.png Graphic file (type bmp)
+<output/figures/Gosdidweights12.png>
+ [40]
+File: output/figures/Rubydidtrends12.png Graphic file (type bmp)
+<output/figures/Rubydidtrends12.png>
+File: output/figures/Rubydidweights12.png Graphic file (type bmp)
+<output/figures/Rubydidweights12.png>
+File: output/figures/Rubysctrends12.png Graphic file (type bmp)
+<output/figures/Rubysctrends12.png>
+File: output/figures/Rubyscweights12.png Graphic file (type bmp)
+<output/figures/Rubyscweights12.png>
+File: output/figures/Rubysdidtrends12.png Graphic file (type bmp)
+<output/figures/Rubysdidtrends12.png>
+File: output/figures/Rubysdidweights12.png Graphic file (type bmp)
+<output/figures/Rubysdidweights12.png>
+ [41]
+File: output/figures/PHPdidtrends12.png Graphic file (type bmp)
+<output/figures/PHPdidtrends12.png>
+File: output/figures/PHPdidweights12.png Graphic file (type bmp)
+<output/figures/PHPdidweights12.png>
+File: output/figures/PHPsctrends12.png Graphic file (type bmp)
+<output/figures/PHPsctrends12.png>
+File: output/figures/PHPscweights12.png Graphic file (type bmp)
+<output/figures/PHPscweights12.png>
+File: output/figures/PHPsdidtrends12.png Graphic file (type bmp)
+<output/figures/PHPsdidtrends12.png>
+File: output/figures/PHPsdidweights12.png Graphic file (type bmp)
+<output/figures/PHPsdidweights12.png>
+ [42]
+File: output/figures/C_hashtagdidtrends12.png Graphic file (type bmp)
+<output/figures/C_hashtagdidtrends12.png>
+File: output/figures/C_hashtagdidweights12.png Graphic file (type bmp)
+<output/figures/C_hashtagdidweights12.png>
+File: output/figures/C_hashtagsctrends12.png Graphic file (type bmp)
+<output/figures/C_hashtagsctrends12.png>
+File: output/figures/C_hashtagscweights12.png Graphic file (type bmp)
+<output/figures/C_hashtagscweights12.png>
+File: output/figures/C_hashtagsdidtrends12.png Graphic file (type bmp)
+<output/figures/C_hashtagsdidtrends12.png>
+File: output/figures/C_hashtagsdidweights12.png Graphic file (type bmp)
+<output/figures/C_hashtagsdidweights12.png>
+ [43]
+File: output/figures/C_plusdidtrends12.png Graphic file (type bmp)
+<output/figures/C_plusdidtrends12.png>
+File: output/figures/C_plusdidweights12.png Graphic file (type bmp)
+<output/figures/C_plusdidweights12.png>
+File: output/figures/C_plussctrends12.png Graphic file (type bmp)
+<output/figures/C_plussctrends12.png>
+File: output/figures/C_plusscweights12.png Graphic file (type bmp)
+<output/figures/C_plusscweights12.png>
+File: output/figures/C_plussdidtrends12.png Graphic file (type bmp)
+<output/figures/C_plussdidtrends12.png>
+File: output/figures/C_plussdidweights12.png Graphic file (type bmp)
+<output/figures/C_plussdidweights12.png>
+ [44]
+File: output/figures/Cdidtrends12.png Graphic file (type bmp)
+<output/figures/Cdidtrends12.png>
+File: output/figures/Cdidweights12.png Graphic file (type bmp)
+<output/figures/Cdidweights12.png>
+File: output/figures/Csctrends12.png Graphic file (type bmp)
+<output/figures/Csctrends12.png>
+File: output/figures/Cscweights12.png Graphic file (type bmp)
+<output/figures/Cscweights12.png>
+File: output/figures/Csdidtrends12.png Graphic file (type bmp)
+<output/figures/Csdidtrends12.png>
+File: output/figures/Csdidweights12.png Graphic file (type bmp)
+<output/figures/Csdidweights12.png>
+ [45]
+File: output/figures/robustness_forest_plot.png Graphic file (type bmp)
+<output/figures/robustness_forest_plot.png>
+ [46]
+File: output/figures/placebo_distribution_panel.png Graphic file (type bmp)
+<output/figures/placebo_distribution_panel.png>
+ [47]
+File: output/figures/chatgpt_timeline.png Graphic file (type bmp)
+<output/figures/chatgpt_timeline.png>
+ [48] [49]
+Underfull \hbox (badness 7981) in paragraph at lines 1099--1100
+[]\TU/Arial(0)/m/n/12 Abu Jaber, M., Beganovic, A., & Abd Almisreb, A. (2023). 
+Methods and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1343--1344
-\T1/phv/m/n/12 (+20) in 2024 | Cour-se-ra. \T1/phv/m/sl/12 (+20) Cour-se-ra\T1/
-phv/m/n/12 (+20) . [][]$\T1/lmtt/m/n/12 https : / / www . coursera . org / arti
-cles /
+Underfull \hbox (badness 10000) in paragraph at lines 1099--1100
+\TU/Arial(0)/m/n/12 Applications of ChatGPT in Software Development: A Literatu
+re Re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1346--1347
-[]\T1/phv/m/n/12 (+20) Data Camp. (2023). Top pro-gram-ming lan-gua-ges for da-
-ta scien-
+Underfull \hbox (badness 10000) in paragraph at lines 1099--1100
+\TU/Arial(0)/m/n/12 view. \TU/Arial(0)/m/it/12 Southeast Europe Journal of Soft
+ Computing, 12\TU/Arial(0)/m/n/12 (1), 08â€“12.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1346--1347
-\T1/phv/m/n/12 (+20) tists in 2023 | Da-ta-Camp. \T1/phv/m/sl/12 (+20) Da-ta-ca
-mp\T1/phv/m/n/12 (+20) . [][]$\T1/lmtt/m/n/12 https : / / www . datacamp . com 
-/ blog /
- []
-
-[71]
-Underfull \hbox (badness 6461) in paragraph at lines 1376--1377
-[]\T1/phv/m/n/12 (+20) Martinez, J. (2023). Gue-rra abier-ta con-tra ChatGPT: e
-s-tos son los
+Underfull \hbox (badness 10000) in paragraph at lines 1099--1100
+[][]$[][][][][] [] [] [] [][][] [] [][][][][][][][][][][][] [] [][][] [] [][][]
+[][][][][][][][] [] [][][][][][][][][] [] [][][][][][][] [] [][][] []
  []
 
 
-Underfull \hbox (badness 5924) in paragraph at lines 1376--1377
-\T1/phv/m/n/12 (+20) paí-ses que ya lo han prohi-bi-do. \T1/phv/m/sl/12 (+20) A
-BC\T1/phv/m/n/12 (+20) . [][]$\T1/lmtt/m/n/12 https : / / www . abc . es / tecn
-ologia /
+Underfull \hbox (badness 5050) in paragraph at lines 1108--1109
+\TU/Arial(0)/m/n/12 Synthetic Difference-in-Differences. \TU/Arial(0)/m/it/12 A
+merican Economic Review, 111\TU/Arial(0)/m/n/12 (12),
  []
 
-[72] [73] (Tesis.aux
+[50
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1129--1130
+[]\TU/Arial(0)/m/n/12 Coursera Staff. (2024). Most Popular Programming Language
+s in 2024
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1129--1130
+\TU/Arial(0)/m/n/12 | Coursera. \TU/Arial(0)/m/it/12 Coursera\TU/Arial(0)/m/n/1
+2 . [][]$[][][][][] [] [] [] [][][] [] [][][][][][][][] [] [][][] [] [][][][][]
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1132--1133
+[]\TU/Arial(0)/m/n/12 Data Camp. (2023). Top programming languages for data sci
+entists in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1132--1133
+\TU/Arial(0)/m/n/12 2023 | DataCamp. \TU/Arial(0)/m/it/12 Datacamp\TU/Arial(0)/
+m/n/12 . [][]$[][][][][] [] [] [] [][][] [] [][][][][][][][] [] [][][] [] [][][
+][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1148
+[]\TU/Arial(0)/m/n/12 Ijaz, S. (2023, julio 6). \TU/Arial(0)/m/it/12 15 Countri
+es That Banned ChatGPT\TU/Arial(0)/m/n/12 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1148
+\TU/Arial(0)/m/n/12 Insider Monkey. [][]$[][][][][] [] [] [] [][][] [] [][][][]
+[][][][][][][][][] [] [][][] [] [][][][] []
+ []
+
+[51]
+Underfull \hbox (badness 10000) in paragraph at lines 1162--1163
+[]\TU/Arial(0)/m/n/12 Martinez, J. (2023). Guerra abierta contra ChatGPT: estos
+ son los paÃ­-
+ []
+
+
+Underfull \hbox (badness 7925) in paragraph at lines 1162--1163
+\TU/Arial(0)/m/n/12 ses que ya lo han prohibido. \TU/Arial(0)/m/it/12 ABC\TU/Ar
+ial(0)/m/n/12 . [][]$[][][][][] [] [] [] [][][] [] [][][] [] [][] [] [][][][][]
+[][][][][] []
+ []
+
+
+Underfull \hbox (badness 1454) in paragraph at lines 1174--1175
+[]\TU/Arial(0)/m/n/12 Rice CS. (2023). Top 12 Data Science Programming Language
+s | MDS@Rice.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1174--1175
+\TU/Arial(0)/m/it/12 Rice University\TU/Arial(0)/m/n/12 . [][]$[][][][][] [] []
+ [] [][][][][] [] [][][][] [] [][][] [] [][][][][][][][][] [] [][][][][][][][][
+][][][][][][][][][] []
+ []
+
+
+Underfull \hbox (badness 1675) in paragraph at lines 1189--1190
+[]\TU/Arial(0)/m/n/12 World Intellectual Property Organization. (2022). World I
+ntellectual Property Re-
+ []
+
+
+Underfull \hbox (badness 6268) in paragraph at lines 1189--1190
+\TU/Arial(0)/m/n/12 port 2022 â€” The Direction of Innovation. [][]$[][][][][] []
+ [] [] [][][] [] [][][][] [] [][][] [] [][][] []
+ []
+
+[52]
+File: output/figures/chatgpt_global_availability_map.png Graphic file (type bmp
+)
+<output/figures/chatgpt_global_availability_map.png>
+
+ignored error: Infinite glue shrinkage found in box being split [53
+
+]
+ignored error: Infinite glue shrinkage found in box being split [54]
+ignored error: Infinite glue shrinkage found in box being split [55] [56]
+[57
+
+] [58] (output/tables/gpt_impact_github_DataScience_controls.tex)
+(output/tables/gpt_impact_github_robustez.tex) [59] [60] [61]
+File: output/figures/Csdid_event_study.png Graphic file (type bmp)
+<output/figures/Csdid_event_study.png>
+File: output/figures/C_hashtagsdid_event_study.png Graphic file (type bmp)
+<output/figures/C_hashtagsdid_event_study.png>
+ [62
+
+]
+File: output/figures/C_plussdid_event_study.png Graphic file (type bmp)
+<output/figures/C_plussdid_event_study.png>
+File: output/figures/Gosdid_event_study.png Graphic file (type bmp)
+<output/figures/Gosdid_event_study.png>
+ [63]
+File: output/figures/Javasdid_event_study.png Graphic file (type bmp)
+<output/figures/Javasdid_event_study.png>
+File: output/figures/JavaScriptsdid_event_study.png Graphic file (type bmp)
+<output/figures/JavaScriptsdid_event_study.png>
+
+[64]
+File: output/figures/PHPsdid_event_study.png Graphic file (type bmp)
+<output/figures/PHPsdid_event_study.png>
+File: output/figures/Pythonsdid_event_study.png Graphic file (type bmp)
+<output/figures/Pythonsdid_event_study.png>
+ [65]
+File: output/figures/Rubysdid_event_study.png Graphic file (type bmp)
+<output/figures/Rubysdid_event_study.png>
+File: output/figures/TypeScriptsdid_event_study.png Graphic file (type bmp)
+<output/figures/TypeScriptsdid_event_study.png>
+ [66] [67] (Tesis.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -1492,37 +1132,15 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `Tesis.out' has not changed.
-(rerunfilecheck)             Checksum: 2E31A11A210B042159BE5E1986D10A6B;5188.
+(rerunfilecheck)             Checksum: A22BE6EA388A1E0F502DA515053AF989;4887.
  ) 
 Here is how much of TeX's memory you used:
- 17874 strings out of 467871
- 304658 string characters out of 5418376
- 752053 words of memory out of 5000000
- 45726 multiletter control sequences out of 15000+600000
- 747455 words of font info for 465 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 75i,14n,79p,2049b,701s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
-b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pf
-b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
-b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pf
-b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb
-><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb
-><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C
-:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/
-Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/
-Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/U
-sers/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/U
-sers/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/U
-sers/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C
-:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb
-><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a
-.pfb>
-Output written on Tesis.pdf (75 pages, 9269448 bytes).
-PDF statistics:
- 1059 PDF objects out of 1200 (max. 8388607)
- 188 named destinations out of 1000 (max. 500000)
- 86140 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 18743 strings out of 402987
+ 368474 string characters out of 5448524
+ 861507 words of memory out of 5000000
+ 47128 multiletter control sequences out of 15000+600000
+ 638990 words of font info for 113 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 73i,14n,93p,1985b,650s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
+Output written on Tesis.xdv (74 pages, 1266572 bytes).

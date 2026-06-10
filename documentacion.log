@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.14)  25 MAY 2026 18:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.14)  2 JUN 2026 13:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1027,7 +1027,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.23 ...jecutivo de los hallazgos}{20}{section.17}
+l.23 ...jecutivo de los hallazgos}{23}{section.17}
                                                   % [1])
 \tf@toc=\write5
 \openout5 = `documentacion.toc'.
@@ -1038,81 +1038,75 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
  [3
 
 ] [4{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.
-enc}{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}
-{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
-] [5] [6]
-[7]
-<output/figures/language_distribution_gpt_available_2020_2023.png, id=163, 1149
-.093pt x 570.933pt>
+enc}] [5{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.
+enc}{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.
+enc}] [6]
+[7] [8] [9]
+<output/figures/language_distribution_gpt_available_2020_2023.png, id=171, 859.
+5312pt x 461.5644pt>
 File: output/figures/language_distribution_gpt_available_2020_2023.png Graphic 
 file (type png)
 <use output/figures/language_distribution_gpt_available_2020_2023.png>
 Package pdftex.def Info: output/figures/language_distribution_gpt_available_202
-0_2023.png  used on input line 275.
-(pdftex.def)             Requested size: 386.96027pt x 192.26776pt.
- [8]
+0_2023.png  used on input line 322.
+(pdftex.def)             Requested size: 386.96027pt x 207.80066pt.
+ [10]
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 283.
-<output/figures/language_trend_gpt_countries_2020_2023.png, id=172, 1583.1948pt
- x 715.7139pt>
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 330.
+<output/figures/language_trend_gpt_countries_2020_2023.png, id=180, 933.4875pt 
+x 463.4916pt>
 File: output/figures/language_trend_gpt_countries_2020_2023.png Graphic file (t
 ype png)
 <use output/figures/language_trend_gpt_countries_2020_2023.png>
 Package pdftex.def Info: output/figures/language_trend_gpt_countries_2020_2023.
-png  used on input line 297.
-(pdftex.def)             Requested size: 432.48051pt x 195.50597pt.
- [9 <./output/figures/language_distribution_gpt_available_2020_2023.png>] [10 <
-./output/figures/language_trend_gpt_countries_2020_2023.png>]
-<output/figures/Pythonsdidtrends12.png, id=186, 859.5312pt x 355.0866pt>
+png  used on input line 344.
+(pdftex.def)             Requested size: 432.48051pt x 214.73633pt.
+ [11 <./output/figures/language_distribution_gpt_available_2020_2023.png>] [12 
+<./output/figures/language_trend_gpt_countries_2020_2023.png>]
+<output/figures/Pythonsdidtrends12.png, id=195, 531.4254pt x 352.1958pt>
 File: output/figures/Pythonsdidtrends12.png Graphic file (type png)
 <use output/figures/Pythonsdidtrends12.png>
 Package pdftex.def Info: output/figures/Pythonsdidtrends12.png  used on input l
-ine 335.
-(pdftex.def)             Requested size: 432.48051pt x 178.66983pt.
+ine 382.
+(pdftex.def)             Requested size: 432.48051pt x 286.62593pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 336.
+(Font)              <10> on input line 383.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 336.
+(Font)              <7> on input line 383.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 336.
-<output/figures/Pythonsdidweights12.png, id=187, 789.1884pt x 353.6412pt>
+(Font)              <5> on input line 383.
+
+[13]
+<output/figures/Pythonsdidweights12.png, id=201, 534.3162pt x 353.6412pt>
 File: output/figures/Pythonsdidweights12.png Graphic file (type png)
 <use output/figures/Pythonsdidweights12.png>
 Package pdftex.def Info: output/figures/Pythonsdidweights12.png  used on input 
-line 341.
-(pdftex.def)             Requested size: 432.48051pt x 193.80176pt.
- [11 <./output/figures/Pythonsdidtrends12.png>] [12 <./output/figures/Pythonsdi
-dweights12.png>]
-! Incompatible glue units.
-\es@sppercent ...fnum \gluestretchorder \lastskip 
-                                                  =\z@ \unskip \fi \textorma...
-l.380 ...mento relativo de aproximadamente $23\,\%
-                                                  $.
-I'm going to assume that 1mu=1pt when they're mixed.
-
-[13] [14]
-<output/figures/robustness_forest_plot.png, id=214, 786.2976pt x 497.57895pt>
+line 388.
+(pdftex.def)             Requested size: 432.48051pt x 286.23734pt.
+ [14 <./output/figures/Pythonsdidtrends12.png>] [15 <./output/figures/Pythonsdi
+dweights12.png>] [16] [17]
+<output/figures/robustness_forest_plot.png, id=226, 786.2976pt x 497.57895pt>
 File: output/figures/robustness_forest_plot.png Graphic file (type png)
 <use output/figures/robustness_forest_plot.png>
 Package pdftex.def Info: output/figures/robustness_forest_plot.png  used on inp
-ut line 436.
+ut line 483.
 (pdftex.def)             Requested size: 455.24411pt x 288.0873pt.
- [15] [16 <./output/figures/robustness_forest_plot.png>]
-<output/figures/placebo_distribution_panel.png, id=228, 860.013pt x 1016.1965pt
+ [18] [19 <./output/figures/robustness_forest_plot.png>]
+<output/figures/placebo_distribution_panel.png, id=241, 860.013pt x 1016.1965pt
 >
 File: output/figures/placebo_distribution_panel.png Graphic file (type png)
 <use output/figures/placebo_distribution_panel.png>
 Package pdftex.def Info: output/figures/placebo_distribution_panel.png  used on
- input line 465.
+ input line 512.
 (pdftex.def)             Requested size: 432.48051pt x 511.02762pt.
- [17 <./output/figures/placebo_distribution_panel.png>]
-<output/figures/chatgpt_timeline.png, id=235, 1206.22072pt x 679.338pt>
+ [20 <./output/figures/placebo_distribution_panel.png>]
+<output/figures/chatgpt_timeline.png, id=248, 1074.29355pt x 534.0753pt>
 File: output/figures/chatgpt_timeline.png Graphic file (type png)
 <use output/figures/chatgpt_timeline.png>
 Package pdftex.def Info: output/figures/chatgpt_timeline.png  used on input lin
-e 492.
-(pdftex.def)             Requested size: 455.24411pt x 256.38892pt.
- [18 <./output/figures/chatgpt_timeline.png>] [19] [20] [21] (documentacion.aux
+e 539.
+(pdftex.def)             Requested size: 455.24411pt x 226.31482pt.
+ [21 <./output/figures/chatgpt_timeline.png>] [22] [23] [24] (documentacion.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -1124,13 +1118,13 @@ Package rerunfilecheck Info: File `documentacion.out' has not changed.
 (rerunfilecheck)             Checksum: 6656BAFCD3E1FDAE0DAEB495EFAD988C;5861.
  ) 
 Here is how much of TeX's memory you used:
- 29155 strings out of 467871
- 551881 string characters out of 5418376
- 959766 words of memory out of 5000000
- 57126 multiletter control sequences out of 15000+600000
- 706547 words of font info for 332 fonts, out of 8000000 for 9000
+ 29174 strings out of 467871
+ 552142 string characters out of 5418376
+ 960766 words of memory out of 5000000
+ 57136 multiletter control sequences out of 15000+600000
+ 707049 words of font info for 336 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,6n,108p,1012b,791s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,11n,108p,1012b,791s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
 b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb
 ><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb>
@@ -1141,9 +1135,9 @@ b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvbo8
 a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uh
 vr8a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic
 /uhvro8a.pfb>
-Output written on documentacion.pdf (22 pages, 1761825 bytes).
+Output written on documentacion.pdf (25 pages, 1420203 bytes).
 PDF statistics:
- 321 PDF objects out of 1000 (max. 8388607)
- 73 named destinations out of 1000 (max. 500000)
+ 334 PDF objects out of 1000 (max. 8388607)
+ 76 named destinations out of 1000 (max. 500000)
  65760 words of extra memory for PDF output out of 74296 (max. 10000000)
 

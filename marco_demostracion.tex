@@ -1,0 +1,533 @@
+\documentclass[11pt, a4paper]{article}
+
+% ─── Paquetes ────────────────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{ifthen}
+
+\geometry{top=2.2cm, bottom=2.2cm, left=2.5cm, right=2.5cm}
+
+% ─── Colores ─────────────────────────────────────────────────────────────────
+\definecolor{azulmarco}{RGB}{30, 90, 160}
+\definecolor{grisclaro}{RGB}{245, 246, 248}
+\definecolor{naranjasupp}{RGB}{160, 60, 0}
+
+% ─── Encabezados de sección ──────────────────────────────────────────────────
+% comando auxiliar: titlesec le pasa el título como argumento (#1 es legal aquí)
+\newcommand{\barrasec}[1]{%
+  \colorbox{azulmarco}{\makebox[\dimexpr\linewidth-2\fboxsep\relax][l]{\quad\thesection\;\; #1}}}
+\titleformat{\section}[block]
+  {\normalfont\large\bfseries\color{white}}
+  {}
+  {0pt}
+  {\barrasec}
+
+\titleformat{\subsection}[hang]
+  {\normalfont\bfseries\color{azulmarco}}
+  {\thesubsection}
+  {0.5em}
+  {}
+
+% Barra de sección sin numeración (para secciones de cierre como el resumen)
+\newcommand{\barrasimple}[1]{%
+  \par\bigskip\noindent
+  \colorbox{azulmarco}{\makebox[\dimexpr\linewidth-2\fboxsep\relax][l]{%
+    \normalfont\large\bfseries\color{white}\quad #1}}\par\medskip}
+
+% ─── Entornos ────────────────────────────────────────────────────────────────
+\newmdenv[
+  backgroundcolor=grisclaro,
+  linecolor=azulmarco,
+  linewidth=1pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=8pt,
+  innerbottommargin=8pt,
+  skipabove=4pt,
+  skipbelow=4pt
+]{demobox}
+
+% Nota expositiva (comentario al margen del paso)
+\newcommand{\nota}[1]{%
+  \smallskip\par
+  \noindent{\small\textit{Nota:} #1.}\par
+  \smallskip
+}
+
+% Supuesto del modelo (se resalta en naranja cuando un paso deja de ser identidad)
+\newcommand{\supuesto}[1]{%
+  \smallskip\par
+  \noindent{\small\textbf{\textcolor{naranjasupp}{Supuesto:}} \textit{#1.}}\par
+  \smallskip
+}
+
+% Indicadora
+\newcommand{\ind}[1]{\mathbf{1}\!\left[#1\right]}
+
+% ─── Metadata ────────────────────────────────────────────────────────────────
+\title{%
+  \textbf{Construcci\'on del marco te\'orico 3.2}\\[4pt]
+  \large Adopci\'on heterog\'enea de IA generativa\\con exposici\'on ling\"u\'istica diferencial\\[2pt]
+  \normalsize Derivaci\'on formal paso a paso
+}
+\author{}
+\date{}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\noindent
+Este documento presenta, paso a paso, c\'omo se construye el marco te\'orico que
+conduce a la ecuaci\'on estimable del modelo. Se parte de la decisi\'on de un
+desarrollador a nivel de tarea y se agrega progresivamente hasta la
+especificaci\'on de panel. A lo largo de la derivaci\'on se indica con claridad
+en qu\'e momento se introduce cada \textbf{supuesto del modelo}, de modo que la
+construcci\'on quede completamente transparente.
+
+\bigskip
+
+% ─── Notacion basica ─────────────────────────────────────────────────────────
+\subsection*{Notaci\'on b\'asica}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ll}
+\toprule
+\textbf{S\'imbolo} & \textbf{Significado} \\
+\midrule
+$z \in [0,1]$ & Tarea elemental de programaci\'on \\
+$h_c(z) > 0$ & Productividad humana en la tarea $z$ del lenguaje $c$ \\
+$a_c(z) \ge 0$ & Productividad de ChatGPT en la tarea $z$ del lenguaje $c$ \\
+$\mu_j \in \{0,1\}$ & Indicador de acceso del desarrollador $j$ a ChatGPT \\
+$y_{jc}(\mu_j)$ & Producci\'on total del desarrollador $j$ en lenguaje $c$ \\
+$\mathcal{Z}^{\mathrm{auto}}_c$ & Conjunto de tareas donde ChatGPT supera al humano \\
+$\tau_c$ & Fracci\'on de tareas automatizables \\
+$\rho_c$ & Ahorro relativo promedio en tareas automatizables \\
+$\phi_i$ & Capacidad de absorci\'on tecnol\'ogica del pa\'is $i$ \\
+$A_{it}$ & Disponibilidad de ChatGPT en pa\'is $i$, trimestre $t$ \\
+$Y_{ict}$ & \textit{Unique pushers} por 100\,mil hab.\ en pa\'is $i$, lenguaje $c$, trimestre $t$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\bigskip
+
+% =============================================================================
+\section{Funci\'on de producci\'on de c\'odigo a nivel de tarea}
+
+% -----------------------------------------------------------------------------
+\subsection{Productividad efectiva por tarea}
+
+Con acceso potencial a ChatGPT, el desarrollador elige el m\'etodo m\'as productivo:
+
+\begin{demobox}
+\begin{equation}
+  y_{jc}(z;\,\mu_j) = \max\!\bigl\{h_c(z),\; \mu_j\, a_c(z)\bigr\}.
+\end{equation}
+
+\textbf{Si $\mu_j = 0$} (sin acceso a ChatGPT):
+\begin{equation}
+  y_{jc}(z;\,0) = \max\!\bigl\{h_c(z),\;0\bigr\} = h_c(z),
+\end{equation}
+porque $h_c(z) > 0$ por hip\'otesis.
+
+\textbf{Si $\mu_j = 1$} (con acceso a ChatGPT):
+\begin{equation}
+  y_{jc}(z;\,1) = \max\!\bigl\{h_c(z),\;a_c(z)\bigr\}.
+\end{equation}
+\end{demobox}
+
+% -----------------------------------------------------------------------------
+\subsection{Producci\'on total}
+
+La producci\'on total integra la productividad sobre el continuo de tareas $z \in [0,1]$:
+
+\begin{demobox}
+\begin{equation}
+  y_{jc}(\mu_j) = \int_0^1 \max\!\bigl\{h_c(z),\;\mu_j\,a_c(z)\bigr\}\,dz.
+\end{equation}
+
+En los dos casos extremos:
+\begin{align}
+  y_{jc}(0) &= \int_0^1 h_c(z)\,dz, \\
+  y_{jc}(1) &= \int_0^1 \max\!\bigl\{h_c(z),\;a_c(z)\bigr\}\,dz.
+\end{align}
+
+Adem\'as $y_{jc}(1) \ge y_{jc}(0)$ porque $\max\{h_c,a_c\} \ge h_c$ puntualmente: el
+acceso a la IA nunca reduce la producci\'on.
+\end{demobox}
+
+% =============================================================================
+\section{Conjunto de tareas automatizables}
+
+% -----------------------------------------------------------------------------
+\subsection{Definici\'on del conjunto}
+
+\begin{demobox}
+\begin{equation}
+  \mathcal{Z}^{\mathrm{auto}}_c = \bigl\{z \in [0,1] : a_c(z) > h_c(z)\bigr\}.
+\end{equation}
+Contiene exactamente las tareas donde ChatGPT genera una \emph{ganancia marginal estricta}.
+\end{demobox}
+
+% -----------------------------------------------------------------------------
+\subsection{Reescritura del m\'aximo con funci\'on indicadora}
+
+La funci\'on indicadora $\ind{\cdot} \in \{0,1\}$ permite separar los dos reg\'imenes y eliminar el operador $\max$:
+
+\begin{demobox}
+\begin{equation}
+  \max\!\bigl\{h_c(z),\,a_c(z)\bigr\}
+  = h_c(z)\,\ind{z \notin \mathcal{Z}^{\mathrm{auto}}_c}
+  + a_c(z)\,\ind{z \in \mathcal{Z}^{\mathrm{auto}}_c}.
+\end{equation}
+
+\textbf{Por casos:}
+\begin{itemize}[leftmargin=1.4em, itemsep=2pt]
+  \item Si $z \in \mathcal{Z}^{\mathrm{auto}}_c$: $a_c(z)>h_c(z)$, el m\'aximo es $a_c(z)$;
+        las indicadoras valen $1$ y $0$ respectivamente. \checkmark
+  \item Si $z \notin \mathcal{Z}^{\mathrm{auto}}_c$: $a_c(z)\le h_c(z)$, el m\'aximo es $h_c(z)$;
+        las indicadoras valen $0$ y $1$ respectivamente. \checkmark
+\end{itemize}
+\end{demobox}
+
+% -----------------------------------------------------------------------------
+\subsection{Medida de tareas automatizables}
+
+\begin{demobox}
+\begin{equation}
+  \tau_c = \int_0^1 \ind{z \in \mathcal{Z}^{\mathrm{auto}}_c}\,dz
+         = \int_0^1 \ind{a_c(z)>h_c(z)}\,dz.
+\end{equation}
+Como $\ind{\cdot} \in \{0,1\}$ y el intervalo tiene longitud~$1$:
+\[
+  0 \le \tau_c \le 1.
+\]
+$\tau_c$ es, entonces, la \emph{fracci\'on} del trabajo que la IA puede automatizar.
+\end{demobox}
+
+% =============================================================================
+\section{Ahorro relativo por tarea automatizable}
+
+\begin{demobox}
+Para $z \in \mathcal{Z}^{\mathrm{auto}}_c$ se define el \emph{ahorro relativo} que aporta la IA:
+\begin{equation}
+  s_c(z) = \frac{a_c(z) - h_c(z)}{h_c(z)}.
+\end{equation}
+Como $a_c(z)>h_c(z)>0$, se tiene $s_c(z)>0$.
+
+El ahorro promedio \emph{condicional} a las tareas automatizables es:
+\begin{equation}
+  \rho_c = \frac{1}{\tau_c}\int_{\mathcal{Z}^{\mathrm{auto}}_c} s_c(z)\,dz, \qquad \tau_c > 0.
+\end{equation}
+\end{demobox}
+
+\nota{si $\tau_c = 0$ no hay tareas automatizables y el efecto del lenguaje se interpreta como nulo}
+
+% =============================================================================
+\section{Ganancia individual de productividad con acceso a IA}
+
+% -----------------------------------------------------------------------------
+\subsection{Producci\'on con IA --- usando la partici\'on del Paso 2}
+
+\begin{demobox}
+Sustituyendo la reescritura con indicadoras en $y_{jc}(1)$:
+\begin{align}
+  y_{jc}(1) &= \int_0^1\!\Bigl[h_c(z)\,\ind{z \notin \mathcal{Z}^{\mathrm{auto}}_c}
+               + a_c(z)\,\ind{z \in \mathcal{Z}^{\mathrm{auto}}_c}\Bigr]dz \\[4pt]
+             &= \int_{[0,1]\setminus\mathcal{Z}^{\mathrm{auto}}_c}\!h_c(z)\,dz
+               + \int_{\mathcal{Z}^{\mathrm{auto}}_c}\!a_c(z)\,dz.
+\end{align}
+Se usan: linealidad de la integral y la identidad
+$\int_0^1 f\,\ind{z\in A}\,dz = \int_A f\,dz$.
+\end{demobox}
+
+% -----------------------------------------------------------------------------
+\subsection{Producci\'on sin IA --- misma partici\'on}
+
+\begin{demobox}
+El intervalo $[0,1]$ se parte en tareas no automatizables y automatizables (conjuntos disjuntos):
+\[
+  [0,1] = \bigl([0,1]\setminus\mathcal{Z}^{\mathrm{auto}}_c\bigr)\cup\mathcal{Z}^{\mathrm{auto}}_c.
+\]
+\begin{equation}
+  y_{jc}(0) = \int_{[0,1]\setminus\mathcal{Z}^{\mathrm{auto}}_c}\!h_c(z)\,dz
+             + \int_{\mathcal{Z}^{\mathrm{auto}}_c}\!h_c(z)\,dz.
+\end{equation}
+\end{demobox}
+
+% -----------------------------------------------------------------------------
+\subsection{Ganancia individual exacta}
+
+\begin{demobox}
+\begin{align}
+  \Delta y_{jc} &= y_{jc}(1) - y_{jc}(0) \notag\\
+  &= \left[\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!a_c(z)\,dz\right]
+    - \left[\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!h_c(z)\,dz\right] \\[4pt]
+  &= \int_{\mathcal{Z}^{\mathrm{auto}}_c}\!\bigl[a_c(z)-h_c(z)\bigr]\,dz.
+\end{align}
+Las integrales sobre las tareas \emph{no automatizables} se cancelan al restar.
+\end{demobox}
+
+% -----------------------------------------------------------------------------
+\subsection{Reescritura con el ahorro relativo}
+
+\begin{demobox}
+De $s_c(z)=\frac{a_c(z)-h_c(z)}{h_c(z)}$ se obtiene $a_c(z)-h_c(z)=h_c(z)\,s_c(z)$, luego:
+\begin{equation}
+  \Delta y_{jc} = \int_{\mathcal{Z}^{\mathrm{auto}}_c}\!h_c(z)\,s_c(z)\,dz.
+\end{equation}
+\end{demobox}
+
+\nota{hasta este punto la construcci\'on es una cadena de identidades exactas; a\'un no se ha introducido ning\'un supuesto}
+
+% -----------------------------------------------------------------------------
+\subsection{Del producto de integrales al producto de promedios}
+
+\begin{demobox}
+Definamos los promedios condicionales sobre $\mathcal{Z}^{\mathrm{auto}}_c$:
+\begin{equation}
+  \bar{h}_c = \frac{1}{\tau_c}\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!h_c(z)\,dz,
+  \qquad
+  \rho_c = \frac{1}{\tau_c}\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!s_c(z)\,dz.
+\end{equation}
+
+Por la identidad de covarianza:
+\begin{equation}
+  \mathbb{E}_{\mathcal{Z}^{\mathrm{auto}}_c}[h_c\,s_c]
+  = \mathbb{E}_{\mathcal{Z}^{\mathrm{auto}}_c}[h_c]\cdot\mathbb{E}_{\mathcal{Z}^{\mathrm{auto}}_c}[s_c]
+  + \mathrm{Cov}_{\mathcal{Z}^{\mathrm{auto}}_c}(h_c,s_c),
+\end{equation}
+la \textbf{forma general} de la ganancia individual es:
+\begin{equation}\label{eq:exacta}
+  \Delta y_{jc} = \tau_c\!\left[\bar{h}_c\,\rho_c
+  + \mathrm{Cov}_{\mathcal{Z}^{\mathrm{auto}}_c}(h_c,s_c)\right].
+\end{equation}
+
+El modelo adopta la forma multiplicativa $\Delta y_{jc} = \tau_c\,\rho_c\,\bar{h}_c$,
+que corresponde al caso particular
+\begin{equation}
+  \mathrm{Cov}_{\mathcal{Z}^{\mathrm{auto}}_c}(h_c,s_c) = 0.
+\end{equation}
+\end{demobox}
+
+\supuesto{productividad humana $h_c(z)$ y ahorro relativo $s_c(z)$ no correlacionados dentro de $\mathcal{Z}^{\mathrm{auto}}_c$. Es el primer supuesto del modelo (la ecuaci\'on~\eqref{eq:exacta} es la forma general que lo contiene como caso particular)}
+
+% -----------------------------------------------------------------------------
+\subsection{Normalizaci\'on de escala}
+
+\begin{demobox}
+Se elige la unidad de producci\'on tal que el promedio de productividad humana en
+las tareas automatizables sea unitario, $\bar{h}_c = 1$:
+\begin{equation}
+  \Delta y_{jc} = \tau_c\,\rho_c.
+\end{equation}
+La ganancia individual queda como el producto \textbf{fracci\'on automatizable}
+($\tau_c$) $\times$ \textbf{ahorro relativo promedio} ($\rho_c$).
+\end{demobox}
+
+\nota{$\bar{h}_c = 1$ no es un resultado emp\'irico, es una elecci\'on de escala}
+
+% =============================================================================
+\section{Decisi\'on de entrada al mercado de programadores}
+
+\begin{demobox}
+La utilidad de programar es $U_{\mathrm{prog}}(\eta;\mu_j) = \eta + y_{jc}(\mu_j)$
+y la utilidad de reserva es $U_{\mathrm{out}} = r_i$.
+
+El individuo entra si $\eta + y_{jc}(\mu_j) \ge r_i$.
+Definiendo los \emph{umbrales m\'inimos de habilidad}:
+\begin{equation}
+  \eta^*_c(0) = r_i - y_{jc}(0), \qquad
+  \eta^*_c(1) = r_i - y_{jc}(1).
+\end{equation}
+
+La diferencia de umbrales es:
+\begin{equation}
+  \eta^*_c(0) - \eta^*_c(1)
+  = \bigl[r_i - y_{jc}(0)\bigr] - \bigl[r_i - y_{jc}(1)\bigr]
+  = \Delta y_{jc} = \tau_c\rho_c.
+\end{equation}
+
+Por tanto $\eta^*_c(1) = \eta^*_c(0) - \tau_c\rho_c$: el acceso a la IA \textbf{reduce}
+el umbral de habilidad m\'inima, de modo que entran programadores marginales.
+\medskip
+
+\textit{Nota:} si se incluye la covarianza exacta del Paso~4.5,
+$\eta^*_c(1) = \eta^*_c(0) - \tau_c\!\bigl[\bar{h}_c\rho_c + \mathrm{Cov}(h_c,s_c)\bigr]$.
+\end{demobox}
+
+% =============================================================================
+\section{Agregaci\'on a desarrolladores activos}
+
+\begin{demobox}
+Sea $N_i$ la poblaci\'on del pa\'is $i$ y $F_i$ la CDF de habilidad $\eta$.
+\begin{equation}
+  \mathrm{Devs}_{ic}(\mu) = N_i\,\Pr[\eta \ge \eta^*_c(\mu)]
+  = N_i\bigl[1-F_i(\eta^*_c(\mu))\bigr].
+\end{equation}
+
+La diferencia entre r\'egimenes es:
+\begin{equation}
+  \mathrm{Devs}_{ic}(1) - \mathrm{Devs}_{ic}(0)
+  = N_i\bigl[F_i(\eta^*_c(0)) - F_i(\eta^*_c(1))\bigr].
+\end{equation}
+
+Sea $\Delta\eta = \eta^*_c(0)-\eta^*_c(1)=\tau_c\rho_c$.
+Aplicando Taylor de primer orden alrededor de $\eta^*_c(0)$:
+\begin{equation}
+  F_i(\eta^*_c(0)-\Delta\eta) \approx F_i(\eta^*_c(0)) - f_i(\eta^*_c(0))\,\Delta\eta,
+\end{equation}
+se obtiene:
+\begin{equation}
+  \mathrm{Devs}_{ic}(1) - \mathrm{Devs}_{ic}(0)
+  \approx N_i\,f_i(\eta^*_c(0))\,\tau_c\rho_c.
+\end{equation}
+\end{demobox}
+
+\supuesto{la aproximaci\'on de Taylor de primer orden es v\'alida si $\Delta\eta = \tau_c\rho_c$ es peque\~no relativo a la escala en que cambia la densidad $f_i$}
+
+% =============================================================================
+\section{Conversi\'on per c\'apita y capacidad de absorci\'on}
+
+\begin{demobox}
+Definimos el resultado por cada 100\,000 habitantes:
+\begin{equation}
+  Y_{ic} = \frac{\mathrm{Devs}_{ic}}{N_i}\cdot 10^5.
+\end{equation}
+
+Entonces:
+\begin{equation}
+  \Delta Y_{ic}
+  = \frac{\mathrm{Devs}_{ic}(1)-\mathrm{Devs}_{ic}(0)}{N_i}\cdot 10^5
+  \approx 10^5\,f_i(\eta^*_c(0))\,\tau_c\rho_c.
+\end{equation}
+
+Se define la \textbf{capacidad de absorci\'on tecnol\'ogica} del pa\'is $i$:
+\begin{equation}
+  \phi_i = 10^5\,f_i(\eta^*_c(0)),
+\end{equation}
+y la \textbf{exposici\'on del lenguaje} $c$:
+\begin{equation}
+  \theta_c = \tau_c\rho_c.
+\end{equation}
+
+Por tanto: $\Delta Y_{ic} \approx \theta_c\,\phi_i$.
+\end{demobox}
+
+% -----------------------------------------------------------------------------
+\subsection{Separabilidad pa\'is--lenguaje en $\phi_i$}
+
+\begin{demobox}
+El umbral $\eta^*_c(0) = r_i - y_{jc}(0)$ \textbf{depende del lenguaje} $c$, ya que
+$y_{jc}(0)=\int_0^1 h_c(z)\,dz$ var\'ia con $c$. En rigor, entonces, la densidad
+evaluada en el umbral es espec\'ifica del par $(i,c)$:
+\begin{equation}
+  \phi_{ic} = 10^5\,f_i\!\bigl(\eta^*_c(0)\bigr).
+\end{equation}
+
+Escribir $\phi_i$ (solo pa\'is) y obtener la forma multiplicativa limpia
+$\Delta Y_{ic} = \theta_c\,\phi_i$ requiere que
+\begin{equation}
+  f_i\!\bigl(\eta^*_c(0)\bigr) \approx f_i \quad (\text{constante en } c),
+\end{equation}
+es decir, que la densidad de habilidades sea aproximadamente plana en el rango de
+umbrales que inducen los distintos lenguajes (o, de modo equivalente, que las
+productividades base $y_{jc}(0)$ sean similares entre lenguajes).
+\end{demobox}
+
+\supuesto{separabilidad pa\'is--lenguaje. Sin ella la capacidad de absorci\'on ser\'ia $\phi_{ic}$ y la forma $\theta_c\phi_i$ no se separar\'ia limpiamente; el ATT por lenguaje sigue identificado, pero como $\theta_c\,\bar{\phi}_{\mathcal{T},c}$ (promedio de absorci\'on espec\'ifico del lenguaje)}
+
+% =============================================================================
+\section{Especificaci\'on de panel con efectos fijos}
+
+\begin{demobox}
+El indicador de disponibilidad es $A_{it} \in \{0,1\}$.
+
+La l\'inea base sin tratamiento se descompone como:
+\begin{equation}
+  Y_{ic}(0) = \alpha_i + \beta_t + \delta_c + \eta_{ict},
+\end{equation}
+donde $\alpha_i$ son efectos pa\'is, $\beta_t$ efectos tiempo, $\delta_c$ efectos lenguaje.
+
+Sustituyendo $\Delta Y_{ic} \approx \theta_c\phi_i\,A_{it}$:
+\begin{equation}
+  \boxed{Y_{ict} = \alpha_i + \beta_t + \delta_c + \theta_c\,\phi_i\,A_{it} + \eta_{ict}.}
+\end{equation}
+
+Para interpretaci\'on \emph{causal} se requiere exogeneidad condicional:
+\[
+  \mathbb{E}[\eta_{ict}\mid\alpha_i,\beta_t,\delta_c,A_{it}] = 0.
+\]
+\end{demobox}
+
+% =============================================================================
+\barrasimple{Resumen paso a paso}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{>{\bfseries}p{1.6cm} p{6.2cm} p{4.8cm}}
+\toprule
+Paso & Resultado & Tipo \\
+\midrule
+1 & $y_{jc}(\mu_j)=\int_0^1\max\{h_c(z),\mu_j a_c(z)\}dz$ & Identidad / definici\'on \\
+2 & $\mathcal{Z}^{\mathrm{auto}}_c=\{z:a_c(z)>h_c(z)\}$;\; $\tau_c=\int_0^1\ind{z\in\mathcal{Z}^{\mathrm{auto}}_c}dz$ & Definici\'on exacta \\
+3 & $s_c(z)=(a_c-h_c)/h_c$;\; $\rho_c=\frac{1}{\tau_c}\int s_c\,dz$ & Definici\'on exacta ($\tau_c>0$)\\
+4.1--4.4 & $\Delta y_{jc}=\int_{\mathcal{Z}^{\mathrm{auto}}_c}h_c s_c\,dz$ & Identidad exacta \\
+4.5 & $\Delta y_{jc}=\tau_c\rho_c\bar{h}_c$ & \textcolor{naranjasupp}{\textbf{Supuesto}: $\mathrm{Cov}(h_c,s_c)=0$} \\
+4.6 & $\Delta y_{jc}=\tau_c\rho_c$ & Normalizaci\'on $\bar{h}_c=1$ \\
+5 & $\eta^*_c(1)=\eta^*_c(0)-\tau_c\rho_c$ & Depende del Paso 4 \\
+6 & $\mathrm{Devs}_{ic}(1)-\mathrm{Devs}_{ic}(0)\approx N_i f_i(\eta^*_c(0))\tau_c\rho_c$ & Taylor 1.\textordmasculine\ orden \\
+7 & $\Delta Y_{ic}\approx\tau_c\rho_c\phi_i$ & Aprox.\ + \textcolor{naranjasupp}{\textbf{separabilidad} $\phi_{ic}\!\approx\!\phi_i$} \\
+8 & $Y_{ict}=\alpha_i+\beta_t+\delta_c+\theta_c\phi_i A_{it}+\eta_{ict}$ & Especificaci\'on de panel \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\smallskip
+\noindent{\small En \textcolor{naranjasupp}{naranja}, los pasos en que se introduce un supuesto del modelo; el resto son identidades o definiciones exactas.}
+
+\bigskip
+
+\subsection*{S\'intesis de la derivaci\'on}
+
+La construcci\'on no requiere ning\'un supuesto hasta
+\[
+  \Delta y_{jc} = \int_{\mathcal{Z}^{\mathrm{auto}}_c}\!h_c(z)\,s_c(z)\,dz.
+\]
+
+De aqu\'i en adelante se introducen los supuestos del modelo. La forma general de la
+ganancia individual es
+\[
+  \Delta y_{jc} = \tau_c\!\left[\bar{h}_c\,\rho_c + \mathrm{Cov}_{\mathcal{Z}^{\mathrm{auto}}_c}(h_c,s_c)\right],
+\]
+de la cual $\tau_c\rho_c\bar{h}_c$ es el caso particular con covarianza nula. La ecuaci\'on
+estimable final,
+\[
+  Y_{ict} = \alpha_i + \beta_t + \delta_c + \theta_c\,\phi_i\,A_{it} + \eta_{ict},
+\]
+se obtiene como modelo estructural simplificado a partir de \textbf{cuatro} supuestos:
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+  \item \textbf{Covarianza cero} entre productividad humana $h_c(z)$ y ahorro relativo $s_c(z)$
+        dentro de las tareas automatizables.
+  \item \textbf{Normalizaci\'on} $\bar{h}_c = 1$ (elecci\'on de escala).
+  \item \textbf{Aproximaci\'on de Taylor de primer orden} para convertir la reducci\'on del umbral
+        en aumento de desarrolladores activos.
+  \item \textbf{Separabilidad pa\'is--lenguaje}: que la densidad en el umbral $f_i(\eta^*_c(0))$
+        sea aproximadamente independiente del lenguaje $c$, de modo que $\phi_{ic}\approx\phi_i$
+        y el coeficiente del tratamiento se factorice limpiamente como $\theta_c\,\phi_i$.
+\end{enumerate}
+
+\end{document}
