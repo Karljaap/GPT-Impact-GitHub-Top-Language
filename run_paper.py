@@ -29,6 +29,7 @@ from collections import deque
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 PIPELINE_SCRIPT = os.path.join(BASE_DIR, "code", "all_code_python.py")
+SIMULATIONS_SCRIPT = os.path.join(BASE_DIR, "code", "simulations_model.py")
 
 
 # ── Step 1-6: run the full analysis pipeline ──────────────────────────────────
@@ -47,12 +48,28 @@ if result.returncode != 0:
     sys.exit(result.returncode)
 
 
-# ── Step 7: patch \\label{} into table files ──────────────────────────────────
+# Step 7: run model simulations and Monte Carlo diagnostics
+
+print("\n" + "=" * 60)
+print("STEP 7    Running model simulations and Monte Carlo diagnostics")
+print("=" * 60)
+
+result = subprocess.run(
+    [sys.executable, SIMULATIONS_SCRIPT],
+    cwd=BASE_DIR,
+)
+
+if result.returncode != 0:
+    print(f"\nSimulations exited with error code {result.returncode}. Aborting.")
+    sys.exit(result.returncode)
+
+
+# ── Step 8: patch \\label{} into table files ──────────────────────────────────
 # all_code_python.py already embeds \label{}, so this step is skipped
 # automatically when labels are present (check below).
 
 print("\n" + "=" * 60)
-print("STEP 7    Patching \\label{} into table files (if needed)")
+print("STEP 8    Patching \\label{} into table files (if needed)")
 print("=" * 60)
 
 TABLE_LABELS = {
@@ -88,10 +105,10 @@ for fpath, label in TABLE_LABELS.items():
     print(f"  {os.path.basename(fpath)}: \\label{{{label}}} added.")
 
 
-# ── Step 8: compile Tesis.tex → Tesis.pdf (two passes) ───────────────────────
+# ── Step 9: compile Tesis.tex → Tesis.pdf (two passes) ───────────────────────
 
 print("\n" + "=" * 60)
-print("STEP 8    Compiling Tesis.tex with pdflatex (2 passes)")
+print("STEP 9    Compiling Tesis.tex with pdflatex (2 passes)")
 print("=" * 60)
 
 def find_pdflatex():
