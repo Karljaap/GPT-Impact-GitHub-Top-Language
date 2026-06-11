@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1780434412.43934 "Tesis.xdv" "Tesis.pdf" "Tesis" 1780434424.7916 0
-  "Tesis.xdv" 1780434412.05919 1266572 a4010d4ca62510fb55da5b5ad4c20eee "xelatex"
+["xdvipdfmx"] 1781138043.05903 "Tesis.xdv" "Tesis.pdf" "Tesis" 1781138054.81954 0
+  "Tesis.xdv" 1781138042.73422 1514844 35f1bbcd9dfcd06b9dd5052cc064a8a2 "xelatex"
   (generated)
   "Tesis.pdf"
   (rewritten before read)
-["xelatex"] 1780434409.93231 "Tesis.tex" "Tesis.xdv" "Tesis" 1780434424.75611 0
+["xelatex"] 1781138040.78037 "Tesis.tex" "Tesis.xdv" "Tesis" 1781138054.79329 0
   "C:/Users/Jesus/AppData/Local/MiKTeX/miktex/data/le/xetex/xelatex.fmt" 1780076973.4173 27176672 a7fb1c585dd52ef27527a92fd09aadd0 ""
   "C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136790254 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1233951848 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -115,12 +115,12 @@
   "C:/Users/Jesus/AppData/Local/Programs/MiKTeX/tex/latex/tools/indentfirst.sty" 1761901070 1618 30b01152766afcef2ed8f904cfdd3cc6 ""
   "C:/Users/Jesus/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty" 1761901070 16014 dfa4b4d4e04a78a3f05a90c19711737a ""
   "C:/Users/Jesus/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "Tesis.aux" 1780434412.05275 15917 ebe7428699111652c69cf098614481b8 "xelatex"
-  "Tesis.lof" 1780434412.05919 4295 84aacfb4f8fcb7ec5761d19d2efb9d4e "xelatex"
-  "Tesis.lot" 1780434412.05919 1589 9ee8e3c67fba9a16a3285569794d0588 "xelatex"
-  "Tesis.out" 1780434412.05644 4887 a22be6ea388a1e0f502da515053af989 "xelatex"
-  "Tesis.tex" 1780423899.46923 146815 a04861fc2d730dda1aedd1b53f5d131a ""
-  "Tesis.toc" 1780434412.05919 2133 a568e0488e7e588bd1b3e32176aa8091 "xelatex"
+  "Tesis.aux" 1781138042.72811 16141 0b5a85c8e8fffb2c07bc4ed781710d52 "xelatex"
+  "Tesis.lof" 1781138042.73321 4295 8ed231502672319385235d52fc231395 "xelatex"
+  "Tesis.lot" 1781138042.73321 1589 7ebc6e7cc3e0f472dd12d1311fd7715b "xelatex"
+  "Tesis.out" 1781138042.73089 5341 ae1d3899f0691c4e8b69e65735f0fe16 "xelatex"
+  "Tesis.tex" 1781138026.57604 182149 5c2d0492480615335b8c98306be15c64 ""
+  "Tesis.toc" 1781138042.73321 2256 ae9c390ad91f763fa27b0dce82559183 "xelatex"
   "output/figures/C_hashtagdidtrends12.png" 1780425433.61814 74632 c184bfcf9b8a702e7b3e424bac74c003 ""
   "output/figures/C_hashtagdidweights12.png" 1780425433.75089 83697 18b234f70641e82f9b01698de4538b24 ""
   "output/figures/C_hashtagsctrends12.png" 1780425463.65435 94561 b9357cbd20d75f96553ed5b6afe84031 ""

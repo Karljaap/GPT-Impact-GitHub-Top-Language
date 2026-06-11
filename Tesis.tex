@@ -30,6 +30,16 @@
 % ── math ─────────────────────────────────────────────────────────────────────
 \usepackage{amsmath,amssymb}
 
+% ── macros del modelo teórico (sección 1.4 y Anexo 4) ────────────────────────
+\newcommand{\Zauto}{\mathcal{Z}^{\mathrm{auto}}_c}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\Eauto}{\mathbb{E}_{\Zauto}}
+\newcommand{\Covauto}{\operatorname{Cov}_{\Zauto}}
+\newcommand{\Devs}{\operatorname{Devs}}
+\newcommand{\Uprog}{U_{\mathrm{prog}}}
+\newcommand{\Uout}{U_{\mathrm{out}}}
+\newcommand{\dd}{\,dz}
+
 % ── tables ───────────────────────────────────────────────────────────────────
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -361,13 +371,56 @@ Por su parte, Buscemi (2023) propone un benchmark \textit{ad}\textit{hoc} para e
 
 \subsection{Marco teórico económico}
 
-La hipótesis del estudio se sustenta en dos vertientes complementarias de la teoría económica que permiten explicar por qué la disponibilidad de ChatGPT debería incrementar la producción de software, medida a través de la entrada de nuevos desarrolladores activos. La primera proviene de la teoría del cambio tecnológico y la reasignación de tareas; la segunda, de la economía de la información y los costos de búsqueda. Ambos marcos, que se desarrollan a continuación, enmarcan la evidencia empírica revisada en la subsección siguiente.
+La hipótesis del estudio se sustenta en tres vertientes complementarias de la teoría económica que permiten explicar por qué la disponibilidad de ChatGPT debería incrementar la producción de software, medida a través de la entrada de nuevos desarrolladores activos. La primera proviene de la teoría del cambio tecnológico y la reasignación de tareas; la segunda, de la economía de la información y los costos de búsqueda; la tercera formaliza ambos mecanismos en un modelo de tareas con decisión ocupacional de entrada, del cual se deriva la especificación empírica del estudio. Los tres marcos, que se desarrollan a continuación, enmarcan la evidencia empírica revisada en la subsección siguiente.
 
 La primera vertiente se apoya en el marco de reasignación de tareas propuesto por Acemoglu y Restrepo (2018, 2019), que concibe el cambio tecnológico no como un \textit{shock} aumenta-factor uniforme, sino como un proceso que redistribuye las tareas constitutivas de la producción entre el capital (algoritmos) y el trabajo (programadores). Desde esta perspectiva, una tecnología como ChatGPT opera a través de dos canales simultáneos. Por un lado, ejerce un \textit{displacement effect}, al automatizar tareas antes realizadas por programadores —la búsqueda de sintaxis, la redacción de \textit{boilerplate} o la depuración rutinaria—; por otro, ejerce un \textit{reinstatement effect}, al reducir el costo marginal de producir código y volver rentables proyectos y tareas que previamente no lo eran. Cuando la oferta de programadores experimentados es relativamente inelástica y la productividad marginal del trabajo no automatizado se incrementa tras la introducción del modelo, el efecto neto esperado es un aumento de la actividad de desarrollo y, en particular, una mayor incorporación de desarrolladores marginales que antes enfrentaban barreras de capital humano demasiado elevadas. Esta predicción es coherente con el argumento de Acemoglu y Restrepo (2018), según el cual las nuevas tecnologías reasignan tareas hacia los segmentos del mercado laboral con menor productividad pre-tecnológica, lo que en el presente contexto se traduce en la entrada de desarrolladores junior o autodidactas al ecosistema productivo.
 
 La segunda vertiente proviene de la economía de la información. Desde Stigler (1961), la búsqueda se concibe como una actividad costosa que el agente emprende para reducir su incertidumbre sobre las alternativas relevantes; en el ámbito del desarrollo de software, ese costo se materializa en el tiempo que el programador dedica a la documentación, a foros como Stack Overflow, a tutoriales o a la experimentación. ChatGPT puede interpretarse como una tecnología que reduce el costo marginal de búsqueda y aprendizaje a niveles cercanos a cero, al ofrecer respuestas contextualizadas y casi instantáneas a consultas que antes exigían minutos u horas de exploración. Bajo esta lente, la disponibilidad del modelo equivale a un \textit{shock} negativo de costos sobre la función de producción de código del desarrollador: aun manteniendo constante la oferta de programadores experimentados, cabría esperar un incremento de la actividad, especialmente entre quienes enfrentaban costos de búsqueda proporcionalmente más altos respecto de su productividad esperada, esto es, los desarrolladores nuevos o autodidactas.
 
-En conjunto, ambas vertientes convergen en una misma predicción: la disponibilidad de ChatGPT debería incrementar el número de \textit{unique pushers} en GitHub en los países con acceso al servicio, con efectos heterogéneos por lenguaje de programación que reflejan tanto la representación de cada lenguaje en los datos de entrenamiento del modelo (Chai et al., 2024; Buscemi, 2023) como la elasticidad de la demanda de tareas automatizables en cada ecosistema lingüístico. La evidencia empírica revisada a continuación resulta consistente con ambos mecanismos: Brynjolfsson et al. (2023) documentan el patrón de reasignación de tareas en agentes de servicio al cliente —la asistencia con IA eleva la productividad sobre todo entre los trabajadores menos experimentados—, mientras que Del Rio-Chanona et al. (2023) aportan evidencia del \textit{shock} sobre los costos de búsqueda al registrar una caída del 16 \% en la actividad de Stack Overflow tras el lanzamiento de ChatGPT.
+La tercera vertiente integra los dos mecanismos anteriores en un modelo formal de tareas con decisión ocupacional de entrada, en la tradición del marco de tareas de Acemoglu y Restrepo (2018) y de su actualización para la IA generativa desarrollada por Acemoglu (2024), cuyo propósito es trasladar la intuición tecnológica —ChatGPT no mejora todas las tareas por igual, sino principalmente aquellas en las que su productividad supera a la humana— hacia una ecuación estimable. En el modelo, la producción de un desarrollador potencial $j$ en el lenguaje $c$ se obtiene agregando un continuo de tareas elementales $z\in[0,1]$, en cada una de las cuales el individuo escoge el método más productivo entre su productividad humana $h_c(z)>0$ y la productividad de ChatGPT $a_c(z)\geq 0$, condicional a su acceso a la herramienta $\mu_j\in\{0,1\}$:
+
+\[
+y_{jc}(\mu_j)=\int_0^1 \max\{h_c(z),\,\mu_j a_c(z)\}\dd.
+\]
+
+El conjunto de tareas automatizables del lenguaje, $\Zauto=\{z\in[0,1]:a_c(z)>h_c(z)\}$, tiene medida $\tau_c$ —la fracción de tareas en las que ChatGPT supera al humano— y, dentro de él, el ahorro relativo por tarea $s_c(z)=[a_c(z)-h_c(z)]/h_c(z)$ tiene promedio condicional $\rho_c$. A partir de estas definiciones, la ganancia individual de acceder a ChatGPT admite una expresión exacta, libre de supuestos adicionales:
+
+\[
+\Delta y_{jc}=y_{jc}(1)-y_{jc}(0)=\int_{\Zauto}h_c(z)s_c(z)\dd
+=\tau_c\left[\bar h_c\rho_c+\Covauto(h_c,s_c)\right],
+\]
+
+donde $\bar h_c$ denota la productividad humana promedio dentro de las tareas automatizables. Bajo el supuesto de covarianza nula entre la productividad humana base y el ahorro relativo, y normalizando la escala de producción de modo que $\bar h_c=1$, la ganancia individual se reduce a
+
+\[
+\Delta y_{jc}=\tau_c\rho_c\equiv\theta_c,
+\]
+
+donde $\theta_c$ se interpreta como la exposición del lenguaje $c$ a ChatGPT: combina cuántas tareas del lenguaje son automatizables ($\tau_c$) y cuán grande es la mejora promedio en esas tareas ($\rho_c$). Esta formulación adapta el modelo de automatización parcial de Acemoglu (2024), en el cual la fracción de tareas automatizables y el ahorro de costos promedio por tarea (\textit{cost saving share}) determinan, a través de su producto, la exposición efectiva de un sector a la IA generativa. A su vez, $\theta_c$ constituye el análogo lingüístico de los índices de exposición ocupacional de Eloundou et al. (2023), quienes, sobre la clasificación de tareas de O*NET, miden la fracción de tareas de cada ocupación en las que un modelo de lenguaje reduce sustantivamente el tiempo de trabajo, y documentan que la exposición es sistemáticamente mayor donde la tecnología dispone de mayor representación en su corpus de entrenamiento. En esa misma línea, el parámetro recoge de forma compacta la heterogeneidad documentada en los \textit{benchmarks} por lenguaje (Buscemi, 2023; Li y Krishnamachari, 2024), asociada a la representación de cada lenguaje en los datos de entrenamiento del modelo.
+
+El paso de la productividad a la entrada de nuevos desarrolladores se modela como una decisión ocupacional con umbral. Un individuo con habilidad $\eta$ entra a programar si la utilidad de hacerlo, $\eta+y_{jc}(\mu_j)$, supera la utilidad de reserva $r_i$ de su país, lo que define el umbral mínimo de habilidad $\eta_c^*(\mu)=r_i-y_{jc}(\mu)$. Dado que el acceso a ChatGPT incrementa la producción, el umbral se reduce exactamente en la magnitud de la ganancia individual:
+
+\[
+\eta_c^*(1)=\eta_c^*(0)-\theta_c.
+\]
+
+Este desplazamiento del umbral formaliza el mecanismo de la segunda vertiente: la reducción de los costos de búsqueda y aprendizaje opera con mayor intensidad sobre los individuos marginales, cuya habilidad se sitúa entre el umbral antiguo y el nuevo. Agregando sobre la distribución de habilidad $F_i$ del país $i$, con densidad $f_i$, y aplicando una aproximación de Taylor de primer orden, el cambio en el número de desarrolladores activos por cada 100,000 habitantes se factoriza en un componente de país y un componente de lenguaje:
+
+\[
+\Delta Y_{ic}\approx \phi_i\theta_c,
+\qquad
+\phi_i=10^5 f_i(\eta_c^*(0)),
+\]
+
+donde $\phi_i$ mide la capacidad de absorción tecnológica del país, es decir, la masa de personas situadas cerca del umbral de entrada a la programación. Finalmente, incorporando la disponibilidad de ChatGPT mediante el indicador $A_{it}\in\{0,1\}$ y descomponiendo la línea base en efectos fijos, el modelo entrega directamente la especificación de panel del estudio:
+
+\[
+Y_{ict}=\alpha_i+\beta_t+\delta_c+\theta_c\phi_i A_{it}+\eta_{ict},
+\]
+
+cuya interpretación causal requiere que, condicional a los efectos fijos de país ($\alpha_i$), tiempo ($\beta_t$) y lenguaje ($\delta_c$), la disponibilidad de ChatGPT no esté correlacionada con los \textit{shocks} no observados $\eta_{ict}$. Esta ecuación fundamenta la estrategia empírica del estudio y predice que el efecto del tratamiento es heterogéneo: creciente en la exposición del lenguaje ($\theta_c$) y en la capacidad de absorción del país ($\phi_i$). La derivación completa del modelo, paso a paso, junto con la discusión formal de sus supuestos y un ejemplo numérico ilustrativo, se presenta en el Anexo 4.
+
+En conjunto, las tres vertientes convergen en una misma predicción: la disponibilidad de ChatGPT debería incrementar el número de \textit{unique pushers} en GitHub en los países con acceso al servicio, con efectos heterogéneos por lenguaje de programación que reflejan tanto la representación de cada lenguaje en los datos de entrenamiento del modelo (Chai et al., 2024; Buscemi, 2023) como la elasticidad de la demanda de tareas automatizables en cada ecosistema lingüístico. La evidencia empírica revisada a continuación resulta consistente con ambos mecanismos: Brynjolfsson et al. (2023) documentan el patrón de reasignación de tareas en agentes de servicio al cliente —la asistencia con IA eleva la productividad sobre todo entre los trabajadores menos experimentados—, mientras que Del Rio-Chanona et al. (2023) aportan evidencia del \textit{shock} sobre los costos de búsqueda al registrar una caída del 16 \% en la actividad de Stack Overflow tras el lanzamiento de ChatGPT.
 
 
 \subsection{Evidencia empírica}
@@ -1098,6 +1151,9 @@ Abadie, A. (2021). Using Synthetic Controls: Feasibility, Data Requirements, and
 \bibitem{abujaber2023}
 Abu Jaber, M., Beganovic, A., \& Abd Almisreb, A. (2023). Methods and Applications of ChatGPT in Software Development: A Literature Review. \textit{Southeast Europe Journal of Soft Computing, 12}(1), 08–12. \url{https://www.researchgate.net/publication/370872615_Methods_and_Applications_of_ChatGPT_in_Software_Development_A_Literature_Review}
 
+\bibitem{acemoglu2024simple}
+Acemoglu, D. (2024). The Simple Macroeconomics of AI. \textit{Economic Policy, 40}(121), 13–58. \url{https://doi.org/10.1093/epolic/eiae042}
+
 \bibitem{acemoglu2018race}
 Acemoglu, D., \& Restrepo, P. (2018). The Race between Man and Machine: Implications of Technology for Growth, Factor Shares, and Employment. \textit{American Economic Review, 108}(6), 1488–1542. \url{https://doi.org/10.1257/AER.20160696}
 
@@ -1136,6 +1192,9 @@ Del Rio-Chanona, M., Laurentsyeva, N., \& Wachs, J. (2023). Are Large Language M
 
 \bibitem{demirci2023}
 Demirci, O., Hannane, J., \& Zhu, X. (2023). Who Is AI Replacing? The Impact of Generative AI on Online Freelancing Platforms. \textit{SSRN Electronic Journal}. \url{https://doi.org/10.2139/SSRN.4602944}
+
+\bibitem{eloundou2023}
+Eloundou, T., Manning, S., Mishkin, P., \& Rock, D. (2023). GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models. \textit{arXiv preprint arXiv:2303.10130}. \url{https://arxiv.org/abs/2303.10130}
 
 \bibitem{gallea2023}
 Gallea, Q. (2023). From Mundane to Meaningful: AI's Influence on Work Dynamics -- evidence from ChatGPT and Stack Overflow. \url{https://arxiv.org/abs/2308.11302v1}
@@ -1566,5 +1625,1251 @@ YE & 0 & 160 \\
 \begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
 \end{figure}
 
+\clearpage
+\phantomsection
+\addcontentsline{toc}{subsection}{Anexo 4: Derivación formal del modelo teórico de exposición y absorción}
+{\noindent Anexo 4}\\[4pt]
+{\noindent Derivación formal del modelo teórico de exposición y absorción}
+
+\noindent Este anexo desarrolla, paso a paso, la derivación del modelo presentado en la tercera vertiente del marco teórico económico (sección 1.4), desde la función de producción a nivel de tarea hasta la especificación de panel estimable. El modelo adapta al contexto de los lenguajes de programación el marco de tareas con automatización parcial de Acemoglu (2024) y el constructo de exposición laboral a modelos de lenguaje de Eloundou et al. (2023). La derivación distingue dos tipos de operaciones: las \textit{identidades exactas}, que son reescrituras algebraicas y no agregan supuestos, y las \textit{aproximaciones o supuestos}, que simplifican la expresión para obtener una forma interpretable y estimable. Cada supuesto no trivial se señala explícitamente en el paso en que se introduce y se recopila al final del anexo.
+
+\bigskip
+\noindent\textbf{Notación}
+
+\medskip
+\noindent La Tabla siguiente resume la notación empleada a lo largo de la derivación.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Símbolo & Significado \\
+\midrule
+$z \in [0,1]$ & Tarea elemental de programación. \\
+$c$ & Lenguaje de programación. \\
+$i$ & País. \\
+$j$ & Desarrollador o persona potencialmente desarrolladora. \\
+$h_c(z)>0$ & Productividad humana en la tarea $z$ del lenguaje $c$. \\
+$a_c(z)\geq 0$ & Productividad de ChatGPT en la tarea $z$. \\
+$\mu_j \in \{0,1\}$ & Acceso individual a ChatGPT. \\
+$y_{jc}(\mu_j)$ & Producción total del individuo $j$ en lenguaje $c$. \\
+$\Zauto$ & Conjunto de tareas donde ChatGPT supera al humano. \\
+$\tau_c$ & Fracción de tareas automatizables. \\
+$s_c(z)$ & Ahorro relativo de ChatGPT en la tarea $z$. \\
+$\rho_c$ & Ahorro relativo promedio en tareas automatizables. \\
+$\eta$ & Habilidad individual para programar. \\
+$r_i$ & Utilidad de reserva o alternativa fuera de programar. \\
+$\phi_i$ & Capacidad de absorción tecnológica del país $i$. \\
+$\theta_c$ & Exposición del lenguaje $c$ a ChatGPT. \\
+$Y_{ict}$ & Desarrolladores activos por 100,000 habitantes. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent\textbf{Paso 1: función de producción a nivel de tarea}
+
+\medskip
+\noindent La producción del individuo $j$ en la tarea $z$ del lenguaje $c$ se define como
+
+\[
+y_{jc}(z;\mu_j)=\max\{h_c(z),\mu_j a_c(z)\},
+\]
+
+donde $h_c(z)$ es la producción del humano en la tarea $z$, $a_c(z)$ es la producción de ChatGPT en dicha tarea, $\mu_j$ indica si el individuo tiene acceso a ChatGPT y el operador $\max\{\cdot,\cdot\}$ refleja que en cada tarea se escoge el método más productivo. Si $\mu_j=0$, no hay acceso a ChatGPT y se cumple
+
+\[
+\mu_j a_c(z)=0\cdot a_c(z)=0,
+\]
+
+de modo que la producción por tarea queda
+
+\[
+y_{jc}(z;0)=\max\{h_c(z),0\}.
+\]
+
+Como se asume $h_c(z)>0$, el máximo entre $h_c(z)$ y $0$ es $h_c(z)$; por tanto,
+
+\[
+y_{jc}(z;0)=h_c(z).
+\]
+
+Si $\mu_j=1$, sí hay acceso a ChatGPT, de modo que
+
+\[
+\mu_j a_c(z)=1\cdot a_c(z)=a_c(z)
+\]
+
+y la producción por tarea queda
+
+\[
+y_{jc}(z;1)=\max\{h_c(z),a_c(z)\}.
+\]
+
+El intervalo $[0,1]$ representa el continuo de tareas, y la producción total se obtiene integrando —es decir, sumando en el continuo— la contribución de todas las tareas:
+
+\[
+y_{jc}(\mu_j)=\int_0^1 \max\{h_c(z),\mu_j a_c(z)\}\dd.
+\]
+
+En consecuencia, la producción sin IA es
+
+\[
+y_{jc}(0)=\int_0^1 h_c(z)\dd,
+\]
+
+y la producción con IA es
+
+\[
+y_{jc}(1)=\int_0^1 \max\{h_c(z),a_c(z)\}\dd.
+\]
+
+\bigskip
+\noindent\textbf{Paso 2: conjunto de tareas automatizables}
+
+\medskip
+\noindent Se define el conjunto de tareas automatizables del lenguaje $c$ como
+
+\[
+\Zauto=\{z\in[0,1]:a_c(z)>h_c(z)\},
+\]
+
+es decir, el conjunto de tareas donde ChatGPT es estrictamente más productivo que el humano:
+
+\[
+z\in\Zauto
+\quad \Longleftrightarrow \quad
+a_c(z)>h_c(z).
+\]
+
+Su complemento es $[0,1]\setminus \Zauto$, caracterizado por
+
+\[
+z\in[0,1]\setminus \Zauto
+\quad \Longleftrightarrow \quad
+z\in[0,1]\ \text{y}\ z\notin\Zauto.
+\]
+
+Si $z\notin\Zauto$, no se cumple $a_c(z)>h_c(z)$ y, por tanto,
+
+\[
+a_c(z)\leq h_c(z).
+\]
+
+De este modo, el intervalo de tareas se particiona en dos regiones disjuntas:
+
+\[
+[0,1]=([0,1]\setminus\Zauto)\cup \Zauto,
+\qquad
+([0,1]\setminus\Zauto)\cap\Zauto=\varnothing.
+\]
+
+Resulta útil introducir la función indicadora,
+
+\[
+\one[z\in A]=
+\begin{cases}
+1, & \text{si }z\in A,\\
+0, & \text{si }z\notin A,
+\end{cases}
+\]
+
+que satisface
+
+\[
+f(z)\one[z\in A]=
+\begin{cases}
+f(z), & \text{si }z\in A,\\
+0, & \text{si }z\notin A,
+\end{cases}
+\]
+
+y, al integrar,
+
+\[
+\int_0^1 f(z)\one[z\in A]\dd=\int_A f(z)\dd,
+\]
+
+puesto que la indicadora anula la función fuera de $A$. Con esta herramienta, el máximo puede reescribirse, para cada tarea $z$, como
+
+\[
+\max\{h_c(z),a_c(z)\}
+=h_c(z)\one[z\in[0,1]\setminus\Zauto]+a_c(z)\one[z\in\Zauto].
+\]
+
+La verificación procede por casos. Si $z\in\Zauto$, entonces $a_c(z)>h_c(z)$, el máximo es $a_c(z)$ y las indicadoras toman los valores
+
+\[
+\one[z\in\Zauto]=1,\qquad
+\one[z\in[0,1]\setminus\Zauto]=0,
+\]
+
+de modo que el lado derecho es
+
+\[
+h_c(z)\cdot 0+a_c(z)\cdot 1=a_c(z).
+\]
+
+Si $z\in[0,1]\setminus\Zauto$, entonces $a_c(z)\leq h_c(z)$, el máximo es $h_c(z)$ y las indicadoras toman los valores
+
+\[
+\one[z\in\Zauto]=0,\qquad
+\one[z\in[0,1]\setminus\Zauto]=1,
+\]
+
+de modo que el lado derecho es
+
+\[
+h_c(z)\cdot 1+a_c(z)\cdot 0=h_c(z).
+\]
+
+La fracción de tareas automatizables del lenguaje se define como
+
+\[
+\tau_c=\int_0^1 \one[a_c(z)>h_c(z)]\dd.
+\]
+
+Como $\one[a_c(z)>h_c(z)]$ vale 1 dentro de $\Zauto$ y 0 fuera, esto equivale a
+
+\[
+\tau_c=\int_{\Zauto}1\dd,
+\]
+
+de modo que $\tau_c$ mide el tamaño de $\Zauto$. Dado que $\Zauto\subseteq[0,1]$, se cumple
+
+\[
+0\leq\tau_c\leq 1.
+\]
+
+Por ejemplo, $\tau_c=0.30$ significa que ChatGPT supera al humano en el 30\% de las tareas del lenguaje $c$.
+
+\bigskip
+\noindent\textbf{Paso 3: ahorro relativo por tarea}
+
+\medskip
+\noindent Para $z\in\Zauto$ se cumple
+
+\[
+a_c(z)>h_c(z)>0.
+\]
+
+El ahorro relativo de ChatGPT en la tarea $z$ se define como
+
+\[
+s_c(z)=\frac{a_c(z)-h_c(z)}{h_c(z)},
+\]
+
+expresión que mide la ganancia proporcional de ChatGPT respecto al humano. A modo de ilustración, si
+
+\[
+h_c(z)=10,\qquad a_c(z)=15,
+\]
+
+entonces
+
+\[
+s_c(z)=\frac{15-10}{10}=0.5,
+\]
+
+es decir, ChatGPT produce 50\% más que el humano en esa tarea. Como $a_c(z)>h_c(z)$, el numerador $a_c(z)-h_c(z)$ es positivo y, dado que $h_c(z)>0$, se cumple
+
+\[
+s_c(z)>0.
+\]
+
+Multiplicando ambos lados de la definición por $h_c(z)$ se obtiene el despeje
+
+\[
+h_c(z)s_c(z)=a_c(z)-h_c(z),
+\]
+
+esto es,
+
+\[
+a_c(z)-h_c(z)=h_c(z)s_c(z),
+\]
+
+que será clave para expresar la ganancia individual. Finalmente, el ahorro promedio condicional a tareas automatizables se define como
+
+\[
+\rho_c=\frac{1}{\tau_c}\int_{\Zauto}s_c(z)\dd,
+\qquad \tau_c>0,
+\]
+
+donde la división entre $\tau_c$ responde a que $\tau_c$ es la medida del conjunto sobre el cual se promedia, en analogía directa con el promedio discreto (suma dividida entre cantidad).
+
+\bigskip
+\noindent\textbf{Paso 4: ganancia individual por usar IA}
+
+\medskip
+\noindent La ganancia individual de acceder a ChatGPT se define como la diferencia entre la producción con IA y la producción sin IA:
+
+\[
+\Delta y_{jc}=y_{jc}(1)-y_{jc}(0).
+\]
+
+Para la producción con IA, se parte de
+
+\[
+y_{jc}(1)=\int_0^1\max\{h_c(z),a_c(z)\}\dd
+\]
+
+y se utiliza la partición
+
+\[
+[0,1]=([0,1]\setminus\Zauto)\cup\Zauto,
+\]
+
+con lo cual la integral se separa en dos términos:
+
+\[
+y_{jc}(1)
+=\int_{[0,1]\setminus\Zauto}\max\{h_c(z),a_c(z)\}\dd
++\int_{\Zauto}\max\{h_c(z),a_c(z)\}\dd.
+\]
+
+En $[0,1]\setminus\Zauto$, ChatGPT no supera al humano, es decir, $a_c(z)\leq h_c(z)$; por tanto,
+
+\[
+\max\{h_c(z),a_c(z)\}=h_c(z).
+\]
+
+En $\Zauto$, ChatGPT sí supera al humano, es decir, $a_c(z)>h_c(z)$; por tanto,
+
+\[
+\max\{h_c(z),a_c(z)\}=a_c(z).
+\]
+
+Sustituyendo ambos resultados:
+
+\[
+y_{jc}(1)
+=\int_{[0,1]\setminus\Zauto}h_c(z)\dd
++\int_{\Zauto}a_c(z)\dd.
+\]
+
+Para la producción sin IA, se parte de
+
+\[
+y_{jc}(0)=\int_0^1 h_c(z)\dd
+\]
+
+y se particiona el intervalo en las dos mismas regiones:
+
+\[
+y_{jc}(0)
+=\int_{[0,1]\setminus\Zauto}h_c(z)\dd
++\int_{\Zauto}h_c(z)\dd.
+\]
+
+Restando ambas expresiones:
+
+\[
+\Delta y_{jc}
+=
+\left[
+\int_{[0,1]\setminus\Zauto}h_c(z)\dd
++\int_{\Zauto}a_c(z)\dd
+\right]
+-
+\left[
+\int_{[0,1]\setminus\Zauto}h_c(z)\dd
++\int_{\Zauto}h_c(z)\dd
+\right].
+\]
+
+Distribuyendo el signo negativo:
+
+\[
+\Delta y_{jc}
+=
+\int_{[0,1]\setminus\Zauto}h_c(z)\dd
++\int_{\Zauto}a_c(z)\dd
+-\int_{[0,1]\setminus\Zauto}h_c(z)\dd
+-\int_{\Zauto}h_c(z)\dd.
+\]
+
+Los términos sobre tareas no automatizables se cancelan:
+
+\[
+\int_{[0,1]\setminus\Zauto}h_c(z)\dd
+-\int_{[0,1]\setminus\Zauto}h_c(z)\dd
+=0,
+\]
+
+de modo que queda
+
+\[
+\Delta y_{jc}
+=
+\int_{\Zauto}a_c(z)\dd
+-\int_{\Zauto}h_c(z)\dd.
+\]
+
+Como ambas integrales se toman sobre el mismo conjunto, pueden unirse:
+
+\[
+\Delta y_{jc}
+=
+\int_{\Zauto}\left[a_c(z)-h_c(z)\right]\dd.
+\]
+
+Usando el despeje del Paso 3, $a_c(z)-h_c(z)=h_c(z)s_c(z)$, se obtiene
+
+\[
+\Delta y_{jc}
+=
+\int_{\Zauto}h_c(z)s_c(z)\dd.
+\]
+
+Conviene subrayar que hasta este punto no se ha impuesto ningún supuesto no trivial: la ganancia individual exacta es la suma, sobre las tareas automatizables, de la productividad humana base multiplicada por el ahorro relativo de ChatGPT.
+
+\bigskip
+\noindent\textbf{Paso 4.5: identidad de covarianza}
+
+\medskip
+\noindent El objetivo de este paso es convertir la expresión exacta
+
+\[
+\Delta y_{jc}=\int_{\Zauto}h_c(z)s_c(z)\dd
+\]
+
+en una expresión en términos de promedios. Para cualquier función $g(z)$, el promedio (esperanza condicional) dentro de $\Zauto$ se define como
+
+\[
+\Eauto[g(z)]
+=
+\frac{1}{\tau_c}\int_{\Zauto}g(z)\dd,
+\]
+
+lo cual implica
+
+\[
+\int_{\Zauto}g(z)\dd=\tau_c\,\Eauto[g(z)].
+\]
+
+Tomando $g(z)=h_c(z)s_c(z)$,
+
+\[
+\int_{\Zauto}h_c(z)s_c(z)\dd
+=
+\tau_c\,\Eauto[h_c s_c],
+\]
+
+y, como la integral de la izquierda es $\Delta y_{jc}$,
+
+\[
+\Delta y_{jc}
+=
+\tau_c\,\Eauto[h_c s_c].
+\]
+
+El promedio de productividad humana dentro de tareas automatizables es
+
+\[
+\bar h_c
+=
+\frac{1}{\tau_c}\int_{\Zauto}h_c(z)\dd
+=
+\Eauto[h_c],
+\]
+
+y el promedio de ahorro relativo dentro de tareas automatizables es
+
+\[
+\rho_c
+=
+\frac{1}{\tau_c}\int_{\Zauto}s_c(z)\dd
+=
+\Eauto[s_c].
+\]
+
+La covarianza condicional dentro de $\Zauto$ se define como
+
+\[
+\Covauto(h_c,s_c)
+=
+\Eauto\left[
+\left(h_c-\Eauto[h_c]\right)
+\left(s_c-\Eauto[s_c]\right)
+\right].
+\]
+
+Expandiendo el producto:
+
+\[
+\left(h_c-\Eauto[h_c]\right)
+\left(s_c-\Eauto[s_c]\right)
+=
+h_c s_c
+-h_c\Eauto[s_c]
+-s_c\Eauto[h_c]
++\Eauto[h_c]\Eauto[s_c].
+\]
+
+Tomando esperanza condicional:
+
+\begin{align*}
+\Covauto(h_c,s_c)
+&=
+\Eauto[h_c s_c]
+-\Eauto[h_c\Eauto[s_c]]\\
+&\quad
+-\Eauto[s_c\Eauto[h_c]]
++\Eauto[\Eauto[h_c]\Eauto[s_c]].
+\end{align*}
+
+Los términos $\Eauto[h_c]$ y $\Eauto[s_c]$ son constantes y, por tanto, pueden extraerse de la esperanza:
+
+\[
+\Eauto[h_c\Eauto[s_c]]
+=
+\Eauto[s_c]\Eauto[h_c],
+\]
+\[
+\Eauto[s_c\Eauto[h_c]]
+=
+\Eauto[h_c]\Eauto[s_c],
+\]
+\[
+\Eauto[\Eauto[h_c]\Eauto[s_c]]
+=
+\Eauto[h_c]\Eauto[s_c].
+\]
+
+Entonces:
+
+\begin{align*}
+\Covauto(h_c,s_c)
+&=
+\Eauto[h_c s_c]
+-\Eauto[h_c]\Eauto[s_c]\\
+&\quad
+-\Eauto[h_c]\Eauto[s_c]
++\Eauto[h_c]\Eauto[s_c]\\
+&=
+\Eauto[h_c s_c]
+-\Eauto[h_c]\Eauto[s_c].
+\end{align*}
+
+Reordenando:
+
+\[
+\Eauto[h_c s_c]
+=
+\Eauto[h_c]\Eauto[s_c]
++\Covauto(h_c,s_c).
+\]
+
+Como
+
+\[
+\Eauto[h_c]=\bar h_c,
+\qquad
+\Eauto[s_c]=\rho_c,
+\]
+
+se obtiene
+
+\[
+\Eauto[h_c s_c]
+=
+\bar h_c\rho_c+\Covauto(h_c,s_c).
+\]
+
+Sustituyendo esta identidad en $\Delta y_{jc}=\tau_c\,\Eauto[h_c s_c]$ resulta la forma exacta con covarianza:
+
+\[
+\Delta y_{jc}
+=
+\tau_c\left[
+\bar h_c\rho_c+\Covauto(h_c,s_c)
+\right],
+\]
+
+donde el factor $\tau_c$ multiplica tanto al producto de promedios como a la covarianza, porque esta última está definida como promedio condicional dentro de $\Zauto$. La covarianza mide si la productividad humana $h_c(z)$ y el ahorro relativo $s_c(z)$ se mueven juntos dentro de las tareas automatizables: si $\Covauto(h_c,s_c)>0$, ChatGPT mejora relativamente más las tareas donde la productividad humana base era alta; si $\Covauto(h_c,s_c)<0$, mejora relativamente más las tareas donde dicha productividad era baja; y si $\Covauto(h_c,s_c)=0$, no existe relación sistemática entre ambas dentro de las tareas automatizables. Para simplificar, el modelo impone como \textit{supuesto no trivial} la covarianza nula, $\Covauto(h_c,s_c)=0$, con lo cual
+
+\[
+\Delta y_{jc}=\tau_c\bar h_c\rho_c.
+\]
+
+\bigskip
+\noindent\textbf{Paso 4.6: normalización de escala}
+
+\medskip
+\noindent El modelo elige la unidad de producción de forma que
+
+\[
+\bar h_c=1.
+\]
+
+Se trata de una normalización: no significa que, empíricamente, la productividad humana promedio sea literalmente 1 en unidades naturales, sino que la producción se mide en unidades en las cuales ese promedio vale 1. Partiendo de
+
+\[
+\Delta y_{jc}=\tau_c\bar h_c\rho_c
+\]
+
+y sustituyendo $\bar h_c=1$:
+
+\[
+\Delta y_{jc}=\tau_c(1)\rho_c.
+\]
+
+Por tanto,
+
+\[
+\Delta y_{jc}=\tau_c\rho_c.
+\]
+
+Se define entonces la exposición del lenguaje como
+
+\[
+\theta_c=\tau_c\rho_c,
+\]
+
+con lo cual
+
+\[
+\Delta y_{jc}=\theta_c.
+\]
+
+La exposición del lenguaje combina, así, dos componentes: cuántas tareas del lenguaje son automatizables ($\tau_c$) y cuán grande es la mejora promedio en esas tareas ($\rho_c$).
+
+\bigskip
+\noindent\textbf{Paso 5: decisión individual de entrada al mercado}
+
+\medskip
+\noindent Este paso traslada el análisis de la productividad a la decisión ocupacional. La utilidad de programar se define como
+
+\[
+\Uprog=\eta+y_{jc}(\mu_j),
+\]
+
+donde $\eta$ es la habilidad individual —talento, experiencia o componente personal que aumenta la utilidad o productividad de programar— y $y_{jc}(\mu_j)$ es la producción asociada a programar en el lenguaje $c$, con o sin ChatGPT. La utilidad fuera de programar es
+
+\[
+\Uout=r_i,
+\]
+
+donde $r_i$ es la utilidad de reserva en el país $i$, que puede representar el salario alternativo, las oportunidades fuera de la programación o el costo de oportunidad de otra actividad. La persona entra a programar si
+
+\[
+\Uprog\geq\Uout.
+\]
+
+Sustituyendo:
+
+\[
+\eta+y_{jc}(\mu_j)\geq r_i.
+\]
+
+Restando $y_{jc}(\mu_j)$ a ambos lados se despeja $\eta$:
+
+\[
+\eta\geq r_i-y_{jc}(\mu_j).
+\]
+
+El lado derecho constituye el umbral mínimo de habilidad para entrar:
+
+\[
+\eta_c^*(\mu)=r_i-y_{jc}(\mu),
+\]
+
+de modo que la regla de entrada es
+
+\[
+\text{entra si}\qquad \eta\geq \eta_c^*(\mu).
+\]
+
+Comparando ambos regímenes, el umbral sin IA es
+
+\[
+\eta_c^*(0)=r_i-y_{jc}(0)
+\]
+
+y el umbral con IA es
+
+\[
+\eta_c^*(1)=r_i-y_{jc}(1).
+\]
+
+Dado que
+
+\[
+\Delta y_{jc}=y_{jc}(1)-y_{jc}(0),
+\]
+
+se tiene
+
+\[
+y_{jc}(1)=y_{jc}(0)+\Delta y_{jc}.
+\]
+
+Sustituyendo en el umbral con IA:
+
+\[
+\eta_c^*(1)=r_i-\left[y_{jc}(0)+\Delta y_{jc}\right].
+\]
+
+Distribuyendo el signo negativo:
+
+\[
+\eta_c^*(1)=r_i-y_{jc}(0)-\Delta y_{jc}.
+\]
+
+Pero
+
+\[
+r_i-y_{jc}(0)=\eta_c^*(0);
+\]
+
+por tanto,
+
+\[
+\eta_c^*(1)=\eta_c^*(0)-\Delta y_{jc}.
+\]
+
+Usando la versión simplificada $\Delta y_{jc}=\tau_c\rho_c$, se obtiene
+
+\[
+\eta_c^*(1)=\eta_c^*(0)-\tau_c\rho_c,
+\]
+
+y usando la versión exacta con covarianza,
+
+\[
+\eta_c^*(1)
+=
+\eta_c^*(0)
+-\tau_c\left[\bar h_c\rho_c+\Covauto(h_c,s_c)\right].
+\]
+
+En consecuencia, el acceso a la IA reduce el umbral de entrada: las personas con habilidad comprendida entre el nuevo umbral y el antiguo se convierten en programadores marginales que antes no entraban al mercado.
+
+\bigskip
+\noindent\textbf{Paso 6: agregación a desarrolladores activos}
+
+\medskip
+\noindent Para pasar del individuo a la población, sea $N_i$ la población del país $i$ y sea $F_i(\eta)$ la función de distribución acumulada de la habilidad en dicho país:
+
+\[
+F_i(x)=\Pr(\eta\leq x),
+\]
+
+es decir, $F_i(x)$ es la proporción de personas cuya habilidad es menor o igual que $x$. En consecuencia,
+
+\[
+1-F_i(x)=\Pr(\eta>x).
+\]
+
+Como una persona entra si
+
+\[
+\eta\geq \eta_c^*(\mu),
+\]
+
+la proporción de personas que entra es aproximadamente
+
+\[
+1-F_i(\eta_c^*(\mu)),
+\]
+
+y, multiplicando por la población, el número de desarrolladores activos es
+
+\[
+\Devs_{ic}(\mu)=N_i\left[1-F_i(\eta_c^*(\mu))\right].
+\]
+
+Con IA:
+
+\[
+\Devs_{ic}(1)=N_i\left[1-F_i(\eta_c^*(1))\right].
+\]
+
+Sin IA:
+
+\[
+\Devs_{ic}(0)=N_i\left[1-F_i(\eta_c^*(0))\right].
+\]
+
+Restando:
+
+\begin{align*}
+\Devs_{ic}(1)-\Devs_{ic}(0)
+&=
+N_i\left[1-F_i(\eta_c^*(1))\right]
+-
+N_i\left[1-F_i(\eta_c^*(0))\right]\\
+&=
+N_i\left(
+\left[1-F_i(\eta_c^*(1))\right]
+-
+\left[1-F_i(\eta_c^*(0))\right]
+\right)\\
+&=
+N_i\left[
+1-F_i(\eta_c^*(1))-1+F_i(\eta_c^*(0))
+\right]\\
+&=
+N_i\left[
+F_i(\eta_c^*(0))-F_i(\eta_c^*(1))
+\right].
+\end{align*}
+
+Como
+
+\[
+\eta_c^*(1)=\eta_c^*(0)-\tau_c\rho_c,
+\]
+
+se define el desplazamiento del umbral
+
+\[
+\Delta\eta=\tau_c\rho_c,
+\]
+
+de modo que
+
+\[
+\eta_c^*(1)=\eta_c^*(0)-\Delta\eta.
+\]
+
+Sustituyendo:
+
+\[
+\Devs_{ic}(1)-\Devs_{ic}(0)
+=
+N_i\left[
+F_i(\eta_c^*(0))
+-F_i(\eta_c^*(0)-\Delta\eta)
+\right].
+\]
+
+Para evaluar esta diferencia se emplea una aproximación de Taylor de primer orden. Sea
+
+\[
+x=\eta_c^*(0);
+\]
+
+se desea aproximar
+
+\[
+F_i(x)-F_i(x-\Delta\eta).
+\]
+
+La expansión de Taylor de primer orden de $F_i$ alrededor de $x$ es
+
+\[
+F_i(x+\Delta)\approx F_i(x)+F_i'(x)\Delta.
+\]
+
+Como se requiere evaluar en $x-\Delta\eta$, se toma $\Delta=-\Delta\eta$:
+
+\[
+F_i(x-\Delta\eta)
+\approx
+F_i(x)+F_i'(x)(-\Delta\eta),
+\]
+
+es decir,
+
+\[
+F_i(x-\Delta\eta)
+\approx
+F_i(x)-F_i'(x)\Delta\eta.
+\]
+
+La densidad $f_i$ es la derivada de la función de distribución acumulada,
+
+\[
+f_i(x)=F_i'(x),
+\]
+
+por lo que
+
+\[
+F_i(x-\Delta\eta)
+\approx
+F_i(x)-f_i(x)\Delta\eta.
+\]
+
+Entonces:
+
+\begin{align*}
+F_i(x)-F_i(x-\Delta\eta)
+&\approx
+F_i(x)-\left[F_i(x)-f_i(x)\Delta\eta\right]\\
+&=
+F_i(x)-F_i(x)+f_i(x)\Delta\eta\\
+&=
+f_i(x)\Delta\eta.
+\end{align*}
+
+Volviendo a $x=\eta_c^*(0)$:
+
+\[
+F_i(\eta_c^*(0))
+-F_i(\eta_c^*(0)-\Delta\eta)
+\approx
+f_i(\eta_c^*(0))\Delta\eta.
+\]
+
+Como $\Delta\eta=\tau_c\rho_c$:
+
+\[
+F_i(\eta_c^*(0))
+-F_i(\eta_c^*(0)-\Delta\eta)
+\approx
+f_i(\eta_c^*(0))\tau_c\rho_c.
+\]
+
+Sustituyendo en la diferencia de desarrolladores:
+
+\[
+\Devs_{ic}(1)-\Devs_{ic}(0)
+\approx
+N_i f_i(\eta_c^*(0))\tau_c\rho_c.
+\]
+
+Esta aproximación constituye un \textit{supuesto no trivial}: es válida si $\Delta\eta=\tau_c\rho_c$ es pequeño respecto a la escala en la que cambia la densidad $f_i$; si el cambio de umbral fuera grande, los términos de segundo orden podrían ser relevantes. El término $f_i(\eta_c^*(0))$ mide cuánta gente se encuentra cerca del umbral inicial: si hay mucha masa justo debajo del umbral, una pequeña reducción de este genera muchos nuevos desarrolladores.
+
+\bigskip
+\noindent\textbf{Paso 7: resultado per cápita, absorción y separabilidad}
+
+\medskip
+\noindent El resultado anterior está expresado en número total de desarrolladores:
+
+\[
+\Devs_{ic}(1)-\Devs_{ic}(0)
+\approx
+N_i f_i(\eta_c^*(0))\tau_c\rho_c.
+\]
+
+Sin embargo, el resultado del estudio se expresa como desarrolladores por cada 100,000 habitantes, por lo que se define
+
+\[
+\Delta Y_{ic}
+=
+\frac{\Devs_{ic}(1)-\Devs_{ic}(0)}{N_i}\cdot 10^5,
+\]
+
+donde $10^5=100{,}000$: el cambio total de desarrolladores se divide entre la población y se multiplica por 100,000. Sustituyendo la aproximación anterior:
+
+\[
+\Delta Y_{ic}
+\approx
+\frac{
+N_i f_i(\eta_c^*(0))\tau_c\rho_c
+}{N_i}
+\cdot 10^5.
+\]
+
+Cancelando $N_i$:
+
+\[
+\Delta Y_{ic}
+\approx
+f_i(\eta_c^*(0))\tau_c\rho_c\cdot 10^5,
+\]
+
+y reordenando:
+
+\[
+\Delta Y_{ic}
+\approx
+10^5 f_i(\eta_c^*(0))\tau_c\rho_c.
+\]
+
+Esta expresión se factoriza en dos partes naturales. La primera,
+
+\[
+10^5 f_i(\eta_c^*(0)),
+\]
+
+depende del país, porque $f_i$ es la distribución de habilidad del país $i$, y mide cuánta gente hay cerca del umbral de entrada; se interpreta como capacidad de absorción. La segunda,
+
+\[
+\tau_c\rho_c,
+\]
+
+depende del lenguaje $c$ y mide cuántas tareas del lenguaje son automatizables y cuánto mejora ChatGPT en promedio. Por eso se define
+
+\[
+\theta_c=\tau_c\rho_c
+\]
+
+y, bajo un supuesto de separabilidad,
+
+\[
+\phi_i=10^5 f_i(\eta_c^*(0)),
+\]
+
+con lo cual el aumento per cápita se escribe como el producto entre la exposición del lenguaje y la absorción del país:
+
+\[
+\Delta Y_{ic}\approx \phi_i\theta_c.
+\]
+
+Conviene precisar por qué la separabilidad es un supuesto. El umbral inicial era
+
+\[
+\eta_c^*(0)=r_i-y_{jc}(0),
+\]
+
+donde $r_i$ depende del país $i$ y $y_{jc}(0)$ depende del lenguaje $c$, porque la productividad base puede diferir entre lenguajes. Por tanto, en rigor,
+
+\[
+f_i(\eta_c^*(0))
+\]
+
+también puede depender de $c$: si el umbral cambia por lenguaje, la densidad evaluada en ese umbral también cambia por lenguaje. La forma más general sería
+
+\[
+\phi_{ic}=10^5 f_i(\eta_c^*(0)),
+\]
+
+con lo cual
+
+\[
+\Delta Y_{ic}\approx \phi_{ic}\theta_c.
+\]
+
+Para escribir
+
+\[
+\Delta Y_{ic}\approx \phi_i\theta_c
+\]
+
+se necesita asumir que
+
+\[
+\phi_{ic}\approx \phi_i,
+\]
+
+es decir, que la capacidad de absorción depende principalmente del país y no varía sustancialmente entre lenguajes. Una manera de justificarlo es asumir que las productividades base $y_{jc}(0)$ son similares entre lenguajes, de modo que los umbrales $\eta_c^*(0)$ no se mueven demasiado; otra es asumir que la densidad $f_i$ es relativamente plana alrededor de esos umbrales, de modo que evaluarla en umbrales ligeramente distintos arroja valores parecidos. La separabilidad país--lenguaje constituye, así, un \textit{supuesto no trivial}: sin él, el efecto sigue pudiendo interpretarse por lenguaje, pero la absorción promedio podría depender también del lenguaje.
+
+\bigskip
+\noindent\textbf{Paso 8: especificación de panel}
+
+\medskip
+\noindent Finalmente, el resultado teórico se traslada a una ecuación empírica. La predicción teórica era
+
+\[
+\Delta Y_{ic}\approx \phi_i\theta_c,
+\]
+
+pero ese cambio solo ocurre cuando ChatGPT está disponible. Sea
+
+\[
+A_{it}\in\{0,1\}
+\]
+
+un indicador de disponibilidad de ChatGPT en el país $i$ y el periodo $t$. El componente de tratamiento es entonces
+
+\[
+\theta_c\phi_i A_{it}.
+\]
+
+Si $A_{it}=0$, no hay tratamiento:
+
+\[
+\theta_c\phi_i A_{it}=0.
+\]
+
+Si $A_{it}=1$, el efecto esperado es
+
+\[
+\theta_c\phi_i A_{it}=\theta_c\phi_i.
+\]
+
+La línea base sin tratamiento puede descomponerse como
+
+\[
+Y_{ic}(0)=\alpha_i+\beta_t+\delta_c+\eta_{ict},
+\]
+
+donde $\alpha_i$ recoge las diferencias permanentes entre países, $\beta_t$ los \textit{shocks} comunes de tiempo, $\delta_c$ las diferencias permanentes entre lenguajes y $\eta_{ict}$ los factores no observados restantes. Sumando el componente de tratamiento se obtiene la especificación de panel:
+
+\[
+Y_{ict}
+=
+\alpha_i+\beta_t+\delta_c+\theta_c\phi_i A_{it}+\eta_{ict}.
+\]
+
+Para interpretar causalmente el coeficiente de tratamiento se requiere la condición de exogeneidad condicional
+
+\[
+\mathbb{E}\left[\eta_{ict}\mid \alpha_i,\beta_t,\delta_c,A_{it}\right]=0,
+\]
+
+es decir, después de controlar por los efectos fijos de país, tiempo y lenguaje, la disponibilidad de ChatGPT no debe estar correlacionada con \textit{shocks} no observados que también afecten $Y_{ict}$. Si esta condición falla, parte del cambio atribuido a ChatGPT podría provenir de otros factores.
+
+\bigskip
+\noindent\textbf{Resumen de la derivación completa}
+
+\begin{center}
+\begin{tabular}{p{0.08\linewidth}p{0.52\linewidth}p{0.29\linewidth}}
+\toprule
+Paso & Ecuación clave & Tipo \\
+\midrule
+1 &
+$\displaystyle y_{jc}(\mu_j)=\int_0^1\max\{h_c(z),\mu_j a_c(z)\}\dd$ &
+Definición \\
+2 &
+$\displaystyle \Zauto=\{z:a_c(z)>h_c(z)\}$, $\displaystyle \tau_c=\int_{\Zauto}1\dd$ &
+Definición exacta \\
+3 &
+$\displaystyle s_c(z)=\frac{a_c(z)-h_c(z)}{h_c(z)}$, $\displaystyle \rho_c=\frac{1}{\tau_c}\int_{\Zauto}s_c(z)\dd$ &
+Definición exacta \\
+4 &
+$\displaystyle \Delta y_{jc}=\int_{\Zauto}h_c(z)s_c(z)\dd$ &
+Identidad exacta \\
+4.5 &
+$\displaystyle \Delta y_{jc}=\tau_c[\bar h_c\rho_c+\Covauto(h_c,s_c)]$ &
+Identidad de covarianza \\
+4.6 &
+$\displaystyle \Delta y_{jc}=\tau_c\rho_c=\theta_c$ &
+Covarianza cero + normalización \\
+5 &
+$\displaystyle \eta_c^*(1)=\eta_c^*(0)-\tau_c\rho_c$ &
+Decisión de entrada \\
+6 &
+$\displaystyle \Devs_{ic}(1)-\Devs_{ic}(0)\approx N_i f_i(\eta_c^*(0))\tau_c\rho_c$ &
+Taylor de primer orden \\
+7 &
+$\displaystyle \Delta Y_{ic}\approx \phi_i\theta_c$ &
+Per cápita + separabilidad \\
+8 &
+$\displaystyle Y_{ict}=\alpha_i+\beta_t+\delta_c+\theta_c\phi_i A_{it}+\eta_{ict}$ &
+Ecuación de panel \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent\textbf{Ejemplo numérico ilustrativo}
+
+\medskip
+\noindent Supóngase que en un lenguaje
+
+\[
+\tau_c=0.30,\qquad \rho_c=0.50,
+\]
+
+es decir, ChatGPT supera al humano en el 30\% de las tareas y, en esas tareas, la mejora relativa promedio es de 50\%. Entonces:
+
+\[
+\theta_c=\tau_c\rho_c=0.30\times 0.50=0.15,
+\]
+
+y la ganancia individual simplificada es
+
+\[
+\Delta y_{jc}=0.15.
+\]
+
+Si el umbral inicial era
+
+\[
+\eta_c^*(0)=2.00,
+\]
+
+el nuevo umbral es
+
+\[
+\eta_c^*(1)=2.00-0.15=1.85.
+\]
+
+Las personas con habilidad
+
+\[
+1.85\leq \eta<2.00
+\]
+
+no entraban antes, pero entran después. Si el país tiene
+
+\[
+N_i=10{,}000{,}000
+\]
+
+habitantes y la densidad alrededor del umbral inicial es
+
+\[
+f_i(\eta_c^*(0))=0.08,
+\]
+
+entonces
+
+\[
+\Devs_{ic}(1)-\Devs_{ic}(0)
+\approx
+10{,}000{,}000\times 0.08\times 0.15
+=120{,}000.
+\]
+
+Por cada 100,000 habitantes:
+
+\[
+\Delta Y_{ic}
+=
+\frac{120{,}000}{10{,}000{,}000}\times 100{,}000
+=1{,}200.
+\]
+
+El ejemplo es puramente ilustrativo: permite observar cómo interactúan los componentes del modelo, no afirmar magnitudes reales.
+
+\bigskip
+\noindent\textbf{Supuestos del modelo}
+
+\medskip
+\noindent La derivación descansa en los siguientes supuestos:
+
+\begin{enumerate}
+  \item \textbf{Elección del mejor método por tarea.} El modelo asume que el desarrollador puede usar el método más productivo en cada tarea.
+  \item \textbf{Covarianza cero.} Para obtener $\Delta y_{jc}=\tau_c\rho_c\bar h_c$, se impone $\Covauto(h_c,s_c)=0$.
+  \item \textbf{Normalización de escala.} Se elige $\bar h_c=1$, lo que permite $\Delta y_{jc}=\tau_c\rho_c$.
+  \item \textbf{Taylor de primer orden.} Se aproxima el cambio en desarrolladores usando la densidad en el umbral inicial.
+  \item \textbf{Separabilidad país--lenguaje.} Se reemplaza $\phi_{ic}$ por $\phi_i$, asumiendo que la absorción depende principalmente del país.
+  \item \textbf{Exogeneidad condicional.} Para la interpretación causal en el panel, se requiere que la disponibilidad de ChatGPT no esté correlacionada con \textit{shocks} no observados después de controlar por efectos fijos.
+\end{enumerate}
+
+\bigskip
+\noindent\textbf{Lectura económica del modelo}
+
+\medskip
+\noindent En síntesis, la cadena causal del modelo puede leerse en tres eslabones:
+
+\[
+\underbrace{\text{más tareas automatizables}}_{\tau_c}
+\times
+\underbrace{\text{mayor ahorro promedio}}_{\rho_c}
+\Longrightarrow
+\underbrace{\text{mayor ganancia individual}}_{\Delta y_{jc}}.
+\]
+
+Luego:
+
+\[
+\underbrace{\text{mayor ganancia individual}}_{\Delta y_{jc}}
+\Longrightarrow
+\underbrace{\text{menor umbral de entrada}}_{\eta_c^*(1)<\eta_c^*(0)}.
+\]
+
+Luego:
+
+\[
+\underbrace{\text{menor umbral}}_{\text{baja en }\eta_c^*}
+\times
+\underbrace{\text{gente cerca del umbral}}_{f_i(\eta_c^*(0))}
+\Longrightarrow
+\underbrace{\text{más desarrolladores activos}}_{\Devs_{ic}(1)-\Devs_{ic}(0)}.
+\]
+
+Finalmente:
+
+\[
+\Delta Y_{ic}\approx \phi_i\theta_c.
+\]
+
+En una frase: ChatGPT tiene mayor impacto donde los lenguajes están más expuestos a la automatización y donde los países tienen más personas cerca del umbral de entrada a la programación.
 
 \end{document}
