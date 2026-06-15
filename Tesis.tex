@@ -326,6 +326,8 @@ La prohibición de ChatGPT en varios países se ha debido primordialmente sobre 
 
 
 
+\phantomsection
+\label{sec:hipotesis}
 \subsection*{Hipótesis}
 
 La accesibilidad a ChatGPT en un país se asociaría positivamente con el desarrollo de software en los diez lenguajes de programación más populares de ciencia de datos. En particular, habría un incremento del número de \textit{unique pushers} por cada 100 mil habitantes en países que cuentan con ChatGPT frente a aquellos sin acceso al servicio. Además, tal efecto positivo se acentuaría en lenguajes como Python y JavaScript dada la vasta documentación técnica, ejercicios y consultas en foros especializados. Tales recursos servirían como datos de entrenamiento valiosos para que el modelo de lenguaje resuelva de manera eficiente en múltiples contextos de programación.
@@ -369,7 +371,7 @@ Por su parte, Buscemi (2023) propone un benchmark \textit{ad}\textit{hoc} para e
 
 
 
-\subsection{Marco teórico económico}
+\subsection{Marco teórico económico}\label{sec:marco_teorico}
 
 La hipótesis del estudio se sustenta en tres vertientes complementarias de la teoría económica que permiten explicar por qué la disponibilidad de ChatGPT debería incrementar la producción de software, medida a través de la entrada de nuevos desarrolladores activos. La primera proviene de la teoría del cambio tecnológico y la reasignación de tareas; la segunda, de la economía de la información y los costos de búsqueda; la tercera formaliza ambos mecanismos en un modelo de tareas con decisión ocupacional de entrada, del cual se deriva la especificación empírica del estudio. Los tres marcos, que se desarrollan a continuación, enmarcan la evidencia empírica revisada en la subsección siguiente.
 
@@ -377,50 +379,111 @@ La primera vertiente se apoya en el marco de reasignación de tareas propuesto p
 
 La segunda vertiente proviene de la economía de la información. Desde Stigler (1961), la búsqueda se concibe como una actividad costosa que el agente emprende para reducir su incertidumbre sobre las alternativas relevantes; en el ámbito del desarrollo de software, ese costo se materializa en el tiempo que el programador dedica a la documentación, a foros como Stack Overflow, a tutoriales o a la experimentación. ChatGPT puede interpretarse como una tecnología que reduce el costo marginal de búsqueda y aprendizaje a niveles cercanos a cero, al ofrecer respuestas contextualizadas y casi instantáneas a consultas que antes exigían minutos u horas de exploración. Bajo esta lente, la disponibilidad del modelo equivale a un \textit{shock} negativo de costos sobre la función de producción de código del desarrollador: aun manteniendo constante la oferta de programadores experimentados, cabría esperar un incremento de la actividad, especialmente entre quienes enfrentaban costos de búsqueda proporcionalmente más altos respecto de su productividad esperada, esto es, los desarrolladores nuevos o autodidactas.
 
-La tercera vertiente integra los dos mecanismos anteriores en un modelo formal de tareas con decisión ocupacional de entrada, en la tradición del marco de tareas de Acemoglu y Restrepo (2018) y de su actualización para la IA generativa desarrollada por Acemoglu (2024), cuyo propósito es trasladar la intuición tecnológica —ChatGPT no mejora todas las tareas por igual, sino principalmente aquellas en las que su productividad supera a la humana— hacia una ecuación estimable. En el modelo, la producción de un desarrollador potencial $j$ en el lenguaje $c$ se obtiene agregando un continuo de tareas elementales $z\in[0,1]$, en cada una de las cuales el individuo escoge el método más productivo entre su productividad humana $h_c(z)>0$ y la productividad de ChatGPT $a_c(z)\geq 0$, condicional a su acceso a la herramienta $\mu_j\in\{0,1\}$:
+La tercera vertiente integra los mecanismos anteriores en un modelo formal de tareas con decisión ocupacional de entrada, basado en Acemoglu y Restrepo (2018) y Acemoglu (2024). La secuencia es la siguiente: ChatGPT mejora la producción en determinadas tareas; esa ganancia reduce el umbral de habilidad necesario para programar; y la reducción del umbral incrementa el número de desarrolladores activos.
+
+\paragraph{Paso 1. Producción y exposición a nivel de tarea.} Sea $z\in[0,1]$ una tarea, $c$ un lenguaje y $j$ un desarrollador potencial. La productividad humana es $h_c(z)>0$, la de ChatGPT es $a_c(z)\geq 0$ y $\mu_j\in\{0,1\}$ indica acceso. Para evitar imponer que la herramienta sea superior en todas las tareas, se define la productividad efectiva como
 
 \[
-y_{jc}(\mu_j)=\int_0^1 \max\{h_c(z),\,\mu_j a_c(z)\}\dd.
+p_c(z,\mu_j)=
+\begin{cases}
+a_c(z), & \text{si } \mu_j=1 \text{ y } a_c(z)>h_c(z),\\
+h_c(z), & \text{en caso contrario.}
+\end{cases}
 \]
 
-El conjunto de tareas automatizables del lenguaje, $\Zauto=\{z\in[0,1]:a_c(z)>h_c(z)\}$, tiene medida $\tau_c$ —la fracción de tareas en las que ChatGPT supera al humano— y, dentro de él, el ahorro relativo por tarea $s_c(z)=[a_c(z)-h_c(z)]/h_c(z)$ tiene promedio condicional $\rho_c$. A partir de estas definiciones, la ganancia individual de acceder a ChatGPT admite una expresión exacta, libre de supuestos adicionales:
+La producción total es, por tanto,
 
 \[
-\Delta y_{jc}=y_{jc}(1)-y_{jc}(0)=\int_{\Zauto}h_c(z)s_c(z)\dd
+y_{jc}(\mu_j)=\int_0^1 p_c(z,\mu_j)\dd.
+\]
+
+Sea $\Zauto=\{z\in[0,1]:a_c(z)>h_c(z)\}$ el conjunto de tareas en las que ChatGPT supera al humano. Sin acceso se utiliza productividad humana en todas las tareas; con acceso, solo cambia la tecnología utilizada dentro de $\Zauto$. Así,
+
+\[
+\begin{aligned}
+y_{jc}(0)&=\int_{[0,1]\setminus\Zauto}h_c(z)\dd+\int_{\Zauto}h_c(z)\dd,\\
+y_{jc}(1)&=\int_{[0,1]\setminus\Zauto}h_c(z)\dd+\int_{\Zauto}a_c(z)\dd.
+\end{aligned}
+\]
+
+Al restar ambos estados, el primer término es idéntico y se cancela. En consecuencia,
+
+\[
+\begin{aligned}
+\Delta y_{jc}=y_{jc}(1)-y_{jc}(0)
+=\int_{\Zauto}[a_c(z)-h_c(z)]\dd.
+\end{aligned}
+\]
+
+La ganancia depende únicamente de las tareas en las que la herramienta es superior. Si $\tau_c$ es la medida de $\Zauto$ y $s_c(z)=[a_c(z)-h_c(z)]/h_c(z)$ es el ahorro relativo por tarea, entonces
+
+\[
+\Delta y_{jc}=\int_{\Zauto}h_c(z)s_c(z)\dd
 =\tau_c\left[\bar h_c\rho_c+\Covauto(h_c,s_c)\right],
 \]
 
-donde $\bar h_c$ denota la productividad humana promedio dentro de las tareas automatizables. Bajo el supuesto de covarianza nula entre la productividad humana base y el ahorro relativo, y normalizando la escala de producción de modo que $\bar h_c=1$, la ganancia individual se reduce a
+donde $\bar h_c$ y $\rho_c$ son, respectivamente, la productividad humana y el ahorro relativo promedios dentro del conjunto automatizable. La última igualdad aplica la identidad $\mathbb{E}[hs]=\mathbb{E}[h]\,\mathbb{E}[s]+\operatorname{Cov}(h,s)$. Bajo covarianza nula y normalizando $\bar h_c=1$,
 
 \[
-\Delta y_{jc}=\tau_c\rho_c\equiv\theta_c,
+\Delta y_{jc}=\tau_c\rho_c\equiv\theta_c.
 \]
 
-donde $\theta_c$ se interpreta como la exposición del lenguaje $c$ a ChatGPT: combina cuántas tareas del lenguaje son automatizables ($\tau_c$) y cuán grande es la mejora promedio en esas tareas ($\rho_c$). Esta formulación adapta el modelo de automatización parcial de Acemoglu (2024), en el cual la fracción de tareas automatizables y el ahorro de costos promedio por tarea (\textit{cost saving share}) determinan, a través de su producto, la exposición efectiva de un sector a la IA generativa. A su vez, $\theta_c$ constituye el análogo lingüístico de los índices de exposición ocupacional de Eloundou et al. (2023), quienes, sobre la clasificación de tareas de O*NET, miden la fracción de tareas de cada ocupación en las que un modelo de lenguaje reduce sustantivamente el tiempo de trabajo, y documentan que la exposición es sistemáticamente mayor donde la tecnología dispone de mayor representación en su corpus de entrenamiento. En esa misma línea, el parámetro recoge de forma compacta la heterogeneidad documentada en los \textit{benchmarks} por lenguaje (Buscemi, 2023; Li y Krishnamachari, 2024), asociada a la representación de cada lenguaje en los datos de entrenamiento del modelo.
+Por tanto, $\theta_c$ representa la exposición del lenguaje: combina la fracción de tareas automatizables y la magnitud media de la mejora. Esta formulación recoge la heterogeneidad por lenguaje documentada por Eloundou et al. (2023), Buscemi (2023) y Li y Krishnamachari (2024).
 
-El paso de la productividad a la entrada de nuevos desarrolladores se modela como una decisión ocupacional con umbral. Un individuo con habilidad $\eta$ entra a programar si la utilidad de hacerlo, $\eta+y_{jc}(\mu_j)$, supera la utilidad de reserva $r_i$ de su país, lo que define el umbral mínimo de habilidad $\eta_c^*(\mu)=r_i-y_{jc}(\mu)$. Dado que el acceso a ChatGPT incrementa la producción, el umbral se reduce exactamente en la magnitud de la ganancia individual:
+\paragraph{Paso 2. Del aumento de productividad al umbral de entrada.} Sea $\eta$ la habilidad del individuo y $r_i$ la utilidad de reserva en el país $i$. El individuo entra a programar cuando $\eta+y_{jc}(\mu)\geq r_i$; por ello, el umbral mínimo de habilidad es
 
 \[
-\eta_c^*(1)=\eta_c^*(0)-\theta_c.
+\eta_c^*(\mu)=r_i-y_{jc}(\mu).
 \]
 
-Este desplazamiento del umbral formaliza el mecanismo de la segunda vertiente: la reducción de los costos de búsqueda y aprendizaje opera con mayor intensidad sobre los individuos marginales, cuya habilidad se sitúa entre el umbral antiguo y el nuevo. Agregando sobre la distribución de habilidad $F_i$ del país $i$, con densidad $f_i$, y aplicando una aproximación de Taylor de primer orden, el cambio en el número de desarrolladores activos por cada 100,000 habitantes se factoriza en un componente de país y un componente de lenguaje:
+Como el paso anterior implica $y_{jc}(1)=y_{jc}(0)+\theta_c$, la sustitución directa permite obtener
 
 \[
-\Delta Y_{ic}\approx \phi_i\theta_c,
-\qquad
-\phi_i=10^5 f_i(\eta_c^*(0)),
+\begin{aligned}
+\eta_c^*(1)=r_i-y_{jc}(1)
+=r_i-y_{jc}(0)-\theta_c=\eta_c^*(0)-\theta_c.
+\end{aligned}
 \]
 
-donde $\phi_i$ mide la capacidad de absorción tecnológica del país, es decir, la masa de personas situadas cerca del umbral de entrada a la programación. Finalmente, incorporando la disponibilidad de ChatGPT mediante el indicador $A_{it}\in\{0,1\}$ y descomponiendo la línea base en efectos fijos, el modelo entrega directamente la especificación de panel del estudio:
+La ganancia productiva reduce, entonces, el umbral exactamente en $\theta_c$. Este resultado conecta el modelo de tareas con la economía de la información: la asistencia y el menor costo de búsqueda incorporan a los individuos cuya habilidad se encuentra entre el umbral antiguo y el nuevo.
+
+\paragraph{Paso 3. Agregación y capacidad de absorción.} Sea $F_i$ la distribución de habilidad y $f_i$ su densidad. La proporción que entra es $1-F_i(\eta_c^*(\mu))$. Usando el desplazamiento anterior, el cambio por cada 100,000 habitantes es
 
 \[
-Y_{ict}=\alpha_i+\beta_t+\delta_c+\theta_c\phi_i A_{it}+\eta_{ict},
+\Delta Y_{ic}=10^5\left[F_i(\eta_c^*(0))-F_i(\eta_c^*(0)-\theta_c)\right].
 \]
 
-cuya interpretación causal requiere que, condicional a los efectos fijos de país ($\alpha_i$), tiempo ($\beta_t$) y lenguaje ($\delta_c$), la disponibilidad de ChatGPT no esté correlacionada con los \textit{shocks} no observados $\eta_{ict}$. Esta ecuación fundamenta la estrategia empírica del estudio y predice que el efecto del tratamiento es heterogéneo: creciente en la exposición del lenguaje ($\theta_c$) y en la capacidad de absorción del país ($\phi_i$). La derivación completa del modelo, paso a paso, junto con la discusión formal de sus supuestos y un ejemplo numérico ilustrativo, se presenta en el Anexo 4.
+Para expresar este resultado en forma lineal, se aplica una aproximación de Taylor de primer orden alrededor del umbral inicial:
 
-En conjunto, las tres vertientes convergen en una misma predicción: la disponibilidad de ChatGPT debería incrementar el número de \textit{unique pushers} en GitHub en los países con acceso al servicio, con efectos heterogéneos por lenguaje de programación que reflejan tanto la representación de cada lenguaje en los datos de entrenamiento del modelo (Chai et al., 2024; Buscemi, 2023) como la elasticidad de la demanda de tareas automatizables en cada ecosistema lingüístico. La evidencia empírica revisada a continuación resulta consistente con ambos mecanismos: Brynjolfsson et al. (2023) documentan el patrón de reasignación de tareas en agentes de servicio al cliente —la asistencia con IA eleva la productividad sobre todo entre los trabajadores menos experimentados—, mientras que Del Rio-Chanona et al. (2023) aportan evidencia del \textit{shock} sobre los costos de búsqueda al registrar una caída del 16 \% en la actividad de Stack Overflow tras el lanzamiento de ChatGPT.
+\[
+F_i(\eta_c^*(0)-\theta_c)\approx F_i(\eta_c^*(0))-f_i(\eta_c^*(0))\theta_c.
+\]
+
+Al sustituirla en la ecuación anterior,
+
+\[
+\Delta Y_{ic}\approx 10^5 f_i(\eta_c^*(0))\theta_c\equiv\phi_{ic}\theta_c.
+\]
+
+El término $\phi_{ic}$ mide la masa de personas cercana al margen de entrada y, por tanto, la capacidad de transformar una mejora individual en nuevos desarrolladores. Para separar la heterogeneidad del país y del lenguaje se adopta $\phi_{ic}\approx\phi_i$, con lo cual
+
+\[
+\Delta Y_{ic}\approx\phi_i\theta_c.
+\]
+
+Así, $\theta_c$ resume la exposición tecnológica del lenguaje y $\phi_i$ la capacidad de absorción del país.
+
+\paragraph{Paso 4. De la predicción teórica a la especificación empírica.} Sea $A_{it}\in\{0,1\}$ el indicador de disponibilidad de ChatGPT. Al activar la ganancia prevista por el modelo e incorporar efectos fijos de país, tiempo y lenguaje, se obtiene
+
+\[
+Y_{ict}=\alpha_i+\beta_t+\delta_c+\phi_i\theta_c A_{it}+\eta_{ict}.
+\]
+
+Los efectos fijos absorben diferencias permanentes entre países y lenguajes, así como choques temporales comunes. La interpretación causal requiere que, condicional a ellos, la disponibilidad de ChatGPT no esté correlacionada con otros choques no observados que también modifiquen la actividad en GitHub. El modelo predice un efecto positivo y heterogéneo: mayor en lenguajes con alta exposición $\theta_c$ y en países con alta capacidad de absorción $\phi_i$.
+
+El \hyperref[anexo:4]{Anexo 4} reúne los cálculos secundarios: la partición mediante indicadoras, la identidad de covarianza, la normalización, las condiciones de Taylor, la separabilidad país--lenguaje y el ejemplo numérico.
+
+En conjunto, las tres vertientes predicen que la disponibilidad de ChatGPT incrementa los \textit{unique pushers}, con efectos heterogéneos por lenguaje y país. La evidencia siguiente es coherente con ambos mecanismos: Brynjolfsson et al. (2023) encuentran mayores ganancias entre trabajadores menos experimentados y Del Rio-Chanona et al. (2023) una caída del 16 \% en la actividad de Stack Overflow tras el lanzamiento de ChatGPT.
 
 
 \subsection{Evidencia empírica}
@@ -448,7 +511,7 @@ La literatura revisada indica que ChatGPT y otros modelos de lenguaje grandes ha
 \clearpage
 \section{Datos}
 
-ChatGPT fue lanzado en noviembre de 2022 por el \textit{startup} estadounidense OpenAI, cuya sede se encuentra en San Francisco. Desde su lanzamiento, la herramienta ha alcanzado una adopción masiva, siendo utilizada por millones de personas a nivel global (Kreitmeir \& Raschky, 2023). Sin embargo, su disponibilidad no ha sido homogénea entre países, ya que algunos gobiernos han decidido restringir o bloquear su acceso debido a preocupaciones vinculadas a la protección de datos personales, la potencial difusión de desinformación, la ausencia de mecanismos efectivos de regulación de contenidos en línea y conflictos geopolíticos con Estados Unidos (BBC News Mundo, 2023; Ijaz, 2023). En el Anexo 1, se presenta un análisis detallado del estado de accesibilidad de ChatGPT por país.
+ChatGPT fue lanzado en noviembre de 2022 por el \textit{startup} estadounidense OpenAI, cuya sede se encuentra en San Francisco. Desde su lanzamiento, la herramienta ha alcanzado una adopción masiva, siendo utilizada por millones de personas a nivel global (Kreitmeir \& Raschky, 2023). Sin embargo, su disponibilidad no ha sido homogénea entre países, ya que algunos gobiernos han decidido restringir o bloquear su acceso debido a preocupaciones vinculadas a la protección de datos personales, la potencial difusión de desinformación, la ausencia de mecanismos efectivos de regulación de contenidos en línea y conflictos geopolíticos con Estados Unidos (BBC News Mundo, 2023; Ijaz, 2023). En el \hyperref[anexo:1]{Anexo 1}, se presenta un análisis detallado del estado de accesibilidad de ChatGPT por país.
 
 Github es la plataforma de almacenamiento de código más grande en el mundo, utilizada para almacenar y trabajar conjuntamente en proyectos de codificación a través de repositorios. Para este trabajo, la totalidad de los datos mostrados provienen del base de datos Innovation Graph de GitHub, específicamente de la tabla \textit{languages}, la cual contiene a los \textit{unique pushers} a nivel de lenguaje de programación y por trimestre. Esta métrica, denominada \textit{unique pushers}, representa a la cantidad total de desarrolladores únicos que, al menos, realizaron un \textit{git}\textit{push} (subida de código) a un repositorio a GitHub con un lenguaje de programación determinado. Los datos abarcan desde el primer trimestre de 2020 hasta el cuarto trimestre de 2024, pero se tomará solo hasta el año 2023, y están desglosados por lenguaje de programación, incluyendo un total de 50 lenguajes. De estos, se han mantenido los 10 más populares en el campo de la ciencia de datos.
 
@@ -458,7 +521,7 @@ Además, el filtrado realizado al conjunto de datos inició con la exclusión de
 
 Las unidades tratadas, en el presente trabajo, corresponden a los países que originalmente comunicaron que tendrían acceso a la aplicación ChatGTP. Por tanto, durante el período de tiempo indicado, no se añadieron nuevos países al grupo de tratamiento. Esto constituye un diseño de bloques, como se describe en Arkhangelsky et al. (2021), lo cual facilita el cálculo de los estimadores. El diseño del trabajo incluye 130 unidades de tratamiento y 29 unidades de control; 12 períodos de pretratamiento, 4 períodos de tratamiento y un total de 25.440 observaciones.
 
-La especificación principal del estudio no incorpora variables de control adicionales en las estimaciones DiD, SC ni SDiD. Esta decisión, ampliada en el Anexo 2, responde a tres consideraciones: (i) las únicas variables candidatas con cobertura razonable entre los 159 países del panel —porcentaje de uso de computadora y porcentaje de uso de internet del Banco Mundial— presentan información faltante en 19 países (2.640 observaciones, equivalentes al 10,4 \% del panel) que debieron imputarse con cero, lo que introduce error de medida correlacionado con el estatus de tratamiento; (ii) las variables disponibles son de frecuencia anual e interpoladas a trimestres, lo que las vuelve insensibles a la dinámica que se busca capturar entre Q4-2022 y Q4-2023; y (iii) los estimadores SC y SDiD ya absorben la heterogeneidad estructural pretratamiento mediante la ponderación de unidades y períodos, lo que reduce el valor marginal de incluir controles observables. La estimación con controles se reporta en la Tabla 4 únicamente como ejercicio de robustez.
+La especificación principal del estudio no incorpora variables de control adicionales en las estimaciones DiD, SC ni SDiD. Esta decisión, ampliada en el \hyperref[anexo:2]{Anexo 2}, responde a tres consideraciones: (i) las únicas variables candidatas con cobertura razonable entre los 159 países del panel —porcentaje de uso de computadora y porcentaje de uso de internet del Banco Mundial— presentan información faltante en 19 países (2.640 observaciones, equivalentes al 10,4 \% del panel) que debieron imputarse con cero, lo que introduce error de medida correlacionado con el estatus de tratamiento; (ii) las variables disponibles son de frecuencia anual e interpoladas a trimestres, lo que las vuelve insensibles a la dinámica que se busca capturar entre Q4-2022 y Q4-2023; y (iii) los estimadores SC y SDiD ya absorben la heterogeneidad estructural pretratamiento mediante la ponderación de unidades y períodos, lo que reduce el valor marginal de incluir controles observables. La estimación con controles se reporta en la \hyperref[tab:tabla4]{Tabla 4} únicamente como ejercicio de robustez.
 
 \clearpage
 \section{Estadísticos descriptivos}
@@ -476,7 +539,7 @@ En la \hyperref[fig:figura4]{Figura 4} correspondiente a países sin disponibili
 En conjunto, las cuatro figuras evidencian patrones similares en la evolución del ecosistema de desarrollo entre países con y sin disponibilidad de ChatGPT, aunque con diferencias en la magnitud del crecimiento observado. La \hyperref[fig:figura1]{Figura 1} y \hyperref[fig:figura2]{Figura 2} muestran que la popularidad de los principales lenguajes utilizados en ciencia de datos se mantiene dominada por JavaScript y Python en ambos grupos, mientras que TypeScript presenta el mayor incremento relativo durante el periodo analizado. Sin embargo, al considerar los niveles de unique pushers por cada 100 mil habitantes presentados en las \hyperref[fig:figura3]{Figura 3} y \hyperref[fig:figura4]{Figura 4}, se observa que el aumento es más pronunciado en los países con disponibilidad de ChatGPT, especialmente a partir del cuarto trimestre de 2022, coincidiendo con el lanzamiento público de la herramienta. En contraste, lenguajes más tradicionales como Java y Ruby muestran una pérdida relativa de participación o un crecimiento más moderado en ambos contextos.
 
 \clearpage
-\section{Metodología}
+\section{Metodología}\label{sec:metodologia}
 
 En todos los métodos se asume el modelo de resultados potenciales. Para la unidad $i$ en el período $t$, el resultado observado se descompone como:
 
@@ -606,7 +669,7 @@ p^{\text{placebo}} = \frac{1}{N_c}\sum_{j \in \mathcal{C}} \mathbf{1}\!\left[\,|
 
 Un p-valor bajo indica que el efecto estimado en la especificación principal es atípico respecto a lo que se obtendría asignando el tratamiento aleatoriamente a unidades no expuestas, lo cual robustece la interpretación causal.
 
-El segundo ejercicio evalúa la sensibilidad del resultado al pool de donantes mediante un análisis \textit{leave-one-out}. El objetivo es determinar cuán dependiente es el ATT principal de la presencia de cada país en dicho pool: para cada uno de los 29 países de control se elimina al país $j$ y se reestima el SDID con los 28 países de control restantes más los 130 países tratados originales. Se reportan el mínimo, la mediana y el máximo de las 29 estimaciones \textit{leave-one-out} por lenguaje. Un rango LOO estrecho en torno al ATT principal indica que ningún país individual conduce el resultado, mientras que un rango muy amplio o que cambia de signo revelaría una dependencia excesiva de donantes específicos. La Tabla 6 reúne ambos diagnósticos por lenguaje y la Figura 15 los resume gráficamente.
+El segundo ejercicio evalúa la sensibilidad del resultado al pool de donantes mediante un análisis \textit{leave-one-out}. El objetivo es determinar cuán dependiente es el ATT principal de la presencia de cada país en dicho pool: para cada uno de los 29 países de control se elimina al país $j$ y se reestima el SDID con los 28 países de control restantes más los 130 países tratados originales. Se reportan el mínimo, la mediana y el máximo de las 29 estimaciones \textit{leave-one-out} por lenguaje. Un rango LOO estrecho en torno al ATT principal indica que ningún país individual conduce el resultado, mientras que un rango muy amplio o que cambia de signo revelaría una dependencia excesiva de donantes específicos. La \hyperref[tab:tabla6]{Tabla 6} reúne ambos diagnósticos por lenguaje y la \hyperref[fig:figura15]{Figura 15} los resume gráficamente.
 
 \clearpage
 \section{Resultados}
@@ -623,7 +686,7 @@ Finalmente, tres lenguajes presentan patrones mixtos entre métodos. En C\#, el 
 
 Por otra parte, de la \hyperref[fig:figura5]{Figura 5} -- \hyperref[fig:figura14]{Figura 14}, se muestran las tendencias y ponderaciones estimadas de \textit{unique pushers} por cada 100 mil personas para diferentes lenguajes de programación, utilizando los métodos Diferencia en Diferencias (DiD), Control Sintético (CS) y Diferencia en Diferencias Sintética (SDiD). Cada figura se divide en seis paneles: los paneles (a) y (b) presentan los resultados del método DiD, los paneles (c) y (d) muestran los resultados del método CS, y los paneles (e) y (f) ilustran los resultados del método SDiD.
 
-En cuanto al ajuste y validación del contrafactual, el método DiD, como se observa en los paneles (a), muestra divergencia en las tendencias para el grupo tratado y el grupo de control antes del tratamiento, indicando que la suposición de tendencias paralelas no se cumple, llevando a estimaciones sesgadas del impacto del tratamiento. Por otro lado, el método CS, ilustrado en los paneles (c), muestra tendencias más similares antes del tratamiento, sugiriendo un mejor ajuste del contrafactual. Sin embargo, la falta de ponderación temporal puede afectar la precisión post-tratamiento. El método SDiD, representado en los paneles (e), muestra tendencias muy similares antes del tratamiento, validando así la construcción del contrafactual. El área sombreada en estos paneles indica la ponderación temporal, destacando la importancia relativa de cada periodo pre-tratamiento y mejorando la precisión del ajuste. La divergencia clara entre las líneas después del tratamiento sugiere un impacto significativo del tratamiento, indicando que SDiD ha proporcionado un ajuste preciso y confiable. Como validación adicional, el Anexo 3 presenta los gráficos de análisis de evento SDID para los diez lenguajes, donde el gap trimestral entre el grupo tratado y su control sintético se normaliza para que el período pre-tratamiento se concentre en torno a cero; la estabilidad de estos gaps pre-tratamiento confirma la adecuación del contrafactual construido.
+En cuanto al ajuste y validación del contrafactual, el método DiD, como se observa en los paneles (a), muestra divergencia en las tendencias para el grupo tratado y el grupo de control antes del tratamiento, indicando que la suposición de tendencias paralelas no se cumple, llevando a estimaciones sesgadas del impacto del tratamiento. Por otro lado, el método CS, ilustrado en los paneles (c), muestra tendencias más similares antes del tratamiento, sugiriendo un mejor ajuste del contrafactual. Sin embargo, la falta de ponderación temporal puede afectar la precisión post-tratamiento. El método SDiD, representado en los paneles (e), muestra tendencias muy similares antes del tratamiento, validando así la construcción del contrafactual. El área sombreada en estos paneles indica la ponderación temporal, destacando la importancia relativa de cada periodo pre-tratamiento y mejorando la precisión del ajuste. La divergencia clara entre las líneas después del tratamiento sugiere un impacto significativo del tratamiento, indicando que SDiD ha proporcionado un ajuste preciso y confiable. Como validación adicional, el \hyperref[anexo:3]{Anexo 3} presenta los gráficos de análisis de evento SDID para los diez lenguajes, donde el gap trimestral entre el grupo tratado y su control sintético se normaliza para que el período pre-tratamiento se concentre en torno a cero; la estabilidad de estos gaps pre-tratamiento confirma la adecuación del contrafactual construido.
 
 En el método DiD, representado en los paneles (b), todos los estados de control reciben el mismo peso, lo cual es indicado por la línea roja horizontal constante. Este método no considera la heterogeneidad entre las unidades de control, lo que puede ser una limitación significativa si las tendencias previas al tratamiento no son paralelas. Por otro lado, el método CS, ilustrado en los paneles (d), asigna pesos específicos a las unidades de control, permitiendo una mayor flexibilidad y una mejor adaptación a las características específicas de las unidades de control. La línea roja horizontal en estos paneles refleja la media ponderada de los pesos asignados, que puede cambiar dependiendo de la distribución de los pesos. En CS, los puntos rojos representan pesos negligibles —pesos inferiores al 30\,\% del peso uniforme $1/N_c$, esto es, donantes que contribuyen marginalmente al contrafactual sin necesariamente ser exactamente cero— y los puntos azules representan pesos significativos, con el tamaño de los puntos indicando la magnitud del peso. El método SDiD, mostrado en los paneles (f), asigna pesos variables tanto a las unidades de control como a los periodos de tiempo, proporcionando una asignación de pesos más robusta y flexible. La línea roja horizontal en estos paneles también refleja la media ponderada de los pesos, cambiando significativamente debido a la ponderación adicional por el tiempo. En SDiD, al igual que en CS, los puntos rojos representan pesos negligibles y los puntos azules pesos significativos, con el tamaño de los puntos indicando la magnitud del peso.
 
@@ -633,14 +696,14 @@ Las pruebas de robustez de los placebos in-space y la sensibilidad del pool de d
 
 La lectura conjunta del p-valor placebo y del rango \textit{leave-one-out} permite clasificar la evidencia en tres niveles según su solidez. \textbf{Evidencia fuerte}: en Go y Ruby el p-valor placebo es 0,034, lo que ubica al ATT observado fuera del 95 \% de la distribución placebo, y el rango LOO se mantiene estrecho y siempre por encima de cero (Go: [0,587; 0,839]; Ruby: [0,667; 0,853]). \textbf{Evidencia moderada}: en JavaScript, Python y TypeScript el p-valor placebo es 0,069, marginalmente significativo al 10 \%; sus rangos LOO son amplios pero permanecen por encima de cero (JavaScript: [4,642; 9,322]; Python: [3,553; 5,111]; TypeScript: [1,904; 3,598]), lo que sustenta el efecto principal pese a la magnitud de las cifras. \textbf{Evidencia débil}: en C, C++, Java, PHP y C\# los p-valores placebo se sitúan entre 0,103 y 0,207, es decir, no permiten rechazar la hipótesis nula al 10 \% bajo la distribución placebo; sus rangos LOO también son los más estrechos en magnitud relativa al ATT observado pero los placebos sugieren que el efecto detectado podría no ser distinguible de la variabilidad observada al asignar el tratamiento aleatoriamente dentro del grupo de control.
 
-Esta clasificación matiza la lectura de la Tabla 3: la significancia obtenida por \textit{bootstrap} para C, C++ y Java (todos al 1 \%) coexiste con una significancia placebo más débil, lo cual sugiere que el ATT estimado para estos lenguajes podría reflejar tanto el tratamiento como heterogeneidad estructural del grupo de control no completamente absorbida por el contrafactual SDID. En contraste, los efectos en JavaScript, Python y TypeScript —los lenguajes priorizados por la hipótesis del estudio dada su mayor representación en datos de entrenamiento del modelo— son los que mejor sobreviven simultáneamente a ambas pruebas, lo que respalda la interpretación causal en estos casos. Importantes para política son por tanto los efectos en Go, Ruby, Python, JavaScript y TypeScript; los demás merecen interpretarse con cautela y como insumo para futuras investigaciones con ventanas postratamiento más amplias.
+Esta clasificación matiza la lectura de la \hyperref[tab:tabla3]{Tabla 3}: la significancia obtenida por \textit{bootstrap} para C, C++ y Java (todos al 1 \%) coexiste con una significancia placebo más débil, lo cual sugiere que el ATT estimado para estos lenguajes podría reflejar tanto el tratamiento como heterogeneidad estructural del grupo de control no completamente absorbida por el contrafactual SDID. En contraste, los efectos en JavaScript, Python y TypeScript —los lenguajes priorizados por la hipótesis del estudio dada su mayor representación en datos de entrenamiento del modelo— son los que mejor sobreviven simultáneamente a ambas pruebas, lo que respalda la interpretación causal en estos casos. Importantes para política son por tanto los efectos en Go, Ruby, Python, JavaScript y TypeScript; los demás merecen interpretarse con cautela y como insumo para futuras investigaciones con ventanas postratamiento más amplias.
 
 \clearpage
 \phantomsection
 \label{sec:conc}
 \section*{\centering\normalfont Conclusiones}
 
-En conclusión, los resultados obtenidos mediante el modelo SDID indican que la disponibilidad de ChatGPT ha tenido un impacto positivo y diferenciado en el desarrollo de software en varios lenguajes de programación. Específicamente, se observó un aumento notable en la cantidad de desarrolladores que utilizan lenguajes como JavaScript, Python y TypeScript, hallazgo que la hipótesis del estudio (Sección 3.3) había anticipado explícitamente: estos son justamente los lenguajes con mayor representación de documentación, tutoriales y consultas en plataformas abiertas, lo cual constituye la base de entrenamiento sobre la que ChatGPT despliega mejor su capacidad de asistencia (Buscemi, 2023; Chai et al., 2024). La confirmación empírica de esta predicción teórica robustece la interpretación del mecanismo subyacente: la disponibilidad del modelo reduce los costos de búsqueda y aprendizaje (Stigler, 1961) y permite la entrada al desarrollo de programadores que antes enfrentaban barreras de capital humano demasiado altas (Acemoglu y Restrepo, 2018), precisamente en aquellos lenguajes donde la productividad del modelo es mayor.
+En conclusión, los resultados obtenidos mediante el modelo SDID indican que la disponibilidad de ChatGPT ha tenido un impacto positivo y diferenciado en el desarrollo de software en varios lenguajes de programación. Específicamente, se observó un aumento notable en la cantidad de desarrolladores que utilizan lenguajes como JavaScript, Python y TypeScript, hallazgo que la \hyperref[sec:hipotesis]{hipótesis del estudio} había anticipado explícitamente: estos son justamente los lenguajes con mayor representación de documentación, tutoriales y consultas en plataformas abiertas, lo cual constituye la base de entrenamiento sobre la que ChatGPT despliega mejor su capacidad de asistencia (Buscemi, 2023; Chai et al., 2024). La confirmación empírica de esta predicción teórica robustece la interpretación del mecanismo subyacente: la disponibilidad del modelo reduce los costos de búsqueda y aprendizaje (Stigler, 1961) y permite la entrada al desarrollo de programadores que antes enfrentaban barreras de capital humano demasiado altas (Acemoglu y Restrepo, 2018), precisamente en aquellos lenguajes donde la productividad del modelo es mayor.
 
 Las pruebas de robustez incorporadas estratifican la fortaleza de la evidencia en tres niveles: fuerte para Go y Ruby (p-valor placebo $\leq 0{,}05$), moderada para JavaScript, Python y TypeScript (p $\leq 0{,}10$) y débil para C, C++, Java, PHP y C\# (p $> 0{,}10$). En conjunto, los lenguajes para los cuales la evidencia es simultáneamente significativa por \textit{bootstrap}, robusta a la elección del pool de donantes y atípica respecto a la distribución placebo son los que la teoría priorizaba ex ante y, por tanto, los que deben fundamentar las recomendaciones de política. Lenguajes como C\# no mostraron un impacto distinguible de la variabilidad placebo, lo que sugiere que factores específicos del lenguaje o del contexto de uso —su predominancia en ecosistemas corporativos cerrados (.NET, Windows) con menor interacción con foros abiertos— pueden moderar la efectividad de ChatGPT. El impacto, además, muestra variaciones entre contextos nacionales, lo que resalta que factores como infraestructura tecnológica, adopción y políticas de apoyo desempeñan un papel relevante en su magnitud.
 
@@ -659,7 +722,7 @@ En tercer lugar, la ventana postratamiento es corta: solo cuatro períodos (Q4-2
 
 Vinculado a lo anterior, una preocupación específica es la presencia de GitHub Copilot durante el período pretratamiento. Copilot fue lanzado en \textit{technical preview} en junio de 2021 y como producto comercial en junio de 2022, es decir, antes de Q4-2022. Si su disponibilidad estuvo también restringida en los países del grupo de control —algo plausible al compartir parcialmente el mapa geopolítico de OpenAI— entonces la falta de tendencias paralelas observada en el período pretratamiento podría agravarse, pues estaría contaminada por una primera ola de asistencia con IA. No obstante, las diferencias de escala entre ambas herramientas actúan a favor de la identificación: Copilot fue desde el inicio un producto pagado (10 USD mensuales para individuos, 19 USD para empresas) integrado en editores de código y orientado a desarrolladores profesionales, mientras que ChatGPT fue lanzado como servicio gratuito con interfaz conversacional masiva, lo que produjo una adopción cualitativamente distinta y mucho más rápida en magnitud (millones de usuarios en las primeras semanas). El \textit{shock} relevante para este estudio es, por tanto, la disponibilidad de la herramienta a escala masiva en Q4-2022, no la existencia de asistencia con IA \textit{per se}.
 
-En cuarto lugar, la divergencia entre métodos observada para algunos lenguajes y, sobre todo, la heterogeneidad en la fortaleza de la evidencia revelada por las pruebas de robustez de la Tabla 6 imponen una interpretación cautelosa. En Ruby, el DiD no resulta significativo (0,262) mientras que el CS y el SDiD sí lo son (1,522 y 0,808, respectivamente), pero la prueba de placebo confirma el efecto (p = 0,034), lo que sugiere que el control sintético construye un mejor contrafactual para ese lenguaje. En C\#, el DiD y el CS son significativos (1,499 y 1,001, respectivamente) pero el SDiD (0,443) no alcanza significancia estadística y el p-valor placebo (0,207) refuerza esa lectura, sugiriendo ausencia de efecto detectable. Para Python el CS (1,604) no resulta significativo aunque DiD (7,688) y SDiD (4,525) sí lo son; el p-valor placebo (0,069) y el rango LOO estrecho confirman que la elevada varianza del CS responde a la heterogeneidad de la unidad tratada agregada y no a un efecto espurio.
+En cuarto lugar, la divergencia entre métodos observada para algunos lenguajes y, sobre todo, la heterogeneidad en la fortaleza de la evidencia revelada por las pruebas de robustez de la \hyperref[tab:tabla6]{Tabla 6} imponen una interpretación cautelosa. En Ruby, el DiD no resulta significativo (0,262) mientras que el CS y el SDiD sí lo son (1,522 y 0,808, respectivamente), pero la prueba de placebo confirma el efecto (p = 0,034), lo que sugiere que el control sintético construye un mejor contrafactual para ese lenguaje. En C\#, el DiD y el CS son significativos (1,499 y 1,001, respectivamente) pero el SDiD (0,443) no alcanza significancia estadística y el p-valor placebo (0,207) refuerza esa lectura, sugiriendo ausencia de efecto detectable. Para Python el CS (1,604) no resulta significativo aunque DiD (7,688) y SDiD (4,525) sí lo son; el p-valor placebo (0,069) y el rango LOO estrecho confirman que la elevada varianza del CS responde a la heterogeneidad de la unidad tratada agregada y no a un efecto espurio.
 
 Más generalmente, la prueba de placebo \textit{in-space} estratifica la evidencia en tres categorías —fuerte (Go, Ruby), moderada (JavaScript, Python, TypeScript) y débil (C, C++, Java, PHP, C\#)— y sugiere que la significancia obtenida por \textit{bootstrap} para los lenguajes de la categoría débil podría reflejar heterogeneidad estructural del grupo de control no absorbida completamente por el contrafactual SDID. Esto no invalida las estimaciones de los lenguajes débiles, pero sí implica que solo los efectos sobre lenguajes priorizados por la teoría del estudio (JavaScript, Python, TypeScript, Go y Ruby) deberían considerarse como evidencia robusta para la formulación de política. Los demás permanecen como hallazgos exploratorios que ameritan replicación con ventanas postratamiento más amplias.
 
@@ -1259,6 +1322,7 @@ Wu, Q., Zhuang, Q., Liu, Y., \& Han, L. (2024). Technology Shock of ChatGPT, Soc
 \section*{\centering\normalfont Anexos}
 
 \phantomsection
+\label{anexo:1}
 \addcontentsline{toc}{subsection}{Anexo 1: Disponibilidad global de ChatGPT}
 {\noindent Anexo 1}\\[4pt]
 {\noindent Disponibilidad global de ChatGPT}\\[2pt]
@@ -1428,13 +1492,14 @@ ZM & Zambia &  &  \\
 
 \clearpage
 \phantomsection
+\label{anexo:2}
 \addcontentsline{toc}{subsection}{Anexo 2: Variables de control y justificación de su no inclusión en el modelo base}
 {\noindent Anexo 2}\\[4pt]
 {\noindent Variables de control y justificación de su no inclusión en el modelo base}
 
 \noindent\textbf{Variables de control utilizadas}
 
-Las variables de control empleadas en la estimación con controles (Tabla 4) fueron extraídas del \textbf{Banco Mundial} y corresponden a dos indicadores de infraestructura digital:
+Las variables de control empleadas en la estimación con controles (\hyperref[tab:tabla4]{Tabla 4}) fueron extraídas del \textbf{Banco Mundial} y corresponden a dos indicadores de infraestructura digital:
 
 \begin{itemize}
   \item \textbf{Porcentaje de individuos que usan computadora}: obtenido del indicador \textit{Percentage of individuals using a computer} (ITU DataHub, vía World Bank Data360, código \texttt{ITU\_DH\_INV\_COMP}). Mide la proporción de la población que utiliza una computadora, capturando el nivel de adopción tecnológica en el hogar y la capacidad técnica promedio del país.
@@ -1450,7 +1515,7 @@ En el presente estudio, no se incorporaron variables de control adicionales en l
 
 El panel base empleado en el modelo sin controles comprende 159 países, 16 períodos trimestrales y 10 lenguajes de programación, lo que resulta en un total de 25.440 observaciones trimestrales, equivalentes a 6.360 en términos anuales. De estos, 130 países pertenecen al grupo de tratamiento (con acceso a ChatGPT) y 29 al grupo de control. Como se muestra en la Tabla~\ref{tab:anexo_paises}, tres entidades fueron excluidas del análisis: la Unión Europea (EU), que no constituye una unidad nacional independiente; Kosovo (XK), cuyo código no puede ser procesado por las librerías estándar de georeferenciación; y Hong Kong (HK), cuya actividad de desarrollo en GitHub resultó atípicamente elevada en comparación con el resto de los países del panel, lo que podría distorsionar las estimaciones.
 
-Adicionalmente, la incorporación de las variables de control del Banco Mundial reveló una cobertura incompleta para 19 países, que carecen de datos disponibles para el indicador de uso de internet (\texttt{IT.NET.USER.ZS}), tal como se detalla en la Tabla~\ref{tab:anexo_missing}. Estas 2.640 observaciones (10,4\% del panel) fueron imputadas como cero para permitir la estimación con controles, si bien esta imputación puede afectar la precisión de los coeficientes en el modelo de la Sección 6. En conjunto, estos factores —la necesidad de imputar valores faltantes en las variables de control y el potencial desequilibrio que ello introduce entre grupos— justifican la presentación del modelo sin controles como especificación base, siendo la estimación con controles interpretada como análisis de robustez.
+Adicionalmente, la incorporación de las variables de control del Banco Mundial reveló una cobertura incompleta para 19 países, que carecen de datos disponibles para el indicador de uso de internet (\texttt{IT.NET.USER.ZS}), tal como se detalla en la Tabla~\ref{tab:anexo_missing}. Estas 2.640 observaciones (10,4\% del panel) fueron imputadas como cero para permitir la estimación con controles, si bien esta imputación puede afectar la precisión de los coeficientes en el modelo de la \hyperref[sec:metodologia]{Sección~\ref*{sec:metodologia}}. En conjunto, estos factores —la necesidad de imputar valores faltantes en las variables de control y el potencial desequilibrio que ello introduce entre grupos— justifican la presentación del modelo sin controles como especificación base, siendo la estimación con controles interpretada como análisis de robustez.
 
 
 
@@ -1546,6 +1611,7 @@ YE & 0 & 160 \\
 
 \clearpage
 \phantomsection
+\label{anexo:3}
 \addcontentsline{toc}{subsection}{Anexo 3: Análisis de evento SDID: validación de pre-tendencias}
 {\noindent Anexo 3}\\[4pt]
 {\noindent Análisis de evento SDID: validación de pre-tendencias}
@@ -1627,11 +1693,12 @@ YE & 0 & 160 \\
 
 \clearpage
 \phantomsection
+\label{anexo:4}
 \addcontentsline{toc}{subsection}{Anexo 4: Derivación formal del modelo teórico de exposición y absorción}
 {\noindent Anexo 4}\\[4pt]
 {\noindent Derivación formal del modelo teórico de exposición y absorción}
 
-\noindent Este anexo desarrolla, paso a paso, la derivación del modelo presentado en la tercera vertiente del marco teórico económico (sección 1.4), desde la función de producción a nivel de tarea hasta la especificación de panel estimable. El modelo adapta al contexto de los lenguajes de programación el marco de tareas con automatización parcial de Acemoglu (2024) y el constructo de exposición laboral a modelos de lenguaje de Eloundou et al. (2023). La derivación distingue dos tipos de operaciones: las \textit{identidades exactas}, que son reescrituras algebraicas y no agregan supuestos, y las \textit{aproximaciones o supuestos}, que simplifican la expresión para obtener una forma interpretable y estimable. Cada supuesto no trivial se señala explícitamente en el paso en que se introduce y se recopila al final del anexo.
+\noindent Este anexo desarrolla, paso a paso, la derivación del modelo presentado en la tercera vertiente del marco teórico económico (\hyperref[sec:marco_teorico]{sección~\ref*{sec:marco_teorico}}), desde la función de producción a nivel de tarea hasta la especificación de panel estimable. El modelo adapta al contexto de los lenguajes de programación el marco de tareas con automatización parcial de Acemoglu (2024) y el constructo de exposición laboral a modelos de lenguaje de Eloundou et al. (2023). La derivación distingue dos tipos de operaciones: las \textit{identidades exactas}, que son reescrituras algebraicas y no agregan supuestos, y las \textit{aproximaciones o supuestos}, que simplifican la expresión para obtener una forma interpretable y estimable. Cada supuesto no trivial se señala explícitamente en el paso en que se introduce y se recopila al final del anexo.
 
 \bigskip
 \noindent\textbf{Notación}
@@ -2824,12 +2891,12 @@ El ejemplo es puramente ilustrativo: permite observar cómo interactúan los com
 \noindent La derivación descansa en los siguientes supuestos:
 
 \begin{enumerate}
-  \item \textbf{Elección del mejor método por tarea.} El modelo asume que el desarrollador puede usar el método más productivo en cada tarea.
-  \item \textbf{Covarianza cero.} Para obtener $\Delta y_{jc}=\tau_c\rho_c\bar h_c$, se impone $\Covauto(h_c,s_c)=0$.
-  \item \textbf{Normalización de escala.} Se elige $\bar h_c=1$, lo que permite $\Delta y_{jc}=\tau_c\rho_c$.
-  \item \textbf{Taylor de primer orden.} Se aproxima el cambio en desarrolladores usando la densidad en el umbral inicial.
-  \item \textbf{Separabilidad país--lenguaje.} Se reemplaza $\phi_{ic}$ por $\phi_i$, asumiendo que la absorción depende principalmente del país.
-  \item \textbf{Exogeneidad condicional.} Para la interpretación causal en el panel, se requiere que la disponibilidad de ChatGPT no esté correlacionada con \textit{shocks} no observados después de controlar por efectos fijos.
+  \item \textbf{Elección del mejor método por tarea:} El modelo asume que el desarrollador puede usar el método más productivo en cada tarea.
+  \item \textbf{Covarianza cero:} Para obtener $\Delta y_{jc}=\tau_c\rho_c\bar h_c$, se impone $\Covauto(h_c,s_c)=0$.
+  \item \textbf{Normalización de escala:} Se elige $\bar h_c=1$, lo que permite $\Delta y_{jc}=\tau_c\rho_c$.
+  \item \textbf{Taylor de primer orden:} Se aproxima el cambio en desarrolladores usando la densidad en el umbral inicial.
+  \item \textbf{Separabilidad país--lenguaje:} Se reemplaza $\phi_{ic}$ por $\phi_i$, asumiendo que la absorción depende principalmente del país.
+  \item \textbf{Exogeneidad condicional:} Para la interpretación causal en el panel, se requiere que la disponibilidad de ChatGPT no esté correlacionada con \textit{shocks} no observados después de controlar por efectos fijos.
 \end{enumerate}
 
 \bigskip

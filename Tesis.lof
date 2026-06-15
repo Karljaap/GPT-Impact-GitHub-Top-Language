@@ -1,29 +1,29 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Distribución de lenguajes de programación más populares en países con ChatGPT disponible (2020-2023)}}{35}{figure.caption.24}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Distribución de lenguajes de programación más populares en países sin ChatGPT disponible (2020-2023)}}{36}{figure.caption.25}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Distribución de \textit {unique pushers} por cada 100 mil habitantes según lenguaje en países con ChatGPT (2020–2023)}}{37}{figure.caption.26}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Distribución de \textit {unique pushers} por cada 100 mil habitantes según lenguaje en países sin ChatGPT (2020–2023)}}{38}{figure.caption.27}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Tendencias y ponderaciones estimadas de TypeScript \textit {unique pushers} por cada 100 mil personas}}{39}{figure.caption.28}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Tendencias y ponderaciones estimadas de JavaScript \textit {unique pushers} por cada 100 mil personas}}{40}{figure.caption.29}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Tendencias y ponderaciones estimadas de Python \textit {unique pushers} por cada 100 mil personas}}{41}{figure.caption.30}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Tendencias y ponderaciones estimadas de Java \textit {unique pushers} por cada 100 mil personas}}{42}{figure.caption.31}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Tendencias y ponderaciones estimadas de Go \textit {unique pushers} por cada 100 mil personas}}{43}{figure.caption.32}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Tendencias y ponderaciones estimadas de Ruby \textit {unique pushers} por cada 100 mil personas}}{44}{figure.caption.33}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Tendencias y ponderaciones estimadas de PHP \textit {unique pushers} por cada 100 mil personas}}{45}{figure.caption.34}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Tendencias y ponderaciones estimadas de C\# \textit {unique pushers} por cada 100 mil personas}}{46}{figure.caption.35}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Tendencias y ponderaciones estimadas de C++ \textit {unique pushers} por cada 100 mil personas}}{47}{figure.caption.36}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Tendencias y ponderaciones estimadas de C \textit {unique pushers} por cada 100 mil personas}}{48}{figure.caption.37}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Robustez SDID: ATT observado, rango \textit {leave-one-out} y banda placebo 95\,\%}}{49}{figure.caption.38}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Distribución de ATT placebo por lenguaje (prueba no paramétrica de Abadie)}}{50}{figure.caption.39}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Línea de tiempo de ChatGPT: mejoras y limitaciones (2020--2023)}}{51}{figure.caption.40}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Mapa de disponibilidad global de ChatGPT}}{56}{figure.caption.46}%
-\contentsline {figure}{\numberline {19}{\ignorespaces Análisis de evento SDID — C}}{65}{figure.caption.57}%
-\contentsline {figure}{\numberline {20}{\ignorespaces Análisis de evento SDID — C\#}}{66}{figure.caption.58}%
-\contentsline {figure}{\numberline {21}{\ignorespaces Análisis de evento SDID — C++}}{66}{figure.caption.59}%
-\contentsline {figure}{\numberline {22}{\ignorespaces Análisis de evento SDID — Go}}{67}{figure.caption.60}%
-\contentsline {figure}{\numberline {23}{\ignorespaces Análisis de evento SDID — Java}}{67}{figure.caption.61}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Análisis de evento SDID — JavaScript}}{68}{figure.caption.62}%
-\contentsline {figure}{\numberline {25}{\ignorespaces Análisis de evento SDID — PHP}}{68}{figure.caption.63}%
-\contentsline {figure}{\numberline {26}{\ignorespaces Análisis de evento SDID — Python}}{69}{figure.caption.64}%
-\contentsline {figure}{\numberline {27}{\ignorespaces Análisis de evento SDID — Ruby}}{69}{figure.caption.65}%
-\contentsline {figure}{\numberline {28}{\ignorespaces Análisis de evento SDID — TypeScript}}{70}{figure.caption.66}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Distribución de lenguajes de programación más populares en países con ChatGPT disponible (2020-2023)}}{35}{figure.caption.29}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Distribución de lenguajes de programación más populares en países sin ChatGPT disponible (2020-2023)}}{36}{figure.caption.30}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Distribución de \textit {unique pushers} por cada 100 mil habitantes según lenguaje en países con ChatGPT (2020–2023)}}{37}{figure.caption.31}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Distribución de \textit {unique pushers} por cada 100 mil habitantes según lenguaje en países sin ChatGPT (2020–2023)}}{38}{figure.caption.32}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Tendencias y ponderaciones estimadas de TypeScript \textit {unique pushers} por cada 100 mil personas}}{39}{figure.caption.33}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Tendencias y ponderaciones estimadas de JavaScript \textit {unique pushers} por cada 100 mil personas}}{40}{figure.caption.34}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Tendencias y ponderaciones estimadas de Python \textit {unique pushers} por cada 100 mil personas}}{41}{figure.caption.35}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Tendencias y ponderaciones estimadas de Java \textit {unique pushers} por cada 100 mil personas}}{42}{figure.caption.36}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Tendencias y ponderaciones estimadas de Go \textit {unique pushers} por cada 100 mil personas}}{43}{figure.caption.37}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Tendencias y ponderaciones estimadas de Ruby \textit {unique pushers} por cada 100 mil personas}}{44}{figure.caption.38}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Tendencias y ponderaciones estimadas de PHP \textit {unique pushers} por cada 100 mil personas}}{45}{figure.caption.39}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Tendencias y ponderaciones estimadas de C\# \textit {unique pushers} por cada 100 mil personas}}{46}{figure.caption.40}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Tendencias y ponderaciones estimadas de C++ \textit {unique pushers} por cada 100 mil personas}}{47}{figure.caption.41}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Tendencias y ponderaciones estimadas de C \textit {unique pushers} por cada 100 mil personas}}{48}{figure.caption.42}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Robustez SDID: ATT observado, rango \textit {leave-one-out} y banda placebo 95\,\%}}{49}{figure.caption.43}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Distribución de ATT placebo por lenguaje (prueba no paramétrica de Abadie)}}{50}{figure.caption.44}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Línea de tiempo de ChatGPT: mejoras y limitaciones (2020--2023)}}{51}{figure.caption.45}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Mapa de disponibilidad global de ChatGPT}}{56}{figure.caption.51}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Análisis de evento SDID — C}}{65}{figure.caption.62}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Análisis de evento SDID — C\#}}{66}{figure.caption.63}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Análisis de evento SDID — C++}}{66}{figure.caption.64}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Análisis de evento SDID — Go}}{67}{figure.caption.65}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Análisis de evento SDID — Java}}{67}{figure.caption.66}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Análisis de evento SDID — JavaScript}}{68}{figure.caption.67}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Análisis de evento SDID — PHP}}{68}{figure.caption.68}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Análisis de evento SDID — Python}}{69}{figure.caption.69}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Análisis de evento SDID — Ruby}}{69}{figure.caption.70}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Análisis de evento SDID — TypeScript}}{70}{figure.caption.71}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.14)  2 JUN 2026 13:34
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.5.29)  14 JUN 2026 13:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -13,20 +13,20 @@ Document Class: beamer 2026/01/22 v3.77 A class for typesetting presentations
 sty
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count275
+\etb@tempcnta=\count271
 )
 \beamer@tempbox=\box53
-\beamer@tempcount=\count276
-\c@beamerpauses=\count277
+\beamer@tempcount=\count272
+\c@beamerpauses=\count273
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasedecode
 .sty
-\beamer@slideinframe=\count278
-\beamer@minimum=\count279
+\beamer@slideinframe=\count274
+\beamer@minimum=\count275
 \beamer@decode@box=\box54
 )
 \beamer@commentbox=\box55
-\beamer@modecount=\count280
+\beamer@modecount=\count276
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
@@ -54,26 +54,26 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \beamer@sectionbox=\box59
 \beamer@logobox=\box60
 \beamer@linebox=\box61
-\beamer@sectioncount=\count281
-\beamer@subsubsectionmax=\count282
-\beamer@subsectionmax=\count283
-\beamer@sectionmax=\count284
-\beamer@totalheads=\count285
-\beamer@headcounter=\count286
-\beamer@partstartpage=\count287
-\beamer@sectionstartpage=\count288
-\beamer@subsectionstartpage=\count289
-\beamer@animationtempa=\count290
-\beamer@animationtempb=\count291
-\beamer@xpos=\count292
-\beamer@ypos=\count293
-\beamer@ypos@offset=\count294
-\beamer@showpartnumber=\count295
-\beamer@currentsubsection=\count296
-\beamer@coveringdepth=\count297
-\beamer@sectionadjust=\count298
-\beamer@toclastsection=\count299
-\beamer@tocsectionnumber=\count300
+\beamer@sectioncount=\count277
+\beamer@subsubsectionmax=\count278
+\beamer@subsectionmax=\count279
+\beamer@sectionmax=\count280
+\beamer@totalheads=\count281
+\beamer@headcounter=\count282
+\beamer@partstartpage=\count283
+\beamer@sectionstartpage=\count284
+\beamer@subsectionstartpage=\count285
+\beamer@animationtempa=\count286
+\beamer@animationtempb=\count287
+\beamer@xpos=\count288
+\beamer@ypos=\count289
+\beamer@ypos@offset=\count290
+\beamer@showpartnumber=\count291
+\beamer@currentsubsection=\count292
+\beamer@coveringdepth=\count293
+\beamer@sectionadjust=\count294
+\beamer@toclastsection=\count295
+\beamer@tocsectionnumber=\count296
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseoption
 s.sty
@@ -90,9 +90,9 @@ Package: geometry 2026/03/07 v6.0 Page Geometry
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count301
-\Gm@cntv=\count302
-\c@Gm@tempcnt=\count303
+\Gm@cnth=\count297
+\Gm@cntv=\count298
+\c@Gm@tempcnt=\count299
 \Gm@bindingoffset=\dimen164
 \Gm@wd@mp=\dimen165
 \Gm@odd@mp=\dimen166
@@ -145,15 +145,15 @@ code.tex
 \pgf@ya=\dimen179
 \pgf@yb=\dimen180
 \pgf@yc=\dimen181
-\c@pgf@counta=\count304
-\c@pgf@countb=\count305
-\c@pgf@countc=\count306
-\c@pgf@countd=\count307
+\c@pgf@counta=\count300
+\c@pgf@countb=\count301
+\c@pgf@countc=\count302
+\c@pgf@countd=\count303
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
 r.code.tex
 \pgfmath@dimen=\dimen182
-\pgfmath@count=\count308
+\pgfmath@count=\count304
 \pgfmath@box=\box63
 \pgfmath@toks=\toks23
 \pgfmath@stack@operand=\toks24
@@ -181,7 +181,7 @@ ions.integerarithmetics.code.tex)
 code.tex)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
 .code.tex
-\c@pgfmathroundto@lastzeros=\count309
+\c@pgfmathroundto@lastzeros=\count305
 )))
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
 File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
@@ -201,10 +201,10 @@ Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 106.
+Package graphics Info: Driver file: xetex.def on input line 106.
 
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
-File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\xetex.def
+File: xetex.def 2025/11/01 v5.0p Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen183
 \Gin@req@width=\dimen184
@@ -226,34 +226,40 @@ Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@yd=\dimen194
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count310
-\c@pgf@countb=\count311
-\c@pgf@countc=\count312
-\c@pgf@countd=\count313
+\c@pgf@counta=\count306
+\c@pgf@countb=\count307
+\c@pgf@countc=\count308
+\c@pgf@countd=\count309
 \t@pgf@toka=\toks26
 \t@pgf@tokb=\toks27
 \t@pgf@tokc=\toks28
-\pgf@sys@id@count=\count314
+\pgf@sys@id@count=\count310
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
 fg
 File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
 )
-Driver file for pgf: pgfsys-pdftex.def
+Driver file for pgf: pgfsys-xetex.def
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
-s-pdftex.def
-File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
+s-xetex.def
+File: pgfsys-xetex.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2025-08-29 v3.1.11a (3.1.11a)
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
 s-common-pdf.def
 File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
+)
+\pgfsys@objnum=\count311
 )))
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
 ssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfsyssoftpath@smallbuffer@items=\count315
-\pgfsyssoftpath@bigbuffer@items=\count316
+\pgfsyssoftpath@smallbuffer@items=\count312
+\pgfsyssoftpath@bigbuffer@items=\count313
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
 sprotocol.code.tex
@@ -265,10 +271,9 @@ Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: pdftex.def on input line 274.
+Package xcolor Info: Driver file: xetex.def on input line 274.
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
@@ -319,7 +324,7 @@ File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfpic=\box64
 \pgf@hbox=\box65
 \pgf@layerbox@main=\box66
-\pgf@picture@serial@count=\count317
+\pgf@picture@serial@count=\count314
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 egraphicstate.code.tex
@@ -354,8 +359,8 @@ File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 eshade.code.tex
 File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@max=\dimen274
-\pgf@sys@shading@range@num=\count318
-\pgf@shadingcount=\count319
+\pgf@sys@shading@range@num=\count315
+\pgf@shadingcount=\count316
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 eimage.code.tex
@@ -385,8 +390,8 @@ File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\xxcolor.s
 ty
 Package: xxcolor 2003/10/24 ver 0.1
-\XC@nummixins=\count320
-\XC@countmixins=\count321
+\XC@nummixins=\count317
+\XC@countmixins=\count318
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
@@ -420,7 +425,7 @@ Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
+Package pdftexcmds Info: \pdfdraftmode not found.
 ))
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
@@ -438,7 +443,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count322
+\c@section@level=\count319
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
 ty
@@ -446,20 +451,16 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
 \@linkdim=\dimen275
-\Hy@linkcounter=\count323
-\Hy@pagecounter=\count324
+\Hy@linkcounter=\count320
+\Hy@pagecounter=\count321
  (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
-Now handling font encoding PD1 ...
-... no UTF-8 mapping file for font encoding PD1
 ) (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count325
+\Hy@SavedSpaceFactor=\count322
  (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
-Now handling font encoding PU ...
-... no UTF-8 mapping file for font encoding PU
 )
 Package hyperref Info: Option `bookmarks' set `true' on input line 4066.
 Package hyperref Info: Option `bookmarksopen' set `true' on input line 4066.
@@ -471,7 +472,7 @@ Package hyperref Info: Plain pages OFF on input line 4210.
 Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode OFF; no redefinition of LaTeX internals.
 Package hyperref Info: Bookmarks ON on input line 4462.
-\c@Hy@tempcnt=\count326
+\c@Hy@tempcnt=\count323
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip17
@@ -488,7 +489,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count327
+\Fld@menulength=\count324
 \Field@Width=\dimen277
 \Fld@charsize=\dimen278
 Package hyperref Info: Hyper figures OFF on input line 6078.
@@ -498,17 +499,20 @@ Package hyperref Info: backreferencing OFF on input line 6093.
 Package hyperref Info: Link coloring OFF on input line 6098.
 Package hyperref Info: Link coloring with OCG OFF on input line 6103.
 Package hyperref Info: PDF/A mode OFF on input line 6108.
-\Hy@abspage=\count328
+\Hy@abspage=\count325
 
 
 Package hyperref Message: Stopped early.
 
 )
-Package hyperref Info: Driver (autodetected): hpdftex.
- (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
-File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
-\Fld@listcount=\count329
-\c@bookmark@seq@number=\count330
+Package hyperref Info: Driver (autodetected): hxetex.
+ (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hxetex.def
+File: hxetex.def 2025-07-12 v7.01o Hyperref driver for XeTeX
+\pdfm@box=\box68
+\c@Hy@AnnotLevel=\count326
+\HyField@AnnotCount=\count327
+\Fld@listcount=\count328
+\c@bookmark@seq@number=\count329
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
 echeck.sty
@@ -565,36 +569,36 @@ ty)
 eens.sty)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseoverla
 y.sty
-\beamer@argscount=\count331
+\beamer@argscount=\count330
 \beamer@lastskipcover=\skip52
-\beamer@trivlistdepth=\count332
+\beamer@trivlistdepth=\count331
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasetitle.
 sty)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasesectio
 n.sty
-\c@lecture=\count333
-\c@part=\count334
-\c@section=\count335
-\c@subsection=\count336
-\c@subsubsection=\count337
+\c@lecture=\count332
+\c@part=\count333
+\c@section=\count334
+\c@subsection=\count335
+\c@subsubsection=\count336
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseframe.
 sty
-\beamer@framebox=\box68
-\beamer@frametitlebox=\box69
-\beamer@zoombox=\box70
-\beamer@zoomcount=\count338
-\beamer@zoomframecount=\count339
+\beamer@framebox=\box69
+\beamer@frametitlebox=\box70
+\beamer@zoombox=\box71
+\beamer@zoomcount=\count337
+\beamer@zoomframecount=\count338
 \beamer@frametextheight=\dimen279
-\c@subsectionslide=\count340
+\c@subsectionslide=\count339
 \beamer@frametopskip=\skip53
 \beamer@framebottomskip=\skip54
 \beamer@frametopskipautobreak=\skip55
 \beamer@framebottomskipautobreak=\skip56
 \beamer@envbody=\toks30
 \framewidth=\dimen280
-\c@framenumber=\count341
+\c@framenumber=\count340
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseverbat
 im.sty
@@ -602,8 +606,8 @@ im.sty
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseframes
 ize.sty
-\beamer@splitbox=\box71
-\beamer@autobreakcount=\count342
+\beamer@splitbox=\box72
+\beamer@autobreakcount=\count341
 \beamer@autobreaklastheight=\dimen281
 \beamer@frametitletoks=\toks31
 \beamer@framesubtitletoks=\toks32
@@ -611,13 +615,13 @@ ize.sty
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseframec
 omponents.sty
 \beamer@colheight=\skip57
-\beamer@footins=\box72
+\beamer@footins=\box73
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasecolor.
 sty)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasenotes.
 sty
-\beamer@frameboxcopy=\box73
+\beamer@frameboxcopy=\box74
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasetoc.st
 y)
@@ -629,8 +633,8 @@ tes.sty
 plates.sty
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseboxes.
 sty
-\bmb@box=\box74
-\bmb@colorbox=\box75
+\bmb@box=\box75
+\bmb@colorbox=\box76
 \bmb@boxwidth=\dimen282
 \bmb@boxheight=\dimen283
 \bmb@prevheight=\dimen284
@@ -648,8 +652,8 @@ Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
 \@enLab=\toks34
 )
 \beamer@bibiconwidth=\skip58
-\c@figure=\count343
-\c@table=\count344
+\c@figure=\count342
+\c@table=\count343
 \abovecaptionskip=\skip59
 \belowcaptionskip=\skip60
 )
@@ -681,19 +685,19 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count345
+\inf@bad=\count344
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count346
-\leftroot@=\count347
+\uproot@=\count345
+\leftroot@=\count346
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count348
-\DOTSCASE@=\count349
+\classnum@=\count347
+\DOTSCASE@=\count348
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
-\Mathstrutbox@=\box76
-\strutbox@=\box77
+\Mathstrutbox@=\box77
+\strutbox@=\box78
 LaTeX Info: Redefining \big on input line 721.
 LaTeX Info: Redefining \Big on input line 722.
 LaTeX Info: Redefining \bigg on input line 723.
@@ -701,20 +705,20 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen293
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count350
+\macc@depth=\count349
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count351
+\c@MaxMatrixCols=\count350
 \dotsspace@=\muskip18
-\c@parentequation=\count352
-\dspbrk@lvl=\count353
+\c@parentequation=\count351
+\dspbrk@lvl=\count352
 \tag@help=\toks36
-\row@=\count354
-\column@=\count355
-\maxfields@=\count356
+\row@=\count353
+\column@=\count354
+\maxfields@=\count355
 \andhelp@=\toks37
 \eqnshift@=\dimen294
 \alignsep@=\dimen295
@@ -741,7 +745,7 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@headsep=\skip66
 \dth@everypar=\toks45
 )
-\c@theorem=\count357
+\c@theorem=\count356
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasethemes
 .sty))
@@ -762,14 +766,22 @@ default.sty)))
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks46
 \inpenc@posthook=\toks47
-)
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
-)
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 1
+16.
+
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+))
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
 Package: babel 2025/12/11 v25.17 The multilingual framework for LuaLaTeX, pdfLa
 TeX and XeLaTeX
-\babel@savecnt=\count358
+\babel@savecnt=\count357
 LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
 ne 2068.
 LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
@@ -787,10 +799,10 @@ on input line 2101.
 \U@D=\dimen302
 \l@unhyphenated=\language79
 
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/babel\xebabel.def)
 \bbl@readstream=\read3
 LaTeX Info: Redefining \textlatin on input line 3963.
-\bbl@dirlevel=\count359
+\bbl@dirlevel=\count358
 Package babel Info: Configuration files are deprecated, as
 (babel)             they can break document portability.
 (babel)             Reported on input line 4196.
@@ -811,7 +823,7 @@ Package babel Info: Importing font and identification data for spanish
 df
 Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
 \es@quottoks=\toks48
-\es@quotdepth=\count360
+\es@quotdepth=\count359
 Package babel Info: Making " an active character on input line 570.
 Package babel Info: Making . an active character on input line 675.
 Package babel Info: Making < an active character on input line 722.
@@ -883,30 +895,30 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen310
 \cmidrulekern=\dimen311
 \defaultaddspace=\dimen312
-\@cmidla=\count361
-\@cmidlb=\count362
+\@cmidla=\count360
+\@cmidlb=\count361
 \@aboverulesep=\dimen313
 \@belowrulesep=\dimen314
-\@thisruleclass=\count363
-\@lastruleclass=\count364
+\@thisruleclass=\count362
+\@lastruleclass=\count363
 \@thisrulewidth=\dimen315
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip67
-\multirow@cntb=\count365
+\multirow@cntb=\count364
 \multirow@dima=\skip68
 \bigstrutjot=\dimen316
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \col@sep=\dimen317
-\ar@mcellbox=\box78
+\ar@mcellbox=\box79
 \extrarowheight=\dimen318
 \NC@list=\toks49
 \extratabsurround=\skip69
 \backup@length=\skip70
-\ar@cellbox=\box79
+\ar@cellbox=\box80
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
@@ -928,8 +940,8 @@ sto
 File: caption-beamer.sto 2022/01/06 v2.0c Adaption of the caption package to th
 e beamer document classes (AR)
 ))
-\c@caption@flags=\count366
-\c@continuedfloat=\count367
+\c@caption@flags=\count365
+\c@continuedfloat=\count366
 Package caption Info: hyperref package is loaded.
 Package caption Info: Hyperref support is turned off
 (caption)             because hyperref has stopped early.
@@ -942,7 +954,7 @@ Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
 shapes.code.tex
 File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfnodeparttextbox=\box80
+\pgfnodeparttextbox=\box81
 )
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
 plot.code.tex
@@ -975,7 +987,7 @@ Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
 aryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@plot@mark@count=\count368
+\pgf@plot@mark@count=\count367
 \pgfplotmarksize=\dimen331
 )
 \tikz@lastx=\dimen332
@@ -986,23 +998,23 @@ File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \tikz@lastmovetoy=\dimen337
 \tikzleveldistance=\dimen338
 \tikzsiblingdistance=\dimen339
-\tikz@figbox=\box81
-\tikz@figbox@bg=\box82
-\tikz@tempbox=\box83
-\tikz@tempbox@bg=\box84
-\tikztreelevel=\count369
-\tikznumberofchildren=\count370
-\tikznumberofcurrentchild=\count371
-\tikz@fig@count=\count372
+\tikz@figbox=\box82
+\tikz@figbox@bg=\box83
+\tikz@tempbox=\box84
+\tikz@tempbox@bg=\box85
+\tikztreelevel=\count368
+\tikznumberofchildren=\count369
+\tikznumberofcurrentchild=\count370
+\tikz@fig@count=\count371
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
 matrix.code.tex
 File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfmatrixcurrentrow=\count373
-\pgfmatrixcurrentcolumn=\count374
-\pgf@matrix@numberofcolumns=\count375
+\pgfmatrixcurrentrow=\count372
+\pgfmatrixcurrentcolumn=\count373
+\pgf@matrix@numberofcolumns=\count374
 )
-\tikz@expandcount=\count376
+\tikz@expandcount=\count375
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z/libraries\tikzlibrarytopaths.code.tex
@@ -1017,10 +1029,12 @@ LaTeX Font Info:    Trying to load font information for T1+phv on input line 84
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
-tex.def
-File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count377
+(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-xet
+ex.def
+File: l3backend-xetex.def 2025-10-09 L3 backend support: XeTeX
+\g__graphics_track_int=\count376
+\g__pdfannot_backend_int=\count377
+\g__pdfannot_backend_link_int=\count378
 ) (sustentacion.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
@@ -1039,6 +1053,8 @@ LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
 LaTeX Font Info:    ... okay on input line 84.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 84.
 LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
 LaTeX Font Info:    ... okay on input line 84.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
@@ -1049,21 +1065,21 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 84.
 LaTeX Font Info:    ... okay on input line 84.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: xetex
 * paper: custom
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: includehead includefoot 
-* h-part:(L,W,R)=(9.99756pt, 435.24896pt, 9.99756pt)
+* h-part:(L,W,R)=(10.0pt, 435.24408pt, 10.0pt)
 * v-part:(T,H,B)=(0.0pt, 256.0748pt, 0.0pt)
 * \paperwidth=455.24408pt
 * \paperheight=256.0748pt
-* \textwidth=435.24896pt
+* \textwidth=435.24408pt
 * \textheight=227.62207pt
-* \oddsidemargin=-62.27243pt
-* \evensidemargin=-62.27243pt
+* \oddsidemargin=-62.26999pt
+* \evensidemargin=-62.26999pt
 * \topmargin=-72.26999pt
 * \headheight=14.22636pt
 * \headsep=0.0pt
@@ -1082,34 +1098,8 @@ LaTeX Font Info:    ... okay on input line 84.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
-ii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count378
-\scratchdimen=\dimen340
-\scratchbox=\box85
-\nofMPsegments=\count379
-\nofMParguments=\count380
-\everyMPshowfont=\toks52
-\MPscratchCnt=\count381
-\MPscratchDim=\dimen341
-\MPnumerator=\count382
-\makeMPintoPDFobject=\count383
-\everyMPtoPDFconversion=\toks53
-)
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
-ase.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-
-(C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
-fg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-))
 Package hyperref Info: Link coloring OFF on input line 84.
- (sustentacion.out) (sustentacion.out)
+(sustentacion.out) (sustentacion.out)
 \@outlinefile=\write5
 \openout5 = `sustentacion.out'.
 
@@ -1144,8 +1134,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (sustentacion.nav) [1
 
-{C:/Users/Jesus/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/Jesu
-s/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2
+] [2
 
 ] [3
 
@@ -1203,7 +1192,6 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
 
 [7
 
-{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}
 ] [8
 
 ] [9
@@ -1218,7 +1206,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10> not available
 (Font)              Font shape `T1/phv/b/sl' tried instead on input line 261.
  [11
 
-{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
+]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 293.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1229,13 +1217,11 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 293.
  [12
 
-{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
-{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}
 ] [13
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 317--317
-[]|\T1/phv/m/n/8 Del Río-Chanona et al.
+[]|\T1/phv/m/n/8 Del RÃ­o-Chanona et al.
  []
 
 [14
@@ -1245,15 +1231,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 317--317
 ] [16
 
 ]
-<output/figures/chatgpt_timeline.png, id=310, 1074.29355pt x 534.0753pt>
-File: output/figures/chatgpt_timeline.png Graphic file (type png)
-<use output/figures/chatgpt_timeline.png>
-Package pdftex.def Info: output/figures/chatgpt_timeline.png  used on input lin
-e 350.
-(pdftex.def)             Requested size: 362.56662pt x 180.2467pt.
+File: output/figures/chatgpt_timeline.png Graphic file (type bmp)
+<output/figures/chatgpt_timeline.png>
  [17
 
- <./output/figures/chatgpt_timeline.png>] [18
+] [18
 
 ] [19
 
@@ -1265,57 +1247,39 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [20
 
-{C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}] [2
-1
+]
+[21
 
 ]
-<output/figures/chatgpt_global_availability_map.png, id=362, 1149.093pt x 598.0
-3426pt>
-File: output/figures/chatgpt_global_availability_map.png Graphic file (type png
+File: output/figures/chatgpt_global_availability_map.png Graphic file (type bmp
 )
-<use output/figures/chatgpt_global_availability_map.png>
-Package pdftex.def Info: output/figures/chatgpt_global_availability_map.png  us
-ed on input line 445.
-(pdftex.def)             Requested size: 346.32613pt x 180.24205pt.
+<output/figures/chatgpt_global_availability_map.png>
+ [22
 
-[22
-
- <./output/figures/chatgpt_global_availability_map.png>]
-Overfull \vbox (1.55792pt too high) detected at line 475
+]
+Overfull \vbox (1.5621pt too high) detected at line 475
  []
 
 [23
 
 ]
-<output/figures/language_trend_no_gpt_countries_2020_2023.png, id=378, 933.4875
-pt x 463.4916pt>
 File: output/figures/language_trend_no_gpt_countries_2020_2023.png Graphic file
- (type png)
-<use output/figures/language_trend_no_gpt_countries_2020_2023.png>
-Package pdftex.def Info: output/figures/language_trend_no_gpt_countries_2020_20
-23.png  used on input line 483.
-(pdftex.def)             Requested size: 363.01886pt x 180.2447pt.
+ (type bmp)
+<output/figures/language_trend_no_gpt_countries_2020_2023.png>
  [24
 
- <./output/figures/language_trend_no_gpt_countries_2020_2023.png>]
-<output/figures/language_trend_gpt_countries_2020_2023.png, id=387, 933.4875pt 
-x 463.4916pt>
+]
 File: output/figures/language_trend_gpt_countries_2020_2023.png Graphic file (t
-ype png)
-<use output/figures/language_trend_gpt_countries_2020_2023.png>
-Package pdftex.def Info: output/figures/language_trend_gpt_countries_2020_2023.
-png  used on input line 491.
-(pdftex.def)             Requested size: 363.01886pt x 180.2447pt.
+ype bmp)
+<output/figures/language_trend_gpt_countries_2020_2023.png>
+ [25
 
-[25
-
- <./output/figures/language_trend_gpt_countries_2020_2023.png>] [26
+] [26
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <12> on input line 519.
-
-[27
+ [27
 
 ] [28
 
@@ -1332,33 +1296,22 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ] [34
 
 ]
-<output/figures/Pythonsdidtrends12.png, id=503, 531.4254pt x 352.1958pt>
-File: output/figures/Pythonsdidtrends12.png Graphic file (type png)
-<use output/figures/Pythonsdidtrends12.png>
-Package pdftex.def Info: output/figures/Pythonsdidtrends12.png  used on input l
-ine 646.
-(pdftex.def)             Requested size: 271.97209pt x 180.24625pt.
+File: output/figures/Pythonsdidtrends12.png Graphic file (type bmp)
+<output/figures/Pythonsdidtrends12.png>
  [35
 
- <./output/figures/Pythonsdidtrends12.png>]
-<output/figures/Pythonsdidweights12.png, id=512, 534.3162pt x 353.6412pt>
-File: output/figures/Pythonsdidweights12.png Graphic file (type png)
-<use output/figures/Pythonsdidweights12.png>
-Package pdftex.def Info: output/figures/Pythonsdidweights12.png  used on input 
-line 654.
-(pdftex.def)             Requested size: 272.34274pt x 180.25209pt.
+]
+File: output/figures/Pythonsdidweights12.png Graphic file (type bmp)
+<output/figures/Pythonsdidweights12.png>
  [36
 
- <./output/figures/Pythonsdidweights12.png>]
-<output/figures/JavaScriptsdidtrends12.png, id=521, 531.4254pt x 352.1958pt>
-File: output/figures/JavaScriptsdidtrends12.png Graphic file (type png)
-<use output/figures/JavaScriptsdidtrends12.png>
-Package pdftex.def Info: output/figures/JavaScriptsdidtrends12.png  used on inp
-ut line 662.
-(pdftex.def)             Requested size: 271.97209pt x 180.24625pt.
+]
+File: output/figures/JavaScriptsdidtrends12.png Graphic file (type bmp)
+<output/figures/JavaScriptsdidtrends12.png>
  [37
 
- <./output/figures/JavaScriptsdidtrends12.png>] [38
+]
+[38
 
 ] [39
 
@@ -1367,27 +1320,18 @@ ut line 662.
 ] [41
 
 ]
-<output/figures/robustness_forest_plot.png, id=570, 786.2976pt x 497.57895pt>
-File: output/figures/robustness_forest_plot.png Graphic file (type png)
-<use output/figures/robustness_forest_plot.png>
-Package pdftex.def Info: output/figures/robustness_forest_plot.png  used on inp
-ut line 779.
-(pdftex.def)             Requested size: 300.23595pt x 189.98909pt.
+File: output/figures/robustness_forest_plot.png Graphic file (type bmp)
+<output/figures/robustness_forest_plot.png>
  [42
 
- <./output/figures/robustness_forest_plot.png>]
-<output/figures/placebo_panel_slides.png, id=579, 1003.8303pt x 648.62325pt>
-File: output/figures/placebo_panel_slides.png Graphic file (type png)
-<use output/figures/placebo_panel_slides.png>
-Package pdftex.def Info: output/figures/placebo_panel_slides.png  used on input
- line 787.
-(pdftex.def)             Requested size: 301.56499pt x 194.86165pt.
+]
+File: output/figures/placebo_panel_slides.png Graphic file (type bmp)
+<output/figures/placebo_panel_slides.png>
  [43
 
- <./output/figures/placebo_panel_slides.png>] [44
+] [44
 
-]
-[45
+] [45
 
 ] [46
 
@@ -1411,44 +1355,26 @@ Underfull \hbox (badness 1968) in paragraph at lines 851--851
 ] [53
 
 ]
-<output/figures/Pythonsdid_event_study.png, id=688, 570.4512pt x 315.0972pt>
-File: output/figures/Pythonsdid_event_study.png Graphic file (type png)
-<use output/figures/Pythonsdid_event_study.png>
-Package pdftex.def Info: output/figures/Pythonsdid_event_study.png  used on inp
-ut line 1013.
-(pdftex.def)             Requested size: 326.31824pt x 180.24672pt.
+File: output/figures/Pythonsdid_event_study.png Graphic file (type bmp)
+<output/figures/Pythonsdid_event_study.png>
  [54
 
- <./output/figures/Pythonsdid_event_study.png>]
-<output/figures/TypeScriptsdid_event_study.png, id=697, 570.4512pt x 315.0972pt
->
-File: output/figures/TypeScriptsdid_event_study.png Graphic file (type png)
-<use output/figures/TypeScriptsdid_event_study.png>
-Package pdftex.def Info: output/figures/TypeScriptsdid_event_study.png  used on
- input line 1022.
-(pdftex.def)             Requested size: 326.31824pt x 180.24672pt.
+]
+File: output/figures/TypeScriptsdid_event_study.png Graphic file (type bmp)
+<output/figures/TypeScriptsdid_event_study.png>
  [55
 
- <./output/figures/TypeScriptsdid_event_study.png>]
-<output/figures/JavaScriptsdid_event_study.png, id=707, 570.4512pt x 315.0972pt
->
-File: output/figures/JavaScriptsdid_event_study.png Graphic file (type png)
-<use output/figures/JavaScriptsdid_event_study.png>
-Package pdftex.def Info: output/figures/JavaScriptsdid_event_study.png  used on
- input line 1031.
-(pdftex.def)             Requested size: 326.31824pt x 180.24672pt.
+]
+File: output/figures/JavaScriptsdid_event_study.png Graphic file (type bmp)
+<output/figures/JavaScriptsdid_event_study.png>
  [56
 
- <./output/figures/JavaScriptsdid_event_study.png>]
-<output/figures/JavaScriptsdidweights12.png, id=716, 534.3162pt x 353.6412pt>
-File: output/figures/JavaScriptsdidweights12.png Graphic file (type png)
-<use output/figures/JavaScriptsdidweights12.png>
-Package pdftex.def Info: output/figures/JavaScriptsdidweights12.png  used on in
-put line 1040.
-(pdftex.def)             Requested size: 272.34274pt x 180.25209pt.
+]
+File: output/figures/JavaScriptsdidweights12.png Graphic file (type bmp)
+<output/figures/JavaScriptsdidweights12.png>
  [57
 
- <./output/figures/JavaScriptsdidweights12.png>] [58
+] [58
 
 ] [59
 
@@ -1456,7 +1382,8 @@ put line 1040.
 
 ] [61
 
-] [62
+]
+[62
 
 ] [63
 
@@ -1476,7 +1403,7 @@ put line 1040.
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
-286.
+289.
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
@@ -1507,49 +1434,12 @@ Package rerunfilecheck Info: File `sustentacion.out' has not changed.
 (rerunfilecheck)             Checksum: 412A21A4B5FDAE753EEB6527A3F7D596;1429.
  ) 
 Here is how much of TeX's memory you used:
- 29065 strings out of 467871
- 579905 string characters out of 5418376
- 942534 words of memory out of 5000000
- 57169 multiletter control sequences out of 15000+600000
- 735473 words of font info for 132 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 128i,15n,123p,389b,878s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
-b><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx7.pfb
-><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb>
-<C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi5.pfb><
-C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C
-:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:
-/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/
-Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/U
-sers/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib10.pfb><C:/
-Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmib7.pfb><C:/
-Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/U
-sers/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr5.pfb><C:/Use
-rs/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users
-/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/J
-esus/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/Jes
-us/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/Jesus
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Jesus
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy5.pfb><C:/Users/Jesus/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/Jesus/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/Jesus/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/Jesus/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/Jesus/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Jesus/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Us
-ers/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msb
-m10.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/
-uhvb8a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvet
-ic/uhvbo8a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw/he
-lvetic/uhvr8a.pfb><C:/Users/Jesus/AppData/Local/Programs/MiKTeX/fonts/type1/urw
-/helvetic/uhvro8a.pfb>
-Output written on sustentacion.pdf (72 pages, 3667395 bytes).
-PDF statistics:
- 1033 PDF objects out of 1200 (max. 8388607)
- 156 named destinations out of 1000 (max. 500000)
- 940 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28540 strings out of 402987
+ 558719 string characters out of 5448524
+ 941255 words of memory out of 5000000
+ 56686 multiletter control sequences out of 15000+600000
+ 716928 words of font info for 116 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 128i,15n,123p,427b,876s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
+Output written on sustentacion.xdv (72 pages, 383372 bytes).

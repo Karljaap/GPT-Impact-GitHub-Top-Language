@@ -289,7 +289,7 @@ y_{jc}(z;\mu_j)=\max\{h_c(z),\,\mu_j\,a_c(z)\},\qquad \mu_j\in\{0,1\}.
 \centering
 $Y_{ict}=\alpha_i+\beta_t+\delta_c+\textcolor{pucpaccent}{\theta_c\,\phi_i}\,A_{it}+\eta_{ict}$
 \end{exampleblock}
-\centering\footnotesize El coeficiente del tratamiento se factoriza en \textbf{exposición} ($\theta_c$, por lenguaje) y \textbf{absorción} ($\phi_i$, por país) $\Rightarrow$ sustenta la \textbf{H2}. \textit{Derivación completa de 8 pasos en el Apéndice~B.}
+\centering\footnotesize El coeficiente de tratamiento es \textbf{multiplicativo} en \textbf{exposición} ($\theta_c$, por lenguaje) y \textbf{absorción} ($\phi_i$, por país): el efecto se concentra donde \emph{coinciden} ambas ---la esencia de la adopción \textit{heterogénea}--- y sustenta la \textbf{H2}. \textit{Derivación completa de 8 pasos en el Apéndice~B.}
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
@@ -1117,6 +1117,8 @@ y_{jc}(\mu_j)=\int_0^1\max\{h_c(z),\,\mu_j\,a_c(z)\}\,dz.
   \item $\mu_j=0$ (sin IA): $\ y_{jc}(0)=\int_0^1 h_c(z)\,dz\ $ (pues $h_c(z)>0$).
   \item $\mu_j=1$ (con IA): $\ y_{jc}(1)=\int_0^1\max\{h_c,a_c\}\,dz\ \ge\ y_{jc}(0)$ puntualmente.
 \end{itemize}
+\medskip
+{\footnotesize\textit{Regularidad (mantenida en toda la derivación):} $h_c,a_c$ medibles e integrables en $[0,1]$ y $\mathcal{Z}^{\mathrm{auto}}_c$ medible ---para que las integrales existan---; $F_i$ continuamente diferenciable cerca del umbral (necesario en el Paso 6).}
 \end{frame}
 
 % ── B.3 Paso 2 ────────────────────────────────────────────────────────────────
@@ -1257,6 +1259,7 @@ Para interpretación \emph{causal} se requiere exogeneidad condicional:
 \[
 \mathbb{E}[\eta_{ict}\mid\alpha_i,\beta_t,\delta_c,A_{it}]=0.
 \]
+{\footnotesize\textit{Lectura económica:} el efecto de tratamiento $\theta_c\phi_i$ es \textbf{multiplicativo} ---máximo donde coinciden un lenguaje muy expuesto ($\theta_c$ alto) y un país con gran masa cerca del umbral ($\phi_i$ alto); si una de las dos es baja, el efecto se atenúa.}
 \end{frame}
 
 % ── B.13 Resumen ──────────────────────────────────────────────────────────────

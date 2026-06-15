@@ -1,0 +1,234 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+
+\definecolor{pucpblue}{RGB}{0,45,98}
+\definecolor{pucpaccent}{RGB}{196,18,48}
+\definecolor{graysoft}{RGB}{90,90,90}
+
+\titleformat{\section}{\large\bfseries\color{pucpblue}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{pucpblue}}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.3em}{0.5em}
+
+% Macros del modelo
+\newcommand{\Zauto}{\mathcal{Z}^{\mathrm{auto}}_c}
+\newcommand{\Eauto}{\mathbb{E}_{\Zauto}}
+\newcommand{\Covauto}{\operatorname{Cov}_{\Zauto}}
+\newcommand{\dd}{\,dz}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small\color{graysoft}Tercera vertiente del marco teórico}
+\lhead{\small\color{graysoft}Modelo formal de adopción heterogénea}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{pucpblue} Modelo formal de adopción heterogénea}\\[0.3em]
+{\large Tercera vertiente del marco teórico --- Notas de respaldo}\\[0.6em]
+{\small Tesis: Impacto de la disponibilidad de ChatGPT en el desarrollo de software (2020--2023)}\\
+{\small Nicho Rosado, J.\ \quad$\bullet$\quad Janampa Aparicio, K.\ \quad$\bullet$\quad Asesor: Quispe Rojas, A.}
+\end{center}
+
+\vspace{0.3em}
+\hrule
+\vspace{0.6em}
+
+\noindent\textit{\small Este documento resume, para discusión con el asesor, la tercera vertiente del marco teórico: el funcionamiento del modelo y sus componentes, los supuestos sobre los que descansa, y las conclusiones obtenidas mediante derivadas parciales y estática comparativa. La derivación completa, paso a paso, está en el Anexo 4 de la tesis.}
+
+% ════════════════════════════════════════════════════════════════════
+\section{El modelo: cómo funciona y sus componentes}
+
+El modelo integra dos mecanismos --- la reasignación de tareas (Acemoglu y Restrepo, 2018; Acemoglu, 2024) y la reducción de costos de búsqueda (Stigler, 1961) --- en una cadena causal de tres eslabones: \textbf{(i)} ChatGPT mejora la producción en ciertas tareas; \textbf{(ii)} esa ganancia reduce el umbral de habilidad para entrar a programar; \textbf{(iii)} la caída del umbral incrementa el número de desarrolladores activos. El resultado es una ecuación de panel estimable.
+
+\subsection{Producción a nivel de tarea}
+
+La producción de un desarrollador potencial $j$ se construye sobre un continuo de tareas elementales $z\in[0,1]$ del lenguaje $c$. En cada tarea, el agente escoge el método más productivo entre su productividad humana $h_c(z)>0$ y la de ChatGPT $a_c(z)\ge 0$, condicional a su acceso $\mu_j\in\{0,1\}$:
+\[
+y_{jc}(\mu_j)=\int_0^1 \max\{h_c(z),\,\mu_j\,a_c(z)\}\dd.
+\]
+
+\subsection{Conjunto automatizable y exposición del lenguaje}
+
+El conjunto de tareas donde ChatGPT supera al humano es $\Zauto=\{z\in[0,1]:a_c(z)>h_c(z)\}$, con medida $\tau_c$ (fracción de tareas automatizables). Dentro de él, el ahorro relativo por tarea es $s_c(z)=[a_c(z)-h_c(z)]/h_c(z)$, con promedio condicional $\rho_c$. La ganancia individual de acceder a ChatGPT admite una forma exacta:
+\[
+\Delta y_{jc}=\int_{\Zauto}h_c(z)\,s_c(z)\dd=\tau_c\bigl[\bar h_c\,\rho_c+\Covauto(h_c,s_c)\bigr].
+\]
+Bajo covarianza nula y normalización $\bar h_c=1$, se reduce al \textbf{parámetro de exposición del lenguaje}:
+\[
+\boxed{\;\Delta y_{jc}=\tau_c\,\rho_c\equiv\theta_c\;}
+\]
+Es decir, la exposición combina \textit{cuántas} tareas son automatizables ($\tau_c$) y \textit{cuánto} se ahorra en promedio en ellas ($\rho_c$).
+
+\subsection{Decisión de entrada y umbral de habilidad}
+
+Un individuo con habilidad $\eta$ entra a programar si $\eta+y_{jc}(\mu)\ge r_i$, donde $r_i$ es la utilidad de reserva del país $i$. El umbral mínimo de habilidad es $\eta_c^*(\mu)=r_i-y_{jc}(\mu)$. Como el acceso eleva la producción exactamente en $\theta_c$:
+\[
+\eta_c^*(1)=\eta_c^*(0)-\theta_c,
+\]
+o sea, la herramienta \textbf{reduce el umbral de entrada} en la magnitud de la exposición.
+
+\subsection{Agregación poblacional y absorción del país}
+
+Con distribución de habilidad $F_i$ (densidad $f_i$), la proporción que entra es $1-F_i(\eta_c^*(\mu))$. El cambio en desarrolladores por cada $100{,}000$ habitantes, tras una aproximación de Taylor de primer orden alrededor del umbral inicial, es
+\[
+\Delta Y_{ic}\approx 10^5\,f_i\!\bigl(\eta_c^*(0)\bigr)\,\theta_c \equiv \phi_i\,\theta_c,
+\qquad
+\phi_i\equiv 10^5\,f_i\!\bigl(\eta_c^*(0)\bigr).
+\]
+El \textbf{parámetro de absorción del país} $\phi_i$ mide la masa poblacional situada cerca del margen de entrada: cuánta gente puede convertirse en desarrollador ante una pequeña caída del umbral.
+
+\subsection{Especificación de panel estimable}
+
+Incorporando el indicador de disponibilidad $A_{it}\in\{0,1\}$ y descomponiendo la línea base en efectos fijos, el modelo entrega directamente:
+\[
+\boxed{\;Y_{ict}=\alpha_i+\beta_t+\delta_c+\theta_c\,\phi_i\,A_{it}+\eta_{ict}\;}
+\]
+con $\alpha_i$ (país), $\beta_t$ (tiempo) y $\delta_c$ (lenguaje) efectos fijos, y $\eta_{ict}$ el término de error.
+
+\subsection{Resumen de componentes}
+
+\renewcommand{\arraystretch}{1.25}
+\begin{center}
+\small
+\begin{tabular}{ll}
+\toprule
+\textbf{Componente} & \textbf{Significado} \\
+\midrule
+$z\in[0,1]$ & Tarea elemental de programación \\
+$h_c(z),\ a_c(z)$ & Productividad humana y de ChatGPT en la tarea $z$ \\
+$\mu_j,\ A_{it}$ & Acceso individual / disponibilidad país-tiempo a ChatGPT \\
+$\Zauto,\ \tau_c$ & Conjunto automatizable y su medida (fracción de tareas) \\
+$s_c(z),\ \rho_c$ & Ahorro relativo por tarea y su promedio condicional \\
+$\theta_c=\tau_c\rho_c$ & \textbf{Exposición del lenguaje} (componente de lenguaje) \\
+$\eta,\ r_i,\ \eta_c^*$ & Habilidad, utilidad de reserva y umbral de entrada \\
+$F_i,\ f_i$ & Distribución y densidad de habilidad del país \\
+$\phi_i=10^5 f_i(\eta_c^*(0))$ & \textbf{Absorción del país} (componente de país) \\
+$Y_{ict}$ & \textit{Unique pushers} por $100{,}000$ habitantes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ════════════════════════════════════════════════════════════════════
+\section{Supuestos del modelo}
+
+\begin{enumerate}[leftmargin=1.6em,itemsep=0.35em]
+  \item \textbf{Elección del mejor método por tarea.} El desarrollador usa, en cada tarea, el método más productivo (operador $\max$). Es lo que hace que la ganancia sea no negativa tarea a tarea.
+  \item \textbf{Covarianza nula:} $\Covauto(h_c,s_c)=0$. La productividad humana base y el ahorro relativo de ChatGPT no están sistemáticamente correlacionados dentro de las tareas automatizables. Permite pasar de la forma exacta $\Delta y_{jc}=\tau_c[\bar h_c\rho_c+\Covauto(h_c,s_c)]$ a $\Delta y_{jc}=\tau_c\rho_c\bar h_c$.
+  \item \textbf{Normalización de escala:} $\bar h_c=1$. Elección de unidades de producción (no es un resultado empírico) que reduce la ganancia a $\Delta y_{jc}=\tau_c\rho_c=\theta_c$.
+  \item \textbf{Aproximación de Taylor de primer orden.} Válida si el desplazamiento del umbral $\theta_c$ es pequeño respecto a la escala en que varía la densidad $f_i$; permite linealizar $F_i(\eta_c^*(0))-F_i(\eta_c^*(0)-\theta_c)\approx f_i(\eta_c^*(0))\,\theta_c$.
+  \item \textbf{Separabilidad país--lenguaje:} $\phi_{ic}\approx\phi_i$. Como $\eta_c^*(0)=r_i-y_{jc}(0)$ depende de $c$, en rigor la absorción es $\phi_{ic}=10^5 f_i(\eta_c^*(0))$. Escribirla solo en función del país exige que las productividades base no difieran drásticamente entre lenguajes (o que $f_i$ sea aproximadamente plana en el entorno de los umbrales). Es lo que permite factorizar el coeficiente como $\theta_c\phi_i$.
+  \item \textbf{Exogeneidad condicional:} $\mathbb{E}[\eta_{ict}\mid\alpha_i,\beta_t,\delta_c,A_{it}]=0$. Condicional a los efectos fijos, la disponibilidad de ChatGPT no está correlacionada con choques no observados que también afecten $Y_{ict}$. Es el supuesto de identificación causal.
+  \item \textbf{Regularidad (mantenida en toda la derivación).} $h_c(\cdot),a_c(\cdot)$ medibles e integrables en $[0,1]$ y $\Zauto$ medible (para que las integrales existan); $F_i$ continuamente diferenciable en el entorno del umbral (necesario para el Taylor del punto 4).
+\end{enumerate}
+
+% ════════════════════════════════════════════════════════════════════
+\section{Conclusiones: derivadas parciales y estática comparativa}
+
+El objeto de interés es el efecto causal de la disponibilidad, esto es, el coeficiente del término de tratamiento, que coincide con el cambio per cápita predicho:
+\[
+\frac{\partial\,\mathbb{E}[Y_{ict}]}{\partial A_{it}}=\theta_c\,\phi_i\equiv \Delta Y_{ic}.
+\]
+A partir de aquí, la estática comparativa estudia cómo responde el efecto ante cambios en los parámetros estructurales.
+
+\subsection{Estática comparativa en exposición y absorción}
+
+Tratando $\Delta Y_{ic}=\theta_c\,\phi_i$:
+\[
+\frac{\partial \Delta Y_{ic}}{\partial \theta_c}=\phi_i\ \ge 0,
+\qquad
+\frac{\partial \Delta Y_{ic}}{\partial \phi_i}=\theta_c\ \ge 0,
+\qquad
+\frac{\partial^2 \Delta Y_{ic}}{\partial \theta_c\,\partial \phi_i}=1\ >0.
+\]
+
+\noindent\textbf{Lectura económica.} El efecto es \textit{creciente} tanto en la exposición del lenguaje como en la absorción del país. La derivada cruzada positiva indica \textbf{complementariedad (supermodularidad)}: el retorno de una mayor exposición es mayor en países con más absorción, y viceversa. Esta complementariedad es la formalización precisa de la \textit{adopción heterogénea}: el impacto se concentra donde coinciden alta exposición y alta absorción, y se atenúa si cualquiera de las dos es baja.
+
+\subsection{Descomposición de la exposición $\theta_c=\tau_c\rho_c$}
+
+\[
+\frac{\partial \theta_c}{\partial \tau_c}=\rho_c\ \ge 0,
+\qquad
+\frac{\partial \theta_c}{\partial \rho_c}=\tau_c\ \ge 0,
+\qquad
+\frac{\partial^2 \theta_c}{\partial \tau_c\,\partial \rho_c}=1\ >0.
+\]
+Por la regla de la cadena, sobre el efecto agregado:
+\[
+\frac{\partial \Delta Y_{ic}}{\partial \tau_c}=\phi_i\,\rho_c\ \ge 0,
+\qquad
+\frac{\partial \Delta Y_{ic}}{\partial \rho_c}=\phi_i\,\tau_c\ \ge 0.
+\]
+
+\noindent\textbf{Lectura económica.} La \textit{amplitud} de la automatización ($\tau_c$, cuántas tareas) y su \textit{profundidad} ($\rho_c$, cuánto se ahorra) también son complementarias: un lenguaje con muchas tareas automatizables genera más efecto cuanto mayor sea el ahorro promedio en ellas.
+
+\subsection{Estática comparativa de la ganancia individual (forma exacta)}
+
+Sin imponer covarianza nula, $\Delta y_{jc}=\tau_c[\bar h_c\rho_c+\Covauto(h_c,s_c)]$, de donde:
+\[
+\frac{\partial \Delta y_{jc}}{\partial \rho_c}=\tau_c\,\bar h_c\ \ge 0,
+\qquad
+\frac{\partial \Delta y_{jc}}{\partial \tau_c}=\bar h_c\rho_c+\Covauto(h_c,s_c),
+\qquad
+\frac{\partial \Delta y_{jc}}{\partial\,\Covauto}=\tau_c\ \ge 0.
+\]
+El signo de $\partial \Delta y_{jc}/\partial \tau_c$ es positivo bajo el supuesto de covarianza no negativa; con covarianza nula y $\bar h_c=1$ se recupera $\partial \Delta y_{jc}/\partial \tau_c=\rho_c$ y $\partial \Delta y_{jc}/\partial \rho_c=\tau_c$.
+
+\subsection{Efecto sobre el umbral de entrada y la masa de entrantes}
+
+Del desplazamiento $\eta_c^*(1)=\eta_c^*(0)-\theta_c$:
+\[
+\frac{\partial \eta_c^*(1)}{\partial \theta_c}=-1,
+\]
+la exposición reduce el umbral \textit{uno a uno}. El número de entrantes marginales por país es $\mathrm{Devs}_{ic}(1)-\mathrm{Devs}_{ic}(0)\approx N_i\,f_i(\eta_c^*(0))\,\theta_c$, de modo que
+\[
+\frac{\partial\bigl[\mathrm{Devs}_{ic}(1)-\mathrm{Devs}_{ic}(0)\bigr]}{\partial \theta_c}=N_i\,f_i(\eta_c^*(0))\ \ge 0,
+\qquad
+\frac{\partial \phi_i}{\partial f_i(\eta_c^*(0))}=10^5\ >0.
+\]
+Cuanta más densidad de habilidad cerca del umbral inicial, mayor es la absorción y, por tanto, mayor el número de nuevos desarrolladores ante la misma caída del umbral.
+
+\subsection{Resumen de signos}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+\small
+\begin{tabular}{lcl}
+\toprule
+\textbf{Derivada} & \textbf{Signo} & \textbf{Interpretación} \\
+\midrule
+$\partial \Delta Y_{ic}/\partial \theta_c=\phi_i$ & $+$ & El efecto crece con la exposición del lenguaje \\
+$\partial \Delta Y_{ic}/\partial \phi_i=\theta_c$ & $+$ & El efecto crece con la absorción del país \\
+$\partial^2 \Delta Y_{ic}/\partial\theta_c\partial\phi_i=1$ & $+$ & Complementariedad exposición--absorción \\
+$\partial \theta_c/\partial \tau_c=\rho_c$ & $+$ & Más tareas automatizables, más exposición \\
+$\partial \theta_c/\partial \rho_c=\tau_c$ & $+$ & Mayor ahorro promedio, más exposición \\
+$\partial^2 \theta_c/\partial\tau_c\partial\rho_c=1$ & $+$ & Complementariedad amplitud--profundidad \\
+$\partial \eta_c^*(1)/\partial \theta_c=-1$ & $-$ & La exposición baja el umbral uno a uno \\
+$\partial\,\mathrm{Devs}/\partial \theta_c=N_i f_i(\eta_c^*(0))$ & $+$ & Más densidad cerca del umbral, más entrantes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Predicciones empíricas (corolarios contrastables)}
+
+\begin{enumerate}[leftmargin=1.6em,itemsep=0.25em]
+  \item El ATT estimado debe ser \textbf{creciente en la exposición del lenguaje} $\theta_c$: lenguajes con mayor representación en los datos de entrenamiento (Python, JavaScript, TypeScript) deben mostrar efectos mayores. \textit{(Consistente con los resultados de la tesis.)}
+  \item El ATT debe ser \textbf{creciente en la absorción del país} $\phi_i$: países con mayor masa poblacional cerca del margen de entrada a la programación deben mostrar efectos mayores.
+  \item Por la complementariedad, debe existir \textbf{interacción positiva} entre exposición y absorción: el efecto se maximiza donde ambas son altas. Un lenguaje muy expuesto en un país de baja absorción --- o viceversa --- produce un efecto reducido.
+  \item Donde $\tau_c\to 0$ (ninguna tarea automatizable) el modelo predice efecto nulo, lo que ofrece un \textbf{contraste de placebo natural} para lenguajes poco expuestos.
+\end{enumerate}
+
+\end{document}
