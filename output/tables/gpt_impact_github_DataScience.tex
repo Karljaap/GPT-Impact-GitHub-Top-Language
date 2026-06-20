@@ -1,7 +1,6 @@
 \begin{table}[htbp]\centering
 \caption{Impacto de ChatGPT en el n\'{u}mero de programadores}
 \label{tab:tabla3}
-\begin{threeparttable}
 {\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
 \begin{tabular}{lccccc}
 \toprule
@@ -39,9 +38,7 @@ TypeScript & 7{,}181*** & 3{,}263 & 3{,}078*** & 2544 & 8{,}571 \\
 \addlinespace
 \bottomrule
 \end{tabular}}
-\begin{tablenotes}
-\footnotesize
-\item \textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes. Las columnas DID, SC y SDID corresponden a Diferencias en Diferencias, Control Sint\'{e}tico (Abadie et al., 2010) y Diferencias en Diferencias Sint\'{e}tica (Arkhangelsky et al., 2021), respectivamente, todos estimados mediante la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). El periodo de tratamiento inicia en Q4-2022, coincidiendo con el lanzamiento de ChatGPT. Fuente: GitHub Innovation Graph, tabla \textit{languages} (\url{https://github.com/github/innovationgraph}). Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01
-\end{tablenotes}
-\end{threeparttable}
+\begin{minipage}{\linewidth}
+\smallskip\footnotesize\textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes. Las columnas DID, SC y SDID corresponden a Diferencias en Diferencias, Control Sint\'{e}tico (Abadie et al., 2010) y Diferencias en Diferencias Sint\'{e}tica (Arkhangelsky et al., 2021), respectivamente, todos estimados mediante la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). El periodo de tratamiento inicia en Q4-2022, coincidiendo con el lanzamiento de ChatGPT. Errores est\'{a}ndar entre par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01\\[\baselineskip]Fuente: Elaboraci\'{o}n propia.
+\end{minipage}
 \end{table}

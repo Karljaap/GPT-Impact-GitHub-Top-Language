@@ -19,12 +19,12 @@
 \contentsline {subsection}{\numberline {4.4.}Inferencia}{22}{subsection.4.4}%
 \contentsline {subsection}{\numberline {4.5.}Pruebas de robustez: placebos in-space y sensibilidad del pool de donantes}{22}{subsection.4.5}%
 \contentsline {section}{\numberline {5.}Resultados}{24}{section.5}%
+\contentsline {section}{Conclusiones}{28}{section*.17}%
 \contentsline {section}{Tablas}{32}{section*.19}%
-\contentsline {section}{Figuras}{35}{section*.27}%
-\contentsline {section}{\hyperref [sec:conc]{Conclusiones}}{\pageref {sec:conc}}{}
-\contentsline {section}{Referencias bibliográficas}{52}{section*.46}%
-\contentsline {section}{Anexos}{56}{section*.48}%
-\contentsline {subsection}{Anexo 1: Disponibilidad global de ChatGPT}{56}{section*.50}%
-\contentsline {subsection}{Anexo 2: Variables de control y justificación de su no inclusión en el modelo base}{60}{section*.52}%
-\contentsline {subsection}{Anexo 3: Análisis de evento SDID: validación de pre-tendencias}{65}{section*.61}%
-\contentsline {subsection}{Anexo 4: Derivación formal del modelo teórico de exposición y absorción}{71}{section*.72}%
+\contentsline {section}{Figuras}{36}{section*.25}%
+\contentsline {section}{Referencias bibliográficas}{53}{section*.44}%
+\contentsline {section}{Anexos}{57}{section*.46}%
+\contentsline {subsection}{Anexo 1: Disponibilidad global de ChatGPT}{57}{section*.48}%
+\contentsline {subsection}{Anexo 2: Variables de control y justificación de su no inclusión en el modelo base}{61}{section*.50}%
+\contentsline {subsection}{Anexo 3: Análisis de evento SDID: validación de pre-tendencias}{66}{section*.57}%
+\contentsline {subsection}{Anexo 4: Derivación formal del modelo teórico de exposición y absorción}{72}{section*.68}%

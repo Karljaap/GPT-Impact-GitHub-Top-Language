@@ -24,6 +24,20 @@
 \onehalfspacing
 \setlength{\emergencystretch}{3em}  % absorbe desbordes mínimos en texto justificado
 
+% ── sin negrita en todo el documento ─────────────────────────────────────────
+% Neutraliza \textbf y \bfseries (texto inline) al peso normal.
+% Las secciones, captions e índices ya usan \normalfont. No afecta \mathbf,
+% que es notación matemática (vectores), no texto en negrita.
+% EXCEPCIÓN: \realbfseries conserva la negrita real (Arial Bold) — solo se usa
+% en las dos líneas de la cabecera de la carátula (PUCP / FACULTAD).
+\AtBeginDocument{%
+  \let\realbfdefault\bfdefault
+  \DeclareRobustCommand\realbfseries{\fontseries\realbfdefault\selectfont}%
+  \let\bfseries\mdseries
+  \let\textbf\textmd
+  \let\bfdefault\mddefault
+}
+
 % ── page layout ──────────────────────────────────────────────────────────────
 \usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
 
@@ -197,9 +211,9 @@
 \setlength{\parskip}{0pt}
 \begin{singlespacing}
 \begin{center}
-{\normalsize\bfseries PONTIFICIA UNIVERSIDAD\\CATÓLICA DEL PERÚ}\par
+{\normalsize\realbfseries PONTIFICIA UNIVERSIDAD\\CATÓLICA DEL PERÚ}\par
 \vspace{\baselineskip}
-{\normalsize\bfseries FACULTAD DE CIENCIAS SOCIALES}\par
+{\normalsize\realbfseries FACULTAD DE CIENCIAS SOCIALES}\par
 \vspace{2\baselineskip}
 \includegraphics[width=6cm]{pucp_logo.jpg}\par
 \vspace{\baselineskip}
@@ -208,9 +222,6 @@
 {\normalsize Tesis para obtener el título profesional de Licenciado en Economía presentado por:}\par
 \vspace{\baselineskip}
 {\normalsize Nicho Rosado, Jesus Alberto}\par
-\vspace{\baselineskip}
-{\normalsize Tesis para obtener el título profesional de Licenciado en Economía presentado por:}\par
-\vspace{\baselineskip}
 {\normalsize Janampa Aparicio, Karl Willem}\par
 \vspace{\baselineskip}
 {\normalsize Asesor:}\par
@@ -246,8 +257,9 @@ Agradezco a todas las personas que hicieron posible la culminación de esta tesi
 \end{singlespacing}
 \clearpage
 
-% Páginas preliminares (Resumen, Abstract, índices): números romanos
-\pagestyle{plain}
+% Páginas preliminares (Resumen, Abstract, índices): sin número de página
+% (el contador avanza en romano por detrás, pero no se muestra)
+\pagestyle{empty}
 \pagenumbering{roman}
 \setcounter{page}{1}
 
@@ -284,6 +296,8 @@ Keywords: chatgpt, LLM, synthetic difference in differences
 \listoffigures
 \newpage
 
+% Índice de Tablas automático: con numeración correlativa (sin \setcounter),
+% el orden de aparición coincide con el numérico, así \listoftables ya basta.
 \listoftables
 \newpage
 \end{singlespacing}
@@ -302,7 +316,7 @@ Keywords: chatgpt, LLM, synthetic difference in differences
 
 Antes de la introducción de ChatGPT, la industria del software ya estaba comprometida con la búsqueda de herramientas y metodologías más eficientes y automatizadas, puesto que pretendía reducir la carga cognitiva de los desarrolladores y acelerar los ciclos de desarrollo. Estos esfuerzos se han reflejado en el incremento de ocho veces más de las patentes de Inteligencia Artificial comparadas con las demás (World Intellectual Property Organization, 2022). Respecto a esta cifra, resaltan los avances en el subcampo de Procesamiento y Generación de Lenguaje, el cual se enfoca en desarrollar modelos de aprendizaje automático entrenados con lenguaje humano para analizar, predecir y generar texto.
 
-La arquitectura \textit{transformer} se ha vuelto fundamental en dicho subcampo, debido a que optimiza tanto el entrenamiento como la implementación de modelos centrados en la interacción entre palabras en el lenguaje natural. OpenAI ha liderado la construcción de esta arquitectura con el desarrollo de la serie de modelos GPT (Generative Pretrained Transformer), ejemplos extraordinarios de Grandes Modelos de Lingüísticos (LLM). Dichos modelos, diseñados para procesar y generar texto coherente y relevante, han sido implementados en ChatGPT, un chatbot que aprovecha su habilidad para generar respuestas basadas en una amplia base de datos de temas variados, incluyendo consultas de programación (OpenAI, 2018). Lo cual ha impulsado su uso en la industria del software al cumplir el rol de orientador y asistente sobre diferentes lenguajes de programación.
+La arquitectura \textit{transformer} se ha vuelto fundamental en dicho subcampo, debido a que optimiza tanto el entrenamiento como la implementación de modelos centrados en la interacción entre palabras en el lenguaje natural. OpenAI ha liderado la construcción de esta arquitectura con el desarrollo de la serie de modelos GPT (Generative Pretrained Transformer), ejemplos extraordinarios de Grandes Modelos Lingüísticos (LLM). Dichos modelos, diseñados para procesar y generar texto coherente y relevante, han sido implementados en ChatGPT, un chatbot que aprovecha su habilidad para generar respuestas basadas en una amplia base de datos de temas variados, incluyendo consultas de programación (OpenAI, 2018). Lo cual ha impulsado su uso en la industria del software al cumplir el rol de orientador y asistente sobre diferentes lenguajes de programación.
 
 Desafortunadamente, se ha identificado a un grupo que no posee la disponibilidad del servicio del chatbot. La razón principal de ello se debe al establecimiento de restricciones de acceso a ChatGPT en países como China, Irán, Siria, Rusia, Corea del Norte, Cuba e Italia, los cuales han sido promovidos por preocupaciones de seguridad nacional, privacidad o cumplimiento de regulaciones locales (Martínez, 2023). Al respecto, algunos autores han señalado que esta limitación ha inhibido la innovación y provocado que estas regiones se mantengan atrasadas en la economía digital global, dado que los desarrolladores de software no han podido aprovechar los beneficios del chatbot (Del Río-Chanona et al., 2023).
 
@@ -310,7 +324,7 @@ Ante ello, recientes estudios han manifestado los desafíos de ChatGPT. Gallea (
 
 Pese a la creciente fama y la veloz integración de ChatGPT en diversos campos, se ha identificado la ausencia de investigaciones empíricas centradas en evaluar el impacto con evidencia empírica robusta. Por lo que este estudio, se orienta a llenar ese vacío en la literatura y se concentra en determinar si ChatGPT ha contribuido a incrementar el desarrollo de software en los últimos años. Asimismo, se expondrán los beneficios y los desafíos relacionados al uso de la generación automatizada de código. Con este enfoque, se pretender brindar un análisis integral a manera de balance entre los beneficios y riesgos potenciales con tal de proponer soluciones mediante mejores prácticas o futuras políticas en las corporaciones a propósito de la adopción de la IA en la industria.
 
-En el presente estudio, se considera al número de \textit{unique pushers}\footnote{La métrica \textit{unique pushers} denota la frecuencia de desarrolladores únicos que, al menos, han subido un código en GitHub en determinado trimestre.} por cada 100 mil habitantes como la variable de interés del estudio. Dicha variable será usada como \textit{proxy} de la actividad de desarrollo de software y, con la cual, se realizará una evaluación del impacto heterogéneo de la disponibilidad de ChatGPT en los países con acceso al chatbot comparado con aquellos que sin su disponibilidad. De esta forma, este análisis será capaz de inferir cómo el uso de la IA influye en la incorporación de nuevos desarrolladores de software y, de forma indirecta, al incremento de la actividad productiva en entornos digitales, en particular, en los diez lenguajes de programación más empleados en ciencia de datos.
+En el presente estudio, se considera al número de \textit{unique pushers}\footnote{La métrica \textit{unique pushers} denota la frecuencia de desarrolladores únicos que, al menos, han subido un código en GitHub en determinado trimestre.} por cada 100 mil habitantes como la variable de interés del estudio. Dicha variable será usada como \textit{proxy} de la actividad de desarrollo de software y, con la cual, se realizará una evaluación del impacto heterogéneo de la disponibilidad de ChatGPT en los países con acceso al chatbot comparado con aquellos sin su disponibilidad. De esta forma, este análisis será capaz de inferir cómo el uso de la IA influye en la incorporación de nuevos desarrolladores de software y, de forma indirecta, al incremento de la actividad productiva en entornos digitales, en particular, en los diez lenguajes de programación más empleados en ciencia de datos.
 
 
 
@@ -521,7 +535,7 @@ Además, el filtrado realizado al conjunto de datos inició con la exclusión de
 
 Las unidades tratadas, en el presente trabajo, corresponden a los países que originalmente comunicaron que tendrían acceso a la aplicación ChatGTP. Por tanto, durante el período de tiempo indicado, no se añadieron nuevos países al grupo de tratamiento. Esto constituye un diseño de bloques, como se describe en Arkhangelsky et al. (2021), lo cual facilita el cálculo de los estimadores. El diseño del trabajo incluye 130 unidades de tratamiento y 29 unidades de control; 12 períodos de pretratamiento, 4 períodos de tratamiento y un total de 25.440 observaciones.
 
-La especificación principal del estudio no incorpora variables de control adicionales en las estimaciones DiD, SC ni SDiD. Esta decisión, ampliada en el \hyperref[anexo:2]{Anexo 2}, responde a tres consideraciones: (i) las únicas variables candidatas con cobertura razonable entre los 159 países del panel —porcentaje de uso de computadora y porcentaje de uso de internet del Banco Mundial— presentan información faltante en 19 países (2.640 observaciones, equivalentes al 10,4 \% del panel) que debieron imputarse con cero, lo que introduce error de medida correlacionado con el estatus de tratamiento; (ii) las variables disponibles son de frecuencia anual e interpoladas a trimestres, lo que las vuelve insensibles a la dinámica que se busca capturar entre Q4-2022 y Q4-2023; y (iii) los estimadores SC y SDiD ya absorben la heterogeneidad estructural pretratamiento mediante la ponderación de unidades y períodos, lo que reduce el valor marginal de incluir controles observables. La estimación con controles se reporta en la \hyperref[tab:tabla4]{Tabla 4} únicamente como ejercicio de robustez.
+La especificación principal del estudio no incorpora variables de control adicionales en las estimaciones DiD, SC ni SDiD. Esta decisión, ampliada en el \hyperref[anexo:2]{Anexo 2}, responde a tres consideraciones: (i) las únicas variables candidatas con cobertura razonable entre los 159 países del panel —porcentaje de uso de computadora y porcentaje de uso de internet del Banco Mundial— presentan información faltante en 19 países (2.640 observaciones, equivalentes al 10,4 \% del panel) que debieron imputarse con cero, lo que introduce error de medida correlacionado con el estatus de tratamiento; (ii) las variables disponibles son de frecuencia anual e interpoladas a trimestres, lo que las vuelve insensibles a la dinámica que se busca capturar entre Q4-2022 y Q4-2023; y (iii) los estimadores SC y SDiD ya absorben la heterogeneidad estructural pretratamiento mediante la ponderación de unidades y períodos, lo que reduce el valor marginal de incluir controles observables. La estimación con controles se reporta en la \hyperref[tab:tabla4]{Tabla 10} únicamente como ejercicio de robustez.
 
 \clearpage
 \section{Estadísticos descriptivos}
@@ -669,7 +683,7 @@ p^{\text{placebo}} = \frac{1}{N_c}\sum_{j \in \mathcal{C}} \mathbf{1}\!\left[\,|
 
 Un p-valor bajo indica que el efecto estimado en la especificación principal es atípico respecto a lo que se obtendría asignando el tratamiento aleatoriamente a unidades no expuestas, lo cual robustece la interpretación causal.
 
-El segundo ejercicio evalúa la sensibilidad del resultado al pool de donantes mediante un análisis \textit{leave-one-out}. El objetivo es determinar cuán dependiente es el ATT principal de la presencia de cada país en dicho pool: para cada uno de los 29 países de control se elimina al país $j$ y se reestima el SDID con los 28 países de control restantes más los 130 países tratados originales. Se reportan el mínimo, la mediana y el máximo de las 29 estimaciones \textit{leave-one-out} por lenguaje. Un rango LOO estrecho en torno al ATT principal indica que ningún país individual conduce el resultado, mientras que un rango muy amplio o que cambia de signo revelaría una dependencia excesiva de donantes específicos. La \hyperref[tab:tabla6]{Tabla 6} reúne ambos diagnósticos por lenguaje y la \hyperref[fig:figura15]{Figura 15} los resume gráficamente.
+El segundo ejercicio evalúa la sensibilidad del resultado al pool de donantes mediante un análisis \textit{leave-one-out}. El objetivo es determinar cuán dependiente es el ATT principal de la presencia de cada país en dicho pool: para cada uno de los 29 países de control se elimina al país $j$ y se reestima el SDID con los 28 países de control restantes más los 130 países tratados originales. Se reportan el mínimo, la mediana y el máximo de las 29 estimaciones \textit{leave-one-out} por lenguaje. Un rango LOO estrecho en torno al ATT principal indica que ningún país individual conduce el resultado, mientras que un rango muy amplio o que cambia de signo revelaría una dependencia excesiva de donantes específicos. La \hyperref[tab:tabla6]{Tabla 4} reúne ambos diagnósticos por lenguaje y la \hyperref[fig:figura15]{Figura 15} los resume gráficamente.
 
 \clearpage
 \section{Resultados}
@@ -692,7 +706,7 @@ En el método DiD, representado en los paneles (b), todos los estados de control
 
 Al comparar la \hyperref[fig:figura14]{Figura 14} (C) y la \hyperref[fig:figura10]{Figura 10} (Ruby), se observa que Ruby muestra una mayor dispersión y variabilidad en la asignación de pesos en comparación con C, y las tendencias pre-tratamiento no cumplen con la suposición de paralelismo tan bien como en C. En Ruby, los puntos rojos que indican pesos negligibles son más frecuentes, sugiriendo que varias unidades de control contribuyen solo marginalmente al contrafactual. Una mayor variabilidad de pesos implica que algunas unidades de control tienen una influencia mucho mayor en la construcción del contrafactual, lo cual puede reflejar una mayor heterogeneidad en las características del grupo de control. Al comparar la \hyperref[fig:figura8]{Figura 8} (Java) y la \hyperref[fig:figura7]{Figura 7} (Python), se nota que Python presenta una mayor variabilidad en la asignación de pesos y una divergencia post-tratamiento más marcada. Los puntos en Python indican una mayor heterogeneidad en las unidades de control en comparación con Java. Una menor variabilidad de pesos, como se observa en Java, sugiere que las unidades de control son más homogéneas y que cada una contribuye de manera más equitativa a la construcción del contrafactual. Asimismo, la \hyperref[fig:figura12]{Figura 12} (C\#), \hyperref[fig:figura13]{Figura 13} (C++), \hyperref[fig:figura9]{Figura 9} (Go), \hyperref[fig:figura6]{Figura 6} (JavaScript), \hyperref[fig:figura11]{Figura 11} (PHP) y \hyperref[fig:figura5]{Figura 5} (TypeScript) muestran tendencias pre y post-tratamiento relativamente paralelas y homogéneas. Las asignaciones de pesos en CS y SDiD son bastante similares, con poca variabilidad y pocos puntos rojos representando pesos negligibles. Esto sugiere que, para estos lenguajes, las unidades de control son bastante homogéneas y la ponderación temporal no muestra grandes variaciones.
 
-Las pruebas de robustez de los placebos in-space y la sensibilidad del pool de donantes se reúnen en la \hyperref[tab:tabla6]{Tabla 6} y se visualizan en la \hyperref[fig:figura15]{Figura 15}. La distribución de los 29 ATT placebo por lenguaje, obtenida al asignar el tratamiento a un país de control a la vez dentro del subpanel de control, sirve como prueba no paramétrica de la hipótesis nula de no efecto. La \hyperref[fig:figura16]{Figura 16} presenta los histogramas de placebo por lenguaje, con el ATT observado superpuesto en rojo, lo que permite visualizar gráficamente la posición del estimador principal frente a la distribución nula.
+Las pruebas de robustez de los placebos in-space y la sensibilidad del pool de donantes se reúnen en la \hyperref[tab:tabla6]{Tabla 4} y se visualizan en la \hyperref[fig:figura15]{Figura 15}. La distribución de los 29 ATT placebo por lenguaje, obtenida al asignar el tratamiento a un país de control a la vez dentro del subpanel de control, sirve como prueba no paramétrica de la hipótesis nula de no efecto. La \hyperref[fig:figura16]{Figura 16} presenta los histogramas de placebo por lenguaje, con el ATT observado superpuesto en rojo, lo que permite visualizar gráficamente la posición del estimador principal frente a la distribución nula.
 
 La lectura conjunta del p-valor placebo y del rango \textit{leave-one-out} permite clasificar la evidencia en tres niveles según su solidez. \textbf{Evidencia fuerte}: en Go y Ruby el p-valor placebo es 0,034, lo que ubica al ATT observado fuera del 95 \% de la distribución placebo, y el rango LOO se mantiene estrecho y siempre por encima de cero (Go: [0,587; 0,839]; Ruby: [0,667; 0,853]). \textbf{Evidencia moderada}: en JavaScript, Python y TypeScript el p-valor placebo es 0,069, marginalmente significativo al 10 \%; sus rangos LOO son amplios pero permanecen por encima de cero (JavaScript: [4,642; 9,322]; Python: [3,553; 5,111]; TypeScript: [1,904; 3,598]), lo que sustenta el efecto principal pese a la magnitud de las cifras. \textbf{Evidencia débil}: en C, C++, Java, PHP y C\# los p-valores placebo se sitúan entre 0,103 y 0,207, es decir, no permiten rechazar la hipótesis nula al 10 \% bajo la distribución placebo; sus rangos LOO también son los más estrechos en magnitud relativa al ATT observado pero los placebos sugieren que el efecto detectado podría no ser distinguible de la variabilidad observada al asignar el tratamiento aleatoriamente dentro del grupo de control.
 
@@ -701,6 +715,7 @@ Esta clasificación matiza la lectura de la \hyperref[tab:tabla3]{Tabla 3}: la s
 \clearpage
 \phantomsection
 \label{sec:conc}
+\addcontentsline{toc}{section}{Conclusiones}
 \section*{\centering\normalfont Conclusiones}
 
 En conclusión, los resultados obtenidos mediante el modelo SDID indican que la disponibilidad de ChatGPT ha tenido un impacto positivo y diferenciado en el desarrollo de software en varios lenguajes de programación. Específicamente, se observó un aumento notable en la cantidad de desarrolladores que utilizan lenguajes como JavaScript, Python y TypeScript, hallazgo que la \hyperref[sec:hipotesis]{hipótesis del estudio} había anticipado explícitamente: estos son justamente los lenguajes con mayor representación de documentación, tutoriales y consultas en plataformas abiertas, lo cual constituye la base de entrenamiento sobre la que ChatGPT despliega mejor su capacidad de asistencia (Buscemi, 2023; Chai et al., 2024). La confirmación empírica de esta predicción teórica robustece la interpretación del mecanismo subyacente: la disponibilidad del modelo reduce los costos de búsqueda y aprendizaje (Stigler, 1961) y permite la entrada al desarrollo de programadores que antes enfrentaban barreras de capital humano demasiado altas (Acemoglu y Restrepo, 2018), precisamente en aquellos lenguajes donde la productividad del modelo es mayor.
@@ -714,7 +729,7 @@ En línea con los resultados obtenidos, y reconociendo que la ventana postratami
 De manera complementaria, se recomienda implementar incentivos a la productividad asociados al uso de herramientas de inteligencia artificial dentro de las empresas del sector software, mediante la asignación de bonos económicos a trabajadores que evidencien mejoras en su rendimiento atribuibles al uso de estas tecnologías. El monto del incentivo podría ser determinado por cada empresa según sus objetivos y capacidades internas. Para garantizar una evaluación objetiva, el acceso a este beneficio debería sustentarse en mecanismos de seguimiento bimensuales que consideren indicadores como la cantidad de horas de uso de herramientas de inteligencia artificial, el volumen de tareas completadas con su asistencia y el cumplimiento de estándares mínimos de calidad establecidos por los equipos de aseguramiento de calidad (Quality Assurance, QA). De esta forma, ambas medidas contribuirían a fomentar una adopción productiva y responsable de la inteligencia artificial, fortaleciendo la participación de desarrolladores en el ecosistema tecnológico y promoviendo mejoras medibles en el desempeño laboral.
 
 
-El presente estudio tiene varias limitaciones que deben tenerse en cuenta al interpretar los resultados. En primer lugar, la composición del grupo de control constituye la principal amenaza a la validez interna del diseño. Los países que bloquearon el acceso a ChatGPT no lo hicieron de forma aleatoria: en su mayoría presentan mayor control estatal sobre internet, menores niveles de libertad digital y ecosistemas tecnológicos estructuralmente distintos a los del grupo tratado (ej. China, Rusia, Irán). Esta no-aleatoriedad puede generar un sesgo de selección en la estimación del ATT que el SDiD mitiga, pero no elimina por completo. Como verificación de robustez, la \hyperref[tab:tabla5]{Tabla 5} reporta las estimaciones SDiD excluyendo del grupo de control los seis censores severos de internet ---China, Cuba, Irán, Bielorrusia, Rusia y Siria, clasificados como ``No Libres'' por Freedom House (2022)--- y los resultados son cualitativamente similares a los de la especificación principal, lo que sugiere que la presencia de estos países no distorsiona las estimaciones de forma significativa. Futuros trabajos deberían explorar estrategias de identificación alternativas que permitan controlar más directamente por estas diferencias estructurales.
+El presente estudio tiene varias limitaciones que deben tenerse en cuenta al interpretar los resultados. En primer lugar, la composición del grupo de control constituye la principal amenaza a la validez interna del diseño. Los países que bloquearon el acceso a ChatGPT no lo hicieron de forma aleatoria: en su mayoría presentan mayor control estatal sobre internet, menores niveles de libertad digital y ecosistemas tecnológicos estructuralmente distintos a los del grupo tratado (ej. China, Rusia, Irán). Esta no-aleatoriedad puede generar un sesgo de selección en la estimación del ATT que el SDiD mitiga, pero no elimina por completo. Como verificación de robustez, la \hyperref[tab:tabla5]{Tabla 11} reporta las estimaciones SDiD excluyendo del grupo de control los seis censores severos de internet ---China, Cuba, Irán, Bielorrusia, Rusia y Siria, clasificados como ``No Libres'' por Freedom House (2022)--- y los resultados son cualitativamente similares a los de la especificación principal, lo que sugiere que la presencia de estos países no distorsiona las estimaciones de forma significativa. Futuros trabajos deberían explorar estrategias de identificación alternativas que permitan controlar más directamente por estas diferencias estructurales.
 
 En segundo lugar, existe un problema de interferencia en el tratamiento derivado del uso de VPN. Una proporción no despreciable de desarrolladores en países clasificados como ``sin acceso'' puede haber utilizado redes privadas virtuales para acceder a ChatGPT durante el período analizado. Si este fenómeno es generalizado, especialmente en países tecnológicamente activos como China o Rusia, el efecto estimado estaría subestimado (atenuación hacia cero), ya que la distinción entre grupo tratado y de control sería menos nítida de lo que el diseño asume.
 
@@ -722,7 +737,7 @@ En tercer lugar, la ventana postratamiento es corta: solo cuatro períodos (Q4-2
 
 Vinculado a lo anterior, una preocupación específica es la presencia de GitHub Copilot durante el período pretratamiento. Copilot fue lanzado en \textit{technical preview} en junio de 2021 y como producto comercial en junio de 2022, es decir, antes de Q4-2022. Si su disponibilidad estuvo también restringida en los países del grupo de control —algo plausible al compartir parcialmente el mapa geopolítico de OpenAI— entonces la falta de tendencias paralelas observada en el período pretratamiento podría agravarse, pues estaría contaminada por una primera ola de asistencia con IA. No obstante, las diferencias de escala entre ambas herramientas actúan a favor de la identificación: Copilot fue desde el inicio un producto pagado (10 USD mensuales para individuos, 19 USD para empresas) integrado en editores de código y orientado a desarrolladores profesionales, mientras que ChatGPT fue lanzado como servicio gratuito con interfaz conversacional masiva, lo que produjo una adopción cualitativamente distinta y mucho más rápida en magnitud (millones de usuarios en las primeras semanas). El \textit{shock} relevante para este estudio es, por tanto, la disponibilidad de la herramienta a escala masiva en Q4-2022, no la existencia de asistencia con IA \textit{per se}.
 
-En cuarto lugar, la divergencia entre métodos observada para algunos lenguajes y, sobre todo, la heterogeneidad en la fortaleza de la evidencia revelada por las pruebas de robustez de la \hyperref[tab:tabla6]{Tabla 6} imponen una interpretación cautelosa. En Ruby, el DiD no resulta significativo (0,262) mientras que el CS y el SDiD sí lo son (1,522 y 0,808, respectivamente), pero la prueba de placebo confirma el efecto (p = 0,034), lo que sugiere que el control sintético construye un mejor contrafactual para ese lenguaje. En C\#, el DiD y el CS son significativos (1,499 y 1,001, respectivamente) pero el SDiD (0,443) no alcanza significancia estadística y el p-valor placebo (0,207) refuerza esa lectura, sugiriendo ausencia de efecto detectable. Para Python el CS (1,604) no resulta significativo aunque DiD (7,688) y SDiD (4,525) sí lo son; el p-valor placebo (0,069) y el rango LOO estrecho confirman que la elevada varianza del CS responde a la heterogeneidad de la unidad tratada agregada y no a un efecto espurio.
+En cuarto lugar, la divergencia entre métodos observada para algunos lenguajes y, sobre todo, la heterogeneidad en la fortaleza de la evidencia revelada por las pruebas de robustez de la \hyperref[tab:tabla6]{Tabla 4} imponen una interpretación cautelosa. En Ruby, el DiD no resulta significativo (0,262) mientras que el CS y el SDiD sí lo son (1,522 y 0,808, respectivamente), pero la prueba de placebo confirma el efecto (p = 0,034), lo que sugiere que el control sintético construye un mejor contrafactual para ese lenguaje. En C\#, el DiD y el CS son significativos (1,499 y 1,001, respectivamente) pero el SDiD (0,443) no alcanza significancia estadística y el p-valor placebo (0,207) refuerza esa lectura, sugiriendo ausencia de efecto detectable. Para Python el CS (1,604) no resulta significativo aunque DiD (7,688) y SDiD (4,525) sí lo son; el p-valor placebo (0,069) y el rango LOO estrecho confirman que la elevada varianza del CS responde a la heterogeneidad de la unidad tratada agregada y no a un efecto espurio.
 
 Más generalmente, la prueba de placebo \textit{in-space} estratifica la evidencia en tres categorías —fuerte (Go, Ruby), moderada (JavaScript, Python, TypeScript) y débil (C, C++, Java, PHP, C\#)— y sugiere que la significancia obtenida por \textit{bootstrap} para los lenguajes de la categoría débil podría reflejar heterogeneidad estructural del grupo de control no absorbida completamente por el contrafactual SDID. Esto no invalida las estimaciones de los lenguajes débiles, pero sí implica que solo los efectos sobre lenguajes priorizados por la teoría del estudio (JavaScript, Python, TypeScript, Go y Ruby) deberían considerarse como evidencia robusta para la formulación de política. Los demás permanecen como hallazgos exploratorios que ameritan replicación con ventanas postratamiento más amplias.
 
@@ -759,7 +774,7 @@ TypeScript & 3{,}46  & 0{,}00 & 224{,}19 & 17{,}55 & 11{,}79 & 0{,}00 & 275{,}74
 \bottomrule
 \end{tabular}
 \begin{minipage}{\linewidth}
-\smallskip\footnotesize\textit{Nota.} Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de control incluye los 29 países sin acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboración propia.
+\smallskip\footnotesize\textit{Nota.} Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de control incluye los 29 países sin acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022.\\[\baselineskip]Fuente: Elaboración propia.
 \end{minipage}
 \end{table}
 
@@ -786,16 +801,14 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
 \bottomrule
 \end{tabular}
 \begin{minipage}{\linewidth}
-\smallskip\footnotesize\textit{Nota.} Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de tratamiento incluye los 130 países con acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboración propia.
+\smallskip\footnotesize\textit{Nota.} Estadísticos descriptivos calculados a partir de la base de datos GitHub Innovation Graph (tabla \textit{languages}), que registra el número de \textit{unique pushers} por cada 100\,000 habitantes, desagregado por país, lenguaje de programación y trimestre. El periodo de pretratamiento comprende Q1-2020 a Q3-2022 (12 trimestres) y el de postratamiento Q4-2022 a Q4-2023 (4 trimestres). El grupo de tratamiento incluye los 130 países con acceso a ChatGPT al momento de su lanzamiento en noviembre de 2022.\\[\baselineskip]Fuente: Elaboración propia.
 \end{minipage}
 \end{table}
 
 % Tabla 3 — generada por all_code_python.py (Section 5)
 \input{output/tables/gpt_impact_github_DataScience.tex}
 
-% Tabla 6 — generada por all_code_python.py (Section 8)
-% Robustez SDID: placebos in-space y sensibilidad del pool de donantes
-\setcounter{table}{5}
+% Tabla 4 — placebos in-space y sensibilidad del pool de donantes (generada por all_code_python.py)
 \input{output/tables/gpt_impact_github_placebo_loo.tex}
 
 
@@ -811,7 +824,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
 \label{fig:figura1}
 \includegraphics[width=\textwidth]{language_distribution_gpt_available_2020_2023.png}
 \begin{minipage}{\linewidth}
-\smallskip\footnotesize\textit{Nota.} La figura presenta una distribución porcentual de la participación de los lenguajes más usados en ciencia de datos en los países cuyo acceso a ChatGPT está vigente. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 21280 observaciones. Por otra parte, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de años incluidos es 4. Respecto a la figura, se puede identificar un aumento constante de los lenguajes JavaScript, Python y TypeScript entre 2020 y 2023, siendo los más usados por los desarrolladores en esos períodos de tiempo, mientras que C\#, Ruby y Go resaltan por ser los menos utilizados en el mismo segmento temporal. Elaboración propia con datos de GitHub (2020--2023).
+\smallskip\footnotesize\textit{Nota.} La figura presenta una distribución porcentual de la participación de los lenguajes más usados en ciencia de datos en los países cuyo acceso a ChatGPT está vigente. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 21280 observaciones. Por otra parte, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de años incluidos es 4. Respecto a la figura, se puede identificar un aumento constante de los lenguajes JavaScript, Python y TypeScript entre 2020 y 2023, siendo los más usados por los desarrolladores en esos períodos de tiempo, mientras que C\#, Ruby y Go resaltan por ser los menos utilizados en el mismo segmento temporal.\\[\baselineskip]Fuente: Elaboración propia.
 \end{minipage}
 \end{figure}
 
@@ -821,7 +834,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
 \label{fig:figura2}
 \includegraphics[width=\textwidth]{language_distribution_no_gpt_2020_2023.png}
 \begin{minipage}{\linewidth}
-\smallskip\footnotesize\textit{Nota.} La figura presenta una distribución porcentual de la participación de los lenguajes más usados en ciencia de datos en los países cuyo acceso a ChatGPT está restringido. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 5120 observaciones. Asimismo, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de años incluidos es 4. Respecto a la figura, se puede identificar un aumento casi constante de los lenguajes JavaScript y Python entre 2020 y 2023, siendo los más usados por los desarrolladores en esos períodos de tiempo, mientras que PHP, Go y Ruby destacan por ser los menos utilizados en el mismo segmento temporal. Elaboración propia con datos de GitHub (2020--2023).
+\smallskip\footnotesize\textit{Nota.} La figura presenta una distribución porcentual de la participación de los lenguajes más usados en ciencia de datos en los países cuyo acceso a ChatGPT está restringido. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 5120 observaciones. Asimismo, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de años incluidos es 4. Respecto a la figura, se puede identificar un aumento casi constante de los lenguajes JavaScript y Python entre 2020 y 2023, siendo los más usados por los desarrolladores en esos períodos de tiempo, mientras que PHP, Go y Ruby destacan por ser los menos utilizados en el mismo segmento temporal.\\[\baselineskip]Fuente: Elaboración propia.
 \end{minipage}
 \end{figure}
 
@@ -831,7 +844,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
 \label{fig:figura3}
 \includegraphics[width=\textwidth]{language_trend_gpt_countries_2020_2023.png}
 \begin{minipage}{\linewidth}
-\smallskip\footnotesize\textit{Nota.} La figura muestra una serie temporal sobre la dinámica de los \textit{unique pushers} de cada lenguaje de programación en países cuyo acceso a ChatGPT está disponible. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 160 observaciones. Además, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de trimestres analizados es 16. Sobre la figura, se puede observar un aumento alto y progresivo del número de desarrolladores que al menos han hecho un push en GitHub por cada 100 mil personas para los lenguajes de JavaScript, Python y Java, siendo los dos primeros con mayor representación. Los lenguajes restantes obtuvieron crecimientos muy ligeros o se mantuvieron constantes a lo largo del período en cuestión. Elaboración propia con datos de GitHub (2020--2023).
+\smallskip\footnotesize\textit{Nota.} La figura muestra una serie temporal sobre la dinámica de los \textit{unique pushers} de cada lenguaje de programación en países cuyo acceso a ChatGPT está disponible. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 160 observaciones. Además, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de trimestres analizados es 16. Sobre la figura, se puede observar un aumento alto y progresivo del número de desarrolladores que al menos han hecho un push en GitHub por cada 100 mil personas para los lenguajes de JavaScript, Python y Java, siendo los dos primeros con mayor representación. Los lenguajes restantes obtuvieron crecimientos muy ligeros o se mantuvieron constantes a lo largo del período en cuestión.\\[\baselineskip]Fuente: Elaboración propia.
 \end{minipage}
 \end{figure}
 
@@ -841,7 +854,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
 \label{fig:figura4}
 \includegraphics[width=\textwidth]{language_trend_no_gpt_countries_2020_2023.png}
 \begin{minipage}{\linewidth}
-\smallskip\footnotesize\textit{Nota.} La figura muestra una serie temporal sobre la dinámica de los \textit{unique pushers} de cada lenguaje de programación en países cuyo acceso a ChatGPT está restringido. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 160 observaciones. Además, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de trimestres analizados es 16. Sobre la figura, se puede observar un aumento mediano y progresivo del número de desarrolladores que al menos han hecho un push en GitHub por cada 100 mil personas para los lenguajes de JavaScript, Python y TypeScript, siendo los dos primeros con mayor representación. Los lenguajes restantes obtuvieron crecimientos muy ligeros, se mantuvieron constantes o cayeron a lo largo del período en cuestión. Elaboración propia con datos de GitHub (2020--2023).
+\smallskip\footnotesize\textit{Nota.} La figura muestra una serie temporal sobre la dinámica de los \textit{unique pushers} de cada lenguaje de programación en países cuyo acceso a ChatGPT está restringido. La base de datos proviene de GitHub Innovation Graph y, para este caso, se han usado un total de 160 observaciones. Además, la cantidad de lenguajes de programación filtrados y usados son 10 y el número de trimestres analizados es 16. Sobre la figura, se puede observar un aumento mediano y progresivo del número de desarrolladores que al menos han hecho un push en GitHub por cada 100 mil personas para los lenguajes de JavaScript, Python y TypeScript, siendo los dos primeros con mayor representación. Los lenguajes restantes obtuvieron crecimientos muy ligeros, se mantuvieron constantes o cayeron a lo largo del período en cuestión.\\[\baselineskip]Fuente: Elaboración propia.
 \end{minipage}
 \end{figure}
 
@@ -877,7 +890,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
   \includegraphics[width=\linewidth]{TypeScriptsdidweights12.png}
   \caption*{(f) Pesos SDiD estimados}
 \end{subfigure}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
@@ -908,7 +921,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
   \includegraphics[width=\linewidth]{JavaScriptsdidweights12.png}
   \caption*{(f) Pesos SDiD estimados}
 \end{subfigure}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
@@ -939,7 +952,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
   \includegraphics[width=\linewidth]{Pythonsdidweights12.png}
   \caption*{(f) Pesos SDiD estimados}
 \end{subfigure}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
@@ -970,7 +983,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
   \includegraphics[width=\linewidth]{Javasdidweights12.png}
   \caption*{(f) Pesos SDiD estimados}
 \end{subfigure}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
@@ -1001,7 +1014,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
   \includegraphics[width=\linewidth]{Gosdidweights12.png}
   \caption*{(f) Pesos SDiD estimados}
 \end{subfigure}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
@@ -1032,7 +1045,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
   \includegraphics[width=\linewidth]{Rubysdidweights12.png}
   \caption*{(f) Pesos SDiD estimados}
 \end{subfigure}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
@@ -1063,7 +1076,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
   \includegraphics[width=\linewidth]{PHPsdidweights12.png}
   \caption*{(f) Pesos SDiD estimados}
 \end{subfigure}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
@@ -1094,7 +1107,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
   \includegraphics[width=\linewidth]{C_hashtagsdidweights12.png}
   \caption*{(f) Pesos SDiD estimados}
 \end{subfigure}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
@@ -1125,7 +1138,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
   \includegraphics[width=\linewidth]{C_plussdidweights12.png}
   \caption*{(f) Pesos SDiD estimados}
 \end{subfigure}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
@@ -1156,7 +1169,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
   \includegraphics[width=\linewidth]{Csdidweights12.png}
   \caption*{(f) Pesos SDiD estimados}
 \end{subfigure}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 \end{singlespacing}
 
@@ -1167,7 +1180,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
 \label{fig:figura15}
 \includegraphics[width=\textwidth]{robustness_forest_plot.png}
 \begin{minipage}{\linewidth}
-\smallskip\footnotesize\textit{Nota.} Para cada lenguaje de programación: el punto rojo indica el ATT estimado por SDiD en la especificación principal; la barra azul representa el rango \textit{leave-one-out} (mínimo--máximo) obtenido al eliminar cada uno de los 29 países de control del pool de donantes y reestimar el SDID; la banda gris indica el intervalo de confianza al 95\,\% de la distribución de 29 placebos in-space construida al asignar el tratamiento a un país de control a la vez (\textit{a la} Abadie, 2010, 2021). Elaboración propia.
+\smallskip\footnotesize\textit{Nota.} Para cada lenguaje de programación: el punto rojo indica el ATT estimado por SDiD en la especificación principal; la barra azul representa el rango \textit{leave-one-out} (mínimo--máximo) obtenido al eliminar cada uno de los 29 países de control del pool de donantes y reestimar el SDID; la banda gris indica el intervalo de confianza al 95\,\% de la distribución de 29 placebos in-space construida al asignar el tratamiento a un país de control a la vez (\textit{a la} Abadie, 2010, 2021).\\[\baselineskip]Fuente: Elaboración propia.
 \end{minipage}
 \end{figure}
 
@@ -1178,7 +1191,7 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
 \label{fig:figura16}
 \includegraphics[width=\textwidth]{placebo_distribution_panel.png}
 \begin{minipage}{\linewidth}
-\smallskip\footnotesize\textit{Nota.} Histograma de los 29 ATT placebo por lenguaje, construido asignando un tratamiento placebo a un país de control a la vez y reestimando el SDiD restringiendo la muestra al grupo de control. La línea roja vertical indica el ATT observado en la especificación principal y el p-valor placebo en el título de cada panel corresponde a la fracción de placebos cuyo $|ATT|$ es mayor o igual al $|ATT|$ observado. Elaboración propia.
+\smallskip\footnotesize\textit{Nota.} Histograma de los 29 ATT placebo por lenguaje, construido asignando un tratamiento placebo a un país de control a la vez y reestimando el SDiD restringiendo la muestra al grupo de control. La línea roja vertical indica el ATT observado en la especificación principal y el p-valor placebo en el título de cada panel corresponde a la fracción de placebos cuyo $|ATT|$ es mayor o igual al $|ATT|$ observado.\\[\baselineskip]Fuente: Elaboración propia.
 \end{minipage}
 \end{figure}
 
@@ -1189,12 +1202,9 @@ TypeScript & 17{,}32 & 0{,}00 & 181{,}23 & 21{,}61 & 18{,}83 & 0{,}00 & 181{,}23
 \label{fig:timeline_chatgpt}
 \includegraphics[width=\textwidth]{chatgpt_timeline.png}
 \begin{minipage}{\linewidth}
-\smallskip\footnotesize\textit{Nota.} La figura organiza en tres carriles los hitos relevantes durante el período de análisis. \textbf{GitHub Copilot} (azul): \textit{preview} técnico en junio de 2021 y lanzamiento comercial pagado en junio de 2022. \textbf{ChatGPT} (verde): GPT-3.5 gratuito en noviembre de 2022 (inicio del tratamiento, marcado por la línea vertical roja), GPT-4 vía ChatGPT Plus en marzo de 2023 y Code Interpreter más \textit{plugins} en julio de 2023. \textbf{Limitaciones} (rojo): corte de entrenamiento en septiembre de 2021, alucinaciones frecuentes durante los primeros meses post-lanzamiento y ventanas de contexto restringidas (4{,}096 \textit{tokens} en GPT-3.5; 8{,}192--32{,}768 en GPT-4). La banda gris representa el período pretratamiento y la banda roja, el período postratamiento. Elaboración propia.
+\smallskip\footnotesize\textit{Nota.} La figura organiza en tres carriles los hitos relevantes durante el período de análisis. \textbf{GitHub Copilot} (azul): \textit{preview} técnico en junio de 2021 y lanzamiento comercial pagado en junio de 2022. \textbf{ChatGPT} (verde): GPT-3.5 gratuito en noviembre de 2022 (inicio del tratamiento, marcado por la línea vertical roja), GPT-4 vía ChatGPT Plus en marzo de 2023 y Code Interpreter más \textit{plugins} en julio de 2023. \textbf{Limitaciones} (rojo): corte de entrenamiento en septiembre de 2021, alucinaciones frecuentes durante los primeros meses post-lanzamiento y ventanas de contexto restringidas (4{,}096 \textit{tokens} en GPT-3.5; 8{,}192--32{,}768 en GPT-4). La banda gris representa el período pretratamiento y la banda roja, el período postratamiento.\\[\baselineskip]Fuente: Elaboración propia.
 \end{minipage}
 \end{figure}
-
-% Conclusiones se lista en el índice aquí (tras Figuras) conservando su página real
-\addtocontents{toc}{\protect\contentsline{section}{\protect\hyperref[sec:conc]{Conclusiones}}{\protect\pageref{sec:conc}}{}}
 
 \clearpage
 % ── Referencias bibliográficas ────────────────────────────────────────────────
@@ -1335,13 +1345,13 @@ Wu, Q., Zhuang, Q., Liu, Y., \& Han, L. (2024). Technology Shock of ChatGPT, Soc
 \caption{Mapa de disponibilidad global de ChatGPT}
 \label{fig:mapa_gpt}
 \includegraphics[width=\textwidth]{chatgpt_global_availability_map.png}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 
 
 \begin{longtable}{lccc}
-\caption*{Lista de países según disponibilidad de acceso a ChatGPT} \\
+\caption{Lista de países según disponibilidad de acceso a ChatGPT}\label{tab:tabla7} \\
 \toprule
 ISO2 & País con GPT & ISO2 & País sin GPT \\
 \midrule
@@ -1487,6 +1497,7 @@ UY & Uruguay &  &  \\
 ZM & Zambia &  &  \\
 \bottomrule
 \end{longtable}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 
 \end{flushleft}
 
@@ -1499,7 +1510,7 @@ ZM & Zambia &  &  \\
 
 \noindent\textbf{Variables de control utilizadas}
 
-Las variables de control empleadas en la estimación con controles (\hyperref[tab:tabla4]{Tabla 4}) fueron extraídas del \textbf{Banco Mundial} y corresponden a dos indicadores de infraestructura digital:
+Las variables de control empleadas en la estimación con controles (\hyperref[tab:tabla4]{Tabla 10}) fueron extraídas del \textbf{Banco Mundial} y corresponden a dos indicadores de infraestructura digital:
 
 \begin{itemize}
   \item \textbf{Porcentaje de individuos que usan computadora}: obtenido del indicador \textit{Percentage of individuals using a computer} (ITU DataHub, vía World Bank Data360, código \texttt{ITU\_DH\_INV\_COMP}). Mide la proporción de la población que utiliza una computadora, capturando el nivel de adopción tecnológica en el hogar y la capacidad técnica promedio del país.
@@ -1519,10 +1530,10 @@ Adicionalmente, la incorporación de las variables de control del Banco Mundial 
 
 
 
-\setcounter{table}{6}
 \begin{table}[H]
 \centering
 \caption{Mapeo de la cantidad de muestras}
+\label{tab:tabla8}
 \begin{tabular}{lc}
 \toprule
 Tipo & Cantidad \\
@@ -1532,13 +1543,14 @@ Year & 6360 \\
 Final & 6360 \\
 \bottomrule
 \end{tabular}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{table}
 
 
 \begin{table}[H]
 \centering
 \caption{Comparación por grupo de muestras}
+\label{tab:tabla9}
 \begin{tabular}{lcccc}
 \toprule
 Grupo & Obs. trimestrales & Obs. anuales & Obs. finales & Obs. perdidas \\
@@ -1547,7 +1559,7 @@ Grupo & Obs. trimestrales & Obs. anuales & Obs. finales & Obs. perdidas \\
 1 (tratamiento) & 20800 & 5200 & 5200 & 15600 \\
 \bottomrule
 \end{tabular}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{table}
 
 
@@ -1564,7 +1576,7 @@ XK & 0 \\
 HK & 1 \\
 \bottomrule
 \end{tabular}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{table}
 
 
@@ -1597,16 +1609,14 @@ VE & 0 & 160 \\
 YE & 0 & 160 \\
 \bottomrule
 \end{tabular}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{table}
 
 
-% Tabla controles — generada por all_code_python.py (Section 6)
-\setcounter{table}{3}
+% Tabla 10 — controles (generada por all_code_python.py)
 \input{output/tables/gpt_impact_github_DataScience_controls.tex}
 
-% Tabla 5 — Robustez: SDID con grupo de control restringido
-\setcounter{table}{4}
+% Tabla 11 — Robustez: SDID con grupo de control restringido
 \input{output/tables/gpt_impact_github_robustez.tex}
 
 \clearpage
@@ -1624,35 +1634,35 @@ YE & 0 & 160 \\
 \centering
 \caption{Análisis de evento SDID — C}
 \includegraphics[width=0.85\textwidth]{output/figures/Csdid_event_study.png}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \caption{Análisis de evento SDID — C\#}
 \includegraphics[width=0.85\textwidth]{output/figures/C_hashtagsdid_event_study.png}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \caption{Análisis de evento SDID — C++}
 \includegraphics[width=0.85\textwidth]{output/figures/C_plussdid_event_study.png}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \caption{Análisis de evento SDID — Go}
 \includegraphics[width=0.85\textwidth]{output/figures/Gosdid_event_study.png}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \caption{Análisis de evento SDID — Java}
 \includegraphics[width=0.85\textwidth]{output/figures/Javasdid_event_study.png}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
@@ -1660,35 +1670,35 @@ YE & 0 & 160 \\
 \caption{Análisis de evento SDID — JavaScript}
 \includegraphics[width=0.85\textwidth]{output/figures/JavaScriptsdid_event_study.png}
 \label{fig:js_event_study}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \caption{Análisis de evento SDID — PHP}
 \includegraphics[width=0.85\textwidth]{output/figures/PHPsdid_event_study.png}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \caption{Análisis de evento SDID — Python}
 \includegraphics[width=0.85\textwidth]{output/figures/Pythonsdid_event_study.png}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \caption{Análisis de evento SDID — Ruby}
 \includegraphics[width=0.85\textwidth]{output/figures/Rubysdid_event_study.png}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \caption{Análisis de evento SDID — TypeScript}
 \includegraphics[width=0.85\textwidth]{output/figures/TypeScriptsdid_event_study.png}
-\begin{minipage}{\linewidth}\smallskip\footnotesize\textit{Nota.} Elaboración propia.\end{minipage}
+\begin{minipage}{\linewidth}\smallskip\footnotesize Fuente: Elaboración propia.\end{minipage}
 \end{figure}
 
 \clearpage

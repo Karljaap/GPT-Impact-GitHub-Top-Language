@@ -1,7 +1,6 @@
 \begin{table}[htbp]\centering
 \caption{Robustez: SDID con grupo de control restringido (excluye censores severos)}
 \label{tab:tabla5}
-\begin{threeparttable}
 {\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
 \begin{tabular}{lcccccc}
 \toprule
@@ -39,9 +38,7 @@ TypeScript & 3{,}078*** & 1{,}601 & 2544 & 2448 & 2{,}056 \\
 \addlinespace
 \bottomrule
 \end{tabular}}
-\begin{tablenotes}
-\footnotesize
-\item \textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes, mediante Diferencias en Diferencias Sint\'{e}tica (SDID; Arkhangelsky et al., 2021), estimada con la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). La columna ``SDID (completo)'' emplea los 29 pa\'{i}ses de control y corresponde a la estimaci\'{o}n principal; la columna ``SDID (restringido)'' excluye del grupo de control los seis censores severos de internet: China (CN), Cuba (CU), Ir\'{a}n (IR), Bielorrusia (BY), Rusia (RU) y Siria (SY), clasificados como ``No Libres'' por Freedom House (Freedom on the Net, 2022). Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). El periodo de tratamiento inicia en Q4-2022. Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. * p$<$0.10, ** p$<$0.05, *** p$<$0.01
-\end{tablenotes}
-\end{threeparttable}
+\begin{minipage}{\linewidth}
+\smallskip\footnotesize\textit{Nota.} Estimaciones del efecto promedio del tratamiento (ATT) del acceso a ChatGPT sobre el n\'{u}mero de \textit{unique pushers} por cada 100\,000 habitantes, mediante Diferencias en Diferencias Sint\'{e}tica (SDID; Arkhangelsky et al., 2021), estimada con la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). La columna ``SDID (completo)'' emplea los 29 pa\'{i}ses de control y corresponde a la estimaci\'{o}n principal; la columna ``SDID (restringido)'' excluye del grupo de control los seis censores severos de internet: China (CN), Cuba (CU), Ir\'{a}n (IR), Bielorrusia (BY), Rusia (RU) y Siria (SY), clasificados como ``No Libres'' por Freedom House (Freedom on the Net, 2022). Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). El periodo de tratamiento inicia en Q4-2022. Errores est\'{a}ndar entre par\'{e}ntesis. * p$<$0.10, ** p$<$0.05, *** p$<$0.01\\[\baselineskip]Fuente: Elaboraci\'{o}n propia.
+\end{minipage}
 \end{table}

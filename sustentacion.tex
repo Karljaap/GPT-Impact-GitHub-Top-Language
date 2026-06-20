@@ -75,7 +75,7 @@
 \AtBeginDocument{\def\%{\char`\%\relax}}
 
 % ── Datos ─────────────────────────────────────────────────────────────────────
-\title[Impacto ChatGPT en GitHub]{Impacto de la disponibilidad de ChatGPT en el desarrollo de software orientado a Ciencia de Datos (2020--2023)}
+\title[Impacto de ChatGPT en el desarrollo de software]{Impacto de la disponibilidad de ChatGPT en el desarrollo de software orientado a Ciencia de Datos (2020--2023)}
 \subtitle{Sustentación de tesis para optar al título de Licenciado en Economía}
 \author[Nicho \& Janampa]{Jesus Alberto Nicho Rosado \\ Karl Willem Janampa Aparicio}
 \institute[PUCP]{Pontificia Universidad Católica del Perú \\ Facultad de Ciencias Sociales \\[0.3em] {\small Asesor: Alexander Wilder Quispe Rojas}}
@@ -206,16 +206,17 @@ Si ChatGPT efectivamente aumenta la productividad o la entrada de desarrolladore
 % ════════════════════════════════════════════════════════════════════════════
 
 \begin{frame}{Marco teórico (I): Acemoglu \& Restrepo}
-\begin{block}{Tecnología como reasignador de tareas}
-El cambio tecnológico actúa en dos canales simultáneos sobre el trabajo:
+\begin{block}{Dos fuerzas opuestas sobre el trabajo}
+\small La producción es un conjunto de \textbf{tareas} que puede realizar el \textbf{trabajo} (humano) o el \textbf{capital} (algoritmos). Una nueva tecnología empuja en dos direcciones a la vez:
 \end{block}
 
 \begin{columns}[T]
 \begin{column}{0.48\textwidth}
-\textbf{\textcolor{pucpaccent}{Displacement effect}}
+\textbf{\textcolor{pucpaccent}{Displacement effect}}\\
+{\small\textcolor{pucpaccent}{$\downarrow$ reduce la demanda de trabajo}}
 \medskip
 
-\small ChatGPT automatiza tareas previamente del programador:
+\small Automatiza tareas antes del programador:
 \begin{itemize}\small
   \item Búsqueda de sintaxis
   \item Redacción de \textit{boilerplate}
@@ -223,10 +224,11 @@ El cambio tecnológico actúa en dos canales simultáneos sobre el trabajo:
 \end{itemize}
 \end{column}
 \begin{column}{0.48\textwidth}
-\textbf{\textcolor{pucpblue}{Reinstatement effect}}
+\textbf{\textcolor{pucpblue}{Reinstatement effect}}\\
+{\small\textcolor{pucpblue}{$\uparrow$ aumenta la demanda de trabajo}}
 \medskip
 
-\small Al bajar el costo marginal de producir código:
+\small Al abaratar producir código:
 \begin{itemize}\small
   \item Proyectos antes inviables se vuelven rentables.
   \item Programadores marginales pueden entrar.
@@ -235,8 +237,8 @@ El cambio tecnológico actúa en dos canales simultáneos sobre el trabajo:
 \end{column}
 \end{columns}
 
-\vspace{1em}
-\centering \alert{Efecto neto sobre la actividad de desarrollo: positivo bajo condiciones plausibles.}
+\vspace{0.8em}
+\centering \small ¿Cuál fuerza domina? \alert{Nuestra tesis encuentra que domina el \textit{reinstatement}: más desarrolladores, no menos.}
 \end{frame}
 
 \begin{frame}{Marco teórico (II): Stigler y la economía de la información}
@@ -260,36 +262,95 @@ Stigler (1961) modela la búsqueda como un costo que el agente paga para reducir
 \end{exampleblock}
 \end{frame}
 
+% ── MT III.1 — Variables del modelo ──────────────────────────────────────────
 \begin{frame}{Marco teórico (III): modelo formal de adopción heterogénea}
+\framesubtitle{Variables del modelo}
 \small
-\begin{block}{De la tarea individual al panel agregado}
-El desarrollador elige el método más productivo en cada tarea $z\in[0,1]$:
-\[
-y_{jc}(z;\mu_j)=\max\{h_c(z),\,\mu_j\,a_c(z)\},\qquad \mu_j\in\{0,1\}.
-\]
-\end{block}
-
-\begin{columns}[T]
-\begin{column}{0.5\textwidth}
-\centering\textbf{\textcolor{pucpblue}{Exposición del lenguaje}}
-\[
-\theta_c=\underbrace{\tau_c}_{\substack{\text{frac.\ tareas}\\\text{automatizables}}}\!\cdot\!\underbrace{\rho_c}_{\substack{\text{ahorro}\\\text{relativo}}}
-\]
-\end{column}
-\begin{column}{0.5\textwidth}
-\centering\textbf{\textcolor{pucpblue}{Absorción del país}}
-\[
-\phi_i=10^5\,f_i\!\bigl(\eta^*_c(0)\bigr)
-\]
-\end{column}
-\end{columns}
-
-\vspace{0.4em}
-\begin{exampleblock}{Ecuación estimable (resultado del modelo)}
 \centering
-$Y_{ict}=\alpha_i+\beta_t+\delta_c+\textcolor{pucpaccent}{\theta_c\,\phi_i}\,A_{it}+\eta_{ict}$
+\renewcommand{\arraystretch}{1.18}
+\begin{tabular}{ll}
+\toprule
+\textbf{Símbolo} & \textbf{Significado} \\
+\midrule
+$z\in[0,1]$ & Tarea elemental de programación \\
+$h_c(z),\ a_c(z)$ & Productividad humana / de ChatGPT en la tarea $z$ \\
+$\mu_j,\ A_{it}$ & Acceso individual / disponibilidad país--trimestre \\
+$\mathcal{Z}^{\mathrm{auto}}_c,\ \tau_c$ & Conjunto de tareas automatizables y su medida (fracción) \\
+$s_c(z),\ \rho_c$ & Ahorro relativo por tarea y su promedio condicional \\
+$\theta_c=\tau_c\rho_c$ & \textbf{Exposición del lenguaje} (componente de lenguaje) \\
+$\eta,\ r_i,\ \eta^*_c$ & Habilidad, utilidad de reserva y umbral de entrada \\
+$F_i,\ f_i$ & Distribución y densidad de habilidad del país \\
+$\phi_i=10^5 f_i(\eta^*_c(0))$ & \textbf{Absorción del país} (componente de país) \\
+$Y_{ict}$ & \textit{Unique pushers} por 100\,mil habitantes \\
+\bottomrule
+\end{tabular}
+\end{frame}
+
+% ── MT III.2 — El modelo (Pasos 1-2): del individuo al umbral ─────────────────
+\begin{frame}{Marco teórico (III): modelo formal de adopción heterogénea}
+\framesubtitle{Del desarrollador individual al umbral de entrada (Pasos 1--2)}
+\small
+\textbf{Paso 1 --- Producción y exposición.} En cada tarea el desarrollador usa el método más productivo (humano o ChatGPT). Por eso su \textbf{ganancia de productividad} al acceder a la herramienta, $\Delta y_{jc}$, proviene \emph{solo} de las tareas que ChatGPT hace mejor; esa ganancia es la \textbf{exposición del lenguaje} $\theta_c$:
+\[
+\underbrace{\Delta y_{jc}}_{\substack{\text{ganancia de}\\\text{productividad}}}=\underbrace{\tau_c}_{\substack{\text{fracción de tareas}\\\text{automatizables (amplitud)}}}\cdot\underbrace{\rho_c}_{\substack{\text{ahorro relativo}\\\text{promedio (profundidad)}}}\equiv\theta_c.
+\]
+{\footnotesize Combina \emph{cuántas} tareas mejora ChatGPT ($\tau_c$) y \emph{cuánto} ahorra en ellas ($\rho_c$); es mayor en lenguajes muy representados en los datos de entrenamiento (Python, JavaScript, TypeScript).}
+
+\medskip
+\textbf{Paso 2 --- Umbral de entrada.} Cada persona tiene una \textbf{habilidad} $\eta$ (propia de cada individuo, varía entre personas) y entra a programar si supera el \textbf{umbral} $\eta^*_c$ (común a todos: la barra mínima de entrada):
+\[
+\text{entra si}\quad \underbrace{\eta}_{\substack{\text{habilidad}\\\text{del individuo}}}\ \ge\ \underbrace{\eta^*_c}_{\substack{\text{barra mínima}\\\text{de entrada}}}.
+\]
+La ganancia de productividad \textbf{baja esa barra} exactamente en $\theta_c$: $\;\eta^*_c(1)=\eta^*_c(0)-\theta_c$.
+
+{\footnotesize Entran quienes tienen habilidad entre la barra nueva y la antigua: los \textit{desarrolladores marginales}.}
+\end{frame}
+
+% ── MT III.3 — El modelo (Pasos 3-4): de la agregación al panel ───────────────
+\begin{frame}{Marco teórico (III): modelo formal de adopción heterogénea}
+\framesubtitle{De la agregación poblacional al panel estimable (Pasos 3--4)}
+\small
+\textbf{Paso 3 --- Agregación y absorción.} Cuando la barra baja en $\theta_c$, entran las personas que estaban justo debajo. ¿Cuántas? Depende de la \textbf{densidad} de gente cerca del umbral ($f_i$). Por cada 100\,mil habitantes:
+\[
+\underbrace{\Delta Y_{ic}}_{\substack{\text{nuevos devs.}\\\text{por 100\,mil hab.}}}\approx\; \underbrace{\phi_i}_{\substack{\text{absorción}\\\text{del país}}}\;\cdot\;\underbrace{\theta_c}_{\substack{\text{exposición}\\\text{del lenguaje}}},\qquad \phi_i=10^5 f_i(\eta^*_c(0)).
+\]
+{\footnotesize Intuición: nuevos $\approx$ (densidad cerca del umbral) $\times$ (cuánto bajó la barra). Por eso $\phi_i$ \emph{es} la densidad $f_i$ evaluada en el umbral.}
+
+\medskip
+\textbf{Paso 4 --- Especificación de panel.} Para estimarlo con datos, la variable observada $Y_{ict}$ (\textit{unique pushers}) se descompone en efectos fijos que \textbf{controlan} diferencias permanentes de país ($\alpha_i$), trimestre ($\beta_t$) y lenguaje ($\delta_c$), más el efecto que aparece solo cuando ChatGPT está disponible ($A_{it}=1$):
+\[
+Y_{ict}=\alpha_i+\beta_t+\delta_c+\underbrace{\textcolor{pucpaccent}{\theta_c\,\phi_i}}_{\text{efecto del tratamiento}}\,A_{it}+\eta_{ict}.
+\]
+{\footnotesize $A_{it}=1$ si el país $i$ tiene acceso en el trimestre $t$; $\eta_{ict}$: factores no observados. El efecto es \textbf{multiplicativo}: máximo donde coinciden alta exposición y alta absorción.}
+\end{frame}
+
+% ── MT III.3 — Supuestos del modelo ──────────────────────────────────────────
+\begin{frame}{Marco teórico (III): modelo formal de adopción heterogénea}
+\framesubtitle{Supuestos del modelo}
+\small
+\begin{enumerate}\small
+  \item \textbf{Mejor método por tarea:} el desarrollador usa el método más productivo en cada tarea.
+  \item \textbf{Covarianza nula:} $\mathrm{Cov}_{\mathcal{Z}^{\mathrm{auto}}_c}(h_c,s_c)=0$ --- la productividad humana y el ahorro relativo no están correlacionados dentro de las tareas automatizables.
+  \item \textbf{Normalización de escala:} $\bar h_c=1$ (elección de unidades de producción).
+  \item \textbf{Taylor de primer orden:} válido si $\theta_c$ es pequeño frente a la escala en que varía la densidad $f_i$.
+  \item \textbf{Separabilidad país--lenguaje:} $\phi_{ic}\approx\phi_i$, lo que permite factorizar el coeficiente como $\theta_c\phi_i$.
+  \item \textbf{Exogeneidad condicional:} $\mathbb{E}[\eta_{ict}\mid\alpha_i,\beta_t,\delta_c,A_{it}]=0$ (identificación causal).
+\end{enumerate}
+\end{frame}
+
+% ── MT III.4 — Conclusiones del modelo ───────────────────────────────────────
+\begin{frame}{Marco teórico (III): modelo formal de adopción heterogénea}
+\framesubtitle{Conclusiones del modelo}
+\small
+El efecto de tratamiento es $\Delta Y_{ic}=\theta_c\,\phi_i$. \textbf{Estática comparativa} --- cómo cambia ese efecto al mover cada componente:
+\begin{itemize}\small
+  \item Más \textbf{exposición} del lenguaje $\Rightarrow$ más efecto: $\;\dfrac{\partial \Delta Y_{ic}}{\partial \theta_c}=\phi_i>0$.
+  \item Más \textbf{absorción} del país $\Rightarrow$ más efecto: $\;\dfrac{\partial \Delta Y_{ic}}{\partial \phi_i}=\theta_c>0$.
+  \item \textbf{Se refuerzan mutuamente:} $\;\dfrac{\partial^2 \Delta Y_{ic}}{\partial \theta_c\,\partial \phi_i}=1>0$. El efecto de más exposición es mayor cuando la absorción es alta; no se suman, se \emph{multiplican} (complementariedad).
+\end{itemize}
+\begin{exampleblock}{Predicción contrastable (sustenta la H2)}
+\centering\small El ATT debe ser mayor en lenguajes muy expuestos (Python, JavaScript, TypeScript) y en países con más población cerca del umbral de entrada.
 \end{exampleblock}
-\centering\footnotesize El coeficiente de tratamiento es \textbf{multiplicativo} en \textbf{exposición} ($\theta_c$, por lenguaje) y \textbf{absorción} ($\phi_i$, por país): el efecto se concentra donde \emph{coinciden} ambas ---la esencia de la adopción \textit{heterogénea}--- y sustenta la \textbf{H2}. \textit{Derivación completa de 8 pasos en el Apéndice~B.}
 \end{frame}
 
 % ════════════════════════════════════════════════════════════════════════════
@@ -896,7 +957,7 @@ Sistema de \textbf{bonos económicos} a trabajadores que evidencien mejoras de r
 \color{white}
 {\Huge\bfseries Gracias.}\par
 \vspace{1em}
-{\Large Quedo atento a sus consultas y comentarios.}\par
+{\Large Quedamos atentos a sus consultas y comentarios.}\par
 \vfill
 \small Jesus Alberto Nicho Rosado \quad $\bullet$ \quad Karl Willem Janampa Aparicio\par
 \vspace{0.3em}
@@ -1059,20 +1120,18 @@ El SDID pondera las celdas para construir un contrafactual más preciso que el D
 \vfill
 \footnotesize
 \begin{tabular}{rl}
-B.1 & Notación básica del modelo \\
-B.2 & Función de producción a nivel de tarea (Paso 1) \\
-B.3 & Conjunto de tareas automatizables (Paso 2) \\
-B.4 & Ahorro relativo por tarea (Paso 3) \\
-B.5 & Ganancia individual: partición con/sin IA (Paso 4.1--4.2) \\
-B.6 & Ganancia exacta y reescritura (Paso 4.3--4.4) \\
-B.7 & Identidad de covarianza (Paso 4.5) \\
-B.8 & Normalización de escala (Paso 4.6) \\
-B.9 & Decisión de entrada al mercado (Paso 5) \\
-B.10 & Agregación a desarrolladores activos (Paso 6) \\
-B.11 & Per cápita, absorción y separabilidad (Paso 7) \\
-B.12 & Especificación de panel con efectos fijos (Paso 8) \\
-B.13 & Resumen paso a paso \\
-B.14 & Síntesis de la derivación \\
+B.1 & Función de producción a nivel de tarea (Paso 1) \\
+B.2 & Conjunto de tareas automatizables (Paso 2) \\
+B.3 & Ahorro relativo por tarea (Paso 3) \\
+B.4 & Ganancia individual: partición con/sin IA (Paso 4.1--4.2) \\
+B.5 & Ganancia exacta y reescritura (Paso 4.3--4.4) \\
+B.6 & Identidad de covarianza (Paso 4.5) \\
+B.7 & Normalización de escala (Paso 4.6) \\
+B.8 & Decisión de entrada al mercado (Paso 5) \\
+B.9 & Agregación a desarrolladores activos (Paso 6) \\
+B.10 & Per cápita, absorción y separabilidad (Paso 7) \\
+B.11 & Especificación de panel con efectos fijos (Paso 8) \\
+B.12 & Resumen paso a paso \\
 \end{tabular}
 \vfill
 \footnotesize\color{white} En \textcolor{orange!80!white}{naranja} se marcan los pasos que dependen de un supuesto no trivial.
@@ -1080,32 +1139,8 @@ B.14 & Síntesis de la derivación \\
 \end{frame}
 }
 
-% ── B.1 Notación ──────────────────────────────────────────────────────────────
-\begin{frame}{B.1 Notación básica del modelo}
-\small
-\centering
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{ll}
-\toprule
-\textbf{Símbolo} & \textbf{Significado} \\
-\midrule
-$z\in[0,1]$ & Tarea elemental de programación \\
-$h_c(z)>0$ & Productividad humana en la tarea $z$ del lenguaje $c$ \\
-$a_c(z)\ge 0$ & Productividad de ChatGPT en la tarea $z$ \\
-$\mu_j\in\{0,1\}$ & Acceso del desarrollador $j$ a ChatGPT \\
-$y_{jc}(\mu_j)$ & Producción total del desarrollador $j$ en lenguaje $c$ \\
-$\mathcal{Z}^{\mathrm{auto}}_c$ & Conjunto de tareas donde ChatGPT supera al humano \\
-$\tau_c$ & Fracción de tareas automatizables \\
-$\rho_c$ & Ahorro relativo promedio en tareas automatizables \\
-$\phi_i$ & Capacidad de absorción tecnológica del país $i$ \\
-$A_{it}$ & Disponibilidad de ChatGPT en país $i$, trimestre $t$ \\
-$Y_{ict}$ & \textit{Unique pushers} por 100\,mil hab.\ ($i$, $c$, $t$) \\
-\bottomrule
-\end{tabular}
-\end{frame}
-
-% ── B.2 Paso 1 ────────────────────────────────────────────────────────────────
-\begin{frame}{B.2 Función de producción a nivel de tarea (Paso 1)}
+% ── B.1 Paso 1 ────────────────────────────────────────────────────────────────
+\begin{frame}{B.1 Función de producción a nivel de tarea (Paso 1)}
 \small
 El desarrollador elige el método más productivo en cada tarea $z\in[0,1]$, y la producción total integra sobre el continuo de tareas:
 \[
@@ -1122,7 +1157,7 @@ y_{jc}(\mu_j)=\int_0^1\max\{h_c(z),\,\mu_j\,a_c(z)\}\,dz.
 \end{frame}
 
 % ── B.3 Paso 2 ────────────────────────────────────────────────────────────────
-\begin{frame}{B.3 Conjunto de tareas automatizables (Paso 2)}
+\begin{frame}{B.2 Conjunto de tareas automatizables (Paso 2)}
 \small
 Tareas con ganancia marginal estricta de la IA, y reescritura del máximo con la indicadora:
 \[
@@ -1139,7 +1174,7 @@ Medida de tareas automatizables: $\ \tau_c=\int_0^1\mathbf{1}[a_c>h_c]\,dz\in[0,
 \end{frame}
 
 % ── B.4 Paso 3 ────────────────────────────────────────────────────────────────
-\begin{frame}{B.4 Ahorro relativo por tarea automatizable (Paso 3)}
+\begin{frame}{B.3 Ahorro relativo por tarea automatizable (Paso 3)}
 \small
 Para $z\in\mathcal{Z}^{\mathrm{auto}}_c$, el ahorro relativo que aporta la IA:
 \[
@@ -1155,7 +1190,7 @@ Ahorro promedio \emph{condicional} a las tareas automatizables:
 \end{frame}
 
 % ── B.5 Paso 4.1–4.2 ──────────────────────────────────────────────────────────
-\begin{frame}{B.5 Ganancia individual: partición con/sin IA (Paso 4.1--4.2)}
+\begin{frame}{B.4 Ganancia individual: partición con/sin IA (Paso 4.1--4.2)}
 \small
 Sustituyendo la reescritura con indicadoras y usando $\int_0^1 f\,\mathbf{1}[z\in A]\,dz=\int_A f\,dz$:
 \begin{align*}
@@ -1166,7 +1201,7 @@ Ambas comparten exactamente el término sobre las tareas \emph{no} automatizable
 \end{frame}
 
 % ── B.6 Paso 4.3–4.4 ──────────────────────────────────────────────────────────
-\begin{frame}{B.6 Ganancia exacta y reescritura (Paso 4.3--4.4)}
+\begin{frame}{B.5 Ganancia exacta y reescritura (Paso 4.3--4.4)}
 \small
 Al restar, el término de tareas no automatizables se \textbf{cancela}:
 \[
@@ -1180,7 +1215,7 @@ Usando $s_c=\dfrac{a_c-h_c}{h_c}\ \Rightarrow\ a_c-h_c=h_c\,s_c$:
 \end{frame}
 
 % ── B.7 Paso 4.5 ──────────────────────────────────────────────────────────────
-\begin{frame}{B.7 Identidad de covarianza (Paso 4.5)}
+\begin{frame}{B.6 Identidad de covarianza (Paso 4.5)}
 \small
 Definiendo los promedios condicionales sobre $\mathcal{Z}^{\mathrm{auto}}_c$,
 $\ \bar h_c=\tfrac{1}{\tau_c}\!\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!h_c\,dz\ $ y $\ \rho_c=\tfrac{1}{\tau_c}\!\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!s_c\,dz$, y aplicando la \textbf{identidad de covarianza}:
@@ -1196,7 +1231,7 @@ $\ \bar h_c=\tfrac{1}{\tau_c}\!\int_{\mathcal{Z}^{\mathrm{auto}}_c}\!h_c\,dz\ $ 
 \end{frame}
 
 % ── B.8 Paso 4.6 ──────────────────────────────────────────────────────────────
-\begin{frame}{B.8 Normalización de escala (Paso 4.6)}
+\begin{frame}{B.7 Normalización de escala (Paso 4.6)}
 \small
 Se elige la unidad de producción tal que el promedio de productividad humana en las tareas automatizables sea unitario, $\bar h_c=1$:
 \[
@@ -1208,7 +1243,7 @@ Es decir, la ganancia individual es el producto \textbf{fracción automatizable}
 \end{frame}
 
 % ── B.9 Paso 5 ────────────────────────────────────────────────────────────────
-\begin{frame}{B.9 Decisión de entrada al mercado (Paso 5)}
+\begin{frame}{B.8 Decisión de entrada al mercado (Paso 5)}
 \small
 Utilidad de programar $U_{\mathrm{prog}}=\eta+y_{jc}(\mu_j)$ frente a la reserva $U_{\mathrm{out}}=r_i$; se entra si $\eta+y_{jc}(\mu_j)\ge r_i$. Umbral mínimo de habilidad:
 \[
@@ -1220,7 +1255,7 @@ El acceso a IA \textbf{reduce} el umbral de habilidad $\Rightarrow$ entran progr
 \end{frame}
 
 % ── B.10 Paso 6 ───────────────────────────────────────────────────────────────
-\begin{frame}{B.10 Agregación a desarrolladores activos (Paso 6)}
+\begin{frame}{B.9 Agregación a desarrolladores activos (Paso 6)}
 \small
 Con población $N_i$ y CDF de habilidad $F_i$ (densidad $f_i$):
 \[
@@ -1235,7 +1270,7 @@ Taylor de primer orden alrededor de $\eta^*_c(0)$, con $\Delta\eta=\tau_c\rho_c$
 \end{frame}
 
 % ── B.11 Paso 7 ───────────────────────────────────────────────────────────────
-\begin{frame}{B.11 Per cápita, absorción y separabilidad (Paso 7)}
+\begin{frame}{B.10 Per cápita, absorción y separabilidad (Paso 7)}
 \small
 Resultado por cada 100\,000 habitantes:
 \[
@@ -1249,7 +1284,7 @@ Resultado por cada 100\,000 habitantes:
 \end{frame}
 
 % ── B.12 Paso 8 ───────────────────────────────────────────────────────────────
-\begin{frame}{B.12 Especificación de panel con efectos fijos (Paso 8)}
+\begin{frame}{B.11 Especificación de panel con efectos fijos (Paso 8)}
 \small
 Descomponiendo la línea base $Y_{ic}(0)=\alpha_i+\beta_t+\delta_c+\eta_{ict}$ y sustituyendo $\Delta Y_{ic}\approx\theta_c\phi_i\,A_{it}$ (con $A_{it}\in\{0,1\}$):
 \[
@@ -1263,7 +1298,7 @@ Para interpretación \emph{causal} se requiere exogeneidad condicional:
 \end{frame}
 
 % ── B.13 Resumen ──────────────────────────────────────────────────────────────
-\begin{frame}{B.13 Resumen paso a paso}
+\begin{frame}{B.12 Resumen paso a paso}
 \scriptsize
 \renewcommand{\arraystretch}{1.25}
 \centering
@@ -1286,22 +1321,6 @@ Paso & \textbf{Resultado} & \textbf{Tipo} \\
 
 \vspace{0.5em}
 \footnotesize En \textcolor{naranjasupp}{naranja}, los pasos que dependen de un \textbf{supuesto no trivial}; el resto son identidades o definiciones exactas.
-\end{frame}
-
-% ── B.14 Conclusión ───────────────────────────────────────────────────────────
-\begin{frame}{B.14 Síntesis de la derivación}
-\small
-La construcción no requiere ningún supuesto hasta $\ \Delta y_{jc}=\int_{\mathcal{Z}^{\mathrm{auto}}_c}h_c(z)\,s_c(z)\,dz$. De aquí en adelante se introducen los supuestos del modelo. La forma general de la ganancia individual es:
-\[
-\Delta y_{jc}=\tau_c\bigl[\bar h_c\,\rho_c+\mathrm{Cov}_{\mathcal{Z}^{\mathrm{auto}}_c}(h_c,s_c)\bigr],
-\]
-de la cual $\tau_c\rho_c\bar h_c$ es el caso particular con covarianza nula. La ecuación estimable $Y_{ict}=\alpha_i+\beta_t+\delta_c+\theta_c\phi_i A_{it}+\eta_{ict}$ se obtiene como modelo estructural simplificado a partir de \textbf{cuatro} supuestos:
-\begin{enumerate}\footnotesize
-  \item \textbf{Covarianza cero} entre productividad humana $h_c(z)$ y ahorro relativo $s_c(z)$ dentro de $\mathcal{Z}^{\mathrm{auto}}_c$.
-  \item \textbf{Normalización} $\bar h_c=1$ (elección de escala).
-  \item \textbf{Taylor de 1.\textordmasculine\ orden} para pasar de la caída del umbral al aumento de desarrolladores.
-  \item \textbf{Separabilidad país--lenguaje} ($\phi_{ic}\approx\phi_i$) para factorizar el coeficiente como $\theta_c\phi_i$.
-\end{enumerate}
 \end{frame}
 
 \end{document}

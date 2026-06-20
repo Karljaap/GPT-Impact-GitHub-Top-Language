@@ -1,7 +1,6 @@
 \begin{table}[htbp]\centering
 \caption{Robustez SDID: placebos in-space y sensibilidad del pool de donantes (LOO)}
 \label{tab:tabla6}
-\begin{threeparttable}
 \small
 \begin{tabular}{lcccccc}
 \toprule
@@ -20,9 +19,7 @@ Ruby & 0{,}808 & -0{,}009 & 0{,}034 & 0{,}667 & 0{,}807 & 0{,}853 \\
 TypeScript & 3{,}078 & 0{,}022 & 0{,}069 & 1{,}904 & 3{,}081 & 3{,}598 \\
 \bottomrule
 \end{tabular}
-\begin{tablenotes}
-\footnotesize
-\item \textit{Nota.} Pruebas de robustez del estimador SDID. \textit{Placebos in-space}: para cada uno de los 29 pa\'{i}ses del grupo de control se le asigna un tratamiento placebo y se reestima el SDID restringiendo la muestra al grupo de control; el p-valor placebo es la fracci\'{o}n de placebos cuyo $|ATT|$ es mayor o igual al $|ATT|$ observado, una prueba no param\'{e}trica \textit{a la} Abadie (2010, 2021). \textit{Donor pool LOO}: se elimina un pa\'{i}s de control a la vez del pool de donantes y se reestima el SDID con los 28 pa\'{i}ses restantes m\'{a}s los 130 pa\'{i}ses tratados; las columnas reportan el m\'{i}nimo, mediana y m\'{a}ximo de las 29 estimaciones \textit{leave-one-out} (Arkhangelsky et al., 2021). Fuente: GitHub Innovation Graph (\url{https://github.com/github/innovationgraph}). Elaboraci\'{o}n propia.
-\end{tablenotes}
-\end{threeparttable}
+\begin{minipage}{\linewidth}
+\smallskip\footnotesize\textit{Nota.} Pruebas de robustez del estimador SDID. \textit{Placebos in-space}: para cada uno de los 29 pa\'{i}ses del grupo de control se le asigna un tratamiento placebo y se reestima el SDID restringiendo la muestra al grupo de control; el p-valor placebo es la fracci\'{o}n de placebos cuyo $|ATT|$ es mayor o igual al $|ATT|$ observado, una prueba no param\'{e}trica \textit{a la} Abadie (2010, 2021). \textit{Donor pool LOO}: se elimina un pa\'{i}s de control a la vez del pool de donantes y se reestima el SDID con los 28 pa\'{i}ses restantes m\'{a}s los 130 pa\'{i}ses tratados; las columnas reportan el m\'{i}nimo, mediana y m\'{a}ximo de las 29 estimaciones \textit{leave-one-out} (Arkhangelsky et al., 2021).\\[\baselineskip]Fuente: Elaboraci\'{o}n propia.
+\end{minipage}
 \end{table}

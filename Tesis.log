@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.5.29)  14 JUN 2026 13:16
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.5.29)  19 JUN 2026 13:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -555,26 +555,26 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 )
 \openout1 = `Tesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 202.
+LaTeX Font Info:    ... okay on input line 202.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 202.
+LaTeX Font Info:    ... okay on input line 202.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 202.
+LaTeX Font Info:    ... okay on input line 202.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 202.
+LaTeX Font Info:    ... okay on input line 202.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 202.
+LaTeX Font Info:    ... okay on input line 202.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 202.
+LaTeX Font Info:    ... okay on input line 202.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 202.
+LaTeX Font Info:    ... okay on input line 202.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 202.
+LaTeX Font Info:    ... okay on input line 202.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 202.
+LaTeX Font Info:    ... okay on input line 202.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 202.
+LaTeX Font Info:    ... okay on input line 202.
 
 Package fontspec Info: 
 (fontspec)             Adjusting the maths setup (use [no-math] to avoid
@@ -582,66 +582,66 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 188.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 188.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 188.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 188.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 188.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 188.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 188.
-LaTeX Font Info:    Redeclaring math accent \check on input line 188.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 188.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 188.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 188.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 188.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 188.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 188.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 188.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 188.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 188.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 188.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 188.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 188.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 188.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 188.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 188.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 188.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 202.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 202.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 202.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 202.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 202.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 202.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 202.
+LaTeX Font Info:    Redeclaring math accent \check on input line 202.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 202.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 202.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 202.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 202.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 202.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 188.
+(Font)              `operators' in the math version `normal' on input line 202.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/Arial(0)/m/n on input line 188.
+(Font)                  OT1/cmr/m/n --> TU/Arial(0)/m/n on input line 202.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 188.
+(Font)              `operators' in the math version `bold' on input line 202.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/Arial(0)/m/n on input line 188.
+(Font)                  OT1/cmr/bx/n --> TU/Arial(0)/m/n on input line 202.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/Arial(0)/m/n --> TU/Arial(0)/m/n on input line 188.
+(Font)                  TU/Arial(0)/m/n --> TU/Arial(0)/m/n on input line 202.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/Arial(0)/m/it on input line 188.
+(Font)                  OT1/cmr/m/it --> TU/Arial(0)/m/it on input line 202.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/Arial(0)/b/n on input line 188.
+(Font)                  OT1/cmr/bx/n --> TU/Arial(0)/b/n on input line 202.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/Arial(0)/m/n on input line 188.
+(Font)                  OT1/cmss/m/n --> TU/Arial(0)/m/n on input line 202.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 188.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 202.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/Arial(0)/m/n --> TU/Arial(0)/b/n on input line 188.
+(Font)                  TU/Arial(0)/m/n --> TU/Arial(0)/b/n on input line 202.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/Arial(0)/b/it on input line 188.
+(Font)                  OT1/cmr/bx/it --> TU/Arial(0)/b/it on input line 202.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/Arial(0)/b/n on input line 188.
+(Font)                  OT1/cmss/bx/n --> TU/Arial(0)/b/n on input line 202.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 188.
-LaTeX Info: Redefining \. on input line 188.
-LaTeX Info: Redefining \% on input line 188.
-LaTeX Info: Redefining \microtypecontext on input line 188.
-Package microtype Info: Applying patch `item' on input line 188.
-Package microtype Info: Applying patch `toc' on input line 188.
-Package microtype Info: Applying patch `eqnum' on input line 188.
-Package microtype Info: Applying patch `footnote' on input line 188.
-Package microtype Info: Applying patch `verbatim' on input line 188.
-LaTeX Info: Redefining \microtypesetup on input line 188.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 202.
+LaTeX Info: Redefining \. on input line 202.
+LaTeX Info: Redefining \% on input line 202.
+LaTeX Info: Redefining \microtypecontext on input line 202.
+Package microtype Info: Applying patch `item' on input line 202.
+Package microtype Info: Applying patch `toc' on input line 202.
+Package microtype Info: Applying patch `eqnum' on input line 202.
+Package microtype Info: Applying patch `footnote' on input line 202.
+Package microtype Info: Applying patch `verbatim' on input line 202.
+LaTeX Info: Redefining \microtypesetup on input line 202.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
@@ -700,7 +700,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: xetex.def on input line 149.
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 )
-Package hyperref Info: Link coloring ON on input line 188.
+Package hyperref Info: Link coloring ON on input line 202.
  (Tesis.out) (Tesis.out)
 \@outlinefile=\write3
 \openout3 = `Tesis.out'.
@@ -745,7 +745,7 @@ File: output/figures/pucp_logo.jpg Graphic file (type bmp)
 ] [1
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 257
+LaTeX Font Info:    Trying to load font information for U+msa on input line 269
 .
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -754,7 +754,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 257
+LaTeX Font Info:    Trying to load font information for U+msb on input line 269
 .
 
 (C:\Users\Jesus\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -808,34 +808,34 @@ LaTeX Info: Redefining \% on input line 1.
 
 ] [25] [26] [27] [28
 
-] [29] [30] [31]
+] [29] [30] [31] [32
+
+]
+(output/tables/gpt_impact_github_DataScience.tex
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-(output/tables/gpt_impact_github_DataScience.tex)
-(output/tables/gpt_impact_github_placebo_loo.tex) [32
-
-] [33] [34]
+)
+(output/tables/gpt_impact_github_placebo_loo.tex) [33] [34] [35]
 File: output/figures/language_distribution_gpt_available_2020_2023.png Graphic 
 file (type bmp)
 <output/figures/language_distribution_gpt_available_2020_2023.png>
 File: output/figures/language_distribution_no_gpt_2020_2023.png Graphic file (t
 ype bmp)
 <output/figures/language_distribution_no_gpt_2020_2023.png>
- [35
+ [36
 
 ]
 File: output/figures/language_trend_gpt_countries_2020_2023.png Graphic file (t
 ype bmp)
 <output/figures/language_trend_gpt_countries_2020_2023.png>
- [36]
+ [37]
 File: output/figures/language_trend_no_gpt_countries_2020_2023.png Graphic file
  (type bmp)
 <output/figures/language_trend_no_gpt_countries_2020_2023.png>
 
-[37]
+[38]
 File: output/figures/TypeScriptdidtrends12.png Graphic file (type bmp)
 <output/figures/TypeScriptdidtrends12.png>
 File: output/figures/TypeScriptdidweights12.png Graphic file (type bmp)
@@ -848,7 +848,7 @@ File: output/figures/TypeScriptsdidtrends12.png Graphic file (type bmp)
 <output/figures/TypeScriptsdidtrends12.png>
 File: output/figures/TypeScriptsdidweights12.png Graphic file (type bmp)
 <output/figures/TypeScriptsdidweights12.png>
- [38]
+ [39]
 File: output/figures/JavaScriptdidtrends12.png Graphic file (type bmp)
 <output/figures/JavaScriptdidtrends12.png>
 File: output/figures/JavaScriptdidweights12.png Graphic file (type bmp)
@@ -861,7 +861,7 @@ File: output/figures/JavaScriptsdidtrends12.png Graphic file (type bmp)
 <output/figures/JavaScriptsdidtrends12.png>
 File: output/figures/JavaScriptsdidweights12.png Graphic file (type bmp)
 <output/figures/JavaScriptsdidweights12.png>
- [39]
+ [40]
 File: output/figures/Pythondidtrends12.png Graphic file (type bmp)
 <output/figures/Pythondidtrends12.png>
 File: output/figures/Pythondidweights12.png Graphic file (type bmp)
@@ -874,7 +874,7 @@ File: output/figures/Pythonsdidtrends12.png Graphic file (type bmp)
 <output/figures/Pythonsdidtrends12.png>
 File: output/figures/Pythonsdidweights12.png Graphic file (type bmp)
 <output/figures/Pythonsdidweights12.png>
- [40]
+ [41]
 File: output/figures/Javadidtrends12.png Graphic file (type bmp)
 <output/figures/Javadidtrends12.png>
 File: output/figures/Javadidweights12.png Graphic file (type bmp)
@@ -887,7 +887,7 @@ File: output/figures/Javasdidtrends12.png Graphic file (type bmp)
 <output/figures/Javasdidtrends12.png>
 File: output/figures/Javasdidweights12.png Graphic file (type bmp)
 <output/figures/Javasdidweights12.png>
- [41]
+ [42]
 File: output/figures/Godidtrends12.png Graphic file (type bmp)
 <output/figures/Godidtrends12.png>
 File: output/figures/Godidweights12.png Graphic file (type bmp)
@@ -900,7 +900,7 @@ File: output/figures/Gosdidtrends12.png Graphic file (type bmp)
 <output/figures/Gosdidtrends12.png>
 File: output/figures/Gosdidweights12.png Graphic file (type bmp)
 <output/figures/Gosdidweights12.png>
- [42]
+ [43]
 File: output/figures/Rubydidtrends12.png Graphic file (type bmp)
 <output/figures/Rubydidtrends12.png>
 File: output/figures/Rubydidweights12.png Graphic file (type bmp)
@@ -913,7 +913,7 @@ File: output/figures/Rubysdidtrends12.png Graphic file (type bmp)
 <output/figures/Rubysdidtrends12.png>
 File: output/figures/Rubysdidweights12.png Graphic file (type bmp)
 <output/figures/Rubysdidweights12.png>
- [43]
+ [44]
 File: output/figures/PHPdidtrends12.png Graphic file (type bmp)
 <output/figures/PHPdidtrends12.png>
 File: output/figures/PHPdidweights12.png Graphic file (type bmp)
@@ -926,7 +926,7 @@ File: output/figures/PHPsdidtrends12.png Graphic file (type bmp)
 <output/figures/PHPsdidtrends12.png>
 File: output/figures/PHPsdidweights12.png Graphic file (type bmp)
 <output/figures/PHPsdidweights12.png>
- [44]
+ [45]
 File: output/figures/C_hashtagdidtrends12.png Graphic file (type bmp)
 <output/figures/C_hashtagdidtrends12.png>
 File: output/figures/C_hashtagdidweights12.png Graphic file (type bmp)
@@ -939,7 +939,7 @@ File: output/figures/C_hashtagsdidtrends12.png Graphic file (type bmp)
 <output/figures/C_hashtagsdidtrends12.png>
 File: output/figures/C_hashtagsdidweights12.png Graphic file (type bmp)
 <output/figures/C_hashtagsdidweights12.png>
- [45]
+ [46]
 File: output/figures/C_plusdidtrends12.png Graphic file (type bmp)
 <output/figures/C_plusdidtrends12.png>
 File: output/figures/C_plusdidweights12.png Graphic file (type bmp)
@@ -952,7 +952,7 @@ File: output/figures/C_plussdidtrends12.png Graphic file (type bmp)
 <output/figures/C_plussdidtrends12.png>
 File: output/figures/C_plussdidweights12.png Graphic file (type bmp)
 <output/figures/C_plussdidweights12.png>
- [46]
+ [47]
 File: output/figures/Cdidtrends12.png Graphic file (type bmp)
 <output/figures/Cdidtrends12.png>
 File: output/figures/Cdidweights12.png Graphic file (type bmp)
@@ -965,178 +965,178 @@ File: output/figures/Csdidtrends12.png Graphic file (type bmp)
 <output/figures/Csdidtrends12.png>
 File: output/figures/Csdidweights12.png Graphic file (type bmp)
 <output/figures/Csdidweights12.png>
- [47]
+ [48]
 File: output/figures/robustness_forest_plot.png Graphic file (type bmp)
 <output/figures/robustness_forest_plot.png>
- [48]
+ [49]
 File: output/figures/placebo_distribution_panel.png Graphic file (type bmp)
 <output/figures/placebo_distribution_panel.png>
- [49]
+ [50]
 File: output/figures/chatgpt_timeline.png Graphic file (type bmp)
 <output/figures/chatgpt_timeline.png>
- [50] [51]
-Underfull \hbox (badness 7981) in paragraph at lines 1215--1216
+ [51] [52]
+Underfull \hbox (badness 7981) in paragraph at lines 1225--1226
 []\TU/Arial(0)/m/n/12 Abu Jaber, M., Beganovic, A., & Abd Almisreb, A. (2023). 
 Methods and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1215--1216
+Underfull \hbox (badness 10000) in paragraph at lines 1225--1226
 \TU/Arial(0)/m/n/12 Applications of ChatGPT in Software Development: A Literatu
 re Re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1215--1216
+Underfull \hbox (badness 10000) in paragraph at lines 1225--1226
 \TU/Arial(0)/m/n/12 view. \TU/Arial(0)/m/it/12 Southeast Europe Journal of Soft
  Computing, 12\TU/Arial(0)/m/n/12 (1), 08–12.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1215--1216
+Underfull \hbox (badness 10000) in paragraph at lines 1225--1226
 [][]$[][][][][] [] [] [] [][][] [] [][][][][][][][][][][][] [] [][][] [] [][][]
 [][][][][][][][] [] [][][][][][][][][] [] [][][][][][][] [] [][][] []
  []
 
 
-Underfull \hbox (badness 5050) in paragraph at lines 1227--1228
+Underfull \hbox (badness 5050) in paragraph at lines 1237--1238
 \TU/Arial(0)/m/n/12 Synthetic Difference-in-Differences. \TU/Arial(0)/m/it/12 A
 merican Economic Review, 111\TU/Arial(0)/m/n/12 (12),
  []
 
-[52
+[53
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1248--1249
+Underfull \hbox (badness 10000) in paragraph at lines 1258--1259
 []\TU/Arial(0)/m/n/12 Coursera Staff. (2024). Most Popular Programming Language
 s in 2024
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1248--1249
+Underfull \hbox (badness 10000) in paragraph at lines 1258--1259
 \TU/Arial(0)/m/n/12 | Coursera. \TU/Arial(0)/m/it/12 Coursera\TU/Arial(0)/m/n/1
 2 . [][]$[][][][][] [] [] [] [][][] [] [][][][][][][][] [] [][][] [] [][][][][]
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1251--1252
+Underfull \hbox (badness 10000) in paragraph at lines 1261--1262
 []\TU/Arial(0)/m/n/12 Data Camp. (2023). Top programming languages for data sci
 entists in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1251--1252
+Underfull \hbox (badness 10000) in paragraph at lines 1261--1262
 \TU/Arial(0)/m/n/12 2023 | DataCamp. \TU/Arial(0)/m/it/12 Datacamp\TU/Arial(0)/
 m/n/12 . [][]$[][][][][] [] [] [] [][][] [] [][][][][][][][] [] [][][] [] [][][
 ][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1269--1270
+Underfull \hbox (badness 10000) in paragraph at lines 1279--1280
 []\TU/Arial(0)/m/n/12 Ijaz, S. (2023, julio 6). \TU/Arial(0)/m/it/12 15 Countri
 es That Banned ChatGPT\TU/Arial(0)/m/n/12 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1269--1270
+Underfull \hbox (badness 10000) in paragraph at lines 1279--1280
 \TU/Arial(0)/m/n/12 Insider Monkey. [][]$[][][][][] [] [] [] [][][] [] [][][][]
 [][][][][][][][][] [] [][][] [] [][][][] []
  []
 
-[53]
-Underfull \hbox (badness 10000) in paragraph at lines 1284--1285
+[54]
+Underfull \hbox (badness 10000) in paragraph at lines 1294--1295
 []\TU/Arial(0)/m/n/12 Martinez, J. (2023). Guerra abierta contra ChatGPT: estos
  son los paí-
  []
 
 
-Underfull \hbox (badness 7925) in paragraph at lines 1284--1285
+Underfull \hbox (badness 7925) in paragraph at lines 1294--1295
 \TU/Arial(0)/m/n/12 ses que ya lo han prohibido. \TU/Arial(0)/m/it/12 ABC\TU/Ar
 ial(0)/m/n/12 . [][]$[][][][][] [] [] [] [][][] [] [][][] [] [][] [] [][][][][]
 [][][][][] []
  []
 
 
-Underfull \hbox (badness 1454) in paragraph at lines 1296--1297
+Underfull \hbox (badness 1454) in paragraph at lines 1306--1307
 []\TU/Arial(0)/m/n/12 Rice CS. (2023). Top 12 Data Science Programming Language
 s | MDS@Rice.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1296--1297
+Underfull \hbox (badness 10000) in paragraph at lines 1306--1307
 \TU/Arial(0)/m/it/12 Rice University\TU/Arial(0)/m/n/12 . [][]$[][][][][] [] []
  [] [][][][][] [] [][][][] [] [][][] [] [][][][][][][][][] [] [][][][][][][][][
 ][][][][][][][][][] []
  []
 
 
-Underfull \hbox (badness 1675) in paragraph at lines 1311--1312
+Underfull \hbox (badness 1675) in paragraph at lines 1321--1322
 []\TU/Arial(0)/m/n/12 World Intellectual Property Organization. (2022). World I
 ntellectual Property Re-
  []
 
 
-Underfull \hbox (badness 6268) in paragraph at lines 1311--1312
+Underfull \hbox (badness 6268) in paragraph at lines 1321--1322
 \TU/Arial(0)/m/n/12 port 2022 — The Direction of Innovation. [][]$[][][][][] []
  [] [] [][][] [] [][][][] [] [][][] [] [][][] []
  []
 
-[54] [55]
+[55] [56]
 File: output/figures/chatgpt_global_availability_map.png Graphic file (type bmp
 )
 <output/figures/chatgpt_global_availability_map.png>
 
-ignored error: Infinite glue shrinkage found in box being split [56
+ignored error: Infinite glue shrinkage found in box being split [57
 
 ]
-ignored error: Infinite glue shrinkage found in box being split [57]
-ignored error: Infinite glue shrinkage found in box being split [58] [59]
-[60
+ignored error: Infinite glue shrinkage found in box being split [58]
+ignored error: Infinite glue shrinkage found in box being split [59] [60]
+[61
 
-] [61] (output/tables/gpt_impact_github_DataScience_controls.tex)
-(output/tables/gpt_impact_github_robustez.tex) [62] [63] [64]
+] [62] (output/tables/gpt_impact_github_DataScience_controls.tex)
+(output/tables/gpt_impact_github_robustez.tex) [63] [64] [65]
 File: output/figures/Csdid_event_study.png Graphic file (type bmp)
 <output/figures/Csdid_event_study.png>
 File: output/figures/C_hashtagsdid_event_study.png Graphic file (type bmp)
 <output/figures/C_hashtagsdid_event_study.png>
- [65
+ [66
 
 ]
 File: output/figures/C_plussdid_event_study.png Graphic file (type bmp)
 <output/figures/C_plussdid_event_study.png>
 File: output/figures/Gosdid_event_study.png Graphic file (type bmp)
 <output/figures/Gosdid_event_study.png>
- [66]
+ [67]
 File: output/figures/Javasdid_event_study.png Graphic file (type bmp)
 <output/figures/Javasdid_event_study.png>
 File: output/figures/JavaScriptsdid_event_study.png Graphic file (type bmp)
 <output/figures/JavaScriptsdid_event_study.png>
 
-[67]
+[68]
 File: output/figures/PHPsdid_event_study.png Graphic file (type bmp)
 <output/figures/PHPsdid_event_study.png>
 File: output/figures/Pythonsdid_event_study.png Graphic file (type bmp)
 <output/figures/Pythonsdid_event_study.png>
- [68]
+ [69]
 File: output/figures/Rubysdid_event_study.png Graphic file (type bmp)
 <output/figures/Rubysdid_event_study.png>
 File: output/figures/TypeScriptsdid_event_study.png Graphic file (type bmp)
 <output/figures/TypeScriptsdid_event_study.png>
- [69] [70] [71
+ [70] [71] [72
 
-] [72] [73] [74] [75] [76] [77] [78] [79] [80] [81]
-[82] [83] [84] [85] [86]
-Underfull \hbox (badness 1253) in paragraph at lines 2798--2799
+] [73] [74] [75] [76] [77] [78] [79] [80] [81] [82]
+[83] [84] [85] [86] [87]
+Underfull \hbox (badness 1253) in paragraph at lines 2808--2809
 []|\TU/Arial(0)/m/n/12 Covarianza cero + nor-
  []
 
 
-Underfull \hbox (badness 1048) in paragraph at lines 2807--2808
+Underfull \hbox (badness 1048) in paragraph at lines 2817--2818
 []|\TU/Arial(0)/m/n/12 Per cápita + separabili-
  []
 
-[87] [88] [89] (Tesis.aux
+[88] [89] [90] (Tesis.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -1145,15 +1145,15 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `Tesis.out' has not changed.
-(rerunfilecheck)             Checksum: 589BF270EDB575C8AC6A2ECE2221792D;5341.
+(rerunfilecheck)             Checksum: B746535C3365CAD99A95677D193BF624;5447.
  ) 
 Here is how much of TeX's memory you used:
- 18775 strings out of 402987
- 368982 string characters out of 5448524
- 861946 words of memory out of 5000000
- 47160 multiletter control sequences out of 15000+600000
- 638990 words of font info for 113 fonts, out of 8000000 for 9000
+ 18766 strings out of 402987
+ 368658 string characters out of 5448524
+ 862171 words of memory out of 5000000
+ 47153 multiletter control sequences out of 15000+600000
+ 638982 words of font info for 112 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 73i,14n,93p,1985b,650s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 73i,13n,93p,1985b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Tesis.xdv (96 pages, 1507904 bytes).
+Output written on Tesis.xdv (97 pages, 1499836 bytes).

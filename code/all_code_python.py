@@ -467,7 +467,7 @@ ax.annotate('Corte de\nentrenamiento\n(GPT-3.5)\nSep 2021',
             ha='center', fontsize=8.5, color='#a31a1a')
 
 # Context window evolution
-ax.annotate('Contexto: 4{,}096 tokens (GPT-3.5)\n$\\rightarrow$ 8{,}192--32{,}768 (GPT-4)',
+ax.annotate('Contexto: 4,096 tokens (GPT-3.5)\n$\\rightarrow$ 8,192–32,768 (GPT-4)',
             xy=(_date_to_x(2023, 8), y_lim),
             xytext=(_date_to_x(2023, 8), y_lim - 0.55),
             ha='center', fontsize=8.5, color='#a31a1a', fontweight='bold')
@@ -497,9 +497,9 @@ ax.text(_x_min - 0.05, y_lim, 'Limitaciones',
 
 # Pre-period shading (pretratamiento)
 ax.axvspan(_x_min, _date_to_x(2022, 10), alpha=0.04, color='grey', zorder=0)
-ax.text(_date_to_x(2021, 6), 4.3, 'Pre-tratamiento (Q1-2020 -- Q3-2022)',
+ax.text(_date_to_x(2021, 6), 4.3, 'Pre-tratamiento (Q1-2020 – Q3-2022)',
         ha='center', fontsize=10, color='dimgrey', style='italic')
-ax.text(_date_to_x(2023, 6), 4.3, 'Post-tratamiento (Q4-2022 -- Q4-2023)',
+ax.text(_date_to_x(2023, 6), 4.3, 'Post-tratamiento (Q4-2022 – Q4-2023)',
         ha='center', fontsize=10, color='#a31a1a', style='italic',
         fontweight='bold')
 
@@ -511,7 +511,7 @@ for s in ('top', 'right', 'left'):
 ax.spines['bottom'].set_color('#888')
 
 ax.legend(loc='lower right', fontsize=10, framealpha=0.95)
-ax.set_title('Línea de tiempo: mejoras y limitaciones de ChatGPT (2020--2023)',
+ax.set_title('Línea de tiempo: mejoras y limitaciones de ChatGPT (2020–2023)',
              fontsize=13, fontweight='bold', pad=12)
 
 plt.tight_layout()
@@ -734,7 +734,7 @@ def _plot_trends(df_lang, omega, lam, att, se, method, lang,
 
     fig, ax = plt.subplots(figsize=(7.5, 5))
     ax.plot(x, treated,   label='Tratado',       color='#2c7bb6', lw=2.6, marker='o', ms=6)
-    ax.plot(x, synthetic, label='Control Sint.', color='#d7191c', lw=2.6,
+    ax.plot(x, synthetic, label='Controles', color='#d7191c', lw=2.6,
             marker='s', ms=6, ls='--')
 
     onset = len(pre_q)
@@ -924,7 +924,6 @@ def _write_latex_table(results_dict, outpath, caption, label, note_text):
         r"\begin{table}[htbp]\centering",
         rf"\caption{{{caption}}}",
         rf"\label{{{label}}}",
-        r"\begin{threeparttable}",
         r"{\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}",
         r"\begin{tabular}{lccccc}",
         r"\toprule",
@@ -954,11 +953,9 @@ def _write_latex_table(results_dict, outpath, caption, label, note_text):
     lines += [
         r"\bottomrule",
         r"\end{tabular}}",
-        r"\begin{tablenotes}",
-        r"\footnotesize",
-        rf"\item \textit{{Nota.}} {note_text}",
-        r"\end{tablenotes}",
-        r"\end{threeparttable}",
+        r"\begin{minipage}{\linewidth}",
+        rf"\smallskip\footnotesize\textit{{Nota.}} {note_text}",
+        r"\end{minipage}",
         r"\end{table}",
         "",
     ]
@@ -1037,10 +1034,9 @@ NOTE_5 = (
     r"mediante la librer\'{i}a \texttt{synthdid} de Python (Clarke et al., 2023). "
     r"Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). "
     r"El periodo de tratamiento inicia en Q4-2022, coincidiendo con el lanzamiento de ChatGPT. "
-    r"Fuente: GitHub Innovation Graph, tabla \textit{languages} "
-    r"(\url{https://github.com/github/innovationgraph}). "
-    r"Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. "
+    r"Errores est\'{a}ndar entre par\'{e}ntesis. "
     r"* p<0.10, ** p<0.05, *** p<0.01"
+    r"\\[\baselineskip]Fuente: Elaboraci\'{o}n propia."
 )
 
 _write_latex_table(
@@ -1236,10 +1232,9 @@ NOTE_6 = (
     r"incorporadas mediante un \textit{partial-out} de efectos fijos de unidad y "
     r"tiempo. Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). "
     r"El periodo de tratamiento inicia en Q4-2022. "
-    r"Fuentes: GitHub Innovation Graph "
-    r"(\url{https://github.com/github/innovationgraph}); Banco Mundial, Indicadores "
-    r"de Desarrollo Mundial. Elaboraci\'{o}n propia. Errores est\'{a}ndar entre "
+    r"Errores est\'{a}ndar entre "
     r"par\'{e}ntesis. * p<0.10, ** p<0.05, *** p<0.01"
+    r"\\[\baselineskip]Fuente: Elaboraci\'{o}n propia."
 )
 
 _write_latex_table(
@@ -1310,17 +1305,15 @@ NOTE_7 = (
     r"``No Libres'' por Freedom House (Freedom on the Net, 2022). "
     r"Los errores est\'{a}ndar se obtienen por \textit{bootstrap} (100 replicaciones). "
     r"El periodo de tratamiento inicia en Q4-2022. "
-    r"Fuente: GitHub Innovation Graph "
-    r"(\url{https://github.com/github/innovationgraph}). "
-    r"Elaboraci\'{o}n propia. Errores est\'{a}ndar entre par\'{e}ntesis. "
+    r"Errores est\'{a}ndar entre par\'{e}ntesis. "
     r"* p$<$0.10, ** p$<$0.05, *** p$<$0.01"
+    r"\\[\baselineskip]Fuente: Elaboraci\'{o}n propia."
 )
 
 rob_lines = [
     r"\begin{table}[htbp]\centering",
     r"\caption{Robustez: SDID con grupo de control restringido (excluye censores severos)}",
     r"\label{tab:tabla5}",
-    r"\begin{threeparttable}",
     r"{\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}",
     r"\begin{tabular}{lcccccc}",
     r"\toprule",
@@ -1346,11 +1339,9 @@ for lang in LANGUAGES_5:
 rob_lines += [
     r"\bottomrule",
     r"\end{tabular}}",
-    r"\begin{tablenotes}",
-    r"\footnotesize",
-    rf"\item \textit{{Nota.}} {NOTE_7}",
-    r"\end{tablenotes}",
-    r"\end{threeparttable}",
+    r"\begin{minipage}{\linewidth}",
+    rf"\smallskip\footnotesize\textit{{Nota.}} {NOTE_7}",
+    r"\end{minipage}",
     r"\end{table}",
     "",
 ]
@@ -1480,16 +1471,14 @@ NOTE_8 = (
     r"pa\'{i}s de control a la vez del pool de donantes y se reestima el SDID "
     r"con los 28 pa\'{i}ses restantes m\'{a}s los 130 pa\'{i}ses tratados; las "
     r"columnas reportan el m\'{i}nimo, mediana y m\'{a}ximo de las 29 estimaciones "
-    r"\textit{leave-one-out} (Arkhangelsky et al., 2021). Fuente: GitHub "
-    r"Innovation Graph (\url{https://github.com/github/innovationgraph}). "
-    r"Elaboraci\'{o}n propia."
+    r"\textit{leave-one-out} (Arkhangelsky et al., 2021)."
+    r"\\[\baselineskip]Fuente: Elaboraci\'{o}n propia."
 )
 
 placebo_lines = [
     r"\begin{table}[htbp]\centering",
     r"\caption{Robustez SDID: placebos in-space y sensibilidad del pool de donantes (LOO)}",
     r"\label{tab:tabla6}",
-    r"\begin{threeparttable}",
     r"\small",
     r"\begin{tabular}{lcccccc}",
     r"\toprule",
@@ -1511,11 +1500,9 @@ for lang in LANGUAGES_5:
 placebo_lines += [
     r"\bottomrule",
     r"\end{tabular}",
-    r"\begin{tablenotes}",
-    r"\footnotesize",
-    rf"\item \textit{{Nota.}} {NOTE_8}",
-    r"\end{tablenotes}",
-    r"\end{threeparttable}",
+    r"\begin{minipage}{\linewidth}",
+    rf"\smallskip\footnotesize\textit{{Nota.}} {NOTE_8}",
+    r"\end{minipage}",
     r"\end{table}",
     "",
 ]
