@@ -5,8 +5,8 @@
 \contentsline {subsection}{\numberline {1.2.}Las versiones de ChatGPT: línea de tiempo de mejoras y limitaciones (2020--2023)}{4}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3.}Capacidades de ChatGPT}{6}{subsection.1.3}%
 \contentsline {subsection}{\numberline {1.4.}Marco teórico económico}{7}{subsection.1.4}%
-\contentsline {paragraph}{Paso 1. Producción y exposición a nivel de tarea.}{9}{section*.13}%
-\contentsline {paragraph}{Paso 2. Del aumento de productividad al umbral de entrada.}{10}{section*.14}%
+\contentsline {paragraph}{Paso 1. Producción y exposición a nivel de tarea.}{8}{section*.13}%
+\contentsline {paragraph}{Paso 2. Del aumento de productividad al umbral de entrada.}{9}{section*.14}%
 \contentsline {paragraph}{Paso 3. Agregación y capacidad de absorción.}{10}{section*.15}%
 \contentsline {paragraph}{Paso 4. De la predicción teórica a la especificación empírica.}{10}{section*.16}%
 \contentsline {subsection}{\numberline {1.5.}Evidencia empírica}{11}{subsection.1.5}%
